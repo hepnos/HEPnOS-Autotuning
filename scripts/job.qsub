@@ -1,0 +1,54 @@
+#!/bin/bash
+#COBALT -A radix-io
+#COBALT -n 4
+#COBALT -t 0:30:00
+#COBALT --mode script
+#COBALT -q debug-flat-quad
+
+set -eu
+CONFIGFILE=config.yaml
+CONNECTIONFILE=connection.yaml
+THIS_SCRIPT=`realpath $0`
+HERE=`dirname $THIS_SCRIPT`
+
+export MPICH_GNI_NDREG_ENTRIES=1024
+export HDF5_USE_FILE_LOCKING=FALSE
+rm -f ${CONNECTIONFILE}
+
+echo "Sourcing settings"
+source ./settings.sh
+
+PDOMAIN=${HEPNOS_PDOMAIN}
+
+echo "Setting up spack and modules"
+source $HERE/../spack/share/spack/setup-env.sh
+export CRAYPE_LINK_TYPE=dynamic
+#module swap PrgEnv-intel PrgEnv-gnu
+echo "Activating env"
+spack env activate hepnos
+spack load -r hepnos@master
+spack load -r hepnos-dataloader@master
+
+echo "Setting up protection domain"
+apstat -P | grep ${PDOMAIN} || apmgr pdomain -c -u ${PDOMAIN}
+echo "Starting up HEPnOS daemon"
+aprun -n 4 -N 2 -cc none -d 32 -p ${PDOMAIN}  hepnos-daemon $CONFIGFILE $CONNECTIONFILE &
+echo "Waiting for HEPnOS daemon to start up"
+while [ ! -f ${CONNECTIONFILE} ]; do sleep 10; done
+echo "Starting dataloader"
+echo `pwd`
+(time aprun -n 2 -N 1 -cc none -p ${PDOMAIN} hepnos-dataloader \
+             -c ${CONNECTIONFILE} \
+             -i ${HEPNOS_DATASET} \
+             -o Nova \
+             -l xxx \
+             -b ${HEPNOS_CLIENT_BATCH_SIZE} ${HEPNOS_CLIENT_USE_PROGRESS_THREAD} \
+             -v info ) \
+    &> output.txt
+
+sleep 5
+echo "Shutting down HEPnOS"
+aprun -n 1 -N 1 -cc none -p ${PDOMAIN} hepnos-shutdown $CONNECTIONFILE
+sleep 10
+echo "Destroying protection domain"
+apmgr pdomain -r -u ${PDOMAIN}
