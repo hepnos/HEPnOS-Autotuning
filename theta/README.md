@@ -12,7 +12,7 @@ in it, as well as their dependencies.
 
 ```
 git clone https://xgitlab.cels.anl.gov/sds/hep/hepnos-autotuning.git
-cd hepnos-autotuning
+cd hepnos-autotuning/theta
 ./install.sh
 ```
 
