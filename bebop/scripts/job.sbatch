@@ -26,12 +26,12 @@ spack load -r hepnos@master
 spack load -r hepnos-dataloader@master
 
 echo "Starting up HEPnOS daemon"
-srun -N 2 -n 4 hepnos-daemon $CONFIGFILE $CONNECTIONFILE &
+srun -N 2 -n 4 --exclusive hepnos-daemon $CONFIGFILE $CONNECTIONFILE &
 echo "Waiting for HEPnOS daemon to start up"
 while [ ! -f ${CONNECTIONFILE} ]; do sleep 10; done
 echo "Starting dataloader"
 echo `pwd`
-(time srun -N 2 -n 2 hepnos-dataloader \
+(time srun -N 2 -n 2 --exclusive hepnos-dataloader \
              -c ${CONNECTIONFILE} \
              -i ${HEPNOS_DATASET} \
              -o Nova \
@@ -42,4 +42,4 @@ echo `pwd`
 
 sleep 5
 echo "Shutting down HEPnOS"
-srun -n 1 -N 1 hepnos-shutdown $CONNECTIONFILE
+srun -n 1 -N 1 --exclusive hepnos-shutdown $CONNECTIONFILE
