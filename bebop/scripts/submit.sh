@@ -1,6 +1,6 @@
 #!/bin/sh
 
-EXPDIR=`pwd`
+EXPDIR=$1
 SCRIPTDIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 source $EXPDIR/settings.sh
 export SCRIPTDIR

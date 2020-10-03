@@ -6,12 +6,15 @@ from shutil import copyfile
 def __setup_directory():
     exp_dir = 'exp-' + str(uuid.uuid4())[0:8]
     os.mkdir(exp_dir)
-    os.chdir(exp_dir)
+    cwd = os.getcwd()
+    return cwd + '/' + exp_dir
 
 
-def __create_settings(batch_size, progress_thread):
-    copyfile('../scripts/settings.sh.in', 'settings.sh')
-    with open('settings.sh', 'a+') as f:
+def __create_settings(exp_dir, batch_size, progress_thread):
+    settings_sh_in = os.path.dirname(os.path.abspath(__file__)) + '/scripts/settings.sh.in'
+    settings_sh = exp_dir + '/settings.sh'
+    copyfile(settings_sh_in, settings_sh)
+    with open(settings_sh, 'a+') as f:
         f.write('\n')
         if progress_thread:
             f.write('HEPNOS_CLIENT_USE_PROGRESS_THREAD=-a\n')
@@ -21,6 +24,7 @@ def __create_settings(batch_size, progress_thread):
 
 
 def __generate_config_file(
+        exp_dir='.',
         filename='config.yaml',
         threads=0,
         busy_spin=False,
@@ -41,12 +45,12 @@ def __generate_config_file(
         d['providers'] = 1
     config['databases']['events']['targets'] = int(targets)
     config['databases']['products']['targets'] = int(targets)
-    with open(filename, 'w+') as f:
+    with open(exp_dir+'/'+filename, 'w+') as f:
         f.write(yaml.dump(config))
 
 
-def __parse_result():
-    for line in open('output.txt'):
+def __parse_result(exp_dir):
+    for line in open(exp_dir+'/output.txt'):
         if 'real' in line:
             line = line.replace('s','')
             x = line.split()[1]
@@ -63,18 +67,20 @@ def run(args):
     progress_thread = args[3]
     batch_size = args[4]
     print('Setting up experiment\'s directory')
-    __setup_directory()
+    exp_dir = __setup_directory()
     print('Creating settings.sh')
-    __create_settings(batch_size, progress_thread)
+    __create_settings(exp_dir, batch_size, progress_thread)
     print('Creating config.yaml')
     __generate_config_file(
+            exp_dir,
             threads=num_threads,
             busy_spin=busy_spin,
             targets=num_databases)
     print('Submitting job')
-    os.system('../scripts/submit.sh')
+    submit_sh = os.path.dirname(os.path.abspath(__file__)) + '/scripts/submit.sh'
+    os.system(submit_sh + ' ' + exp_dir)
     print('Parsing result')
-    t = __parse_result()
+    t = __parse_result(exp_dir)
     print('Done (result = %f)' % t)
     return t
 
