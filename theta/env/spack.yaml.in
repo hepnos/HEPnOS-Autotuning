@@ -1,6 +1,7 @@
 spack:
   specs:
   - cmake
+  - mochi-sdskv ~bdb ~leveldb %gcc@9.3.0
   - hepnos@master%gcc@9.3.0
   - hepnos-dataloader@master%gcc@9.3.0
   concretization: together

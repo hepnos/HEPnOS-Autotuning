@@ -8,8 +8,8 @@
 set -eu
 CONFIGFILE=config.yaml
 CONNECTIONFILE=connection.yaml
-THIS_SCRIPT=`realpath $0`
-HERE=`dirname $THIS_SCRIPT`
+
+cd $EXPDIR
 
 export MPICH_GNI_NDREG_ENTRIES=1024
 export HDF5_USE_FILE_LOCKING=FALSE
@@ -21,7 +21,7 @@ source ./settings.sh
 PDOMAIN=${HEPNOS_PDOMAIN}
 
 echo "Setting up spack and modules"
-source $HERE/../spack/share/spack/setup-env.sh
+source $SCRIPTDIR/../spack/share/spack/setup-env.sh
 export CRAYPE_LINK_TYPE=dynamic
 #module swap PrgEnv-intel PrgEnv-gnu
 echo "Activating env"
