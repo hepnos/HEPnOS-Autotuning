@@ -6,17 +6,15 @@
 #COBALT -q debug-flat-quad
 
 set -eu
-CONFIGFILE=config.yaml
-CONNECTIONFILE=connection.yaml
-
-cd $EXPDIR
+CONFIGFILE=$EXPDIR/config.yaml
+CONNECTIONFILE=$EXPDIR/connection.yaml
 
 export MPICH_GNI_NDREG_ENTRIES=1024
 export HDF5_USE_FILE_LOCKING=FALSE
 rm -f ${CONNECTIONFILE}
 
 echo "Sourcing settings"
-source ./settings.sh
+source $EXPDIR/settings.sh
 
 PDOMAIN=${HEPNOS_PDOMAIN}
 
@@ -44,7 +42,7 @@ echo `pwd`
              -l xxx \
              -b ${HEPNOS_CLIENT_BATCH_SIZE} ${HEPNOS_CLIENT_USE_PROGRESS_THREAD} \
              -v info ) \
-    &> output.txt
+    &> $EXPDIR/output.txt
 
 sleep 5
 echo "Shutting down HEPnOS"
