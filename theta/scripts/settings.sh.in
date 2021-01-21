@@ -1,5 +1,6 @@
 #!/bin/sh
 
-HEPNOS_PDOMAIN=mydomain # choose a name for your protection domain
+HEPNOS_PDOMAIN=hep-mdorier # choose a name for your protection domain
 HEPNOS_PROJECT=radix-io # change for your project allocation
-HEPNOS_DATASET=../data/50files.txt # list of HDF5 files to ingest
+HEPNOS_DATASET=data/200files.txt # list of HDF5 files to ingest
+HEPNOS_JOBFILE=job.qsub # job file (should be placed in scripts directory)

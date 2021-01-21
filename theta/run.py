@@ -85,4 +85,4 @@ def run(args):
     return t
 
 if __name__ == '__main__':
-    run([ 31, 16, False, False, 1024 ])
+    run([ 31, 3, False, False, 1024 ])

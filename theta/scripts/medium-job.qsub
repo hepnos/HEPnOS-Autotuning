@@ -1,9 +1,9 @@
 #!/bin/bash
 #COBALT -A radix-io
-#COBALT -n 16
+#COBALT -n 128
 #COBALT -t 0:30:00
 #COBALT --mode script
-#COBALT -q debug-flat-quad
+#COBALT -q default
 
 set -eu
 CONFIGFILE=$EXPDIR/config.yaml
@@ -30,7 +30,7 @@ spack load -r hepnos-dataloader@master
 echo "Setting up protection domain"
 apstat -P | grep ${PDOMAIN} || apmgr pdomain -c -u ${PDOMAIN}
 echo "Starting up HEPnOS daemon"
-aprun -n 8 -N 4 -cc none -d 32 -p ${PDOMAIN}  hepnos-daemon $CONFIGFILE $CONNECTIONFILE &
+aprun -n 8 -N 2 -cc none -d 32 -p ${PDOMAIN}  hepnos-daemon $CONFIGFILE $CONNECTIONFILE &
 echo "Waiting for HEPnOS daemon to start up"
 while [ ! -f ${CONNECTIONFILE} ]; do sleep 10; done
 echo "Starting dataloader"
