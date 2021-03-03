@@ -27,5 +27,5 @@ spack env create hepnos env/spack.yaml
 log "Activating hepnos environment..."
 spack env activate hepnos
 
-log "Installing HEPnOS and DataLoader..."
+log "Installing HEPnOS, DataLoader, and PEP..."
 spack install

@@ -7,11 +7,11 @@ Installing
 ----------
 
 The procedure bellow will install [spack](https://spack.io/), then
-create a _hepnos_ environment and install HEPnOS and the HDF5 Dataloader
-in it, as well as their dependencies.
+create a _hepnos_ environment and install HEPnOS, the HDF5 Dataloader,
+and the Parallel Event Processing benchmark in it, as well as their dependencies.
 
 ```
-git clone https://xgitlab.cels.anl.gov/sds/hep/hepnos-autotuning.git
+git clone https://github.com/hepnos/HEPnOS-Autotuning.git
 cd hepnos-autotuning/theta
 ./install.sh
 ```
@@ -29,8 +29,8 @@ Once installed, this experimental setup can be tested by calling:
 python run.py
 ```
 
-This will automatically submit a 4-node job on the debug queue. Once
-the job start, it will complete in about 3 min.
+This will automatically submit a 4-node job on the debug queue.
+Once the job starts, it will complete within a few minutes.
 
 
 Running with various parameters
@@ -38,7 +38,7 @@ Running with various parameters
 
 `run.py` is the entry point for an execution. It provides a `run`
 function accepting a list as parameters. This list must contain
-5 elements corresponding to the following parameters:
+at least 5 elements corresponding to the following parameters:
 
 * **Number of threads:** the number of threads that a server can use,
   not including the progress thread. Since 2 servers are deployed on
@@ -49,9 +49,21 @@ function accepting a list as parameters. This list must contain
   product data.
 * **Busy spin:** true or false, indicating whether Mercury should be
   set to busy-spin.
-* **Async:** true or false, indicating whether the client will execute
+* **Loader async:** true or false, indicating whether the client will execute
   store operation asynchronously, trying to overlap with file read operations.
-* **Batch size:** the batch size on clients (int).
+* **Loader batch size:** the batch size on clients (int).
+
+Additionally, 3 more parameters can be provided. Providing these parameters
+will make the job also execute the Parallel Event Processing benchmark
+and report the total time (data loading + benchmark). These parameters
+are the following:
+
+* **Number of threads:** the number of threads used by benchmark processes
+  to process data. Should be at least 1 and up to 31.
+* **Input batch size:** the batch size used when processes are loading events
+  from HEPnOS.
+* **Output batch size:** the batch size used when processes are sending batches
+  of events to each other.
 
 The `run.py` script is designed to work from its location as current working
 directory, and will not work properly for now if invoked from somewhere else.
@@ -62,5 +74,6 @@ a job (rather than from the login node), `submit.sh` will recognize this
 and invoke `job.qsub` as a regular bash script rather than passing it to `qsub`.
 The `job.qsub` script invokes `aprun` to deploy HEPnOS on 2 nodes, then it call
 another `aprun` to execute the HEPnOS dataloader application on 2 other nodes.
-When this second `aprun` completes, it calls `aprun` once more one 1 node to send
-a message to HEPnOS to make it shut down.
+When this second `aprun` completes, it calls `aprun` again to start the parallel
+event processing benchmark if requested, and finally it calls `aprun` once more
+one 1 node to send a message to HEPnOS to make it shut down.

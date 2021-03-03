@@ -10,17 +10,25 @@ def __setup_directory():
     return cwd + '/' + exp_dir
 
 
-def __create_settings(exp_dir, batch_size, progress_thread):
+def __create_settings(exp_dir, loader_batch_size, loader_progress_thread,
+                      pep_num_threads, pep_ibatch_size, pep_obatch_size):
     settings_sh_in = os.path.dirname(os.path.abspath(__file__)) + '/scripts/settings.sh.in'
     settings_sh = exp_dir + '/settings.sh'
     copyfile(settings_sh_in, settings_sh)
     with open(settings_sh, 'a+') as f:
         f.write('\n')
-        if progress_thread:
-            f.write('HEPNOS_CLIENT_USE_PROGRESS_THREAD=-a\n')
+        if loader_progress_thread:
+            f.write('HEPNOS_LOADER_CLIENT_USE_PROGRESS_THREAD=-a\n')
         else:
-            f.write('HEPNOS_CLIENT_USE_PROGRESS_THREAD=\n')
-        f.write('HEPNOS_CLIENT_BATCH_SIZE=%d\n' % batch_size)
+            f.write('HEPNOS_LOADER_CLIENT_USE_PROGRESS_THREAD=\n')
+        f.write('HEPNOS_LOADER_CLIENT_BATCH_SIZE=%d\n' % loader_batch_size)
+        if None not in [pep_num_threads, pep_ibatch_size, pep_obatch_size]:
+            f.write('HEPNOS_ENABLE_PEP=1\n')
+            f.write('HEPNOS_PEP_THREADS=%d\n' % pep_num_threads)
+            f.write('HEPNOS_PEP_IBATCH_SIZE=%d\n' % pep_ibatch_size)
+            f.write('HEPNOS_PEP_OBATCH_SIZE=%d\n' % pep_obatch_size)
+        else:
+            f.write('HEPNOS_ENABLE_PEP=0\n')
 
 
 def __generate_config_file(
@@ -50,39 +58,73 @@ def __generate_config_file(
 
 
 def __parse_result(exp_dir):
-    for line in open(exp_dir+'/output.txt'):
+    dataloader_time = 0
+    pep_time = 0
+    for line in open(exp_dir+'/dataloader-output.txt'):
         if 'real' in line:
             line = line.replace('s','')
             x = line.split()[1]
             m = int(x.split('m')[0])
             s = float(x.split('m')[1])
-            return m*60 + s
+            dataloader_time = m*60 + s
+    if os.path.isfile(exp_dir+'/pep-output.txt'):
+        for line in open(exp_dir+'/pep-output.txt'):
+            if 'real' in line:
+                line = line.replace('s','')
+                x = line.split()[1]
+                m = int(x.split('m')[0])
+                s = float(x.split('m')[1])
+                pep_time = m*60 + s
+    return (dataloader_time, pep_time)
+
 
 def run(args):
-    if len(args) != 5:
-        raise RuntimeError("Expected 5 arguments in list, found %d" % len(args))
-    num_threads = args[0]
-    num_databases = args[1]
+    if len(args) == 5:
+        args.extend([None, None, None])
+    if len(args) != 8:
+        raise RuntimeError("Expected 5 or 8 arguments in list, found %d" % len(args))
+    hepnos_num_threads = args[0]
+    hepnos_num_databases = args[1]
     busy_spin = args[2]
-    progress_thread = args[3]
-    batch_size = args[4]
+    loader_progress_thread = args[3]
+    loader_batch_size = args[4]
+    pep_num_threads = args[5]
+    pep_ibatch_size = args[6]
+    pep_obatch_size = args[7]
     print('Setting up experiment\'s directory')
     exp_dir = __setup_directory()
     print('Creating settings.sh')
-    __create_settings(exp_dir, batch_size, progress_thread)
+    __create_settings(exp_dir,
+                      loader_batch_size,
+                      loader_progress_thread,
+                      pep_num_threads,
+                      pep_ibatch_size,
+                      pep_obatch_size)
     print('Creating config.yaml')
     __generate_config_file(
             exp_dir,
-            threads=num_threads,
+            threads=hepnos_num_threads,
             busy_spin=busy_spin,
-            targets=num_databases)
+            targets=hepnos_num_databases)
     print('Submitting job')
     submit_sh = os.path.dirname(os.path.abspath(__file__)) + '/scripts/submit.sh'
     os.system(submit_sh + ' ' + exp_dir)
     print('Parsing result')
     t = __parse_result(exp_dir)
-    print('Done (result = %f)' % t)
-    return t
+    print('Done (loading time = %f, processing time = %f)' % (t[0], t[1]))
+    return t[0]+t[1]
 
 if __name__ == '__main__':
-    run([ 31, 3, False, False, 1024 ])
+    # The format of the argument array is is:
+    # - number of RPC handling threads per process for HEPnOS
+    # - number of databases per process for HEPnOS
+    # - whether to use busy spinning or not
+    # - whether to use a progress thread or not in clients
+    # - the batch size for the dataloader
+    # If you want to run the PEP benchmark as well,
+    # the following parameters must be added:
+    # - number of threads per benchmark process (must be > 0)
+    # - batch size when loading from HEPnOS
+    # - batch size when loading from another rank
+    run([ 31, 1, False, False, 1024, 31, 32, 1024 ])
+    #run([ 31, 1, False, False, 1024 ])

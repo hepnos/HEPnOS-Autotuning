@@ -24,27 +24,55 @@ export CRAYPE_LINK_TYPE=dynamic
 #module swap PrgEnv-intel PrgEnv-gnu
 echo "Activating env"
 spack env activate hepnos
-spack load -r hepnos@master
-spack load -r hepnos-dataloader@master
+spack load -r hepnos@main
+spack load -r hepnos-dataloader@main
+spack load -r hepnos-pep-benchmark@main
 
 echo "Setting up protection domain"
 apstat -P | grep ${PDOMAIN} || apmgr pdomain -c -u ${PDOMAIN}
 echo "Starting up HEPnOS daemon"
 aprun -n 4 -N 2 -cc none -d 32 -p ${PDOMAIN}  hepnos-daemon $CONFIGFILE $CONNECTIONFILE &
+
+LOADER_PRODUCT_ARGS=""
+for p in ${HEPNOS_LOADER_PRODUCTS[@]}; do
+    LOADER_PRODUCT_ARGS="${LOADER_PRODUCT_ARGS} -n ${p}"
+done
 echo "Waiting for HEPnOS daemon to start up"
 while [ ! -f ${CONNECTIONFILE} ]; do sleep 10; done
 echo "Starting dataloader"
 echo `pwd`
 (time aprun -n 2 -N 1 -cc none -p ${PDOMAIN} hepnos-dataloader \
              -c ${CONNECTIONFILE} \
-             -i ${HEPNOS_DATASET} \
-             -o Nova \
-             -l xxx \
-             -b ${HEPNOS_CLIENT_BATCH_SIZE} ${HEPNOS_CLIENT_USE_PROGRESS_THREAD} \
-             -v info ) \
-    &> $EXPDIR/output.txt
+             -i ${HEPNOS_LOADER_DATAFILE} \
+             -o ${HEPNOS_DATASET} \
+             -l ${HEPNOS_LABEL} \
+             -b ${HEPNOS_LOADER_CLIENT_BATCH_SIZE} ${HEPNOS_LOADER_CLIENT_USE_PROGRESS_THREAD} \
+             ${LOADER_PRODUCT_ARGS} \
+             -v ${HEPNOS_LOADER_VERBOSE} ) \
+    &> $EXPDIR/dataloader-output.txt
 
 sleep 5
+
+if [ "$HEPNOS_ENABLE_PEP" -ne "0" ]; then
+    PEP_PRODUCT_ARGS=""
+    for p in ${HEPNOS_PEP_PRODUCTS[@]}; do
+      PEP_PRODUCT_ARGS="${PEP_PRODUCT_ARGS} -n ${p}"
+    done
+    echo "Running PEP benchmark"
+    (time aprun -n 4 -N 2 -cc none -p ${PDOMAIN} hepnos-pep-benchmark \
+             -c ${CONNECTIONFILE} \
+             -d ${HEPNOS_DATASET} \
+             -l ${HEPNOS_LABEL} \
+             ${PEP_PRODUCT_ARGS} \
+             -v ${HEPNOS_PEP_VERBOSE} \
+             -o ${HEPNOS_PEP_OBATCH_SIZE} \
+             -i ${HEPNOS_PEP_IBATCH_SIZE} \
+             -t ${HEPNOS_PEP_THREADS} ) \
+    &> $EXPDIR/pep-output.txt
+fi
+
+sleep 5
+
 echo "Shutting down HEPnOS"
 aprun -n 1 -N 1 -cc none -p ${PDOMAIN} hepnos-shutdown $CONNECTIONFILE
 sleep 10
