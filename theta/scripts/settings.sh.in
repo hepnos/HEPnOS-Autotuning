@@ -2,7 +2,7 @@
 
 HEPNOS_PDOMAIN=hep-mdorier # choose a name for your protection domain
 HEPNOS_PROJECT=radix-io # change for your project allocation
-HEPNOS_JOBFILE=medium-job.qsub # job file (should be placed in scripts directory)
+HEPNOS_JOBFILE=job.qsub # job file (should be placed in scripts directory)
 HEPNOS_DATASET=nova # name of the dataset
 HEPNOS_LABEL=abc # label to use for the products
 
