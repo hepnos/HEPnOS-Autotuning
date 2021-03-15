@@ -53,13 +53,18 @@ echo `pwd`
 
 sleep 5
 
+NUM_NODES=2
+NUM_PES=$(($HEPNOS_PEP_PES_PER_NODE * $NUM_NODES))
+
 if [ "$HEPNOS_ENABLE_PEP" -ne "0" ]; then
     PEP_PRODUCT_ARGS=""
     for p in ${HEPNOS_PEP_PRODUCTS[@]}; do
       PEP_PRODUCT_ARGS="${PEP_PRODUCT_ARGS} -n ${p}"
     done
     echo "Running PEP benchmark"
-    (time aprun -n 4 -N 2 -cc none -p ${PDOMAIN} hepnos-pep-benchmark \
+    (time aprun -n ${NUM_PES} -N ${HEPNOS_PEP_PES_PER_NODE}
+                -cc none -d ${HEPNOS_PEP_CORES_PER_PE} \
+                -p ${PDOMAIN} hepnos-pep-benchmark \
              -c ${CONNECTIONFILE} \
              -d ${HEPNOS_DATASET} \
              -l ${HEPNOS_LABEL} \
