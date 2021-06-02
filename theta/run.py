@@ -11,7 +11,7 @@ def __setup_directory():
 
 
 def __create_settings(exp_dir, loader_batch_size, loader_progress_thread,
-                      pep_num_threads, pep_ibatch_size, pep_obatch_size,
+                      pep_num_threads, pep_ibatch_size, pep_obatch_size, pep_use_preloading,
                       pep_pes_per_node, pep_cores_per_pe):
     settings_sh_in = os.path.dirname(os.path.abspath(__file__)) + '/scripts/settings.sh.in'
     settings_sh = exp_dir + '/settings.sh'
@@ -30,6 +30,10 @@ def __create_settings(exp_dir, loader_batch_size, loader_progress_thread,
             f.write('HEPNOS_PEP_OBATCH_SIZE=%d\n' % pep_obatch_size)
             f.write('HEPNOS_PEP_PES_PER_NODE=%d\n' % pep_pes_per_node)
             f.write('HEPNOS_PEP_CORES_PER_PE=%d\n' % pep_cores_per_pe)
+            if pep_use_preloading:
+                f.write('HEPNOS_PEP_PRELOAD=-p\n')
+            else:
+                f.write('HEPNOS_PEP_PRELOAD=\n')
         else:
             f.write('HEPNOS_ENABLE_PEP=0\n')
 
@@ -83,10 +87,10 @@ def __parse_result(exp_dir):
 
 def run(args):
     if len(args) == 5:
-        args.extend([None, None, None, None, None])
-    if len(args) == 8:
+        args.extend([None, None, None, None, None, None])
+    if len(args) == 9:
         args.extend([2, 32])
-    if len(args) != 10:
+    if len(args) != 11:
         raise RuntimeError("Expected 5 or 10 arguments in list, found %d" % len(args))
     hepnos_num_threads = args[0]
     hepnos_num_databases = args[1]
@@ -96,8 +100,9 @@ def run(args):
     pep_num_threads = args[5]
     pep_ibatch_size = args[6]
     pep_obatch_size = args[7]
-    pep_pes_per_node = args[8]
-    pep_cores_per_pe = args[9]
+    pep_use_preloading = args[8]
+    pep_pes_per_node = args[9]
+    pep_cores_per_pe = args[10]
     print('Setting up experiment\'s directory')
     exp_dir = __setup_directory()
     print('Creating settings.sh')
@@ -107,6 +112,7 @@ def run(args):
                       pep_num_threads,
                       pep_ibatch_size,
                       pep_obatch_size,
+                      pep_use_preloading,
                       pep_pes_per_node,
                       pep_cores_per_pe)
     print('Creating config.yaml')
@@ -135,6 +141,7 @@ if __name__ == '__main__':
     # - number of processing threads per benchmark process (must be > 0)
     # - batch size when loading from HEPnOS
     # - batch size when loading from another rank
+    # - whether to use product-preloading
     # If you want to configure the number of PES and cores per PE for
     # the benchmark, you can add two more parameters:
     # - number of PES per node (must be between 1 and 64)
@@ -143,5 +150,5 @@ if __name__ == '__main__':
     # Additionally, the number of processing threads should be
     # the number of cores per PE minus 2 (so effectively the number
     # cores per PE must be at least 3).
-    run([ 31, 1, False, False, 1024, 31, 32, 1024, 2, 32 ])
+    run([ 31, 1, False, False, 1024, 31, 32, 1024, True, 2, 32 ])
     #run([ 31, 1, False, False, 1024 ])

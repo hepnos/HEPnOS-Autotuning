@@ -69,6 +69,7 @@ if [ "$HEPNOS_ENABLE_PEP" -ne "0" ]; then
              -d ${HEPNOS_DATASET} \
              -l ${HEPNOS_LABEL} \
              ${PEP_PRODUCT_ARGS} \
+             ${HEPNOS_PEP_PRELOAD} \
              -v ${HEPNOS_PEP_VERBOSE} \
              -o ${HEPNOS_PEP_OBATCH_SIZE} \
              -i ${HEPNOS_PEP_IBATCH_SIZE} \
