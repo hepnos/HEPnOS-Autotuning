@@ -150,5 +150,5 @@ if __name__ == '__main__':
     # Additionally, the number of processing threads should be
     # the number of cores per PE minus 2 (so effectively the number
     # cores per PE must be at least 3).
-    run([ 31, 1, False, False, 1024, 31, 32, 1024, True, 2, 32 ])
+    run([ 31, 1, False, False, 1024, 31, 32, 32, True, 16, 4 ])
     #run([ 31, 1, False, False, 1024 ])
