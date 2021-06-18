@@ -1,6 +1,6 @@
 #!/bin/sh
 
-NODES_PER_EXP=32 # should be divisible by 4
+NODES_PER_EXP=8 # should be divisible by 4 and at least 8
 
 HEPNOS_PDOMAIN=hep-mdorier # choose a name for your protection domain
 HEPNOS_PROJECT=radix-io # change for your project allocation
@@ -10,7 +10,7 @@ HEPNOS_LABEL=abc # label to use for the products
 HEPNOS_ENABLE_PROFILING=0
 
 HEPNOS_LOADER_DATAFILE=data/50files.txt # list of HDF5 files to ingest
-HEPNOS_LOADER_VERBOSE=info # verbose level
+HEPNOS_LOADER_VERBOSE=critical # verbose level
 HEPNOS_LOADER_PRODUCTS=(
 	hep::rec_energy_numu
 	hep::rec_hdr
@@ -31,7 +31,7 @@ HEPNOS_LOADER_PRODUCTS=(
 HEPNOS_LOADER_ENABLE_PROFILING=0
 
 HEPNOS_ENABLE_PEP=1 # enable parallel event processing benchmark
-HEPNOS_PEP_VERBOSE=info
+HEPNOS_PEP_VERBOSE=critical
 HEPNOS_PEP_PRODUCTS=(
 	hep::rec_energy_numu
 	hep::rec_hdr

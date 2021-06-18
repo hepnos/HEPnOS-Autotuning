@@ -1,0 +1,52 @@
+{
+    "__comment__" : "Bedrock configuration to use on servers",
+    "margo" : {
+        "mercury" : {
+            "na_no_block" : false
+        },
+        "use_progress_thread" : false,
+        "rpc_thread_count" : 0
+    },
+    "ssg" : [
+        {
+            "name" : "hepnos",
+            "bootstrap" : "mpi",
+            "group_file" : "hepnos.ssg",
+            "swim" : { "disabled" : true }
+        }
+    ],
+    "libraries" : {
+        "sdskv" : "libsdskv-bedrock.so"
+    },
+    "providers" : [
+        {
+            "name" : "hepnos",
+            "type" : "sdskv",
+            "config" : {
+                "comparators" : [
+                    { "name" : "hepnos_compare_item_descriptors",
+                      "library" : "libhepnos-service.so" }
+                ],
+                "databases" : [
+                    {
+                        "name" : "hepnos-datasets",
+                        "type" : "map",
+                        "no_overwrite" : true
+                    },
+                    {
+                        "name" : "hepnos-runs",
+                        "type" : "map",
+                        "comparator" : "hepnos_compare_item_descriptors",
+                        "no_overwrite" : true
+                    },
+                    {
+                        "name" : "hepnos-subruns",
+                        "type" : "map",
+                        "comparator" : "hepnos_compare_item_descriptors",
+                        "no_overwrite" : true
+                    }
+                ]
+            }
+        }
+    ]
+}

@@ -2,9 +2,9 @@ spack:
   specs:
   - cmake
   - mochi-sdskv ~bdb ~leveldb %gcc@9.3.0
-  - hepnos@main%gcc@9.3.0
-  - hepnos-dataloader@main%gcc@9.3.0
-  - hepnos-pep-benchmark@main%gcc@9.3.0
+  - hepnos@0.5.0%gcc@9.3.0
+  - hepnos-dataloader@0.4%gcc@9.3.0
+  - hepnos-pep-benchmark@0.4%gcc@9.3.0
   concretization: together
   repos:
   - ${MOCHI_REPO}

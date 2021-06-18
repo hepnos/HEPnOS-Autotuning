@@ -1,5 +1,6 @@
 import os, uuid
-import yaml
+import copy
+import json
 from shutil import copyfile
 
 
@@ -31,37 +32,74 @@ def __create_settings(exp_dir, loader_batch_size, loader_progress_thread,
             f.write('HEPNOS_PEP_PES_PER_NODE=%d\n' % pep_pes_per_node)
             f.write('HEPNOS_PEP_CORES_PER_PE=%d\n' % pep_cores_per_pe)
             if pep_use_preloading:
-                f.write('HEPNOS_PEP_PRELOAD=-p\n')
+                f.write('HEPNOS_PEP_PRELOAD=--preload\n')
             else:
                 f.write('HEPNOS_PEP_PRELOAD=\n')
         else:
             f.write('HEPNOS_ENABLE_PEP=0\n')
 
 
-def __generate_config_file(
+def __generate_client_config_file(
         exp_dir='.',
-        filename='config.yaml',
+        filename='client.json',
+        busy_spin=False):
+    client_json_in = os.path.dirname(os.path.abspath(__file__)) + '/scripts/client.json.in'
+    client_json = exp_dir + '/' + filename
+    with open(client_json_in) as f:
+        config = json.loads(f.read())
+    config['mercury']['na_no_block'] = bool(busy_spin)
+    with open(client_json, 'w+') as f:
+        f.write(json.dumps(config))
+
+
+def __generate_hepnos_config_file(
+        exp_dir='.',
+        filename='hepnos.json',
         threads=0,
         busy_spin=False,
         targets=1):
-    config = dict()
-    config['address'] = 'ofi+gni://'
-    config['threads'] = int(threads)
-    config['busy-spin'] = bool(busy_spin)
-    config['databases'] = dict()
-    config['databases']['datasets'] = dict()
-    for k in ['datasets', 'runs', 'subruns', 'events', 'products']:
-        config['databases'][k] = dict()
-        d = config['databases'][k]
-        d['name'] = 'hepnos-%s.$RANK.$PROVIDER.$TARGET' % k
-        d['path'] = '/dev/shm/$RANK'
-        d['type'] = 'map'
-        d['targets'] = 1
-        d['providers'] = 1
-    config['databases']['events']['targets'] = int(targets)
-    config['databases']['products']['targets'] = int(targets)
-    with open(exp_dir+'/'+filename, 'w+') as f:
-        f.write(yaml.dump(config))
+    hepnos_json_in = os.path.dirname(os.path.abspath(__file__)) + '/scripts/hepnos.json.in'
+    hepnos_json = exp_dir + '/' + filename
+    with open(hepnos_json_in) as f:
+        config = json.loads(f.read())
+
+    config['margo']['rpc_thread_count'] = int(threads)
+    config['margo']['mercury']['na_no_block'] = bool(busy_spin)
+    ssg_group = None
+    for g in config['ssg']:
+        if g['name'] == 'hepnos':
+            ssg_group = g
+            break
+    ssg_group['group_file'] = exp_dir + '/hepnos.ssg'
+
+    event_db_model = {
+            "type" : "map",
+            "comparator" : "hepnos_compare_item_descriptors",
+            "no_overwrite" : True
+    }
+    product_db_model = {
+            "type" : "map",
+            "no_overwrite" : True
+    }
+
+    hepnos_provider = None
+    for p in config['providers']:
+        if p['name'] == 'hepnos':
+            hepnos_provider = p
+            break
+
+    for i in range(0, targets):
+        event_db_name = 'hepnos-events-' + str(i)
+        product_db_name = 'hepnos-products-' + str(i)
+        event_db = copy.deepcopy(event_db_model)
+        event_db['name'] = event_db_name
+        product_db = copy.deepcopy(product_db_model)
+        product_db['name'] = product_db_name
+        hepnos_provider['config']['databases'].append(event_db)
+        hepnos_provider['config']['databases'].append(product_db)
+
+    with open(hepnos_json, 'w+') as f:
+        f.write(json.dumps(config))
 
 
 def __parse_result(exp_dir):
@@ -115,12 +153,16 @@ def run(args):
                       pep_use_preloading,
                       pep_pes_per_node,
                       pep_cores_per_pe)
-    print('Creating config.yaml')
-    __generate_config_file(
+    print('Creating hepnos.json')
+    __generate_hepnos_config_file(
             exp_dir,
             threads=hepnos_num_threads,
             busy_spin=busy_spin,
             targets=hepnos_num_databases)
+    print('Creating client.json')
+    __generate_client_config_file(
+            exp_dir,
+            busy_spin=busy_spin)
     print('Submitting job')
     submit_sh = os.path.dirname(os.path.abspath(__file__)) + '/scripts/submit.sh'
     os.system(submit_sh + ' ' + exp_dir)
@@ -128,6 +170,7 @@ def run(args):
     t = __parse_result(exp_dir)
     print('Done (loading time = %f, processing time = %f)' % (t[0], t[1]))
     return t[0]+t[1]
+
 
 if __name__ == '__main__':
     # The format of the argument array is is:
