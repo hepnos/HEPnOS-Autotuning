@@ -136,19 +136,23 @@ def __parse_result(exp_dir):
     return (dataloader_time, pep_time)
 
 
-def run(hepnos_num_threads,
-        hepnos_num_databases,
-        busy_spin,
-        loader_progress_thread,
-        loader_batch_size,
-        enable_pep=False,
-        pep_num_threads=None,
-        pep_ibatch_size=None,
-        pep_obatch_size=None,
-        pep_use_preloading=None,
-        pep_pes_per_node=None,
-        pep_cores_per_pe=None,
-        nodes=None):
+def run(config, nodes=None):
+
+    # collect hyperparameter
+    hepnos_num_threads = config["hepnos_num_threads"]
+    hepnos_num_databases = config["hepnos_num_databases"]
+    busy_spin = config["busy_spin"]
+    loader_progress_thread = config["loader_progress_thread"]
+    loader_batch_size = config["loader_batch_size"]
+
+    # enable_pep = config["enable_pep"]
+    # pep_num_threads = config["pep_num_threads"]
+    # pep_ibatch_size = config["pep_ibatch_size"]
+    # pep_obatch_size = config["pep_obatch_size"]
+    # pep_use_preloading = config["pep_use_preloading"]
+    # pep_pes_per_node = config["pep_pes_per_node"]
+    # pep_cores_per_pe = config["pep_cores_per_pe"]
+
     nodes = __make_node_list(nodes)
     print('Setting up experiment\'s directory')
     exp_dir = __setup_directory()
