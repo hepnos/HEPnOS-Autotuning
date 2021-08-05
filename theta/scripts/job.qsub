@@ -2,10 +2,12 @@
 #COBALT -A radix-io
 #COBALT -t 0:30:00
 #COBALT --mode script
-#COBALT -n 128
-#COBALT -q default
+#COBALT -n 8
+#COBALT -q debug-flat-quad
+### COBALT -n 128
+### COBALT -q default
 
-set -eu
+set -e
 PROTOCOL=ofi+gni
 HEPNOS_CONFIG=$EXPDIR/hepnos.json
 HEPNOS_SSG=$EXPDIR/hepnos.ssg
@@ -20,9 +22,36 @@ rm -f ${DATABASES_CONFIG}
 echo "Sourcing settings"
 source $EXPDIR/settings.sh
 
-NODES_FOR_HEPNOS=$(($NODES_PER_EXP/4))
-NODES_FOR_LOADER=$(($NODES_PER_EXP - $NODES_FOR_HEPNOS))
-NODES_FOR_PEP=$(($NODES_PER_EXP - $NODES_FOR_HEPNOS))
+NUM_NODES_FOR_HEPNOS=$(($NODES_PER_EXP/4))
+NUM_NODES_FOR_LOADER=$(($NODES_PER_EXP - $NUM_NODES_FOR_HEPNOS))
+NUM_NODES_FOR_PEP=$(($NODES_PER_EXP - $NUM_NODES_FOR_HEPNOS))
+
+if [[ -z "${HEPNOS_NODELIST}" ]]; then
+    echo "Using default node list"
+    NODES_FOR_HEPNOS=""
+    NODES_FOR_LOADER=""
+    NODES_FOR_PEP=""
+    NODE_FOR_UTILITY=""
+else
+    NUM_NODES=${#HEPNOS_NODELIST[@]}
+    if [ $NUM_NODES -ne $NODES_PER_EXP ]; then
+        echo "ERROR: node list provided should be of length $NODES_PER_EXP"
+        exit -1
+    fi
+    NODES_FOR_HEPNOS=("${HEPNOS_NODELIST[@]:0:$NUM_NODES_FOR_HEPNOS}")
+    b=$(printf ",%s" "${NODES_FOR_HEPNOS[@]}")
+    b=${b:1}
+    NODES_FOR_HEPNOS="-L $b"
+    NODES_FOR_LOADER=("${HEPNOS_NODELIST[@]:$NUM_NODES_FOR_HEPNOS}")
+    b=$(printf ",%s" "${NODES_FOR_LOADER[@]}")
+    b=${b:1}
+    NODES_FOR_LOADER="-L $b"
+    NODES_FOR_PEP=("${HEPNOS_NODELIST[@]:$NUM_NODES_FOR_HEPNOS}")
+    b=$(printf ",%s" "${NODES_FOR_PEP[@]}")
+    b=${b:1}
+    NODES_FOR_PEP="-L $b"
+    NODE_FOR_UTILITY="-L ${HEPNOS_NODELIST[$NUM_NODES_FOR_HEPNOS]}"
+fi
 
 PDOMAIN=${HEPNOS_PDOMAIN}
 
@@ -47,9 +76,9 @@ else
   export MARGO_ENABLE_PROFILING=0
 fi
 
+NUM_PES_FOR_HEPNOS=$((2*${NUM_NODES_FOR_HEPNOS}))
 echo "Starting up HEPnOS daemon"
-echo "NODES_FOR_HEPNOS = ${NODES_FOR_HEPNOS}"
-aprun -n ${NODES_FOR_HEPNOS} -N 2 -cc none -d 32 -p ${PDOMAIN} \
+aprun -n ${NUM_PES_FOR_HEPNOS} ${NODES_FOR_HEPNOS} -N 2 -cc none -d 32 -p ${PDOMAIN} \
       bedrock ${PROTOCOL} -c ${HEPNOS_CONFIG} -v error &
 
 echo "Waiting for HEPnOS daemon to start up"
@@ -64,7 +93,7 @@ else
 fi
 
 echo "Requesting databases"
-aprun -n 1 -N 1 -p ${PDOMAIN} \
+aprun -n 1 -N 1 ${NODE_FOR_UTILITY} -p ${PDOMAIN} \
     hepnos-list-databases \
     ${PROTOCOL} -s ${HEPNOS_SSG} > ${DATABASES_CONFIG}
 sed -i '$ d' ${DATABASES_CONFIG} # we have to because aprun adds a line
@@ -76,7 +105,7 @@ done
 
 echo "Starting dataloader"
 echo `pwd`
-(time aprun -n ${NODES_FOR_LOADER} -N 1 -cc none -p ${PDOMAIN} \
+(time aprun -n ${NUM_NODES_FOR_LOADER} ${NODES_FOR_LOADER} -N 1 -cc none -p ${PDOMAIN} \
              hepnos-dataloader \
              -p ${PROTOCOL} \
              -m ${CLIENT_MARGO_CONFIG} \
@@ -90,9 +119,9 @@ echo `pwd`
              -v ${HEPNOS_LOADER_VERBOSE} ) \
     &> $EXPDIR/dataloader-output.txt
 
-NUM_PES=$(($HEPNOS_PEP_PES_PER_NODE * $NODES_FOR_PEP))
 
 if [ "$HEPNOS_ENABLE_PEP" -ne "0" ]; then
+    NUM_PES=$(($HEPNOS_PEP_PES_PER_NODE * $NUM_NODES_FOR_PEP))
     PEP_PRODUCT_ARGS=""
     for p in ${HEPNOS_PEP_PRODUCTS[@]}; do
       PEP_PRODUCT_ARGS="${PEP_PRODUCT_ARGS} -n ${p}"
@@ -108,6 +137,7 @@ if [ "$HEPNOS_ENABLE_PEP" -ne "0" ]; then
 
     echo "Running PEP benchmark"
     (time aprun -n ${NUM_PES} -N ${HEPNOS_PEP_PES_PER_NODE} \
+                ${NODES_FOR_PEP} \
                 -cc none -d ${HEPNOS_PEP_CORES_PER_PE} \
                 -p ${PDOMAIN} hepnos-pep-benchmark \
              -p ${PROTOCOL} \
@@ -125,7 +155,7 @@ if [ "$HEPNOS_ENABLE_PEP" -ne "0" ]; then
 fi
 
 echo "Shutting down HEPnOS"
-aprun -n 1 -N 1 -cc none -p ${PDOMAIN} hepnos-shutdown $DATABASES_CONFIG
+aprun -n 1 -N 1 ${NODE_FOR_UTILITY} -cc none -p ${PDOMAIN} hepnos-shutdown $PROTOCOL $DATABASES_CONFIG
 
 echo "Destroying protection domain"
 apmgr pdomain -r -u ${PDOMAIN}

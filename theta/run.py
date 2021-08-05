@@ -1,6 +1,7 @@
 import os, uuid
 import copy
 import json
+import re
 from shutil import copyfile
 
 
@@ -11,9 +12,19 @@ def __setup_directory():
     return cwd + '/' + exp_dir
 
 
+def __make_node_list(nodes):
+    if nodes is None:
+        return None
+    result = []
+    for n in nodes:
+        m = re.search('([0-9]+)', n)
+        result.append(str(int(str(m.group(0)))))
+    return result
+
+
 def __create_settings(exp_dir, loader_batch_size, loader_progress_thread,
                       pep_num_threads, pep_ibatch_size, pep_obatch_size, pep_use_preloading,
-                      pep_pes_per_node, pep_cores_per_pe):
+                      pep_pes_per_node, pep_cores_per_pe, nodes):
     settings_sh_in = os.path.dirname(os.path.abspath(__file__)) + '/scripts/settings.sh.in'
     settings_sh = exp_dir + '/settings.sh'
     copyfile(settings_sh_in, settings_sh)
@@ -37,6 +48,8 @@ def __create_settings(exp_dir, loader_batch_size, loader_progress_thread,
                 f.write('HEPNOS_PEP_PRELOAD=\n')
         else:
             f.write('HEPNOS_ENABLE_PEP=0\n')
+        if nodes is not None:
+            f.write('HEPNOS_NODELIST=(%s)\n' % ' '.join(nodes))
 
 
 def __generate_client_config_file(
@@ -123,7 +136,7 @@ def __parse_result(exp_dir):
     return (dataloader_time, pep_time)
 
 
-def run(args):
+def run(args, nodes=None):
     if len(args) == 5:
         args.extend([None, None, None, None, None, None])
     if len(args) == 9:
@@ -141,6 +154,7 @@ def run(args):
     pep_use_preloading = args[8]
     pep_pes_per_node = args[9]
     pep_cores_per_pe = args[10]
+    nodes = __make_node_list(nodes)
     print('Setting up experiment\'s directory')
     exp_dir = __setup_directory()
     print('Creating settings.sh')
@@ -152,7 +166,8 @@ def run(args):
                       pep_obatch_size,
                       pep_use_preloading,
                       pep_pes_per_node,
-                      pep_cores_per_pe)
+                      pep_cores_per_pe,
+                      nodes)
     print('Creating hepnos.json')
     __generate_hepnos_config_file(
             exp_dir,
@@ -173,25 +188,56 @@ def run(args):
 
 
 if __name__ == '__main__':
-    # The format of the argument array is is:
-    # - number of RPC handling threads per process for HEPnOS
-    # - number of databases per process for HEPnOS
-    # - whether to use busy spinning or not
-    # - whether to use a progress thread or not in clients
-    # - the batch size for the dataloader
-    # If you want to run the PEP benchmark as well,
-    # the following parameters must be added:
-    # - number of processing threads per benchmark process (must be > 0)
-    # - batch size when loading from HEPnOS
-    # - batch size when loading from another rank
-    # - whether to use product-preloading
-    # If you want to configure the number of PES and cores per PE for
-    # the benchmark, you can add two more parameters:
-    # - number of PES per node (must be between 1 and 64)
-    # - number of cores per PE (must be between 1 and 64)
-    # The product of the these two parameters should not exceed 64.
+    import argparse
+    parser = argparse.ArgumentParser(description='HEPnOS experiment')
+    parser.add_argument('--hepnos-num-threads', type=int, default=31,
+                        help='number of RPC handling threads per process for HEPnOS')
+    parser.add_argument('--hepnos-num-databases', type=int, default=1,
+                        help='number of databases per process for HEPnOS')
+    parser.add_argument('--busy-spin', action='store_true', default=False,
+                        help='whether to use busy spinning or not')
+    parser.add_argument('--loader-progress-thread', action='store_true', default=False,
+                        help='whether to use a progress thread or not in dataloader clients')
+    parser.add_argument('--loader-batch-size', type=int, default=1024,
+                        help='batch size for the dataloader')
+    parser.add_argument('--enable-pep', action='store_true', default=False,
+                        help='enable PEP benchmark')
+    parser.add_argument('--pep-num-threads', type=int, default=31,
+                        help='number of processing threads per benchmark process (must be > 0)')
+    parser.add_argument('--pep-ibatch-size', type=int, default=32,
+                        help='batch size when loading from HEPnOS')
+    parser.add_argument('--pep-obatch-size', type=int, default=32,
+                        help='batch size when loading from another rank')
+    parser.add_argument('--pep-use-preloading', action='store_true', default=False,
+                        help='whether to use product-preloading')
+    parser.add_argument('--pep-pes-per-node', type=int, default=16,
+                        help='number of PES per node (must be between 1 and 64)')
+    parser.add_argument('--pep-cores-per-pe', type=int, default=4,
+                        help='number of cores per PE (must be between 1 and 64)')
+    parser.add_argument('--nodes', type=str, default=None,
+                        help='nodes to use')
+    # The product of the last wo parameters should not exceed 64.
     # Additionally, the number of processing threads should be
     # the number of cores per PE minus 2 (so effectively the number
     # cores per PE must be at least 3).
-    run([ 31, 1, False, False, 1024, 31, 32, 32, True, 16, 4 ])
+    ns = parser.parse_args()
+    args = [ns.hepnos_num_threads,
+            ns.hepnos_num_databases,
+            ns.busy_spin,
+            ns.loader_progress_thread,
+            ns.loader_batch_size]
+    if ns.enable_pep:
+        args.extend([
+            ns.pep_num_threads,
+            ns.pep_ibatch_size,
+            ns.pep_obatch_size,
+            ns.pep_use_preloading,
+            ns.pep_pes_per_node,
+            ns.pep_cores_per_pe])
+    if ns.nodes is not None:
+        nodes = ns.nodes.split(',')
+    else:
+        nodes = None
+    run(args, nodes)
+    #run([ 31, 1, False, False, 1024, 31, 32, 32, True, 16, 4 ])
     #run([ 31, 1, False, False, 1024 ])
