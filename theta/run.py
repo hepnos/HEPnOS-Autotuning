@@ -22,7 +22,7 @@ def __make_node_list(nodes):
     return result
 
 
-def __create_settings(exp_dir, loader_batch_size, loader_progress_thread,
+def __create_settings(exp_dir, loader_batch_size, loader_progress_thread, enable_pep,
                       pep_num_threads, pep_ibatch_size, pep_obatch_size, pep_use_preloading,
                       pep_pes_per_node, pep_cores_per_pe, nodes):
     settings_sh_in = os.path.dirname(os.path.abspath(__file__)) + '/scripts/settings.sh.in'
@@ -35,7 +35,7 @@ def __create_settings(exp_dir, loader_batch_size, loader_progress_thread,
         else:
             f.write('HEPNOS_LOADER_CLIENT_USE_PROGRESS_THREAD=\n')
         f.write('HEPNOS_LOADER_CLIENT_BATCH_SIZE=%d\n' % loader_batch_size)
-        if None not in [pep_num_threads, pep_ibatch_size, pep_obatch_size]:
+        if enable_pep:
             f.write('HEPNOS_ENABLE_PEP=1\n')
             f.write('HEPNOS_PEP_THREADS=%d\n' % pep_num_threads)
             f.write('HEPNOS_PEP_IBATCH_SIZE=%d\n' % pep_ibatch_size)
@@ -136,24 +136,19 @@ def __parse_result(exp_dir):
     return (dataloader_time, pep_time)
 
 
-def run(args, nodes=None):
-    if len(args) == 5:
-        args.extend([None, None, None, None, None, None])
-    if len(args) == 9:
-        args.extend([2, 32])
-    if len(args) != 11:
-        raise RuntimeError("Expected 5 or 10 arguments in list, found %d" % len(args))
-    hepnos_num_threads = args[0]
-    hepnos_num_databases = args[1]
-    busy_spin = args[2]
-    loader_progress_thread = args[3]
-    loader_batch_size = args[4]
-    pep_num_threads = args[5]
-    pep_ibatch_size = args[6]
-    pep_obatch_size = args[7]
-    pep_use_preloading = args[8]
-    pep_pes_per_node = args[9]
-    pep_cores_per_pe = args[10]
+def run(hepnos_num_threads,
+        hepnos_num_databases,
+        busy_spin,
+        loader_progress_thread,
+        loader_batch_size,
+        enable_pep,
+        pep_num_threads,
+        pep_ibatch_size,
+        pep_obatch_size,
+        pep_use_preloading,
+        pep_pes_per_node,
+        pep_cores_per_pe,
+        nodes):
     nodes = __make_node_list(nodes)
     print('Setting up experiment\'s directory')
     exp_dir = __setup_directory()
@@ -161,6 +156,7 @@ def run(args, nodes=None):
     __create_settings(exp_dir,
                       loader_batch_size,
                       loader_progress_thread,
+                      enable_pep,
                       pep_num_threads,
                       pep_ibatch_size,
                       pep_obatch_size,
@@ -221,23 +217,6 @@ if __name__ == '__main__':
     # the number of cores per PE minus 2 (so effectively the number
     # cores per PE must be at least 3).
     ns = parser.parse_args()
-    args = [ns.hepnos_num_threads,
-            ns.hepnos_num_databases,
-            ns.busy_spin,
-            ns.loader_progress_thread,
-            ns.loader_batch_size]
-    if ns.enable_pep:
-        args.extend([
-            ns.pep_num_threads,
-            ns.pep_ibatch_size,
-            ns.pep_obatch_size,
-            ns.pep_use_preloading,
-            ns.pep_pes_per_node,
-            ns.pep_cores_per_pe])
     if ns.nodes is not None:
-        nodes = ns.nodes.split(',')
-    else:
-        nodes = None
-    run(args, nodes)
-    #run([ 31, 1, False, False, 1024, 31, 32, 32, True, 16, 4 ])
-    #run([ 31, 1, False, False, 1024 ])
+        ns.nodes = ns.nodes.split(',')
+    run(**vars(ns))

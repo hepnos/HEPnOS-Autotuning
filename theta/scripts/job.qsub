@@ -2,10 +2,8 @@
 #COBALT -A radix-io
 #COBALT -t 0:30:00
 #COBALT --mode script
-#COBALT -n 8
-#COBALT -q debug-flat-quad
-### COBALT -n 128
-### COBALT -q default
+#COBALT -n 128
+#COBALT -q default
 
 set -e
 PROTOCOL=ofi+gni
