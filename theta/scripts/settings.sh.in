@@ -1,6 +1,6 @@
 #!/bin/sh
 
-NODES_PER_EXP=8 # should be divisible by 4 and at least 8
+NODES_PER_EXP=8 # should be divisible by 4
 
 HEPNOS_PDOMAIN=hep-mdorier # choose a name for your protection domain
 HEPNOS_PROJECT=radix-io # change for your project allocation
