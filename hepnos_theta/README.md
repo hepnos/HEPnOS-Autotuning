@@ -12,7 +12,7 @@ and the Parallel Event Processing benchmark in it, as well as their dependencies
 
 ```
 git clone https://github.com/hepnos/HEPnOS-Autotuning.git
-cd hepnos-autotuning/theta
+cd hepnos-autotuning/hepnos_theta
 ./install.sh
 ```
 

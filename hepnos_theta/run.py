@@ -145,13 +145,13 @@ def run(config, nodes=None):
     loader_progress_thread = config["loader_progress_thread"]
     loader_batch_size = config["loader_batch_size"]
 
-    # enable_pep = config["enable_pep"]
-    # pep_num_threads = config["pep_num_threads"]
-    # pep_ibatch_size = config["pep_ibatch_size"]
-    # pep_obatch_size = config["pep_obatch_size"]
-    # pep_use_preloading = config["pep_use_preloading"]
-    # pep_pes_per_node = config["pep_pes_per_node"]
-    # pep_cores_per_pe = config["pep_cores_per_pe"]
+    enable_pep = config.get("enable_pep", False)
+    pep_num_threads = config.get("pep_num_threads", None)
+    pep_ibatch_size = config.get("pep_ibatch_size", None)
+    pep_obatch_size = config.get("pep_obatch_size", None)
+    pep_use_preloading = config.get("pep_use_preloading", None)
+    pep_pes_per_node = config.get("pep_pes_per_node", None)
+    pep_cores_per_pe = config.get("pep_cores_per_pe", None)
 
     nodes = __make_node_list(nodes)
     print('Setting up experiment\'s directory')
@@ -223,4 +223,4 @@ if __name__ == '__main__':
     ns = parser.parse_args()
     if ns.nodes is not None:
         ns.nodes = ns.nodes.split(',')
-    run(**vars(ns))
+    run(vars(ns))

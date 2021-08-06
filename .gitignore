@@ -142,3 +142,8 @@ spack/
 spack.yaml
 sds-repo
 *.log
+*.cobaltlog
+*.error
+*.output
+*.json
+settings.sh
