@@ -1,9 +1,0 @@
-#!/bin/bash
-#COBALT ...
-
-source SetUpEnv.sh
-
-ray start --head --num-cpus 8
-
-deephyper hps ambs --ray-address auto --problem hepnos_theta.problem.Problem --run hepnos_theta.run.run --max-evals 10
-

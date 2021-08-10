@@ -1,0 +1,19 @@
+#!/bin/bash
+#COBALT -A radix-io
+#COBALT -t 0:10:00
+#COBALT -n 8
+#COBALT -q debug-flat-quad
+
+DH_NODES_PER_TASK=4
+PATH_SETUP=/lus/grand/projects/datascience/regele/theta/hepnos/
+
+cd $PATH_SETUP
+
+source SetUpEnv.sh
+
+cd HEPnOS-Autotuning/hepnos_theta/
+
+ray start --head --num-cpus 2
+
+deephyper hps ambs --ray-address auto --problem hepnos_theta.problem.Problem --run hepnos_theta.run_test.run --max-evals 100
+

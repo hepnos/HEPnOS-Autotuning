@@ -14,7 +14,7 @@ conda install gxx_linux-64 gcc_linux-64 -y
 
 # Install DeepHyper
 log "Cloning DeepHyper repo and installing..."
-git clone https://github.com/deephyper/deephyper.git
+git clone https://github.com/pbalapra/deephyper.git
 cd deephyper/
 git checkout develop
 pip install -e.

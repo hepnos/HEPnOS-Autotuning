@@ -184,7 +184,7 @@ def run(config, nodes=None):
     print('Parsing result')
     t = __parse_result(exp_dir)
     print('Done (loading time = %f, processing time = %f)' % (t[0], t[1]))
-    return t[0]+t[1]
+    return -(t[0]+t[1])
 
 
 if __name__ == '__main__':
