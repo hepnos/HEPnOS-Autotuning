@@ -116,23 +116,17 @@ def __generate_hepnos_config_file(
 
 
 def __parse_result(exp_dir):
-    dataloader_time = 0
+    dataloader_time = 99999999
     pep_time = 0
-    for line in open(exp_dir+'/dataloader-output.txt'):
-        if 'real' in line:
-            line = line.replace('s','')
-            x = line.split()[1]
-            m = int(x.split('m')[0])
-            s = float(x.split('m')[1])
-            dataloader_time = m*60 + s
+    if os.path.isfile(exp_dir+'/dataloader-output.txt'):
+        for line in open(exp_dir+'/dataloader-output.txt'):
+            if 'TIME:' in line:
+                dataloader_time = int(line.split()[-1])
     if os.path.isfile(exp_dir+'/pep-output.txt'):
+        pep_time = 99999999
         for line in open(exp_dir+'/pep-output.txt'):
-            if 'real' in line:
-                line = line.replace('s','')
-                x = line.split()[1]
-                m = int(x.split('m')[0])
-                s = float(x.split('m')[1])
-                pep_time = m*60 + s
+            if 'TIME:' in line:
+                pep_time = int(line.split()[-1])
     return (dataloader_time, pep_time)
 
 

@@ -7,7 +7,7 @@
 ##COBALT -n 128
 ##COBALT -q default
 
-set -e
+#set -e
 PROTOCOL=ofi+gni
 HEPNOS_CONFIG=$EXPDIR/hepnos.json
 HEPNOS_SSG=$EXPDIR/hepnos.ssg
@@ -80,6 +80,7 @@ NUM_PES_FOR_HEPNOS=$((2*${NUM_NODES_FOR_HEPNOS}))
 echo "Starting up HEPnOS daemon"
 aprun -n ${NUM_PES_FOR_HEPNOS} ${NODES_FOR_HEPNOS} -N 2 -cc none -d 32 -p ${PDOMAIN} \
       bedrock ${PROTOCOL} -c ${HEPNOS_CONFIG} -v error &
+HEPNOS_PID=$!
 
 echo "Waiting for HEPnOS daemon to start up"
 while [ ! -f ${HEPNOS_SSG} ]; do sleep 10; done
@@ -93,9 +94,15 @@ else
 fi
 
 echo "Requesting databases"
-aprun -n 1 -N 1 ${NODE_FOR_UTILITY} -p ${PDOMAIN} \
-    hepnos-list-databases \
-    ${PROTOCOL} -s ${HEPNOS_SSG} > ${DATABASES_CONFIG}
+timeout ${HEPNOS_UTILITY_TIMEOUT} \
+    aprun -n 1 -N 1 ${NODE_FOR_UTILITY} -p ${PDOMAIN} hepnos-list-databases \
+        ${PROTOCOL} -s ${HEPNOS_SSG} > ${DATABASES_CONFIG}
+RET=$?
+if [ "$RET" -eq "124" ]; then
+    echo "ERROR: hepnos-list-databases timed out"
+    kill $HEPNOS_PID
+    exit -1
+fi
 sed -i '$ d' ${DATABASES_CONFIG} # we have to because aprun adds a line
 
 LOADER_PRODUCT_ARGS=""
@@ -105,7 +112,9 @@ done
 
 echo "Starting dataloader"
 echo `pwd`
-(time aprun -n ${NUM_NODES_FOR_LOADER} ${NODES_FOR_LOADER} -N 1 -cc none -p ${PDOMAIN} \
+start_time=`date +%s`
+timeout ${HEPNOS_LOADER_TIMEOUT} \
+    aprun -n ${NUM_NODES_FOR_LOADER} ${NODES_FOR_LOADER} -N 1 -cc none -p ${PDOMAIN} \
              hepnos-dataloader \
              -p ${PROTOCOL} \
              -m ${CLIENT_MARGO_CONFIG} \
@@ -116,9 +125,18 @@ echo `pwd`
              -b ${HEPNOS_LOADER_CLIENT_BATCH_SIZE} \
              ${HEPNOS_LOADER_CLIENT_USE_PROGRESS_THREAD} \
              ${LOADER_PRODUCT_ARGS} \
-             -v ${HEPNOS_LOADER_VERBOSE} ) \
+             -v ${HEPNOS_LOADER_VERBOSE} \
     &> $EXPDIR/dataloader-output.txt
-
+RET=$?
+end_time=`date +%s`
+if [ "$RET" -eq "124" ]; then
+    echo "ERROR: hepnos-dataloader timed out"
+    echo "TIME: 99999999" >> $EXPDIR/dataloader-output.txt
+    kill $HEPNOS_PID
+    exit -1
+fi
+runtime=$((end_time-start_time))
+echo "TIME: ${runtime}" >> $EXPDIR/dataloader-output.txt
 
 if [ "$HEPNOS_ENABLE_PEP" -ne "0" ]; then
     NUM_PES=$(($HEPNOS_PEP_PES_PER_NODE * $NUM_NODES_FOR_PEP))
@@ -136,7 +154,9 @@ if [ "$HEPNOS_ENABLE_PEP" -ne "0" ]; then
     fi
 
     echo "Running PEP benchmark"
-    (time aprun -n ${NUM_PES} -N ${HEPNOS_PEP_PES_PER_NODE} \
+    start_time=`date +%s`
+    timeout ${HEPNOS_PEP_TIMEOUT} \
+    aprun -n ${NUM_PES} -N ${HEPNOS_PEP_PES_PER_NODE} \
                 ${NODES_FOR_PEP} \
                 -cc none -d ${HEPNOS_PEP_CORES_PER_PE} \
                 -p ${PDOMAIN} hepnos-pep-benchmark \
@@ -150,12 +170,29 @@ if [ "$HEPNOS_ENABLE_PEP" -ne "0" ]; then
              -v ${HEPNOS_PEP_VERBOSE} \
              -o ${HEPNOS_PEP_OBATCH_SIZE} \
              -i ${HEPNOS_PEP_IBATCH_SIZE} \
-             -t ${HEPNOS_PEP_THREADS} ) \
+             -t ${HEPNOS_PEP_THREADS} \
     &> $EXPDIR/pep-output.txt
+    RET=$?
+    end_time=`date +%s`
+    if [ "$RET" -eq "124" ]; then
+        echo "ERROR: hepnos-pep timed out"
+        echo "TIME: 99999999" >> $EXPDIR/pep-output.txt
+        kill $HEPNOS_PID
+        exit -1
+    fi
+    runtime=$((end_time-start_time))
+    echo "TIME: ${runtime}" >> $EXPDIR/pep-output.txt
 fi
 
 echo "Shutting down HEPnOS"
+timeout ${HEPNOS_UTILITY_TIMEOUT} \
 aprun -n 1 -N 1 ${NODE_FOR_UTILITY} -cc none -p ${PDOMAIN} hepnos-shutdown $PROTOCOL $DATABASES_CONFIG
+RET=$?
+if [ "$RET" -eq "124" ]; then
+    echo "ERROR: hepnos-shutdown timed out"
+    kill $HEPNOS_PID
+    exit -1
+fi
 
 echo "Destroying protection domain"
 apmgr pdomain -r -u ${PDOMAIN}
