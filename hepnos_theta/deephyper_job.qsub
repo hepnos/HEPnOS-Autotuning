@@ -1,6 +1,6 @@
 #!/bin/bash
 #COBALT -A radix-io
-#COBALT -t 0:10:00
+#COBALT -t 1:00:00
 #COBALT -n 8
 #COBALT -q debug-flat-quad
 
@@ -13,7 +13,10 @@ source SetUpEnv.sh
 
 cd HEPnOS-Autotuning/hepnos_theta/
 
+mkdir exp
+cd exp/
+
 ray start --head --num-cpus 2
 
-deephyper hps ambs --ray-address auto --problem hepnos_theta.problem.Problem --run hepnos_theta.run_test.run --max-evals 100
+deephyper hps ambs --ray-address auto --problem hepnos_theta.problem.Problem --run hepnos_theta.run.run --max-evals 100
 

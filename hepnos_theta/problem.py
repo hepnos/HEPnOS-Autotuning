@@ -10,12 +10,12 @@ Problem.add_hyperparameter([True, False], "loader_progress_thread")
 Problem.add_hyperparameter((1, 2048, "log-uniform"), "loader_batch_size")
 
 # 2. step: when "enable_step == True"
-# Problem.add_hyperparameter(..., "pep_num_threads")
-# Problem.add_hyperparameter(..., "pep_ibatch_size")
-# Problem.add_hyperparameter(..., "pep_obatch_size")
-# Problem.add_hyperparameter(..., "pep_use_preloading")
-# Problem.add_hyperparameter(..., "pep_pes_per_node")
-# Problem.add_hyperparameter(..., "pep_cores_per_pe")
+Problem.add_hyperparameter((1, 31), "pep_num_threads")
+Problem.add_hyperparameter((8, 1024, "log-uniform"), "pep_ibatch_size")
+Problem.add_hyperparameter((8, 1024, "log-uniform"), "pep_obatch_size")
+Problem.add_hyperparameter([True, False], "pep_use_preloading")
+Problem.add_hyperparameter((1, 64), "pep_pes_per_node")
+Problem.add_hyperparameter((1, 64), "pep_cores_per_pe")
 
 
 

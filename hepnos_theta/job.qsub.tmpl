@@ -1,0 +1,23 @@
+#!/bin/bash
+#COBALT -A {{ A }}
+#COBALT -t {{ t }}
+#COBALT -n {{ n }}
+#COBALT -q {{ q }}
+
+export DH_HEPNOS_ENABLE_PEP={{ enable_pep }}
+export DH_NODES_PER_TASK={{ nodes_per_task }}
+
+source {{ activation_script }}
+
+cd {{ exp_dir }}
+
+ray start --head --num-cpus {{ num_dh_workers }}
+
+deephyper hps ambs --ray-address auto \
+    --problem {{ problem }} \
+    --run {{ run }} \{% if fit_search_space or fit_surrogate %}{% if fit_search_space %}
+    --transfer-learning {{ fit_search_space }} \{% else %}
+    --checkpoint {{ fit_surrogate }} \{%  endif %}{% endif %}
+    --max-evals 500
+
+ray stop &> /dev/null

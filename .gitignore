@@ -146,4 +146,5 @@ sds-repo
 *.error
 *.output
 *.json
-settings.sh
+setting.sh
+exp*/

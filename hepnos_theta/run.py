@@ -139,7 +139,7 @@ def run(config, nodes=None):
     loader_progress_thread = config["loader_progress_thread"]
     loader_batch_size = config["loader_batch_size"]
 
-    enable_pep = config.get("enable_pep", False)
+    enable_pep = bool(int(os.environ.get("DH_HEPNOS_ENABLE_PEP", 0)))
     pep_num_threads = config.get("pep_num_threads", None)
     pep_ibatch_size = config.get("pep_ibatch_size", None)
     pep_obatch_size = config.get("pep_obatch_size", None)
