@@ -135,6 +135,12 @@ if [ "$RET" -eq "124" ]; then
     kill $HEPNOS_PID
     exit -1
 fi
+if [ "$RET" -ne "0" ]; then
+    echo "ERROR: hepnos-dataloader failed"
+    echo "TIME: 88888888" >> $EXPDIR/dataloader-output.txt
+    kill $HEPNOS_PID
+    exit -1
+fi
 runtime=$((end_time-start_time))
 echo "TIME: ${runtime}" >> $EXPDIR/dataloader-output.txt
 
@@ -177,6 +183,12 @@ if [ "$HEPNOS_ENABLE_PEP" -ne "0" ]; then
     if [ "$RET" -eq "124" ]; then
         echo "ERROR: hepnos-pep timed out"
         echo "TIME: 99999999" >> $EXPDIR/pep-output.txt
+        kill $HEPNOS_PID
+        exit -1
+    fi
+    if [ "$RET" -ne "0" ]; then
+        echo "ERROR: hepnos-pep failed"
+        echo "TIME: 88888888" >> $EXPDIR/pep-output.txt
         kill $HEPNOS_PID
         exit -1
     fi
