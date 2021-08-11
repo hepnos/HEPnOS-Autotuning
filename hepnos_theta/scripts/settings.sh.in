@@ -10,7 +10,7 @@ HEPNOS_LABEL=abc # label to use for the products
 HEPNOS_ENABLE_PROFILING=0
 HEPNOS_UTILITY_TIMEOUT=60
 
-HEPNOS_LOADER_DATAFILE=data/50files.txt # list of HDF5 files to ingest
+HEPNOS_LOADER_DATAFILE=/lus/grand/projects/datascience/regele/theta/hepnos/HEPnOS-Autotuning/hepnos_theta/data/50files.txt # list of HDF5 files to ingest
 HEPNOS_LOADER_VERBOSE=critical # verbose level
 HEPNOS_LOADER_PRODUCTS=(
 	hep::rec_energy_numu
