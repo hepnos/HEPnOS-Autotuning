@@ -140,12 +140,12 @@ def run(config, nodes=None):
     loader_batch_size = config["loader_batch_size"]
 
     enable_pep = bool(int(os.environ.get("DH_HEPNOS_ENABLE_PEP", 0)))
-    pep_num_threads = config.get("pep_num_threads", None)
-    pep_ibatch_size = config.get("pep_ibatch_size", None)
-    pep_obatch_size = config.get("pep_obatch_size", None)
-    pep_use_preloading = config.get("pep_use_preloading", None)
-    pep_pes_per_node = config.get("pep_pes_per_node", None)
-    pep_cores_per_pe = config.get("pep_cores_per_pe", None)
+    pep_num_threads = config.get("pep_num_threads", 31)
+    pep_ibatch_size = config.get("pep_ibatch_size", 32)
+    pep_obatch_size = config.get("pep_obatch_size", 32)
+    pep_use_preloading = config.get("pep_use_preloading", False)
+    pep_pes_per_node = config.get("pep_pes_per_node", 16)
+    pep_cores_per_pe = config.get("pep_cores_per_pe", 4)
 
     nodes = __make_node_list(nodes)
     print('Setting up experiment\'s directory')

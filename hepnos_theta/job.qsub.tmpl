@@ -11,9 +11,10 @@ source {{ activation_script }}
 
 cd {{ exp_dir }}
 
-ray start --head --num-cpus {{ num_dh_workers }}
+ray start --head --num-cpus {{ num_cpus_driver }}
 
 deephyper hps ambs --ray-address auto \
+    --num-cpus-per-task {{ num_cpus_per_task }} \
     --problem {{ problem }} \
     --run {{ run }} \{% if fit_search_space or fit_surrogate %}{% if fit_search_space %}
     --transfer-learning {{ fit_search_space }} \{% else %}

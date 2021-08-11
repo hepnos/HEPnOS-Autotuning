@@ -14,7 +14,13 @@ JOB_TEMPLATE = os.path.join(HERE, "job.qsub.tmpl")
 def run(w, q, A, t, n, enable_pep, nodes_per_task, activation_script, run,
         problem, fit_surrogate, fit_search_space):
 
-    num_dh_workers = n // nodes_per_task
+    num_dh_workers = n // nodes_per_task # N_T
+    num_cpus_driver = 4 # N_R
+    num_cpus_per_task = num_cpus_driver / num_dh_workers # N_{R/T}
+
+    print(f"Detected {num_dh_workers} DeepHyper parallel evaluations with {n} nodes for the total allocation and {nodes_per_task} nodes per evaluation.")
+    print(f"    num_cpus_driver: {num_cpus_driver}")
+    print(f"    num_cpus_per_task: {num_cpus_per_task}")
 
     enable_pep = int(enable_pep)
 
@@ -44,7 +50,8 @@ def run(w, q, A, t, n, enable_pep, nodes_per_task, activation_script, run,
                                 n=n,
                                 enable_pep=enable_pep,
                                 nodes_per_task=nodes_per_task,
-                                num_dh_workers=num_dh_workers,
+                                num_cpus_driver=num_cpus_driver,
+                                num_cpus_per_task=num_cpus_per_task,
                                 activation_script=activation_script,
                                 exp_dir=exp_dir,
                                 run=run,
@@ -60,7 +67,7 @@ def run(w, q, A, t, n, enable_pep, nodes_per_task, activation_script, run,
     os.chdir(exp_dir)
     print("Performing job submission...")
     cmd = f"qsub job.qsub"
-    # os.system(cmd)
+    os.system(cmd)
 
 
 if __name__ == "__main__":
