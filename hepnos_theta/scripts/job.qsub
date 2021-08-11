@@ -112,6 +112,7 @@ done
 
 echo "Starting dataloader"
 echo `pwd`
+echo "aprun -n ${NUM_NODES_FOR_LOADER} ${NODES_FOR_LOADER} -N 1 -cc none -p ${PDOMAIN}" >> $EXPDIR/dataloader-output.txt
 start_time=`date +%s`
 timeout ${HEPNOS_LOADER_TIMEOUT} \
     aprun -n ${NUM_NODES_FOR_LOADER} ${NODES_FOR_LOADER} -N 1 -cc none -p ${PDOMAIN} \
@@ -126,18 +127,18 @@ timeout ${HEPNOS_LOADER_TIMEOUT} \
              ${HEPNOS_LOADER_CLIENT_USE_PROGRESS_THREAD} \
              ${LOADER_PRODUCT_ARGS} \
              -v ${HEPNOS_LOADER_VERBOSE} \
-    &> $EXPDIR/dataloader-output.txt
+    &>> $EXPDIR/dataloader-output.txt
 RET=$?
 end_time=`date +%s`
 if [ "$RET" -eq "124" ]; then
     echo "ERROR: hepnos-dataloader timed out"
-    echo "TIME: 99999999" >> $EXPDIR/dataloader-output.txt
+    echo "TIME: ${CONST_TIMEOUT}" >> $EXPDIR/dataloader-output.txt
     kill $HEPNOS_PID
     exit -1
 fi
 if [ "$RET" -ne "0" ]; then
     echo "ERROR: hepnos-dataloader failed"
-    echo "TIME: 88888888" >> $EXPDIR/dataloader-output.txt
+    echo "TIME: ${CONST_FAILURE}" >> $EXPDIR/dataloader-output.txt
     kill $HEPNOS_PID
     exit -1
 fi
@@ -160,6 +161,7 @@ if [ "$HEPNOS_ENABLE_PEP" -ne "0" ]; then
     fi
 
     echo "Running PEP benchmark"
+    echo "aprun -n ${NUM_PES} -N ${HEPNOS_PEP_PES_PER_NODE} ${NODES_FOR_PEP} -cc none -d ${HEPNOS_PEP_CORES_PER_PE} -p ${PDOMAIN}" >> $EXPDIR/pep-output.txt
     start_time=`date +%s`
     timeout ${HEPNOS_PEP_TIMEOUT} \
     aprun -n ${NUM_PES} -N ${HEPNOS_PEP_PES_PER_NODE} \
@@ -177,18 +179,18 @@ if [ "$HEPNOS_ENABLE_PEP" -ne "0" ]; then
              -o ${HEPNOS_PEP_OBATCH_SIZE} \
              -i ${HEPNOS_PEP_IBATCH_SIZE} \
              -t ${HEPNOS_PEP_THREADS} \
-    &> $EXPDIR/pep-output.txt
+    &>> $EXPDIR/pep-output.txt
     RET=$?
     end_time=`date +%s`
     if [ "$RET" -eq "124" ]; then
         echo "ERROR: hepnos-pep timed out"
-        echo "TIME: 99999999" >> $EXPDIR/pep-output.txt
+        echo "TIME: ${CONST_TIMEOUT}" >> $EXPDIR/pep-output.txt
         kill $HEPNOS_PID
         exit -1
     fi
     if [ "$RET" -ne "0" ]; then
         echo "ERROR: hepnos-pep failed"
-        echo "TIME: 88888888" >> $EXPDIR/pep-output.txt
+        echo "TIME: ${CONST_FAILURE}" >> $EXPDIR/pep-output.txt
         kill $HEPNOS_PID
         exit -1
     fi
