@@ -5,8 +5,10 @@ import re
 from shutil import copyfile
 
 
-def __setup_directory():
-    exp_dir = 'exp-' + str(uuid.uuid4())[0:8]
+def __setup_directory(id_=None):
+    if id_ == None:
+        id_ = uuid.uuid4()
+    exp_dir = 'exp-' + str(id_)
     os.mkdir(exp_dir)
     cwd = os.getcwd()
     return cwd + '/' + exp_dir
@@ -153,7 +155,7 @@ def run(config, nodes=None):
 
     nodes = __make_node_list(nodes)
     print('Setting up experiment\'s directory')
-    exp_dir = __setup_directory()
+    exp_dir = __setup_directory(config.get("id"))
     print('Creating settings.sh')
     __create_settings(exp_dir,
                       loader_batch_size,
