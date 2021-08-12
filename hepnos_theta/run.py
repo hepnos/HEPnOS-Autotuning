@@ -120,13 +120,17 @@ def __parse_result(exp_dir):
     pep_time = 0
     if os.path.isfile(exp_dir+'/dataloader-output.txt'):
         for line in open(exp_dir+'/dataloader-output.txt'):
-            if 'TIME:' in line:
-                dataloader_time = int(line.split()[-1])
+            if 'ESTIMATED' in line:
+                dataloader_time = int(float(line.split()[-1]))
+                break
+            if 'RUNTIME' in line:
+                dataloader_time = int(float(line.split()[-1]))
+                break
     if os.path.isfile(exp_dir+'/pep-output.txt'):
         pep_time = 99999999
         for line in open(exp_dir+'/pep-output.txt'):
             if 'TIME:' in line:
-                pep_time = int(line.split()[-1])
+                pep_time = int(line.split()[1])
     return (dataloader_time, pep_time)
 
 

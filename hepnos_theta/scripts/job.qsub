@@ -2,7 +2,7 @@
 #COBALT -A radix-io
 #COBALT -t 0:10:00
 #COBALT --mode script
-#COBALT -n 8
+#COBALT -n 4
 #COBALT -q debug-flat-quad
 ##COBALT -n 128
 ##COBALT -q default
@@ -117,6 +117,7 @@ start_time=`date +%s`
 timeout ${HEPNOS_LOADER_TIMEOUT} \
     aprun -n ${NUM_NODES_FOR_LOADER} ${NODES_FOR_LOADER} -N 1 -cc none -p ${PDOMAIN} \
              hepnos-dataloader \
+             --timeout ${HEPNOS_LOADER_SOFT_TIMEOUT} \
              -p ${PROTOCOL} \
              -m ${CLIENT_MARGO_CONFIG} \
              -c ${DATABASES_CONFIG} \
@@ -132,18 +133,18 @@ RET=$?
 end_time=`date +%s`
 if [ "$RET" -eq "124" ]; then
     echo "ERROR: hepnos-dataloader timed out"
-    echo "TIME: ${CONST_TIMEOUT}" >> $EXPDIR/dataloader-output.txt
+    echo "RUNTIME: ${CONST_TIMEOUT}" >> $EXPDIR/dataloader-output.txt
     kill $HEPNOS_PID
     exit -1
 fi
 if [ "$RET" -ne "0" ]; then
     echo "ERROR: hepnos-dataloader failed"
-    echo "TIME: ${CONST_FAILURE}" >> $EXPDIR/dataloader-output.txt
+    echo "RUNTIME: ${CONST_FAILURE}" >> $EXPDIR/dataloader-output.txt
     kill $HEPNOS_PID
     exit -1
 fi
 runtime=$((end_time-start_time))
-echo "TIME: ${runtime}" >> $EXPDIR/dataloader-output.txt
+echo "RUNTIME: ${runtime}" >> $EXPDIR/dataloader-output.txt
 
 if [ "$HEPNOS_ENABLE_PEP" -ne "0" ]; then
     NUM_PES=$(($HEPNOS_PEP_PES_PER_NODE * $NUM_NODES_FOR_PEP))
