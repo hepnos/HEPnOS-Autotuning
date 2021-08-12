@@ -30,8 +30,8 @@ HEPNOS_LOADER_PRODUCTS=(
 	hep::rec_vtx_elastic_fuzzyk_png_cvnpart
 	hep::rec_vtx_elastic_fuzzyk_png_shwlid) # products to load
 HEPNOS_LOADER_ENABLE_PROFILING=0
-HEPNOS_LOADER_TIMEOUT=300 # timeout in seconds, after which the application will be killed
-HEPNOS_LOADER_SOFT_TIMEOUT=60 # soft timeout passed to the loader
+HEPNOS_LOADER_TIMEOUT=600 # timeout in seconds, after which the application will be killed
+HEPNOS_LOADER_SOFT_TIMEOUT=100 # soft timeout passed to the loader
 
 HEPNOS_ENABLE_PEP=1 # enable parallel event processing benchmark
 HEPNOS_PEP_VERBOSE=critical
@@ -57,3 +57,4 @@ HEPNOS_PEP_TIMEOUT=300 # timeout in seconds, after which the application will be
 
 CONST_TIMEOUT=99999999
 CONST_FAILURE=88888888
+# HEPNOS_LOADER_VERBOSE=info
