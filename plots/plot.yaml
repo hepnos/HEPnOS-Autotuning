@@ -1,0 +1,6 @@
+
+root: /home/regele/projects-grand/theta/hepnos/exp
+experiments:
+  exp-8-4-60-short-notl: Short (No TL)
+  exp-8-4-60-extended-notl: Extended (No TL)
+  exp-8-4-60-extended-ss: Extended (TL)
