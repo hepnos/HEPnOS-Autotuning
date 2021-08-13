@@ -14,6 +14,8 @@ JOB_TEMPLATE = os.path.join(HERE, "job.qsub.tmpl")
 def run(w, q, A, t, n, enable_pep, nodes_per_task, activation_script, run,
         problem, fit_surrogate, fit_search_space):
 
+    w = w.encode("ascii").decode("ascii")
+
     num_dh_workers = n // nodes_per_task # N_T
     num_cpus_driver = 4 # N_R
     num_cpus_per_task = num_cpus_driver / num_dh_workers # N_{R/T}

@@ -12,13 +12,42 @@ and the Parallel Event Processing benchmark in it, as well as their dependencies
 
 ```
 git clone https://github.com/hepnos/HEPnOS-Autotuning.git
-cd hepnos-autotuning/hepnos_theta
+cd HEPnOS-Autotuning/hepnos_theta
 ./install.sh
 ```
 
 Following this installation, please edit `scripts/settings.sh.in` to set
 variables such as your project allocation to appropriate values.
 
+**DeepHyper**
+From the directory where `HEPnOS-Autotuning/` is located execute:
+
+```
+./HEPnOS-Autotuning/hepnos_theta/deephyper_install.sh
+```
+
+Then create a `SetUpEnv.sh` following this template and adapting to your settings:
+
+
+```bash
+#!/bin/bash
+
+module load postgresql
+module load miniconda-3
+
+# Activate conda env
+conda activate /lus/grand/projects/datascience/regele/theta/hepnos/dhenv/
+
+export PYTHONPATH="/lus/grand/projects/datascience/regele/theta/hepnos/HEPnOS-Autotuning/:$PYTHONPATH"
+```
+
+Source this script: `source SetUpEnv.sh` and test with the following command :
+
+```
+python -m hepnos_theta.run_exp -w exp/exp-test -q debug-cache-quad -t 60 -A radix-io -n 8 --nodes-per-task 4 -as ./SetUpEnv.sh --run hepnos_theta.run.run --problem hepnos_theta.problem.Problem
+```
+
+the results will be found in `exp/exp-test`.
 
 Testing the installation
 ------------------------

@@ -1,3 +1,4 @@
+import os
 from deephyper.problem import HpProblem
 
 Problem = HpProblem(seed=2021)
@@ -11,10 +12,12 @@ Problem.add_hyperparameter((1, 2048, "log-uniform"), "loader_batch_size")
 
 # when "enable_step == True"
 # 2. step:
-# Problem.add_hyperparameter((1, 31), "pep_num_threads")
-# Problem.add_hyperparameter((8, 1024, "log-uniform"), "pep_ibatch_size")
-# Problem.add_hyperparameter((8, 1024, "log-uniform"), "pep_obatch_size")
-# Problem.add_hyperparameter([True, False], "pep_use_preloading")
+enable_pep = bool(int(os.environ.get("DH_HEPNOS_ENABLE_PEP", 0)))
+if enable_pep:
+    Problem.add_hyperparameter((1, 31), "pep_num_threads")
+    Problem.add_hyperparameter((8, 1024, "log-uniform"), "pep_ibatch_size")
+    Problem.add_hyperparameter((8, 1024, "log-uniform"), "pep_obatch_size")
+    Problem.add_hyperparameter([True, False], "pep_use_preloading")
 
 # 3. step:
 # Problem.add_hyperparameter((1, 64), "pep_pes_per_node")
