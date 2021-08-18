@@ -92,7 +92,8 @@ def __generate_hepnos_config_file(
         use_progress_thread=False,
         threads=0,
         busy_spin=False,
-        targets=1):
+        num_event_dbs=1,
+        num_product_dbs=1):
     hepnos_json_in = os.path.dirname(os.path.abspath(__file__)) + '/scripts/hepnos.json.in'
     hepnos_json = exp_dir + '/' + filename
     with open(hepnos_json_in) as f:
@@ -124,14 +125,16 @@ def __generate_hepnos_config_file(
             hepnos_provider = p
             break
 
-    for i in range(0, targets):
+    for i in range(0, num_event_dbs):
         event_db_name = 'hepnos-events-' + str(i)
-        product_db_name = 'hepnos-products-' + str(i)
         event_db = copy.deepcopy(event_db_model)
         event_db['name'] = event_db_name
+        hepnos_provider['config']['databases'].append(event_db)
+
+    for i in range(0, num_product_dbs):
+        product_db_name = 'hepnos-products-' + str(i)
         product_db = copy.deepcopy(product_db_model)
         product_db['name'] = product_db_name
-        hepnos_provider['config']['databases'].append(event_db)
         hepnos_provider['config']['databases'].append(product_db)
 
     with open(hepnos_json, 'w+') as f:
@@ -162,7 +165,8 @@ def run(config, nodes=None):
     # collect hyperparameter
     hepnos_progress_thread = config["hepnos_progress_thread"]
     hepnos_num_threads = config["hepnos_num_threads"]
-    hepnos_num_databases = config["hepnos_num_databases"]
+    hepnos_num_event_databases = config["hepnos_num_event_databases"]
+    hepnos_num_product_databases = config["hepnos_num_product_databases"]
     busy_spin = config["busy_spin"]
 
     loader_progress_thread = config["loader_progress_thread"]
@@ -201,7 +205,8 @@ def run(config, nodes=None):
             use_progress_thread=hepnos_progress_thread,
             threads=hepnos_num_threads,
             busy_spin=busy_spin,
-            targets=hepnos_num_databases)
+            num_event_dbs=hepnos_num_event_databases,
+            num_product_dbs=hepnos_num_product_databases)
     print('Creating dataloader.json')
     __generate_dataloader_config_file(
             exp_dir,
@@ -230,8 +235,10 @@ if __name__ == '__main__':
                         help='whether to use a progress thread in HEPnOS')
     parser.add_argument('--hepnos-num-threads', type=int, default=31,
                         help='number of RPC handling threads per process for HEPnOS')
-    parser.add_argument('--hepnos-num-databases', type=int, default=1,
-                        help='number of databases per process for HEPnOS')
+    parser.add_argument('--hepnos-num-event-databases', type=int, default=1,
+                        help='number of databases per process for events in HEPnOS')
+    parser.add_argument('--hepnos-num-product-databases', type=int, default=1,
+                        help='number of databases per process for products in HEPnOS')
     parser.add_argument('--busy-spin', action='store_true', default=False,
                         help='whether to use busy spinning or not')
 
