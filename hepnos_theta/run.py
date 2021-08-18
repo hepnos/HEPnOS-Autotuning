@@ -24,7 +24,7 @@ def __make_node_list(nodes):
     return result
 
 
-def __create_settings(exp_dir, loader_batch_size, loader_progress_thread, enable_pep,
+def __create_settings(exp_dir, loader_batch_size, loader_async, loader_async_threads, enable_pep,
                       pep_num_threads, pep_ibatch_size, pep_obatch_size, pep_use_preloading,
                       pep_pes_per_node, pep_cores_per_pe, nodes):
     settings_sh_in = os.path.dirname(os.path.abspath(__file__)) + '/scripts/settings.sh.in'
@@ -32,11 +32,13 @@ def __create_settings(exp_dir, loader_batch_size, loader_progress_thread, enable
     copyfile(settings_sh_in, settings_sh)
     with open(settings_sh, 'a+') as f:
         f.write('\n')
-        if loader_progress_thread:
-            f.write('HEPNOS_LOADER_CLIENT_USE_PROGRESS_THREAD=-a\n')
+        if loader_async_threads:
+            f.write('HEPNOS_LOADER_ASYNC=-a\n')
+            f.write('HEPNOS_LOADER_ASYNC_THREADS=%d\n' % loader_async_threads)
         else:
-            f.write('HEPNOS_LOADER_CLIENT_USE_PROGRESS_THREAD=\n')
-        f.write('HEPNOS_LOADER_CLIENT_BATCH_SIZE=%d\n' % loader_batch_size)
+            f.write('HEPNOS_LOADER_ASYNC=\n')
+            f.write('HEPNOS_LOADER_ASYNC_THREADS=\n')
+        f.write('HEPNOS_LOADER_BATCH_SIZE=%d\n' % loader_batch_size)
         if enable_pep:
             f.write('HEPNOS_ENABLE_PEP=1\n')
             f.write('HEPNOS_PEP_THREADS=%d\n' % pep_num_threads)
@@ -54,22 +56,40 @@ def __create_settings(exp_dir, loader_batch_size, loader_progress_thread, enable
             f.write('HEPNOS_NODELIST=(%s)\n' % ' '.join(nodes))
 
 
-def __generate_client_config_file(
+def __generate_dataloader_config_file(
         exp_dir='.',
-        filename='client.json',
-        busy_spin=False):
-    client_json_in = os.path.dirname(os.path.abspath(__file__)) + '/scripts/client.json.in'
-    client_json = exp_dir + '/' + filename
-    with open(client_json_in) as f:
+        filename='dataloader.json',
+        busy_spin=False,
+        use_progress_thread=False):
+    dataloader_json_in = os.path.dirname(os.path.abspath(__file__)) + '/scripts/dataloader.json.in'
+    dataloader_json = exp_dir + '/' + filename
+    with open(dataloader_json_in) as f:
         config = json.loads(f.read())
     config['mercury']['na_no_block'] = bool(busy_spin)
-    with open(client_json, 'w+') as f:
+    config['use_progress_thread'] = bool(use_progress_thread)
+    with open(dataloader_json, 'w+') as f:
+        f.write(json.dumps(config))
+
+
+def __generate_pep_config_file(
+        exp_dir='.',
+        filename='pep.json',
+        busy_spin=False,
+        use_progress_thread=False):
+    pep_json_in = os.path.dirname(os.path.abspath(__file__)) + '/scripts/pep.json.in'
+    pep_json = exp_dir + '/' + filename
+    with open(pep_json_in) as f:
+        config = json.loads(f.read())
+    config['mercury']['na_no_block'] = bool(busy_spin)
+    config['use_progress_thread'] = bool(use_progress_thread)
+    with open(pep_json, 'w+') as f:
         f.write(json.dumps(config))
 
 
 def __generate_hepnos_config_file(
         exp_dir='.',
         filename='hepnos.json',
+        use_progress_thread=False,
         threads=0,
         busy_spin=False,
         targets=1):
@@ -78,6 +98,7 @@ def __generate_hepnos_config_file(
     with open(hepnos_json_in) as f:
         config = json.loads(f.read())
 
+    config['margo']['use_progress_thread'] = bool(use_progress_thread)
     config['margo']['rpc_thread_count'] = int(threads)
     config['margo']['mercury']['na_no_block'] = bool(busy_spin)
     ssg_group = None
@@ -139,13 +160,18 @@ def __parse_result(exp_dir):
 def run(config, nodes=None):
 
     # collect hyperparameter
+    hepnos_progress_thread = config["hepnos_progress_thread"]
     hepnos_num_threads = config["hepnos_num_threads"]
     hepnos_num_databases = config["hepnos_num_databases"]
     busy_spin = config["busy_spin"]
+
     loader_progress_thread = config["loader_progress_thread"]
     loader_batch_size = config["loader_batch_size"]
+    loader_async = config["loader_async"]
+    loader_async_threads = config["loader_async_threads"]
 
-    enable_pep = bool(int(os.environ.get("DH_HEPNOS_ENABLE_PEP", 0)))
+    enable_pep = config.get('enable_pep', bool(int(os.environ.get("DH_HEPNOS_ENABLE_PEP", 0))))
+    pep_progress_thread = config.get("pep_progress_thread", False)
     pep_num_threads = config.get("pep_num_threads", 31)
     pep_ibatch_size = config.get("pep_ibatch_size", 32)
     pep_obatch_size = config.get("pep_obatch_size", 32)
@@ -159,7 +185,8 @@ def run(config, nodes=None):
     print('Creating settings.sh')
     __create_settings(exp_dir,
                       loader_batch_size,
-                      loader_progress_thread,
+                      loader_async,
+                      loader_async_threads,
                       enable_pep,
                       pep_num_threads,
                       pep_ibatch_size,
@@ -171,13 +198,21 @@ def run(config, nodes=None):
     print('Creating hepnos.json')
     __generate_hepnos_config_file(
             exp_dir,
+            use_progress_thread=hepnos_progress_thread,
             threads=hepnos_num_threads,
             busy_spin=busy_spin,
             targets=hepnos_num_databases)
-    print('Creating client.json')
-    __generate_client_config_file(
+    print('Creating dataloader.json')
+    __generate_dataloader_config_file(
             exp_dir,
-            busy_spin=busy_spin)
+            busy_spin=busy_spin,
+            use_progress_thread=loader_progress_thread)
+    if enable_pep:
+        print('Creating pep.json')
+        __generate_pep_config_file(
+            exp_dir,
+            busy_spin=busy_spin,
+            use_progress_thread=pep_progress_thread)
     print('Submitting job')
     submit_sh = os.path.dirname(os.path.abspath(__file__)) + '/scripts/submit.sh'
     os.system(submit_sh + ' ' + exp_dir)
@@ -190,18 +225,30 @@ def run(config, nodes=None):
 if __name__ == '__main__':
     import argparse
     parser = argparse.ArgumentParser(description='HEPnOS experiment')
+
+    parser.add_argument('--hepnos-progress-thread', action='store_true', default=False,
+                        help='whether to use a progress thread in HEPnOS')
     parser.add_argument('--hepnos-num-threads', type=int, default=31,
                         help='number of RPC handling threads per process for HEPnOS')
     parser.add_argument('--hepnos-num-databases', type=int, default=1,
                         help='number of databases per process for HEPnOS')
     parser.add_argument('--busy-spin', action='store_true', default=False,
                         help='whether to use busy spinning or not')
+
     parser.add_argument('--loader-progress-thread', action='store_true', default=False,
                         help='whether to use a progress thread or not in dataloader clients')
+    parser.add_argument('--loader-async', action='store_true', default=False,
+                        help='whether to use async progress in dataloader clients')
+    parser.add_argument('--loader-async-threads', type=int, default=1,
+                        help='number of threads for async operation in clients')
     parser.add_argument('--loader-batch-size', type=int, default=1024,
                         help='batch size for the dataloader')
+
     parser.add_argument('--enable-pep', action='store_true', default=False,
                         help='enable PEP benchmark')
+
+    parser.add_argument('--pep-progress-thread', action='store_true', default=False,
+                        help='whether to use a progress thread or not in PEP')
     parser.add_argument('--pep-num-threads', type=int, default=31,
                         help='number of processing threads per benchmark process (must be > 0)')
     parser.add_argument('--pep-ibatch-size', type=int, default=32,
@@ -214,6 +261,7 @@ if __name__ == '__main__':
                         help='number of PES per node (must be between 1 and 64)')
     parser.add_argument('--pep-cores-per-pe', type=int, default=4,
                         help='number of cores per PE (must be between 1 and 64)')
+
     parser.add_argument('--nodes', type=str, default=None,
                         help='nodes to use')
     # The product of the last wo parameters should not exceed 64.
