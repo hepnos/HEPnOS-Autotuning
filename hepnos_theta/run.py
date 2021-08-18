@@ -24,21 +24,34 @@ def __make_node_list(nodes):
     return result
 
 
-def __create_settings(exp_dir, loader_batch_size, loader_async, loader_async_threads, enable_pep,
-                      pep_num_threads, pep_ibatch_size, pep_obatch_size, pep_use_preloading,
-                      pep_pes_per_node, pep_cores_per_pe, nodes):
+def __create_settings(exp_dir,
+                      hepnos_pes_per_node,
+                      loader_batch_size,
+                      loader_async,
+                      loader_async_threads,
+                      loader_pes_per_node,
+                      enable_pep,
+                      pep_num_threads,
+                      pep_ibatch_size,
+                      pep_obatch_size,
+                      pep_use_preloading,
+                      pep_pes_per_node,
+                      pep_cores_per_pe,
+                      nodes):
     settings_sh_in = os.path.dirname(os.path.abspath(__file__)) + '/scripts/settings.sh.in'
     settings_sh = exp_dir + '/settings.sh'
     copyfile(settings_sh_in, settings_sh)
     with open(settings_sh, 'a+') as f:
         f.write('\n')
-        if loader_async_threads:
+        f.write('HEPNOS_PES_PER_NODE=%d\n' % hepnos_pes_per_node)
+        if loader_async:
             f.write('HEPNOS_LOADER_ASYNC=-a\n')
             f.write('HEPNOS_LOADER_ASYNC_THREADS=%d\n' % loader_async_threads)
         else:
             f.write('HEPNOS_LOADER_ASYNC=\n')
-            f.write('HEPNOS_LOADER_ASYNC_THREADS=\n')
+            f.write('HEPNOS_LOADER_ASYNC_THREADS=0\n')
         f.write('HEPNOS_LOADER_BATCH_SIZE=%d\n' % loader_batch_size)
+        f.write('HEPNOS_LOADER_PES_PER_NODE=%d\n' % loader_pes_per_node)
         if enable_pep:
             f.write('HEPNOS_ENABLE_PEP=1\n')
             f.write('HEPNOS_PEP_THREADS=%d\n' % pep_num_threads)
@@ -68,7 +81,7 @@ def __generate_dataloader_config_file(
     config['mercury']['na_no_block'] = bool(busy_spin)
     config['use_progress_thread'] = bool(use_progress_thread)
     with open(dataloader_json, 'w+') as f:
-        f.write(json.dumps(config))
+        f.write(json.dumps(config, indent=4))
 
 
 def __generate_pep_config_file(
@@ -83,25 +96,77 @@ def __generate_pep_config_file(
     config['mercury']['na_no_block'] = bool(busy_spin)
     config['use_progress_thread'] = bool(use_progress_thread)
     with open(pep_json, 'w+') as f:
-        f.write(json.dumps(config))
+        f.write(json.dumps(config, indent=4))
 
 
 def __generate_hepnos_config_file(
         exp_dir='.',
         filename='hepnos.json',
-        use_progress_thread=False,
-        threads=0,
         busy_spin=False,
+        use_progress_thread=False,
+        num_threads=0,
+        num_providers=1,
         num_event_dbs=1,
-        num_product_dbs=1):
+        num_product_dbs=1,
+        pool_type='fifo_wait',
+        thread_mapping='shared'):
     hepnos_json_in = os.path.dirname(os.path.abspath(__file__)) + '/scripts/hepnos.json.in'
     hepnos_json = exp_dir + '/' + filename
     with open(hepnos_json_in) as f:
         config = json.loads(f.read())
 
-    config['margo']['use_progress_thread'] = bool(use_progress_thread)
-    config['margo']['rpc_thread_count'] = int(threads)
     config['margo']['mercury']['na_no_block'] = bool(busy_spin)
+    config['margo']['argobots']['pools'][0]['type'] = pool_type
+
+    if use_progress_thread:
+        config['margo']['argobots']['pools'].append(
+            {
+                'name' : '__progress__',
+                'type' : pool_type,
+                'access' : 'mpmc'
+            }
+        )
+        config['margo']['progress_pool'] = '__progress__'
+    else:
+        config['margo']['progress_pool'] = '__primary__'
+
+    rpc_pools = []
+
+    if num_threads == 0:
+        config['margo']['rpc_pool'] = '__primary__'
+    else:
+        if thread_mapping == 'shared':
+            config['margo']['argobots']['pools'].append(
+                {
+                    'name' : '__rpc__',
+                    'type' : pool_type,
+                    'access' : 'mpmc'
+                }
+            )
+            rpc_pools.append('__rpc__')
+            config['margo']['rpc_pool'] = '__rpc__'
+        else:
+            for i in range(0, num_threads):
+                config['margo']['argobots']['pools'].append(
+                    {
+                        'name' : ('__rpc_%d__' % i),
+                        'type' : pool_type,
+                        'access' : 'mpmc'
+                    }
+                )
+                rpc_pools.append('__rpc_%d__' % i)
+            config['margo']['rpc_pool'] = '__primary__'
+        for i  in range(0, num_threads):
+            config['margo']['argobots']['xstreams'].append(
+                {
+                    'name' : ('rpc_es_%d' % i),
+                    'scheduler' : {
+                        'type' : 'basic_wait',
+                        'pools' : [ rpc_pools[i % len(rpc_pools)] ]
+                    }
+                }
+            )
+
     ssg_group = None
     for g in config['ssg']:
         if g['name'] == 'hepnos':
@@ -119,26 +184,41 @@ def __generate_hepnos_config_file(
             "no_overwrite" : True
     }
 
-    hepnos_provider = None
-    for p in config['providers']:
-        if p['name'] == 'hepnos':
-            hepnos_provider = p
-            break
+    for i in range(0, num_providers):
+        p = {
+            "name" : "hepnos_data_%d" % (i+1),
+            "type" : "sdskv",
+            "pool" : rpc_pools[i % len(rpc_pools)],
+            "provider_id" : i + 1,
+            "config" : {
+                "comparators" : [
+                    { "name" : "hepnos_compare_item_descriptors",
+                      "library" : "libhepnos-service.so" }
+                ],
+                "databases" : []
+            }
+        }
+        config['providers'].append(p)
 
+    p = 0
     for i in range(0, num_event_dbs):
         event_db_name = 'hepnos-events-' + str(i)
         event_db = copy.deepcopy(event_db_model)
         event_db['name'] = event_db_name
-        hepnos_provider['config']['databases'].append(event_db)
+        provider = config['providers'][1 + (p % (len(config['providers'])-1))]
+        provider['config']['databases'].append(event_db)
+        p += 1
 
     for i in range(0, num_product_dbs):
         product_db_name = 'hepnos-products-' + str(i)
         product_db = copy.deepcopy(product_db_model)
         product_db['name'] = product_db_name
-        hepnos_provider['config']['databases'].append(product_db)
+        provider = config['providers'][1 + (p % (len(config['providers'])-1))]
+        provider['config']['databases'].append(product_db)
+        p += 1
 
     with open(hepnos_json, 'w+') as f:
-        f.write(json.dumps(config))
+        f.write(json.dumps(config, indent=4))
 
 
 def __parse_result(exp_dir):
@@ -162,19 +242,24 @@ def __parse_result(exp_dir):
 
 def run(config, nodes=None):
 
-    # collect hyperparameter
-    hepnos_progress_thread = config["hepnos_progress_thread"]
-    hepnos_num_threads = config["hepnos_num_threads"]
-    hepnos_num_event_databases = config["hepnos_num_event_databases"]
-    hepnos_num_product_databases = config["hepnos_num_product_databases"]
-    busy_spin = config["busy_spin"]
-
-    loader_progress_thread = config["loader_progress_thread"]
-    loader_batch_size = config["loader_batch_size"]
-    loader_async = config["loader_async"]
-    loader_async_threads = config["loader_async_threads"]
-
     enable_pep = config.get('enable_pep', bool(int(os.environ.get("DH_HEPNOS_ENABLE_PEP", 0))))
+
+    hepnos_pes_per_node = config.get("hepnos_pes_per_node", 2)
+    hepnos_progress_thread = config.get("hepnos_progress_thread", False)
+    hepnos_num_threads = config.get("hepnos_num_threads", 31)
+    hepnos_num_event_databases = config.get("hepnos_num_event_databases", 1)
+    hepnos_num_product_databases = config.get("hepnos_num_product_databases", 1)
+    hepnos_pool_type = config.get("hepnos_pool_type", "fifo_wait")
+    hepnos_thread_mapping = config.get("hepnos_thread_mapping", "shared")
+    hepnos_num_providers = config.get("hepnos_num_providers", 1)
+    busy_spin = config.get("busy_spin", False)
+
+    loader_progress_thread = config.get("loader_progress_thread", False)
+    loader_async = config.get("loader_async", False)
+    loader_async_threads = config.get("loader_async_threads", 1)
+    loader_batch_size = config.get("loader_batch_size", 1024)
+    loader_pes_per_node = config.get("loader_pes_per_node", 1)
+
     pep_progress_thread = config.get("pep_progress_thread", False)
     pep_num_threads = config.get("pep_num_threads", 31)
     pep_ibatch_size = config.get("pep_ibatch_size", 32)
@@ -182,15 +267,19 @@ def run(config, nodes=None):
     pep_use_preloading = config.get("pep_use_preloading", False)
     pep_pes_per_node = config.get("pep_pes_per_node", 16)
     pep_cores_per_pe = config.get("pep_cores_per_pe", 4)
+    if pep_cores_per_pe == -1:
+        pep_cores_per_pe = 64 // pep_pes_per_node
 
     nodes = __make_node_list(nodes)
     print('Setting up experiment\'s directory')
     exp_dir = __setup_directory(config.get("id"))
     print('Creating settings.sh')
     __create_settings(exp_dir,
+                      hepnos_pes_per_node,
                       loader_batch_size,
                       loader_async,
                       loader_async_threads,
+                      loader_pes_per_node,
                       enable_pep,
                       pep_num_threads,
                       pep_ibatch_size,
@@ -202,11 +291,14 @@ def run(config, nodes=None):
     print('Creating hepnos.json')
     __generate_hepnos_config_file(
             exp_dir,
-            use_progress_thread=hepnos_progress_thread,
-            threads=hepnos_num_threads,
             busy_spin=busy_spin,
+            use_progress_thread=hepnos_progress_thread,
+            num_threads=hepnos_num_threads,
+            num_providers=hepnos_num_providers,
             num_event_dbs=hepnos_num_event_databases,
-            num_product_dbs=hepnos_num_product_databases)
+            num_product_dbs=hepnos_num_product_databases,
+            pool_type=hepnos_pool_type,
+            thread_mapping=hepnos_thread_mapping)
     print('Creating dataloader.json')
     __generate_dataloader_config_file(
             exp_dir,
@@ -231,14 +323,24 @@ if __name__ == '__main__':
     import argparse
     parser = argparse.ArgumentParser(description='HEPnOS experiment')
 
+    parser.add_argument('--hepnos-pes-per-node', type=int, default=2,
+                        help='number of PE per node for HEPnOS')
     parser.add_argument('--hepnos-progress-thread', action='store_true', default=False,
                         help='whether to use a progress thread in HEPnOS')
     parser.add_argument('--hepnos-num-threads', type=int, default=31,
                         help='number of RPC handling threads per process for HEPnOS')
+    parser.add_argument('--hepnos-num-providers', type=int, default=1,
+                        help='number of providers managing databases in HEPnOS')
     parser.add_argument('--hepnos-num-event-databases', type=int, default=1,
                         help='number of databases per process for events in HEPnOS')
     parser.add_argument('--hepnos-num-product-databases', type=int, default=1,
                         help='number of databases per process for products in HEPnOS')
+    # pool type can be "fifo", "fifo_wait", or "prio_wait"
+    parser.add_argument('--hepnos-pool-type', type=str, default='fifo_wait',
+                        help='type of Argobots pools to use in HEPnOS')
+    # thread mapping can be "shared", "private", or "work-stealing"
+    parser.add_argument('--hepnos-thread-mapping', type=str, default='shared',
+                        help='thread mapping strategy inside HEPnOS')
     parser.add_argument('--busy-spin', action='store_true', default=False,
                         help='whether to use busy spinning or not')
 
@@ -250,6 +352,8 @@ if __name__ == '__main__':
                         help='number of threads for async operation in clients')
     parser.add_argument('--loader-batch-size', type=int, default=1024,
                         help='batch size for the dataloader')
+    parser.add_argument('--loader-pes-per-node', type=int, default=1,
+                        help='number of PES per node (must be between 1 and 64) for loader')
 
     parser.add_argument('--enable-pep', action='store_true', default=False,
                         help='enable PEP benchmark')
@@ -266,7 +370,7 @@ if __name__ == '__main__':
                         help='whether to use product-preloading')
     parser.add_argument('--pep-pes-per-node', type=int, default=16,
                         help='number of PES per node (must be between 1 and 64)')
-    parser.add_argument('--pep-cores-per-pe', type=int, default=4,
+    parser.add_argument('--pep-cores-per-pe', type=int, default=-1,
                         help='number of cores per PE (must be between 1 and 64)')
 
     parser.add_argument('--nodes', type=str, default=None,

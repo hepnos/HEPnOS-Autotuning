@@ -79,7 +79,8 @@ fi
 
 NUM_PES_FOR_HEPNOS=$((2*${NUM_NODES_FOR_HEPNOS}))
 echo "Starting up HEPnOS daemon"
-aprun -n ${NUM_PES_FOR_HEPNOS} ${NODES_FOR_HEPNOS} -N 2 -cc none -d 32 -p ${PDOMAIN} \
+HEPNOS_CORES_PER_PE=$(( 64 / $HEPNOS_PES_PER_NODE ))
+aprun -n ${NUM_PES_FOR_HEPNOS} ${NODES_FOR_HEPNOS} -N ${HEPNOS_PES_PER_NODE} -cc none -d ${HEPNOS_CORES_PER_PE} -p ${PDOMAIN} \
       bedrock ${PROTOCOL} -c ${HEPNOS_CONFIG} -v error &
 HEPNOS_PID=$!
 
@@ -113,10 +114,13 @@ done
 
 echo "Starting dataloader"
 echo `pwd`
-echo "aprun -n ${NUM_NODES_FOR_LOADER} ${NODES_FOR_LOADER} -N 1 -cc none -p ${PDOMAIN}" >> $EXPDIR/dataloader-output.txt
+LOADER_CORES_PER_PE=$(( 64 / $HEPNOS_LOADER_PES_PER_NODE ))
+echo "aprun -n ${NUM_NODES_FOR_LOADER} ${NODES_FOR_LOADER} -N ${HEPNOS_LOADER_PES_PER_NODE} \
+            -d ${LOADER_CORES_PER_PE} -cc none -p ${PDOMAIN}" \
+      >> $EXPDIR/dataloader-output.txt
 start_time=`date +%s`
 timeout ${HEPNOS_LOADER_TIMEOUT} \
-    aprun -n ${NUM_NODES_FOR_LOADER} ${NODES_FOR_LOADER} -N 1 -cc none -p ${PDOMAIN} \
+    aprun -n ${NUM_NODES_FOR_LOADER} ${NODES_FOR_LOADER} -N ${HEPNOS_LOADER_PES_PER_NODE} -cc none -p ${PDOMAIN} \
              hepnos-dataloader \
              --timeout ${HEPNOS_LOADER_SOFT_TIMEOUT} \
              -p ${PROTOCOL} \
