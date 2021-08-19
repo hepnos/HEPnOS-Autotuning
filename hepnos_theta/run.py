@@ -106,8 +106,7 @@ def __generate_hepnos_config_file(
         num_providers=1,
         num_event_dbs=1,
         num_product_dbs=1,
-        pool_type='fifo_wait',
-        thread_mapping='shared'):
+        pool_type='fifo_wait'):
     hepnos_json_in = os.path.dirname(os.path.abspath(__file__)) + '/scripts/hepnos.json.in'
     hepnos_json = exp_dir + '/' + filename
     with open(hepnos_json_in) as f:
@@ -249,7 +248,6 @@ def run(config, nodes=None):
     hepnos_num_event_databases = config.get("hepnos_num_event_databases", 1)
     hepnos_num_product_databases = config.get("hepnos_num_product_databases", 1)
     hepnos_pool_type = config.get("hepnos_pool_type", "fifo_wait")
-    hepnos_thread_mapping = config.get("hepnos_thread_mapping", "shared")
     hepnos_num_providers = config.get("hepnos_num_providers", 1)
     busy_spin = config.get("busy_spin", False)
 
@@ -292,8 +290,7 @@ def run(config, nodes=None):
             num_providers=hepnos_num_providers,
             num_event_dbs=hepnos_num_event_databases,
             num_product_dbs=hepnos_num_product_databases,
-            pool_type=hepnos_pool_type,
-            thread_mapping=hepnos_thread_mapping)
+            pool_type=hepnos_pool_type)
     print('Creating dataloader.json')
     __generate_dataloader_config_file(
             exp_dir,
@@ -333,9 +330,6 @@ if __name__ == '__main__':
     # pool type can be "fifo", "fifo_wait", or "prio_wait"
     parser.add_argument('--hepnos-pool-type', type=str, default='fifo_wait',
                         help='type of Argobots pools to use in HEPnOS')
-    # thread mapping can be "shared", "private", or "work-stealing"
-    parser.add_argument('--hepnos-thread-mapping', type=str, default='shared',
-                        help='thread mapping strategy inside HEPnOS')
     parser.add_argument('--busy-spin', action='store_true', default=False,
                         help='whether to use busy spinning or not')
 
