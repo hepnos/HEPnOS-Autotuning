@@ -64,37 +64,79 @@ This command will run an experiment on 8 nodes of the debug-flat-quad queue.
 Explanations
 ------------
 
-`run.py` is the entry point for an execution. It provides a `run`
-function accepting the following parameters:
+`run.py` is the entry point for an execution. It can be called either as
+a script (`python run.py ...`) or via its `run` function. The script
+accept a number of parameters listed bellow. The `run` function accepts
+a dictionary containing the same parameters, but with `-` replaced with
+`_` (for example `hepnos-num-threads` becomes `hepnos_num_threads`).
+In the command line, boolean parameters are turned on or off by having
+or not having the flag set (e.g. `--hepnos-progress-thread` present or
+absent, rather than `--hepnos-progress-thread=true`).
 
-* `hepnos_num_threads`: the number of threads that a server can use,
-  not including the progress thread. Since 2 servers are deployed on
-  each node, this number can range from 0 to 31.
-* `hepnos_num_databases`: the number of databases per server for event
-  data and for product data. For example if set to 16, each server
-  will create 16 databases for event data and 16 other databases for
-  product data.
-* `busy_spin`: true or false, indicating whether Mercury should be
-  set to busy-spin.
-* `loader_progress_thread`: true or false, indicating whether the client will execute
-  store operation asynchronously, trying to overlap with file read operations.
-* `loader_batch_size`: the write batch size on loader clients.
+* Parameters common to HEPnOS, the Dataloader, and PEP
+  * `busy-spin`: true or false, indicating whether Mercury should be
+    set to busy-spin.
+
+* HEPnOS parameters:
+  * `hepnos-pes-per-node`: number processes per node on which to run HEPnOS.
+    Possible values: `[1, 2, 4, 8, 16, 32]`
+  * `hepnos-progress-thread`: whether to use a progress thread or not in HEPnOS.
+    Possible values: `boolean`.
+  * `hepnos-num-threads`: number of threads each HEPnOS process can use to service
+    RPCs, not including the progress thread and primary thread.
+    Possible values: `[0 , ... , 63]`.
+  * `hepnos-num-providers`: number of database providers in each HEPnOS process.
+    Possible values: `[1, ..., 32]`.
+  * `hepnos-num-event-databases`: the number of databases per server process for event data.
+    Possible values: `[1, ..., 16]`.
+  * `hepnos-num-product-databases`: the number of databases per server process for product data.
+    Possible values: `[1, ..., 16]`.
+  * `hepnos-pool-type`: type of Argobots pool used by HEPnOS servers.
+    Possible values: `[ "fifo_wait", "fifo", "prio_wait" ]`
+
+Constraints: The number of PEs per node (first parameter) constrains the number of threads
+that can resonnably be used per process (`hepnos-progress-thread` and `hepnos-num-threads`).
+Theta nodes have 64 cores, hence the product of the number of PEs per node and the number of
+threads must not exceed 64 (it could, but that would mean oversubscribing the nodes, which
+I suspect will lead to performance degradations). There is always a "primary" thread running
+on each process. If `hepnos-progress-thread` is provided, one extra thread is created. The
+`hepnos-num-threads` is then added. For instance, if we set `hepnos-progress-thread` and
+`hepnos-num-threads=4`, the total number of threads will be 6 (1 primary, 1 progress, 4 rpc).
+
+* Dataloader parameters
+  * `loader-pes-per-node`: number of processes per node on which to run the Dataloader.
+    Possible values: `[1, 2, 4, 8, 16, 32]`
+  * `loader-progress-thread`: true or false, indicating whether the Dataloader should use
+    a progress thread. Possible values: `boolean`.
+  * `loader-batch-size`: the write batch size on loader clients. Possible values: `[1, 2048]` (log-uniform).
+  * `loader-async`: whether to rely on asynchronous operations to interact with HEPnOS.
+    Possible values: `boolean`.
+  * `loader-async-threads`: number of threads to assign for asynchronous operations.
+    Relevant only if `loader-async` is set. Possible values: `[1, 63]` (log-uniform).
+
+Constraints: The same kind of constraint on the number of PEs per node and the
+total number of threads applies.
 
 Additionally, more parameters can be provided to enable running the
 parallel event processing (PEP) benchmark after the data loader.
 If enabled, the reported time will be the total time (data loading + PEP benchmark).
-To enable this step, the `enable_pep` parameter should be set to `True`
-and the following parameters should be provided.
+To enable this step, the `--enable-pep` parameter should be set on the command line,
+or the `DH_HEPNOS_ENABLE_PEP` environment variable should be set to 1.
 
-* `pep_num_threads`: the number of threads used by benchmark processes
-  to process data. Should be at least 1 and up to 31.
-* `pep_ibatch_size`: the batch size used when processes are loading events
-  from HEPnOS.
-* `pep_obatch_size`: the batch size used when processes are sending batches
-  of events to each other.
-* `pep_use_preloading`: whether the benchmark uses preloading of products.
-* `pep_pes_per_node`: number of benchmark processes per node.
-* `pep_cores_per_pe`: number of cores allocated per benchmark process.
+* PEP parameters
+  * `pep-progress-thread`: whether to use a progress thread in PEP processes.
+  * `pep-pes-per-node`: number of processes per node on which to run PEP.
+     Possible values: `[1, 2, 4, 8, 16, 32]`
+  * `pep-num-threads`: the number of threads used by benchmark processes
+    to process data. Possible values:
+  * `pep-ibatch-size`: the batch size used when processes are loading events
+    from HEPnOS. Possible values: `[8 ... 1024]` (log-uniform)
+  * `pep-obatch-size`: the batch size used when processes are sending batches
+    of events to each other. Possible values: `[8 ... 1024]` (log-uniform)
+  * `pep-use-preloading`: whether the benchmark uses preloading of products.
+
+  Constraints: The same kind of constraint on the number of PEs per node and
+  total number of threads applies.
 
 Finally, a `nodes` parameter may be provided that contains a list
 of host names to use for the experiment.
@@ -104,8 +146,6 @@ The `run.py` script can be called on its own, passing parameters as follows:
 ```
 python run.py --hepnos-num-threads=8 ...
 ```
-
-Note the use of `-` in parameter names when used on the command line.
 
 The `run.py` script is designed to work from any location.
 It will create a directory prefixed with `exp-` in the current directory, in

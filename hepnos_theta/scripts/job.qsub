@@ -168,12 +168,13 @@ if [ "$HEPNOS_ENABLE_PEP" -ne "0" ]; then
     fi
 
     echo "Running PEP benchmark"
-    echo "aprun -n ${NUM_PES} -N ${HEPNOS_PEP_PES_PER_NODE} ${NODES_FOR_PEP} -cc none -d ${HEPNOS_PEP_CORES_PER_PE} -p ${PDOMAIN}" >> $EXPDIR/pep-output.txt
+    PEP_CORES_PER_PE=$(( 64 / $HEPNOS_PEP_PES_PER_NODE ))
+    echo "aprun -n ${NUM_PES} -N ${HEPNOS_PEP_PES_PER_NODE} ${NODES_FOR_PEP} -cc none -d ${PEP_CORES_PER_PE} -p ${PDOMAIN}" >> $EXPDIR/pep-output.txt
     start_time=`date +%s`
     timeout ${HEPNOS_PEP_TIMEOUT} \
     aprun -n ${NUM_PES} -N ${HEPNOS_PEP_PES_PER_NODE} \
                 ${NODES_FOR_PEP} \
-                -cc none -d ${HEPNOS_PEP_CORES_PER_PE} \
+                -cc none -d ${PEP_CORES_PER_PE} \
                 -p ${PDOMAIN} hepnos-pep-benchmark \
              -p ${PROTOCOL} \
              -m ${PEP_MARGO_CONFIG} \

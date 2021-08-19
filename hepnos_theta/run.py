@@ -36,7 +36,6 @@ def __create_settings(exp_dir,
                       pep_obatch_size,
                       pep_use_preloading,
                       pep_pes_per_node,
-                      pep_cores_per_pe,
                       nodes):
     settings_sh_in = os.path.dirname(os.path.abspath(__file__)) + '/scripts/settings.sh.in'
     settings_sh = exp_dir + '/settings.sh'
@@ -58,7 +57,6 @@ def __create_settings(exp_dir,
             f.write('HEPNOS_PEP_IBATCH_SIZE=%d\n' % pep_ibatch_size)
             f.write('HEPNOS_PEP_OBATCH_SIZE=%d\n' % pep_obatch_size)
             f.write('HEPNOS_PEP_PES_PER_NODE=%d\n' % pep_pes_per_node)
-            f.write('HEPNOS_PEP_CORES_PER_PE=%d\n' % pep_cores_per_pe)
             if pep_use_preloading:
                 f.write('HEPNOS_PEP_PRELOAD=--preload\n')
             else:
@@ -126,46 +124,47 @@ def __generate_hepnos_config_file(
                 'access' : 'mpmc'
             }
         )
+        config['margo']['argobots']['xstreams'].append(
+            {
+                'name' : '__progress__',
+                'scheduler' : {
+                    'type' : 'basic_wait',
+                    'pools' :  ['__progress__']
+                }
+            }
+        )
         config['margo']['progress_pool'] = '__progress__'
     else:
         config['margo']['progress_pool'] = '__primary__'
 
     rpc_pools = []
+    for i in range(0, num_providers):
+        config['margo']['argobots']['pools'].append(
+            {
+                'name' : ('__rpc_%d__' % i),
+                'type' : pool_type,
+                'access' : 'mpmc'
+            }
+        )
+        rpc_pools.append('__rpc_%d__' % i)
 
     if num_threads == 0:
-        config['margo']['rpc_pool'] = '__primary__'
+        config['margo']['argobots']['xstreams'][0]['scheduler']['pools'].extend(rpc_pools)
     else:
-        if thread_mapping == 'shared':
-            config['margo']['argobots']['pools'].append(
-                {
-                    'name' : '__rpc__',
-                    'type' : pool_type,
-                    'access' : 'mpmc'
-                }
-            )
-            rpc_pools.append('__rpc__')
-            config['margo']['rpc_pool'] = '__rpc__'
-        else:
-            for i in range(0, num_threads):
-                config['margo']['argobots']['pools'].append(
-                    {
-                        'name' : ('__rpc_%d__' % i),
-                        'type' : pool_type,
-                        'access' : 'mpmc'
-                    }
-                )
-                rpc_pools.append('__rpc_%d__' % i)
-            config['margo']['rpc_pool'] = '__primary__'
-        for i  in range(0, num_threads):
+        es = []
+        for i  in range(0, min(num_threads, num_providers)):
             config['margo']['argobots']['xstreams'].append(
                 {
                     'name' : ('rpc_es_%d' % i),
                     'scheduler' : {
                         'type' : 'basic_wait',
-                        'pools' : [ rpc_pools[i % len(rpc_pools)] ]
+                        'pools' :  []
                     }
                 }
             )
+            es.append(config['margo']['argobots']['xstreams'][-1])
+        for i in range(0, len(rpc_pools)):
+            es[i % len(es)]['scheduler']['pools'].append(rpc_pools[i])
 
     ssg_group = None
     for g in config['ssg']:
@@ -266,9 +265,6 @@ def run(config, nodes=None):
     pep_obatch_size = config.get("pep_obatch_size", 32)
     pep_use_preloading = config.get("pep_use_preloading", False)
     pep_pes_per_node = config.get("pep_pes_per_node", 16)
-    pep_cores_per_pe = config.get("pep_cores_per_pe", 4)
-    if pep_cores_per_pe == -1:
-        pep_cores_per_pe = 64 // pep_pes_per_node
 
     nodes = __make_node_list(nodes)
     print('Setting up experiment\'s directory')
@@ -286,7 +282,6 @@ def run(config, nodes=None):
                       pep_obatch_size,
                       pep_use_preloading,
                       pep_pes_per_node,
-                      pep_cores_per_pe,
                       nodes)
     print('Creating hepnos.json')
     __generate_hepnos_config_file(
