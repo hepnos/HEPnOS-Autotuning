@@ -1,6 +1,10 @@
 #!/bin/sh
 
-NODES_PER_EXP=4 # should be divisible by 4
+if [ -z "${DH_HEPNOS_NODES_PER_EXP}" ]; then
+	NODES_PER_EXP=4 # should be divisible by 4
+else
+	NODES_PER_EXP=${DH_HEPNOS_NODES_PER_EXP}
+fi
 
 HEPNOS_PDOMAIN=hep-regele # choose a name for your protection domain
 #HEPNOS_PDOMAIN=hep-mdorier # choose a name for your protection domain
@@ -11,8 +15,11 @@ HEPNOS_LABEL=abc # label to use for the products
 HEPNOS_ENABLE_PROFILING=0
 HEPNOS_UTILITY_TIMEOUT=60
 
-HEPNOS_LOADER_DATAFILE=/lus/grand/projects/datascience/regele/theta/hepnos/HEPnOS-Autotuning/hepnos_theta/data/50files.txt # list of HDF5 files to ingest
-#HEPNOS_LOADER_DATAFILE=data/50files.txt # list of HDF5 files to ingest
+if [ -z "${HEPNOS_LOADER_DATAFILE}" ]; then
+	# list of HDF5 files to ingest
+	HEPNOS_LOADER_DATAFILE=/lus/grand/projects/datascience/regele/theta/hepnos/HEPnOS-Autotuning/hepnos_theta/data/50files.txt
+	#HEPNOS_LOADER_DATAFILE=data/50files.txt
+fi
 HEPNOS_LOADER_VERBOSE=critical # verbose level
 HEPNOS_LOADER_PRODUCTS=(
 	hep::rec_energy_numu
