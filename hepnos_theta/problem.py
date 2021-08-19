@@ -3,7 +3,7 @@ from deephyper.problem import HpProblem
 
 Problem = HpProblem(seed=2021)
 
-# the following is the old definition of the problem
+# the following is the old definition of the Problem
 """
 # 1. step
 Problem.add_hyperparameter((0, 31), "hepnos_num_threads")
@@ -34,50 +34,50 @@ step = bool(int(os.environ.get("DH_HEPNOS_EXP_STEP", 1)))
 
 # Step 1: Data-loader only, at small scale
 
-add_parameter(problem, "busy_spin", [True, False],
+add_parameter(Problem, "busy_spin", [True, False],
     "Whether Mercury should busy-spin instead of block")
-add_parameter(problem, "hepnos_progress_thread", [True, False],
+add_parameter(Problem, "hepnos_progress_thread", [True, False],
     "Whether to use a dedicated progress thread in HEPnOS")
-add_parameter(problem, "hepnos_num_threads", (0, 63),
+add_parameter(Problem, "hepnos_num_threads", (0, 63),
     "Number of threads used for serving RPC requests")
-add_parameter(problem, "hepnos_num_event_databases", (1, 16),
+add_parameter(Problem, "hepnos_num_event_databases", (1, 16),
     "Number of databases per process used to store events")
-add_parameter(problem, "hepnos_num_product_databases", (1, 16),
+add_parameter(Problem, "hepnos_num_product_databases", (1, 16),
     "Number of databases per process used to store products")
-add_parameter(problem, "hepnos_num_providers", (1, 32),
+add_parameter(Problem, "hepnos_num_providers", (1, 32),
     "Number of database providers per process")
-add_parameter(problem, "hepnos_pool_type", ['fifo','fifo_wait','prio_wait'],
+add_parameter(Problem, "hepnos_pool_type", ['fifo','fifo_wait','prio_wait'],
     "Thread-scheduling policity used by Argobots pools")
-add_parameter(problem, "hepnos_pes_per_node", [1, 2, 4, 8, 16, 32],
+add_parameter(Problem, "hepnos_pes_per_node", [1, 2, 4, 8, 16, 32],
     "Number of HEPnOS processes per node")
 
-add_parameter(problem, "loader_progress_thread", [True, False],
+add_parameter(Problem, "loader_progress_thread", [True, False],
     "Whether to use a dedicated progress thread in the Dataloader")
-add_parameter(problem, "loader_batch_size", (1, 2048, "log-uniform"),
+add_parameter(Problem, "loader_batch_size", (1, 2048, "log-uniform"),
     "Size of the batches of events sent by the Dataloader to HEPnOS")
-add_parameter(problem, "loader_pes_per_node", [1, 2, 4, 8, 16, 32],
+add_parameter(Problem, "loader_pes_per_node", [1, 2, 4, 8, 16, 32],
     "Number of processes per node for the Dataloader")
 
 # Step 2: We add the PEP step, still at small scall
 if step >= 2 or enable_pep:
-    add_parameter(problem, "pep_progress_thread", [True, False],
+    add_parameter(Problem, "pep_progress_thread", [True, False],
         "Whether to use a dedicated progress thread in the PEP step")
-    add_parameter(problem, "pep_num_threads", (1, 31),
+    add_parameter(Problem, "pep_num_threads", (1, 31),
         "Number of threads used for processing in the PEP step")
-    add_parameter(problem, "pep_ibatch_size", (8, 1024, "log-uniform"),
+    add_parameter(Problem, "pep_ibatch_size", (8, 1024, "log-uniform"),
         "Batch size used when PEP processes are loading events from HEPnOS")
-    add_parameter(problem, "pep_obatch_size", (8, 1024, "log-uniform"),
+    add_parameter(Problem, "pep_obatch_size", (8, 1024, "log-uniform"),
         "Batch size used when PEP processes are exchanging events among themselves")
-    add_parameter(problem, "pep_pes_per_node", [1, 2, 4, 8, 16, 32],
+    add_parameter(Problem, "pep_pes_per_node", [1, 2, 4, 8, 16, 32],
         "Number of processes per node for the PEP step")
 
 # Step 3: We add some new parameters
 if step >= 3:
-    add_parameter(problem, "loader_async", [True, False],
+    add_parameter(Problem, "loader_async", [True, False],
         "Whether to use the HEPnOS AsyncEngine in the Dataloader")
-    add_parameter(problem, "loader_async_threads", (1, 63, "log-uniform"),
+    add_parameter(Problem, "loader_async_threads", (1, 63, "log-uniform"),
         "Number of threads for the AsyncEngine to use")
-    add_parameter(problem, "pep_use_preloading", [True, False],
+    add_parameter(Problem, "pep_use_preloading", [True, False],
         "Whether the PEP step should use product-preloading")
 
 # Step 4: We scale to larger experiments (no new processes)
