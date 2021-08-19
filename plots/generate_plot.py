@@ -112,26 +112,52 @@ def plot_objective_multi(df, exp_config, output_dir):
     for exp_name, exp_df in df.items():
 
         if "rep" in exp_config["data"][exp_name]:
-            exp_dfs = exp_df
-            for exp_df in exp_dfs:
-                exp_df = exp_df.sort_values("elapsed_sec")
-                x, y = exp_df.elapsed_sec.to_numpy(), -exp_df.objective.to_numpy()
 
+            exp_dfs = exp_df
+
+            times = np.unique(
+                np.concatenate([df.elapsed_sec.to_numpy() for df in exp_dfs],
+                               axis=0))
+
+            series = []
+            for exp_df in exp_dfs:
+
+                exp_df = exp_df.sort_values("elapsed_sec")
+                x, y = exp_df.elapsed_sec.to_numpy(
+                ), -exp_df.objective.to_numpy()
                 y = only_min(y)
 
-                plt.plot(x, y,
-                    label=exp_config["data"][exp_name]["label"],
-                    color=exp_config["data"][exp_name]["color"],
-                    linestyle=exp_config["data"][exp_name].get("linestyle", "-"),
-                    )
+                s = pd.Series(data=y, index=x)
+                s = s.reindex(times).fillna(method="ffill")
+                series.append(s)
+
+            array = np.array([s.to_numpy() for s in series])
+            loc = np.nanmean(array, axis=0)
+            scale = np.nanstd(array, axis=0)
+
+            plt.plot(
+                times,
+                loc,
+                label=exp_config["data"][exp_name]["label"],
+                color=exp_config["data"][exp_name]["color"],
+                linestyle=exp_config["data"][exp_name].get("linestyle", "-"),
+            )
+            plt.fill_between(times,
+                             loc - 1 * scale,
+                             loc + 1 * scale,
+                             facecolor=exp_config["data"][exp_name]["color"],
+                             alpha=0.5)
         else:
             exp_df = exp_df.sort_values("elapsed_sec")
             x, y = exp_df.elapsed_sec.to_numpy(), -exp_df.objective.to_numpy()
             y = only_min(y)
 
-            plt.plot(x, y, label=exp_config["data"][exp_name]["label"],
-                    color=exp_config["data"][exp_name]["color"],
-                    linestyle=exp_config["data"][exp_name].get("linestyle", "-"))
+            plt.plot(x,
+                     y,
+                     label=exp_config["data"][exp_name]["label"],
+                     color=exp_config["data"][exp_name]["color"],
+                     linestyle=exp_config["data"][exp_name].get(
+                         "linestyle", "-"))
 
     ax = plt.gca()
     ax.xaxis.set_major_locator(ticker.MultipleLocator(900))
@@ -146,6 +172,7 @@ def plot_objective_multi(df, exp_config, output_dir):
     plt.savefig(output_path)
     plt.show()
 
+
 def plot_objective_multi_iter(df, exp_config, output_dir):
     output_file_name = f"{inspect.stack()[0][3]}.{FILE_EXTENSION}"
     output_path = os.path.join(output_dir, output_file_name)
@@ -158,24 +185,34 @@ def plot_objective_multi_iter(df, exp_config, output_dir):
             exp_dfs = exp_df
             for exp_df in exp_dfs:
                 exp_df = exp_df.sort_values("elapsed_sec")
-                x, y = list(range(1, len(exp_df.elapsed_sec.to_list())+1)), (-exp_df.objective).to_list()
+                x, y = list(range(1,
+                                  len(exp_df.elapsed_sec.to_list()) +
+                                  1)), (-exp_df.objective).to_list()
 
                 y = only_min(y)
 
-                plt.plot(x, y,
+                plt.plot(
+                    x,
+                    y,
                     label=exp_config["data"][exp_name]["label"],
                     color=exp_config["data"][exp_name]["color"],
-                    linestyle=exp_config["data"][exp_name].get("linestyle", "-"),
-                    )
+                    linestyle=exp_config["data"][exp_name].get(
+                        "linestyle", "-"),
+                )
         else:
             exp_df = exp_df.sort_values("elapsed_sec")
-            x, y = list(range(1, len(exp_df.elapsed_sec.to_list())+1)), (-exp_df.objective).to_list()
+            x, y = list(range(1,
+                              len(exp_df.elapsed_sec.to_list()) +
+                              1)), (-exp_df.objective).to_list()
 
             y = only_min(y)
 
-            plt.plot(x, y, label=exp_config["data"][exp_name]["label"],
-                    color=exp_config["data"][exp_name]["color"],
-                    linestyle=exp_config["data"][exp_name].get("linestyle", "-"))
+            plt.plot(x,
+                     y,
+                     label=exp_config["data"][exp_name]["label"],
+                     color=exp_config["data"][exp_name]["color"],
+                     linestyle=exp_config["data"][exp_name].get(
+                         "linestyle", "-"))
 
     ax = plt.gca()
     ax.xaxis.set_major_locator(ticker.MultipleLocator(25))

@@ -28,7 +28,7 @@ experiments:
         color: "blue"
       exp-128-8-60-nopep_to_pep-tl-v2:
         label: 128-8-60 (Pep + TL v2)
-        rep: [0]
+        rep: [0, 1, 2]
         color: "cyan"
   1:
     title: "4 To 8"
@@ -40,6 +40,7 @@ experiments:
         label: 128-8-60 (No Pep + TL v1)
         rep: [0]
         color: "blue"
-      # exp-128-8-60-nopep-4_to_8-tl-v2:
-      #   label: 128-8-60 (No Pep + TL v2)
-      #   color: "cyan"
+      exp-128-8-60-nopep-4_to_8-tl-v2:
+        label: 128-8-60 (No Pep + TL v2)
+        rep: [0]
+        color: "cyan"
