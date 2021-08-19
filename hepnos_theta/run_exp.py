@@ -12,7 +12,7 @@ JOB_TEMPLATE = os.path.join(HERE, "job.qsub.tmpl")
 
 
 def run(w, q, A, t, n, enable_pep, nodes_per_task, activation_script, run,
-        problem, fit_surrogate, fit_search_space):
+        problem, fit_surrogate, fit_search_space, transfer_learning_strategy, transfer_learning_epsilon):
 
     w = w.encode("ascii").decode("ascii")
 
@@ -59,7 +59,9 @@ def run(w, q, A, t, n, enable_pep, nodes_per_task, activation_script, run,
                                 run=run,
                                 problem=problem,
                                 fit_surrogate=fit_surrogate,
-                                fit_search_space=fit_search_space))
+                                fit_search_space=fit_search_space,
+                                transfer_learning_strategy=transfer_learning_strategy,
+                                transfer_learning_epsilon=transfer_learning_epsilon))
 
     # add executable rights
     st = os.stat(submission_path)
@@ -109,5 +111,7 @@ if __name__ == "__main__":
     parser.add_argument('--problem', required=True, type=str)
     parser.add_argument('--fit-surrogate', required=False, type=str, default="")
     parser.add_argument('--fit-search-space', required=False, type=str, default="")
+    parser.add_argument('--transfer-learning-strategy', required=False, type=str, default="best", choices=["best", "epsilon"])
+    parser.add_argument('--transfer-learning-epsilon', required=False, type=float, default=1.0)
     args = parser.parse_args()
     run(**vars(args))

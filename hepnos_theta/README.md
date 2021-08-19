@@ -41,7 +41,7 @@ conda activate /lus/grand/projects/datascience/regele/theta/hepnos/dhenv/
 export PYTHONPATH="/lus/grand/projects/datascience/regele/theta/hepnos/HEPnOS-Autotuning/:$PYTHONPATH"
 ```
 
-Source this script: `source SetUpEnv.sh` and test with the following command :
+Source this script: `source SetUpEnv.sh` and test with the following command (think about adapting `settings.sh.in`):
 
 ```
 python -m hepnos_theta.run_exp -w exp/exp-test -q debug-cache-quad -t 60 -A radix-io -n 8 --nodes-per-task 4 -as ./SetUpEnv.sh --run hepnos_theta.run.run --problem hepnos_theta.problem.Problem

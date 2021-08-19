@@ -1,6 +1,45 @@
 
 root: /home/regele/projects-grand/theta/hepnos/exp
 experiments:
-  exp-8-4-60-short-notl: Short (No TL)
-  exp-8-4-60-extended-notl: Extended (No TL)
-  exp-8-4-60-extended-ss: Extended (TL)
+  # test:
+  #   title: "No Pep To No Pep"
+  #   data:
+  #     exp-128-8-60-nopep-notl:
+  #       label: 128-8-60 (No Pep + No TL)
+  #       color: "k"
+  #       linestyle: "--"
+  #     exp-128-8-60-nopep_to_nopep-tl-v2:
+  #       label: 128-8-60 (No Pep + TL v2)
+  #       color: "cyan"
+  0:
+    title: "No Pep To Pep"
+    data:
+      exp-128-8-60-nopep-notl:
+        label: 128-8-60 (No Pep + No TL)
+        color: "k"
+        linestyle: "--"
+      exp-128-8-60-pep-notl:
+        label: 128-8-60 (Pep + No TL)
+        rep: [0, 1, 2]
+        color: "orange"
+      exp-128-8-60-nopep_to_pep-tl-v1:
+        label: 128-8-60 (Pep + TL v1)
+        rep: [0, 1, 2]
+        color: "blue"
+      exp-128-8-60-nopep_to_pep-tl-v2:
+        label: 128-8-60 (Pep + TL v2)
+        rep: [0]
+        color: "cyan"
+  1:
+    title: "4 To 8"
+    data:
+      exp-128-8-60-nopep-notl:
+        label: 128-8-60 (No Pep + No TL)
+        color: "orange"
+      exp-128-8-60-nopep-4_to_8-tl-v1:
+        label: 128-8-60 (No Pep + TL v1)
+        rep: [0]
+        color: "blue"
+      # exp-128-8-60-nopep-4_to_8-tl-v2:
+      #   label: 128-8-60 (No Pep + TL v2)
+      #   color: "cyan"

@@ -19,6 +19,13 @@ git checkout truncated_normal
 pip install -e.
 cd ..
 
+# Installing Scikit-Optimize with ConfigSpace
+log "Cloning Scikit-Optimize repo and installing..."
+git clone https://github.com/deephyper/scikit-optimize.git
+cd scikit-optimize/
+pip install -e.
+cd ..
+
 # Install DeepHyper
 log "Cloning DeepHyper repo and installing..."
 git clone https://github.com/pbalapra/deephyper.git
