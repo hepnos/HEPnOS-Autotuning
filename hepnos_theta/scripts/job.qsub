@@ -114,13 +114,13 @@ done
 
 echo "Starting dataloader"
 echo `pwd`
+NUM_PES_FOR_LOADER=$(( $NUM_NODES_FOR_LOADER * $HEPNOS_LOADER_PES_PER_NODE ))
 LOADER_CORES_PER_PE=$(( 64 / $HEPNOS_LOADER_PES_PER_NODE ))
-echo "aprun -n ${NUM_NODES_FOR_LOADER} ${NODES_FOR_LOADER} -N ${HEPNOS_LOADER_PES_PER_NODE} \
-            -d ${LOADER_CORES_PER_PE} -cc none -p ${PDOMAIN}" \
+echo "aprun -n ${NUM_PES_FOR_LOADER} ${NODES_FOR_LOADER} -N ${HEPNOS_LOADER_PES_PER_NODE} -cc none -d $LOADER_CORES_PER_PE -p ${PDOMAIN}" \
       >> $EXPDIR/dataloader-output.txt
 start_time=`date +%s`
 timeout ${HEPNOS_LOADER_TIMEOUT} \
-    aprun -n ${NUM_NODES_FOR_LOADER} ${NODES_FOR_LOADER} -N ${HEPNOS_LOADER_PES_PER_NODE} -cc none -p ${PDOMAIN} \
+    aprun -n ${NUM_PES_FOR_LOADER} ${NODES_FOR_LOADER} -N ${HEPNOS_LOADER_PES_PER_NODE} -cc none -d $LOADER_CORES_PER_PE -p ${PDOMAIN} \
              hepnos-dataloader \
              --timeout ${HEPNOS_LOADER_SOFT_TIMEOUT} \
              -p ${PROTOCOL} \
