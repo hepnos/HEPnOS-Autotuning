@@ -54,7 +54,7 @@ add_parameter(Problem, "loader_progress_thread", [True, False],
     "Whether to use a dedicated progress thread in the Dataloader")
 add_parameter(Problem, "loader_batch_size", (1, 2048, "log-uniform"),
     "Size of the batches of events sent by the Dataloader to HEPnOS")
-add_parameter(Problem, "loader_pes_per_node", [1, 2, 4, 8, 16, 32],
+add_parameter(Problem, "loader_pes_per_node", [1, 2, 4, 8, 16],
     "Number of processes per node for the Dataloader")
 
 # Step 2: We add the PEP step, still at small scall
