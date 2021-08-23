@@ -29,8 +29,7 @@ if enable_pep:
 def add_parameter(problem, name, domain, description=""):
     problem.add_hyperparameter(domain, name)
 
-enable_pep = bool(int(os.environ.get("DH_HEPNOS_ENABLE_PEP", 0)))
-step = bool(int(os.environ.get("DH_HEPNOS_EXP_STEP", 1)))
+step = int(os.environ.get("DH_HEPNOS_EXP_STEP", 1))
 
 # Step 1: Data-loader only, at small scale
 
@@ -59,7 +58,7 @@ add_parameter(Problem, "loader_pes_per_node", [1, 2, 4, 8, 16, 32],
     "Number of processes per node for the Dataloader")
 
 # Step 2: We add the PEP step, still at small scall
-if step >= 2 or enable_pep:
+if step >= 2:
     add_parameter(Problem, "pep_progress_thread", [True, False],
         "Whether to use a dedicated progress thread in the PEP step")
     add_parameter(Problem, "pep_num_threads", (1, 31),
