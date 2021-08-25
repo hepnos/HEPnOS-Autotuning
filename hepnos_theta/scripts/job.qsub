@@ -12,7 +12,8 @@ PROTOCOL=ofi+gni
 HEPNOS_CONFIG=$EXPDIR/hepnos.json
 HEPNOS_SSG=$EXPDIR/hepnos.ssg
 DATABASES_CONFIG=$EXPDIR/databases.json
-CLIENT_MARGO_CONFIG=$EXPDIR/client.json
+LOADER_MARGO_CONFIG=$EXPDIR/dataloader.json
+PEP_MARGO_CONFIG=$EXPDIR/pep.json
 
 export MARGO_OUTPUT_DIR=$EXPDIR
 export MPICH_GNI_NDREG_ENTRIES=1024
@@ -76,9 +77,10 @@ else
   export MARGO_ENABLE_PROFILING=0
 fi
 
-NUM_PES_FOR_HEPNOS=$((2*${NUM_NODES_FOR_HEPNOS}))
+NUM_PES_FOR_HEPNOS=$((${HEPNOS_PES_PER_NODE} * ${NUM_NODES_FOR_HEPNOS}))
 echo "Starting up HEPnOS daemon"
-aprun -n ${NUM_PES_FOR_HEPNOS} ${NODES_FOR_HEPNOS} -N 2 -cc none -d 32 -p ${PDOMAIN} \
+HEPNOS_CORES_PER_PE=$(( 64 / $HEPNOS_PES_PER_NODE ))
+aprun -n ${NUM_PES_FOR_HEPNOS} ${NODES_FOR_HEPNOS} -N ${HEPNOS_PES_PER_NODE} -cc none -d ${HEPNOS_CORES_PER_PE} -p ${PDOMAIN} \
       bedrock ${PROTOCOL} -c ${HEPNOS_CONFIG} -v error &
 HEPNOS_PID=$!
 
@@ -112,20 +114,24 @@ done
 
 echo "Starting dataloader"
 echo `pwd`
-echo "aprun -n ${NUM_NODES_FOR_LOADER} ${NODES_FOR_LOADER} -N 1 -cc none -p ${PDOMAIN}" >> $EXPDIR/dataloader-output.txt
+NUM_PES_FOR_LOADER=$(( $NUM_NODES_FOR_LOADER * $HEPNOS_LOADER_PES_PER_NODE ))
+LOADER_CORES_PER_PE=$(( 64 / $HEPNOS_LOADER_PES_PER_NODE ))
+echo "aprun -n ${NUM_PES_FOR_LOADER} ${NODES_FOR_LOADER} -N ${HEPNOS_LOADER_PES_PER_NODE} -cc none -d $LOADER_CORES_PER_PE -p ${PDOMAIN}" \
+      >> $EXPDIR/dataloader-output.txt
 start_time=`date +%s`
 timeout ${HEPNOS_LOADER_TIMEOUT} \
-    aprun -n ${NUM_NODES_FOR_LOADER} ${NODES_FOR_LOADER} -N 1 -cc none -p ${PDOMAIN} \
+    aprun -n ${NUM_PES_FOR_LOADER} ${NODES_FOR_LOADER} -N ${HEPNOS_LOADER_PES_PER_NODE} -cc none -d $LOADER_CORES_PER_PE -p ${PDOMAIN} \
              hepnos-dataloader \
              --timeout ${HEPNOS_LOADER_SOFT_TIMEOUT} \
              -p ${PROTOCOL} \
-             -m ${CLIENT_MARGO_CONFIG} \
+             -m ${LOADER_MARGO_CONFIG} \
              -c ${DATABASES_CONFIG} \
              -i ${HEPNOS_LOADER_DATAFILE} \
              -o ${HEPNOS_DATASET} \
              -l ${HEPNOS_LABEL} \
-             -b ${HEPNOS_LOADER_CLIENT_BATCH_SIZE} \
-             ${HEPNOS_LOADER_CLIENT_USE_PROGRESS_THREAD} \
+             -b ${HEPNOS_LOADER_BATCH_SIZE} \
+             ${HEPNOS_LOADER_ASYNC} \
+             -t ${HEPNOS_LOADER_ASYNC_THREADS} \
              ${LOADER_PRODUCT_ARGS} \
              -v ${HEPNOS_LOADER_VERBOSE} \
     &>> $EXPDIR/dataloader-output.txt
@@ -162,15 +168,16 @@ if [ "$HEPNOS_ENABLE_PEP" -ne "0" ]; then
     fi
 
     echo "Running PEP benchmark"
-    echo "aprun -n ${NUM_PES} -N ${HEPNOS_PEP_PES_PER_NODE} ${NODES_FOR_PEP} -cc none -d ${HEPNOS_PEP_CORES_PER_PE} -p ${PDOMAIN}" >> $EXPDIR/pep-output.txt
+    PEP_CORES_PER_PE=$(( 64 / $HEPNOS_PEP_PES_PER_NODE ))
+    echo "aprun -n ${NUM_PES} -N ${HEPNOS_PEP_PES_PER_NODE} ${NODES_FOR_PEP} -cc none -d ${PEP_CORES_PER_PE} -p ${PDOMAIN}" >> $EXPDIR/pep-output.txt
     start_time=`date +%s`
     timeout ${HEPNOS_PEP_TIMEOUT} \
     aprun -n ${NUM_PES} -N ${HEPNOS_PEP_PES_PER_NODE} \
                 ${NODES_FOR_PEP} \
-                -cc none -d ${HEPNOS_PEP_CORES_PER_PE} \
+                -cc none -d ${PEP_CORES_PER_PE} \
                 -p ${PDOMAIN} hepnos-pep-benchmark \
              -p ${PROTOCOL} \
-             -m ${CLIENT_MARGO_CONFIG} \
+             -m ${PEP_MARGO_CONFIG} \
              -c ${DATABASES_CONFIG} \
              -d ${HEPNOS_DATASET} \
              -l ${HEPNOS_LABEL} \

@@ -11,7 +11,7 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 JOB_TEMPLATE = os.path.join(HERE, "job.qsub.tmpl")
 
 
-def run(w, q, A, t, n, enable_pep, nodes_per_task, activation_script, run,
+def run(w, q, A, t, n, step, nodes_per_task, activation_script, run,
         problem, fit_surrogate, fit_search_space, transfer_learning_strategy, transfer_learning_epsilon):
 
     w = w.encode("ascii").decode("ascii")
@@ -24,7 +24,7 @@ def run(w, q, A, t, n, enable_pep, nodes_per_task, activation_script, run,
     print(f"    num_cpus_driver: {num_cpus_driver}")
     print(f"    num_cpus_per_task: {num_cpus_per_task}")
 
-    enable_pep = int(enable_pep)
+    step = int(step)
 
     # for transfer learning
     if fit_surrogate:
@@ -50,7 +50,7 @@ def run(w, q, A, t, n, enable_pep, nodes_per_task, activation_script, run,
                                 A=A,
                                 t=t,
                                 n=n,
-                                enable_pep=enable_pep,
+                                hepnos_exp_step=step,
                                 nodes_per_task=nodes_per_task,
                                 num_cpus_driver=num_cpus_driver,
                                 num_cpus_per_task=num_cpus_per_task,
@@ -93,10 +93,10 @@ if __name__ == "__main__":
                         required=True,
                         type=int,
                         help="Number of nodes for the total allocation.")
-    parser.add_argument('--enable-pep',
-                        action='store_true',
-                        default=False,
-                        help='enable PEP benchmark')
+    parser.add_argument('--step',
+                        type=int,
+                        default=1,
+                        help='HEPnOS experiment step.')
     parser.add_argument('--nodes-per-task',
                         type=int,
                         default=None,

@@ -1,8 +1,13 @@
 #!/bin/sh
 
-NODES_PER_EXP=8 # should be divisible by 4
+if [ -z "${DH_NODES_PER_TASK}" ]; then
+	NODES_PER_EXP=4 # should be divisible by 4
+else
+	NODES_PER_EXP=${DH_NODES_PER_TASK}
+fi
 
 HEPNOS_PDOMAIN=hep-regele # choose a name for your protection domain
+#HEPNOS_PDOMAIN=hep-mdorier # choose a name for your protection domain
 HEPNOS_PROJECT=radix-io # change for your project allocation
 HEPNOS_JOBFILE=job.qsub # job file (should be placed in scripts directory)
 HEPNOS_DATASET=nova # name of the dataset
@@ -10,7 +15,11 @@ HEPNOS_LABEL=abc # label to use for the products
 HEPNOS_ENABLE_PROFILING=0
 HEPNOS_UTILITY_TIMEOUT=60
 
-HEPNOS_LOADER_DATAFILE=/lus/grand/projects/datascience/regele/theta/hepnos/HEPnOS-Autotuning/hepnos_theta/data/50files.txt # list of HDF5 files to ingest
+if [ -z "${HEPNOS_LOADER_DATAFILE}" ]; then
+	# list of HDF5 files to ingest
+	HEPNOS_LOADER_DATAFILE=/lus/grand/projects/datascience/regele/theta/hepnos/HEPnOS-Autotuning/hepnos_theta/data/100files.txt
+	#HEPNOS_LOADER_DATAFILE=data/50files.txt
+fi
 HEPNOS_LOADER_VERBOSE=critical # verbose level
 HEPNOS_LOADER_PRODUCTS=(
 	hep::rec_energy_numu
@@ -30,8 +39,13 @@ HEPNOS_LOADER_PRODUCTS=(
 	hep::rec_vtx_elastic_fuzzyk_png_cvnpart
 	hep::rec_vtx_elastic_fuzzyk_png_shwlid) # products to load
 HEPNOS_LOADER_ENABLE_PROFILING=0
+HEPNOS_LOADER_SOFT_TIMEOUT=10000
+
+# 50files.txt
 HEPNOS_LOADER_TIMEOUT=600 # timeout in seconds, after which the application will be killed
-HEPNOS_LOADER_SOFT_TIMEOUT=10000 # soft timeout passed to the loader
+
+# 100files.txt
+# HEPNOS_LOADER_TIMEOUT=1200 # timeout in seconds, after which the application will be killed
 
 HEPNOS_ENABLE_PEP=1 # enable parallel event processing benchmark
 HEPNOS_PEP_VERBOSE=critical
