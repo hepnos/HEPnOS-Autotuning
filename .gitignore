@@ -148,4 +148,4 @@ sds-repo
 *.json
 setting.sh
 exp*/
-figures/
+figures*/

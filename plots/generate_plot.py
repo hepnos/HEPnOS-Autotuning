@@ -1,6 +1,7 @@
 import os
 import pathlib
 
+import matplotlib
 import matplotlib.pyplot as plt
 import matplotlib.ticker as ticker
 import yaml
@@ -13,6 +14,20 @@ try:
     from yaml import CLoader as Loader
 except ImportError:
     from yaml import Loader
+
+width = 8
+height = width / 1.618
+
+matplotlib.rcParams.update({
+    'font.size': 21,
+    'figure.figsize': (width, height),
+    'figure.facecolor': 'white',
+    'savefig.dpi': 72,
+    'figure.subplot.bottom': 0.125,
+    'figure.edgecolor': 'white',
+    'xtick.labelsize': 21,
+    'ytick.labelsize': 21
+})
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 FILE_EXTENSION = "png"
@@ -64,21 +79,23 @@ def plot_scatter_multi(df, exp_config, output_dir):
 
         if "rep" in exp_config["data"][exp_name]:
             exp_dfs = exp_df
-            for exp_df in exp_dfs:
+            for i, exp_df in enumerate(exp_dfs):
                 x, y = exp_df.elapsed_sec.to_numpy(
                 ), -exp_df.objective.to_numpy()
-                plt.scatter(x,
-                            y,
-                            label=exp_config["data"][exp_name]["label"],
-                            s=10)
+
+                plt_kwargs = dict(color=exp_config["data"][exp_name]["color"],
+                                  s=10,
+                                  alpha=0.5)
+                if i == 0:
+                    plt_kwargs["label"] = exp_config["data"][exp_name]["label"]
+
+                plt.scatter(x, y, **plt_kwargs)
         else:
             x, y = exp_df.elapsed_sec.to_numpy(), -exp_df.objective.to_numpy()
-            # z = stats.zscore(y)
-            # z_threshold = 3
-            # selection = np.where(z <= z_threshold)
-            # x, y = x[selection], y[selection]
+
             plt.scatter(x,
                         y,
+                        color=exp_config["data"][exp_name]["color"],
                         label=exp_config["data"][exp_name]["label"],
                         s=10)
 
@@ -86,12 +103,19 @@ def plot_scatter_multi(df, exp_config, output_dir):
     ax.xaxis.set_major_locator(ticker.MultipleLocator(900))
     ax.xaxis.set_major_formatter(hour_major_formatter)
 
-    plt.title(exp_config["title"])
+    if exp_config.get("title"):
+        plt.title(exp_config.get("title"))
+
     plt.legend()
-    plt.ylabel("Experiment Duration (sec.)")
-    plt.xlabel("Run Time (hour)")
-    plt.ylim(0, 300)
+    plt.ylabel("Instance run time (sec)")
+    plt.xlabel("Search time (hour)")
+
+    if exp_config.get("ylim"):
+        plt.ylim(*exp_config.get("ylim"))
+
+    plt.xlim(0, 3600)
     plt.grid()
+    plt.tight_layout()
     plt.savefig(output_path)
     plt.show()
 
@@ -146,7 +170,7 @@ def plot_objective_multi(df, exp_config, output_dir):
                              loc - 1 * scale,
                              loc + 1 * scale,
                              facecolor=exp_config["data"][exp_name]["color"],
-                             alpha=0.5)
+                             alpha=0.3)
         else:
             exp_df = exp_df.sort_values("elapsed_sec")
             x, y = exp_df.elapsed_sec.to_numpy(), -exp_df.objective.to_numpy()
@@ -163,12 +187,19 @@ def plot_objective_multi(df, exp_config, output_dir):
     ax.xaxis.set_major_locator(ticker.MultipleLocator(900))
     ax.xaxis.set_major_formatter(hour_major_formatter)
 
-    plt.title(exp_config["title"])
+    if exp_config.get("title"):
+        plt.title(exp_config.get("title"))
+
     plt.legend()
-    plt.ylabel("Experiment Duration (sec.)")
-    plt.xlabel("Run Time (hour)")
-    plt.ylim(30, 100)
+    plt.ylabel("Instance run time (sec)")
+    plt.xlabel("Search time (hour)")
+
+    if exp_config.get("ylim"):
+        plt.ylim(*exp_config.get("ylim"))
+
+    plt.xlim(0, 3600)
     plt.grid()
+    plt.tight_layout()
     plt.savefig(output_path)
     plt.show()
 
@@ -215,16 +246,20 @@ def plot_objective_multi_iter(df, exp_config, output_dir):
                          "linestyle", "-"))
 
     ax = plt.gca()
-    ax.xaxis.set_major_locator(ticker.MultipleLocator(25))
-    # ax.xaxis.set_major_formatter(hour_major_formatter)
+    ax.xaxis.set_major_locator(ticker.MultipleLocator(50))
 
-    plt.title(exp_config["title"])
+    if exp_config.get("title"):
+        plt.title(exp_config.get("title"))
+
     plt.legend()
     plt.ylabel("Experiment Duration (sec.)")
     plt.xlabel("#Evaluation")
-    plt.ylim(30, 100)
-    plt.xlim(0, 150)
+
+    if exp_config.get("ylim"):
+        plt.ylim(*exp_config.get("ylim"))
+
     plt.grid()
+    plt.tight_layout()
     plt.savefig(output_path)
     plt.show()
 
@@ -235,8 +270,7 @@ def generate_figures(config):
     figures_dir = os.path.join(HERE, "figures")
 
     for exp_num, exp_config in config["experiments"].items():
-        exp_title = exp_config["title"]
-        exp_dirname = str(exp_num) + "-" + exp_title.lower().replace(" ", "_")
+        exp_dirname = str(exp_num)
         output_dir = os.path.join(figures_dir, exp_dirname)
 
         pathlib.Path(output_dir).mkdir(parents=False, exist_ok=True)
