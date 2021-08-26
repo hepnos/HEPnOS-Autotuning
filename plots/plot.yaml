@@ -70,18 +70,32 @@ experiments:
         color: "cyan"
         linestyle: "-"
         rep: [0,1,2,3,4]
-  4-6-scaling-up-workflow:
+  4-6-scaling-up-workflow-8:
     title: "Scaling Up Workflow Instances"
     ylim: [25,200]
     data:
-      exp-128-8-60-step3-notl-rep0:
+      exp-128-8-60-step3-notl:
         label: "2, 19, 8"
         color: "orange"
         linestyle: "-"
-        # rep: [0]
-      exp-128-8-60-step3-tl_from_step3-rep0:
+        rep: [0,1,2,3,4]
+      exp-128-8-60-step3-tl_from_step3:
         label: "2, 19, 8, TL"
         color: "cyan"
         linestyle: "-"
-        # rep: [0]
+        rep: [0,1,2,3,4]
+  4-6-scaling-up-workflow-16:
+    title: "Scaling Up Workflow Instances"
+    ylim: [25,200]
+    data:
+      exp-128-16-60-step3-notl:
+        label: "2, 19, 16"
+        color: "orange"
+        linestyle: "-"
+        rep: [0,1,2,3,4]
+      exp-128-8-60-step3-tl_from_step3:
+        label: "2, 19, 16, TL"
+        color: "cyan"
+        linestyle: "-"
+        rep: [0,1,2,3,4]
 
