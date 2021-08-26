@@ -214,7 +214,7 @@ def plot_objective_multi_iter(df, exp_config, output_dir):
 
         if "rep" in exp_config["data"][exp_name]:
             exp_dfs = exp_df
-            for exp_df in exp_dfs:
+            for i, exp_df in enumerate(exp_dfs):
                 exp_df = exp_df.sort_values("elapsed_sec")
                 x, y = list(range(1,
                                   len(exp_df.elapsed_sec.to_list()) +
@@ -222,14 +222,15 @@ def plot_objective_multi_iter(df, exp_config, output_dir):
 
                 y = only_min(y)
 
-                plt.plot(
-                    x,
-                    y,
-                    label=exp_config["data"][exp_name]["label"],
-                    color=exp_config["data"][exp_name]["color"],
-                    linestyle=exp_config["data"][exp_name].get(
-                        "linestyle", "-"),
-                )
+                plt_kwargs = dict(color=exp_config["data"][exp_name]["color"],
+                                  linestyle=exp_config["data"][exp_name].get(
+                                      "linestyle", "-"))
+
+                if i == 0:
+                    plt_kwargs["label"] = label = exp_config["data"][exp_name][
+                        "label"]
+
+                plt.plot(x, y, **plt_kwargs)
         else:
             exp_df = exp_df.sort_values("elapsed_sec")
             x, y = list(range(1,
