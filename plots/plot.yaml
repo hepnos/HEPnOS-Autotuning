@@ -1,5 +1,5 @@
 
-root: /home/regele/projects-grand/theta/hepnos/exp
+root: /projects/radix-io/HEP-Autotuning/exp
 experiments:
   # 0:
   #   title: "No Pep To Pep"
@@ -36,11 +36,12 @@ experiments:
   #       color: "cyan"
   4-3-preliminary-experiments:
     title: "Preliminary Experiments"
+    ylim: [0,100]
     data:
       exp-128-4-60-step1-notl:
-        label: 128-4-60 (Step 1)
-        color: "black"
-        linestyle: "--"
+        label: "1, 11, 4"
+        color: "orange"
+        linestyle: "-"
         rep: [0,1,2,3,4]
   4-4-single-step-to-full-workflow:
     title: "From Single Step to Full Workflow"
