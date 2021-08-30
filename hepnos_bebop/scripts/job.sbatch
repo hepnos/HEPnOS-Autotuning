@@ -1,5 +1,4 @@
 #!/bin/bash
-#!/bin/bash
 #SBATCH -N 4
 #SBATCH --time=30:00
 #SBATCH -p bdwall
