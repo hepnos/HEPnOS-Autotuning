@@ -218,8 +218,12 @@ def __parse_result(exp_dir):
     if os.path.isfile(exp_dir + '/pep-output.txt'):
         pep_time = 99999999
         for line in open(exp_dir + '/pep-output.txt'):
+            if 'Benchmark completed' in line:
+                pep_time = int(line.split()[-2].split('.')[0])
+                break
             if 'TIME:' in line:
                 pep_time = int(line.split()[1])
+                break
     return (dataloader_time, pep_time)
 
 
