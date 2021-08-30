@@ -7,7 +7,7 @@ export SCRIPTDIR
 export EXPDIR
 
 if [[ -z "${SLURM_JOB_ID}" ]]; then
-	sbatch --wait --export=ALL -A $HEPNOS_PROJECT $SCRIPTDIR/job.sbatch || true
+	sbatch --wait --export=ALL $SCRIPTDIR/job.sbatch || true
 else
 	$SCRIPTDIR/job.sbatch
 fi
