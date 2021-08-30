@@ -27,6 +27,38 @@ NUM_NODES_FOR_HEPNOS=$(($NODES_PER_EXP/4))
 NUM_NODES_FOR_LOADER=$(($NODES_PER_EXP - $NUM_NODES_FOR_HEPNOS))
 NUM_NODES_FOR_PEP=$(($NODES_PER_EXP - $NUM_NODES_FOR_HEPNOS))
 
+if [[ -z "${HEPNOS_NODELIST}" ]]; then
+    echo "Using default node list"
+    NODES_FOR_HEPNOS=""
+    NODES_FOR_LOADER=""
+    NODES_FOR_PEP=""
+    NODE_FOR_UTILITY=""
+else
+    NUM_NODES=${#HEPNOS_NODELIST[@]}
+    if [ $NUM_NODES -ne $NODES_PER_EXP ]; then
+        echo "ERROR: node list provided should be of length $NODES_PER_EXP"
+        exit -1
+    fi
+    NODES_FOR_HEPNOS=("${HEPNOS_NODELIST[@]:0:$NUM_NODES_FOR_HEPNOS}")
+    b=$(printf ",%s" "${NODES_FOR_HEPNOS[@]}")
+    b=${b:1}
+    NODES_FOR_HEPNOS="--nodelist $b"
+    NODES_FOR_LOADER=("${HEPNOS_NODELIST[@]:$NUM_NODES_FOR_HEPNOS}")
+    b=$(printf ",%s" "${NODES_FOR_LOADER[@]}")
+    b=${b:1}
+    NODES_FOR_LOADER="--nodelist $b"
+    NODES_FOR_PEP=("${HEPNOS_NODELIST[@]:$NUM_NODES_FOR_HEPNOS}")
+    b=$(printf ",%s" "${NODES_FOR_PEP[@]}")
+    b=${b:1}
+    NODES_FOR_PEP="--nodelist $b"
+    NODE_FOR_UTILITY="--nodelist ${HEPNOS_NODELIST[$NUM_NODES_FOR_HEPNOS]}"
+fi
+
+echo "NODES_FOR_HEPNOS = ${NODES_FOR_HEPNOS}"
+echo "NODE_FOR_UTILITY = ${NODE_FOR_UTILITY}"
+echo "NODES_FOR_LOADER = ${NODES_FOR_LOADER}"
+echo "NODES_FOR_PEP = ${NODES_FOR_PEP}"
+
 echo "Setting up spack and modules"
 source $SCRIPTDIR/../spack/share/spack/setup-env.sh
 
@@ -47,7 +79,7 @@ fi
 NUM_PES_FOR_HEPNOS=$((${HEPNOS_PES_PER_NODE} * ${NUM_NODES_FOR_HEPNOS}))
 echo "Starting up HEPnOS daemon"
 HEPNOS_CORES_PER_PE=$(( 64 / $HEPNOS_PES_PER_NODE ))
-srun --exclusive -n ${NUM_PES_FOR_HEPNOS} -N ${NUM_NODES_FOR_HEPNOS} \
+srun --exclusive -n ${NUM_PES_FOR_HEPNOS} -N ${NUM_NODES_FOR_HEPNOS} ${NODES_FOR_HEPNOS} \
       bedrock ${PROTOCOL} -c ${HEPNOS_CONFIG} -v error &
 HEPNOS_PID=$!
 
@@ -66,7 +98,7 @@ export FI_PSM2_DISCONNECT=1
 
 echo "Requesting databases"
 timeout ${HEPNOS_UTILITY_TIMEOUT} \
-    srun --exclusive -n 1 -N 1 hepnos-list-databases \
+    srun --exclusive -n 1 -N 1 ${NODES_FOR_UTILITY} hepnos-list-databases \
         ${PROTOCOL} -s ${HEPNOS_SSG} > ${DATABASES_CONFIG}
 RET=$?
 if [ "$RET" -eq "124" ]; then
@@ -87,7 +119,7 @@ LOADER_CORES_PER_PE=$(( 64 / $HEPNOS_LOADER_PES_PER_NODE ))
 start_time=`date +%s`
 timeout ${HEPNOS_LOADER_TIMEOUT} \
     srun --exclusive -n ${NUM_PES_FOR_LOADER} -N ${NUM_NODES_FOR_LOADER} \
-             hepnos-dataloader \
+             ${NODES_FOR_LOADER} hepnos-dataloader \
              --timeout ${HEPNOS_LOADER_SOFT_TIMEOUT} \
              -p ${PROTOCOL} \
              -m ${LOADER_MARGO_CONFIG} \
@@ -140,7 +172,7 @@ if [ "$HEPNOS_ENABLE_PEP" -ne "0" ]; then
     start_time=`date +%s`
     timeout ${HEPNOS_PEP_TIMEOUT} \
     srun --exclusive -n ${NUM_PES} -N ${NUM_NODES_FOR_PEP} \
-                hepnos-pep-benchmark \
+              ${NODES_FOR_PEP}  hepnos-pep-benchmark \
              -p ${PROTOCOL} \
              -m ${PEP_MARGO_CONFIG} \
              -c ${DATABASES_CONFIG} \
@@ -175,7 +207,7 @@ fi
 
 echo "Shutting down HEPnOS"
 timeout ${HEPNOS_UTILITY_TIMEOUT} \
-srun --exclusive -n 1 -N 1 hepnos-shutdown $PROTOCOL $DATABASES_CONFIG
+srun --exclusive -n 1 -N 1 ${NODES_FOR_UTILITY} hepnos-shutdown $PROTOCOL $DATABASES_CONFIG
 RET=$?
 if [ "$RET" -eq "124" ]; then
     echo "ERROR: hepnos-shutdown timed out"

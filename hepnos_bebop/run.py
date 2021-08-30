@@ -251,7 +251,9 @@ def run(config, nodes=None):
     pep_use_preloading = config.get("pep_use_preloading", False)
     pep_pes_per_node = config.get("pep_pes_per_node", 16)
 
-    nodes = __make_node_list(nodes)
+#    print('Using nodes '+str(nodes))
+#    nodes = __make_node_list(nodes)
+#    print('Using nodes '+str(nodes))
     print('Setting up experiment\'s directory')
     exp_dir = __setup_directory(config.get("id"))
     print('Creating settings.sh')
@@ -402,4 +404,4 @@ if __name__ == '__main__':
     ns = parser.parse_args()
     if ns.nodes is not None:
         ns.nodes = ns.nodes.split(',')
-    run(vars(ns))
+    run(vars(ns), ns.nodes)
