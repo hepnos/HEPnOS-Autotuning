@@ -33,6 +33,10 @@ if [[ -z "${HEPNOS_NODELIST}" ]]; then
     NODES_FOR_PEP=""
     NODE_FOR_UTILITY=""
 else
+    # We do the conversion bellow because DeepHyper gives us a list in the form
+    # nid01234,nid012345... when we need bdw-1234,bdw-1235...
+    HEPNOS_NODELIST=($(printf '%s\n' "${HEPNOS_NODELIST[@]}" | awk '{print substr($1, 5)}'))
+    HEPNOS_NODELIST=(${HEPNOS_NODELIST[@]/#/bdw-})
     NUM_NODES=${#HEPNOS_NODELIST[@]}
     if [ $NUM_NODES -ne $NODES_PER_EXP ]; then
         echo "ERROR: node list provided should be of length $NODES_PER_EXP"
@@ -77,7 +81,7 @@ fi
 
 NUM_PES_FOR_HEPNOS=$((${HEPNOS_PES_PER_NODE} * ${NUM_NODES_FOR_HEPNOS}))
 echo "Starting up HEPnOS daemon"
-HEPNOS_CORES_PER_PE=$(( 64 / $HEPNOS_PES_PER_NODE ))
+HEPNOS_CORES_PER_PE=$(( 32 / $HEPNOS_PES_PER_NODE ))
 srun --exclusive -n ${NUM_PES_FOR_HEPNOS} -N ${NUM_NODES_FOR_HEPNOS} ${NODES_FOR_HEPNOS} \
       bedrock ${PROTOCOL} -c ${HEPNOS_CONFIG} -v error &
 HEPNOS_PID=$!
@@ -92,8 +96,6 @@ else
   export MARGO_ENABLE_DIAGNOSTICS=0
   export MARGO_ENABLE_PROFILING=0
 fi
-
-export FI_PSM2_DISCONNECT=1
 
 echo "Requesting databases"
 timeout ${HEPNOS_UTILITY_TIMEOUT} \
@@ -114,7 +116,7 @@ done
 echo "Starting dataloader"
 echo `pwd`
 NUM_PES_FOR_LOADER=$(( $NUM_NODES_FOR_LOADER * $HEPNOS_LOADER_PES_PER_NODE ))
-LOADER_CORES_PER_PE=$(( 64 / $HEPNOS_LOADER_PES_PER_NODE ))
+LOADER_CORES_PER_PE=$(( 32 / $HEPNOS_LOADER_PES_PER_NODE ))
 start_time=`date +%s`
 timeout ${HEPNOS_LOADER_TIMEOUT} \
     srun --exclusive -n ${NUM_PES_FOR_LOADER} -N ${NUM_NODES_FOR_LOADER} \
@@ -167,7 +169,7 @@ if [ "$HEPNOS_ENABLE_PEP" -ne "0" ]; then
     fi
 
     echo "Running PEP benchmark"
-    PEP_CORES_PER_PE=$(( 64 / $HEPNOS_PEP_PES_PER_NODE ))
+    PEP_CORES_PER_PE=$(( 32 / $HEPNOS_PEP_PES_PER_NODE ))
     start_time=`date +%s`
     timeout ${HEPNOS_PEP_TIMEOUT} \
     srun --exclusive -n ${NUM_PES} -N ${NUM_NODES_FOR_PEP} \

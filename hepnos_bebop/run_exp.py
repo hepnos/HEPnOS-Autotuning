@@ -1,5 +1,5 @@
 """
-python -m hepnos_bebop.run_exp -w exp/exp-test -q bdwall -t 60 -A radix-io -n 8 --nodes-per-task 4 -as ./SetUpEnv.sh --run hepnos_bebop.run.run --problem hepnos_bebop.problem.Problem --fit-search-space exp/
+python -m hepnos_bebop.run_exp -w exp/exp-test -q bdw -t 60 -A radix-io -n 8 --nodes-per-task 4 -as ./SetUpEnv.sh --run hepnos_bebop.run.run --problem hepnos_bebop.problem.Problem --fit-search-space exp/
 """
 import os
 import argparse
@@ -11,8 +11,23 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 JOB_TEMPLATE = os.path.join(HERE, "job.qsub.tmpl")
 
 
+def fake_cobalt_nodelist():
+    """This function is a hack. DeepHyper understands the COBALT_PARTNAME
+    variable, which contains strings like 1001-1005,1030,1034-1200.
+    On Bebop we have SLURM_JOB_NODELIST, which contains something like
+    bdw-[1001-1005,1030,1034-1200]."""
+    nodelist = os.environ.get("SLURM_JOB_NODELIST", "[]")
+    print("SLURM_JOB_NODELIST="+nodelist)
+    nodelist = nodelist.split('[')[1].split(']')[0]
+    if len(nodelist) != 0:
+        os.environ["COBALT_PARTNAME"] = nodelist
+        print("COBALT_PARTNAME="+nodelist)
+
+
 def run(w, q, A, t, n, step, nodes_per_task, activation_script, run,
         problem, fit_surrogate, fit_search_space, transfer_learning_strategy, transfer_learning_epsilon):
+
+    fake_cobalt_nodelist()
 
     w = w.encode("ascii").decode("ascii")
 
