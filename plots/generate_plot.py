@@ -30,7 +30,7 @@ matplotlib.rcParams.update({
 })
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-FILE_EXTENSION = "pdf"
+FILE_EXTENSION = "png"
 
 
 def yaml_load(path):
@@ -142,6 +142,7 @@ def plot_objective_multi(df, exp_config, output_dir):
             times = np.unique(
                 np.concatenate([df.elapsed_sec.to_numpy() for df in exp_dfs],
                                axis=0))
+            times = np.concatenate([[0], times, [3600]])
 
             series = []
             for exp_df in exp_dfs:
@@ -152,12 +153,14 @@ def plot_objective_multi(df, exp_config, output_dir):
                 y = only_min(y)
 
                 s = pd.Series(data=y, index=x)
-                s = s.reindex(times).fillna(method="ffill")
+                s = s.reindex(times).fillna(method="ffill").fillna(method="bfill")
                 series.append(s)
 
             array = np.array([s.to_numpy() for s in series])
             loc = np.nanmean(array, axis=0)
-            scale = np.nanstd(array, axis=0)
+            # scale = np.nanstd(array, axis=0)
+            loc_max = np.nanmax(array, axis=0)
+            loc_min = np.nanmin(array, axis=0)
 
             plt.plot(
                 times,
@@ -167,8 +170,8 @@ def plot_objective_multi(df, exp_config, output_dir):
                 linestyle=exp_config["data"][exp_name].get("linestyle", "-"),
             )
             plt.fill_between(times,
-                             loc - 1 * scale,
-                             loc + 1 * scale,
+                             loc_min,
+                             loc_max,
                              facecolor=exp_config["data"][exp_name]["color"],
                              alpha=0.3)
         else:
