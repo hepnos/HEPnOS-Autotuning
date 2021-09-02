@@ -8,6 +8,7 @@ module load gcc/8.2.0-g7hppkz
 spack env activate hepnos
 
 # Activate conda env
+source ~/miniconda3/etc/profile.d/conda.sh
 conda activate $HOME/exp-hep/dhenv/
 
 export PYTHONPATH="$HOME/HEPnOS-Autotuning/:$PYTHONPATH"
