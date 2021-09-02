@@ -5,8 +5,8 @@ spack:
   - hepnos@0.5.0%gcc@8.2.0
   - hepnos-dataloader@0.4%gcc@8.2.0
   - hepnos-pep-benchmark@0.4%gcc@8.2.0
-  - miniconda3
   - postgresql%gcc@8.2.0
+#  - miniconda3
   concretization: together
   compilers:
   - compiler:
