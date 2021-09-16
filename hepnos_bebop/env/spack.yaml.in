@@ -1,21 +1,25 @@
 spack:
   specs:
   - cmake
-  - hepnos@master%gcc@8.2.0
-  - hepnos-dataloader@master%gcc@8.2.0
+  - mochi-sdskv ~bdb ~leveldb %gcc@8.2.0
+  - hepnos@0.5.0%gcc@8.2.0
+  - hepnos-dataloader@0.4%gcc@8.2.0
+  - hepnos-pep-benchmark@0.4%gcc@8.2.0
+  - postgresql%gcc@8.2.0
+#  - miniconda3
   concretization: together
   compilers:
   - compiler:
       paths:
-        cc: /blues/gpfs/software/centos7/spack/opt/spack/linux-centos7-x86_64/gcc-8.1.0/gcc-8.2.0-g7hppkz/bin/gcc
-        cxx: /blues/gpfs/software/centos7/spack/opt/spack/linux-centos7-x86_64/gcc-8.1.0/gcc-8.2.0-g7hppkz/bin/g++
-        f77: /blues/gpfs/software/centos7/spack/opt/spack/linux-centos7-x86_64/gcc-8.1.0/gcc-8.2.0-g7hppkz/bin/gfortran
-        fc: /blues/gpfs/software/centos7/spack/opt/spack/linux-centos7-x86_64/gcc-8.1.0/gcc-8.2.0-g7hppkz/bin/gfortran
+        cc: gcc
+        cxx: g++
+        f77: gfortran
+        fc: gfortran
       operating_system: centos7
       target: x86_64
       modules:
-      - gcc/8.2.0-g7hppkz
-      - intel-mpi/2018.4.274-ozfo327
+      - gcc/8.2.0-xhxgy33
+      - intel-mpi/2019.9.304-rxpzd6p
       environment: {}
       extra_rpaths: []
       flags: {}
@@ -79,9 +83,9 @@ spack:
       compiler: []
       providers: {}
       externals:
-      - spec: cmake@3.14.2 arch=linux-centos7-x86_64
+      - spec: cmake@3.20.3 arch=linux-centos7-x86_64
         modules:
-        - cmake/3.14.2-gvwazz3
+        - cmake/3.20.3-vedypwm
     coreutils:
       buildable: false
       version: []
@@ -134,9 +138,9 @@ spack:
       compiler: []
       providers: {}
       externals:
-      - spec: hdf5@1.10.5 arch=linux-centos7-x86_64
+      - spec: hdf5@1.12.0 arch=linux-centos7-x86_64
         modules:
-        - hdf5/1.10.5-vozfsah
+        - hdf5/1.12.0
     intel-mpi:
       buildable: false
       version: []
@@ -144,9 +148,9 @@ spack:
       compiler: []
       providers: {}
       externals:
-      - spec: intel-mpi@2018.4.274 arch=linux-centos7-x86_64
+      - spec: intel-mpi@2019.9.304 arch=linux-centos7-x86_64
         modules:
-        - intel-mpi/2018.4.274-ozfo327
+        - intel-mpi/2019.9.304-rxpzd6p
     libfabric:
       variants: fabrics=psm2,sockets
       version: []
@@ -186,9 +190,9 @@ spack:
       compiler: []
       providers: {}
       externals:
-      - spec: numactl@2.0.12 arch=linux-centos7-x86_64
+      - spec: numactl@2.0.14 arch=linux-centos7-x86_64
         modules:
-        - numactl/2.0.12-355ef36
+        - numactl/2.0.14-gxsq6se
     openssl:
       buildable: false
       version: []
@@ -216,6 +220,16 @@ spack:
       externals:
       - spec: pkg-config@0.27.1 arch=linux-centos7-x86_64
         prefix: /usr
+    python:
+      buildable: false
+      version: []
+      target: []
+      compiler: []
+      providers: {}
+      externals:
+      - spec: python@3.8.10 arch=linux-centos7-x86_64
+        modules:
+        - python/3.8.10-estdwmt
     tar:
       buildable: false
       version: []

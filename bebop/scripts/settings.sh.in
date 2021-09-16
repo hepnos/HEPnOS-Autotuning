@@ -1,4 +1,0 @@
-#!/bin/sh
-
-HEPNOS_PROJECT=STARTUP-MDORIER # change for your project allocation
-HEPNOS_DATASET=../data/50files.txt # list of HDF5 files to ingest

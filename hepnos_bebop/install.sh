@@ -16,10 +16,10 @@ module load gcc/8.2.0-g7hppkz
 #spack compiler find
 
 log "Cloning mochi namespace..."
-git clone https://xgitlab.cels.anl.gov/sds/sds-repo.git
+git clone https://github.com/mochi-hpc/mochi-spack-packages.git
 
 log "Creating hepnos environment..."
-MOCHI_REPO=$WD/sds-repo
+MOCHI_REPO=$WD/mochi-spack-packages
 cat env/spack.yaml.in \
     | sed -e "s|\${MOCHI_REPO}|${MOCHI_REPO}|g" \
     > env/spack.yaml
