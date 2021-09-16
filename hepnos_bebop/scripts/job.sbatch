@@ -33,10 +33,6 @@ if [[ -z "${HEPNOS_NODELIST}" ]]; then
     NODES_FOR_PEP=""
     NODE_FOR_UTILITY=""
 else
-    # We do the conversion bellow because DeepHyper gives us a list in the form
-    # nid01234,nid012345... when we need bdw-1234,bdw-1235...
-    HEPNOS_NODELIST=($(printf '%s\n' "${HEPNOS_NODELIST[@]}" | awk '{print substr($1, 5)}'))
-    HEPNOS_NODELIST=(${HEPNOS_NODELIST[@]/#/bdw-})
     NUM_NODES=${#HEPNOS_NODELIST[@]}
     if [ $NUM_NODES -ne $NODES_PER_EXP ]; then
         echo "ERROR: node list provided should be of length $NODES_PER_EXP"

@@ -9,16 +9,9 @@ function log {
 
 module load gcc/8.2.0-g7hppkz
 
-# Setting up Spack
-log "Setting up Spack"
-. $HERE/spack/share/spack/setup-env.sh
-
-# Activating HEPnOS environment
-log "Activating HEPnOS environment"
-spack env activate hepnos
-
 # Create Conda Env
 log "Loading modules and creating conda environment..."
+source ~/miniconda3/etc/profile.d/conda.sh
 conda create -p dhenv python=3.8 -y
 conda activate dhenv/
 conda install gxx_linux-64 gcc_linux-64 -y
@@ -40,9 +33,11 @@ cd ..
 
 # Install DeepHyper
 log "Cloning DeepHyper repo and installing..."
-git clone https://github.com/pbalapra/deephyper.git
+#git clone https://github.com/pbalapra/deephyper.git
+git clone https://github.com/mdorier/deephyper.git
 cd deephyper/
-git checkout develop
+#git checkout develop
+git checkout dev-add-slurm-nodes
 pip install -e.
 cd ..
 

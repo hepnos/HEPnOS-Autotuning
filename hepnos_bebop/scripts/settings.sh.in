@@ -15,7 +15,7 @@ HEPNOS_UTILITY_TIMEOUT=60
 
 if [ -z "${HEPNOS_LOADER_DATAFILE}" ]; then
 	# list of HDF5 files to ingest
-	HEPNOS_LOADER_DATAFILE=data/50files.txt
+	HEPNOS_LOADER_DATAFILE=$HOME/HEPnOS-Autotuning/hepnos_bebop/data/50files.txt
 fi
 HEPNOS_LOADER_VERBOSE=critical # verbose level
 HEPNOS_LOADER_PRODUCTS=(

@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH -p bdwall
+#SBATCH -p bdw
 #SBATCH -N {{ n }}
 #SBATCH -A {{ A }}
 #SBATCH -t {{ t }}
@@ -12,7 +12,7 @@ source {{ activation_script }}
 
 cd {{ exp_dir }}
 
-for port in $(seq 6379 9000); do
+for port in $(seq 6380 9000); do
     RAY_PORT=$port;
     ray start --head --num-cpus {{ num_cpus_driver }} --port $RAY_PORT;
     if [ $? -eq 0 ]; then
@@ -20,6 +20,7 @@ for port in $(seq 6379 9000); do
     fi
 done
 
+echo "Ray port is $RAY_PORT"
 
 deephyper hps ambs --ray-address "localhost:$RAY_PORT" \
     --num-cpus-per-task {{ num_cpus_per_task }} \
@@ -30,5 +31,8 @@ deephyper hps ambs --ray-address "localhost:$RAY_PORT" \
     --transfer-learning-epsilon {{ transfer_learning_epsilon }} \{% else %}
     --checkpoint {{ fit_surrogate }} \{%  endif %}{% endif %}
     --max-evals 500
-
-kill $(ps aux | grep $USER | python | grep ray | grep $RAY_PORT | awk '{print $2}')
+RET=$?
+echo "DeepHyper returned $RET"
+rm -rf exp-* core*
+echo "DeepHyper done, killing Ray worker"
+kill $(ps aux | grep $USER | grep python | grep ray | grep $RAY_PORT | awk '{print $2}')
