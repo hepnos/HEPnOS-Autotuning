@@ -73,7 +73,7 @@ experiments:
         rep: [0,1,2,3,4]
   4-6-scaling-up-workflow-8:
     title: "Scaling Up Workflow Instances"
-    ylim: [25,200]
+    ylim: [25,80]
     data:
       exp-128-8-60-step3-notl:
         label: "2, 19, 8"
@@ -99,4 +99,3 @@ experiments:
         color: "cyan"
         linestyle: "-"
         rep: [0,1,2,3,4]
-

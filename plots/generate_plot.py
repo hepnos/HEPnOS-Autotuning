@@ -30,7 +30,7 @@ matplotlib.rcParams.update({
 })
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-FILE_EXTENSION = "png"
+FILE_EXTENSION = "pdf"
 
 
 def yaml_load(path):
