@@ -1,18 +1,31 @@
 spack:
   specs:
-  - cmake
-  - mochi-sdskv ~bdb ~leveldb %gcc@9.3.0
-  - hepnos@0.5.0%gcc@9.3.0
-  - hepnos-dataloader@0.4%gcc@9.3.0
-  - hepnos-pep-benchmark@0.4%gcc@9.3.0
+  - hepnos@main
+  - hepnos-dataloader@main
+  - hepnos-pep-benchmark@main
+  - miniconda3
   concretization: together
-  repos:
-  - ${MOCHI_REPO}
-  packages:
+  compilers::
+  - compiler:
+      spec: gcc@9.3.0
+      paths:
+        cc: cc
+        cxx: CC
+        f77: ftn
+        fc: ftn
+      flags: {}
+      operating_system: cnl7
+      target: any
+      modules:
+      - PrgEnv-gnu
+      - gcc/9.3.0
+      environment: {}
+      extra_rpaths: []
+  packages::
     all:
       providers:
         mpi:
-        - mpich
+        - cray-mpich
       compiler:
       - gcc@9.3.0
       target:
@@ -81,9 +94,9 @@ spack:
       compiler: []
       providers: {}
       externals:
-      - spec: cmake@3.14.5
+      - spec: cmake@3.18.0
         modules:
-        - cmake/3.14.5
+        - cmake/3.18.0
     coreutils:
       buildable: false
       version: []
@@ -93,6 +106,16 @@ spack:
       externals:
       - spec: coreutils@8.25
         prefix: /usr
+    cray-mpich:
+      buildable: false
+      version: []
+      target: []
+      compiler: []
+      providers: {}
+      externals:
+      - spec: cray-mpich@7.7.14 arch=cray-cnl7-mic_knl
+        modules:
+        - cray-mpich/7.7.14
     findutils:
       buildable: false
       version: []
@@ -174,31 +197,22 @@ spack:
       - spec: m4@1.4.18
         prefix: /usr
     mercury:
-      variants: +udreg ~boostsys
+      variants: +udreg ~boostsys ~checksum
       version: []
       target: []
       compiler: []
       buildable: true
       providers: {}
-    mpich:
-      buildable: false
-      version: []
-      target: []
-      compiler: []
-      providers: {}
-      externals:
-      - spec: mpich@7.7.14 arch=cray-cnl7-mic_knl
-        modules:
-        - cray-mpich/7.7.14
-    ncurses:
-      buildable: false
-      version: []
-      target: []
-      compiler: []
-      providers: {}
-      externals:
-      - spec: ncurses@6.1
-        prefix: /usr
+#    miniconda3:
+#      buildable: false
+#      version: []
+#      target: []
+#      compiler: []
+#      providers: {}
+#      externals:
+#      - spec: miniconda3@4.8.3
+#        modules:
+#        - miniconda-3
     openssl:
       buildable: false
       version: []
@@ -226,6 +240,16 @@ spack:
       externals:
       - spec: pkg-config@0.29.2
         prefix: /usr
+    rdma-credentials:
+      buildable: false
+      version: []
+      target: []
+      compiler: []
+      providers: {}
+      externals:
+      - spec: rdma-credentials@1.2.25 arch=cray-cnl7-mic_knl
+        modules:
+        - rdma-credentials/1.2.25-7.0.2.1_4.3__g67c8aa4.ari
     tar:
       buildable: false
       version: []
