@@ -16,6 +16,13 @@ $ ../install.sh <platform>
 Replace `<platform>` with the appropriate platform name, for
 instance `theta`, `bebop`, or `linux`.
 
+Note: the `linux` setup is for building in a standard Linux cluster
+with no specific job scheduler. The installation script will make
+no assumption about the presence of existing, system-provided libraries,
+and will install absolutely all the dependencies needed from scratch
+(hence the build time can be pretty long). The `hepnos/autotuning/linux/hosts.txt`
+file can be edited to provide a list of hosts usable by _mpirun_.
+
 ## Reproducibility
 
 The `install.sh` script will install the [spack](https://spack.readthedocs.io/)
