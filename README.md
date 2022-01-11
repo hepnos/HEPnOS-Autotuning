@@ -7,7 +7,7 @@ To install the necessary dependencies on one of the supported
 platforms, use the following procedure after having cloned
 this repository.
 
-```
+```bash
 $ mkdir build
 $ cd build
 $ ../install.sh <platform>
@@ -23,7 +23,7 @@ and will install absolutely all the dependencies needed from scratch
 (hence the build time can be pretty long). The `hepnos/autotuning/linux/hosts.txt`
 file can be edited to provide a list of hosts usable by _mpirun_.
 
-## Reproducibility
+### Note on reproducibility
 
 The `install.sh` script will install the [spack](https://spack.readthedocs.io/)
 package manager and use it to manage all non-python dependencies. It will
@@ -58,3 +58,16 @@ can reproduce experiments, please do the following:
 - Make sure the references in `settings.sh` point to _commits_, NOT branches or tags;
 - Make sure dependencies in `spack-requirements.txt` point to numbered versions
   (not _main_, _develop_, or other branch-based version).
+
+## Running the experiments
+
+From this point, it is assumed that the working directory is the `build` directory
+created in the above installation procedure.
+
+The `setup-env.sh` file is a script that will be used to setup our environment.
+Before trying to run any experiment, please run:
+
+```bash
+$ source ../setup-env.sh
+```
+
