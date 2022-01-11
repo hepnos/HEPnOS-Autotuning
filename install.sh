@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 set -e
 
@@ -44,13 +44,18 @@ function install_with_pip {
     popd
 }
 
-log "Sourcing global settins..."
-source $HERE/settings.sh
+log "Sourcing global settings..."
+cp $HERE/settings.sh global-settings.sh
+source global-settings.sh
 
 log "Sourcing $PLATFORM-specific settings..."
 if test -f "$PLATFORM_PATH/settings.sh"; then
-    source $PLATFORM_PATH/settings.sh
+    cp $PLATFORM_PATH/settings.sh platform-settings.sh
+else
+    touch platform-settings.sh
 fi
+echo "HEPNOS_EXP_PLATFORM=$PLATFORM" >> platform-settings.sh
+source platform-settings.sh
 
 log "Creating sw directory..."
 mkdir sw
