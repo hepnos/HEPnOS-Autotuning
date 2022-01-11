@@ -1,0 +1,5 @@
+spack:
+  concretization: together
+  view: true
+  compilers:: []
+  packages:: {}
