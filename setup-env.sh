@@ -24,3 +24,6 @@ log "Activating dhenv environment in conda..."
 CONDA_PREFIX=`spack location -i miniconda3`
 source $CONDA_PREFIX/etc/profile.d/conda.sh
 conda activate $WD/sw/dhenv/
+
+log "Adding $HEPNOS_EXP_SOURCE_PATH to PYTHONPATH"
+export PYTHONPATH=$PYTHONPATH:$HEPNOS_EXP_SOURCE_PATH

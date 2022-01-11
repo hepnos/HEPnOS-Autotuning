@@ -47,6 +47,7 @@ function install_with_pip {
 log "Sourcing global settings..."
 cp $HERE/settings.sh global-settings.sh
 source global-settings.sh
+echo "HEPNOS_EXP_SOURCE_PATH=$HERE" >> global-settings.sh
 
 log "Sourcing $PLATFORM-specific settings..."
 if test -f "$PLATFORM_PATH/settings.sh"; then
