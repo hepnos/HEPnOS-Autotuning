@@ -138,7 +138,6 @@ cython_debug/
 
 # new
 spack/
-spack.yaml
 sds-repo
 *.log
 *.cobaltlog
