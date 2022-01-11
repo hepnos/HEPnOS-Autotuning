@@ -2,4 +2,14 @@ spack:
   concretization: together
   view: true
   compilers:: []
-  packages:: {}
+  packages::
+    all:
+      providers:
+        mpi: [mpich]
+        uuid: [util-linux-uuid]
+    mercury:
+      variants: +udreg ~boostsys ~checksum
+    libfabric:
+      variants: fabrics=tcp,rxm
+    boost:
+      variants: ~atomic~chrono~clanglibcpp~container~context~coroutine~date_time~debug~exception~fiber~filesystem~graph~icu~iostreams~locale~log~math~mpi~multithreaded~numpy~pic~program_options~python~random~regex+serialization+shared+signals+singlethreaded~system~taggedlayout~test~thread~timer~versionedlayout~wave
