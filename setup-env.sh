@@ -11,6 +11,7 @@ source $WD/global-settings.sh
 
 log "Sourcing platform-specific settings..."
 source $WD/platform-settings.sh
+export HEPNOS_EXP_PLATFORM
 
 log "Found platform to be $HEPNOS_EXP_PLATFORM"
 
