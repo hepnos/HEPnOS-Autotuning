@@ -105,9 +105,11 @@ if __name__ == "__main__":
         help='Number of nodes to use per task.')
     parser.add_argument('-as', '--activation-script', required=True, type=str,
         help="Path to the script activation the conda environment.")
-    parser.add_argument('--run', required=True, type=str,
+    parser.add_argument('--run', required=False, type=str,
+        default='hepnos.autotuning.run',
         help="Python function to run in each task (fully qualified).")
-    parser.add_argument('--problem', required=True, type=str,
+    parser.add_argument('--problem', required=False, type=str,
+        default='hepnos.autotuning.problem',
         help="Problem/parameter-space description (fully qualified).")
     parser.add_argument('--fit-surrogate', required=False, type=str, default="",
         help="""Fit the surrogate model of the search from a checkpointed Dataframe.""")
