@@ -71,3 +71,35 @@ Before trying to run any experiment, please run:
 $ source ../setup-env.sh
 ```
 
+You are now ready to setup an experiment, which you can do with the following command.
+
+```bash
+$ python -m hepnos.autotuning.setup \
+    --activation-script ../setup-env.sh \
+    -w <experiment-folder> \
+    -q <job-queue> \
+    -A <allocation-name> \
+    -t <job-duration> \
+    -n <number-of-nodes> \
+    --step <hepnos-exp-step> \
+    --nodes-per-task <nodes-per-task>
+```
+
+This will create a folder and generate a script in it that can be run with the
+platform's job managed, for instance on Theta:
+
+```bash
+$ qsub exp/job.sh
+```
+
+On Bebop:
+
+```bash
+$ sbatch exp/job.sh
+```
+
+Or on a Linux workstation:
+
+```bash
+$ ./exp/job.sh
+```

@@ -91,11 +91,11 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='HEPnOS experiment')
     parser.add_argument('-w', required=True, type=str,
         help="Directory to create for the experiment.")
-    parser.add_argument('-q', required=True, type=str,
+    parser.add_argument('-q', required=False, default='', type=str,
         help="Queue name.")
-    parser.add_argument('-A', required=True, type=str,
+    parser.add_argument('-A', required=False, default='', type=str,
         help="Project/allocation name.")
-    parser.add_argument('-t', required=True, type=str,
+    parser.add_argument('-t', required=False, default='1:00:00', type=str,
         help="Maximum duration of the experiment.")
     parser.add_argument('-n', required=True, type=int,
         help="Number of nodes for the total allocation.")
