@@ -12,11 +12,17 @@ from .linux import jobs
 HERE = os.path.dirname(os.path.abspath(__file__))
 
 
-def submit(w, q, A, t, n, step, nodes_per_task,
-           activation_script, run, problem,
-           fit_surrogate, fit_search_space,
-           transfer_learning_strategy,
-           transfer_learning_epsilon):
+def setup(w, q, A, t, n, step, nodes_per_task,
+          activation_script, run, problem,
+          fit_surrogate, fit_search_space,
+          transfer_learning_strategy,
+          transfer_learning_epsilon):
+    """
+    This function creates a folder for a new expriment and
+    generates a job script that can be used to run the
+    parameter-space exploration experiment on a the target
+    platform.
+    """
 
     w = w.encode("ascii").decode("ascii")
     num_dh_workers = n // nodes_per_task # N_T
@@ -123,4 +129,4 @@ if __name__ == "__main__":
         type=float, default=1.0,
         help="Transfer learning epsilon.")
     args = parser.parse_args()
-    submit(**vars(args))
+    setup(**vars(args))
