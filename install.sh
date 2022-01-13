@@ -18,59 +18,59 @@ then
     exit -1
 fi
 
-PLATFORM_PATH=$HERE/hepnos/autotuning/$PLATFORM
+# Copying the util directory into the build directory
+# since these scripts will be used at run time.
+cp -r $HERE/util $WD
 
-function log {
-    printf "\u2550\u2550> $1\n"
-}
+source $WD/util/logging.sh
+source $WD/util/git.sh
+source $WD/util/yaml.sh
 
-function download_from_git {
-    NAME=$1
-    URL=$2
-    REF=$3
-    log "Cloning $NAME repo ($URL)..."
-    git clone $URL
-    log "Checking out $REF..."
-    pushd $NAME
-    git checkout $REF
-    popd
-}
-
-function install_with_pip {
-    NAME=$1
-    pushd $NAME
-    log "Installing $NAME with pip..."
-    pip install -e.
-    popd
-}
-
-log "Sourcing global settings..."
-cp $HERE/settings.sh global-settings.sh
-source global-settings.sh
-echo "HEPNOS_EXP_SOURCE_PATH=$HERE" >> global-settings.sh
-
-log "Sourcing $PLATFORM-specific settings..."
-if test -f "$PLATFORM_PATH/settings.sh"; then
-    cp $PLATFORM_PATH/settings.sh platform-settings.sh
+if [ -f "$WD/sources.yaml.lock" ]; then
+    log "Parsing sources settings from $WD/sources.yaml.lock..."
+    eval $(parse_yaml $WD/sources.yaml.lock "SOURCES_")
 else
-    touch platform-settings.sh
+    log "Parsing sources settings from $HERE/sources.yaml..."
+    eval $(parse_yaml $HERE/sources.yaml "SOURCES_")
 fi
-echo "HEPNOS_EXP_PLATFORM=$PLATFORM" >> platform-settings.sh
-source platform-settings.sh
+
+PLATFORM_SETTINGS=$HERE/hepnos/autotuning/$PLATFORM/settings.sh
+PLATFORM_SPACKENV=$HERE/hepnos/autotuning/$PLATFORM/spack.yaml
+
+log "Sourcing $PLATFORM-specific install settings..."
+if [ -f "$PLATFORM_SETTINGS" ]; then
+    source $PLATFORM_SETTINGS
+fi
 
 log "Creating sw directory..."
 mkdir sw
 pushd sw
 
-download_from_git spack $SPACK_GIT $SPACK_REF
+download_from_git spack $SOURCES_spack_git $SOURCES_spack_ref
 
 log "Setting up spack..."
 . ./spack/share/spack/setup-env.sh
 
-download_from_git mochi-spack-packages $MOCHI_REPO_GIT $MOCHI_REPO_REF
+download_from_git mochi-spack-packages $SOURCES_mochi_git $SOURCES_mochi_ref
 
-log "Creating hepnos environment using $PLATFORM_PATH/spack.yaml..."
-spack env create hepnos $PLATFORM_PATH/spack.yaml
+if [ ! -f "$WD/sources.yaml.lock" ]; then
+    log "Generating sources.yaml.lock for reproducibility..."
+    pushd spack
+    spack_commit=$(git rev-parse HEAD)
+    popd
+    pushd mochi-spack-packages
+    mochi_commit=$(git rev-parse HEAD)
+    popd
+    echo "spack:" >> $WD/sources.yaml.lock
+    echo "  git: $SOURCES_spack_git" >> $WD/sources.yaml.lock
+    echo "  ref: $spack_commit" >> $WD/sources.yaml.lock
+    echo "mochi:" >> $WD/sources.yaml.lock
+    echo "  git: $SOURCES_mochi_git" >> $WD/sources.yaml.lock
+    echo "  ref: $mochi_commit" >> $WD/sources.yaml.lock
+fi
+
+log "Creating hepnos environment using $PLATFORM_SPACKENV..."
+spack env create hepnos $PLATFORM_SPACKENV
 
 log "Activating hepnos environment..."
 spack env activate hepnos
@@ -101,14 +101,40 @@ source $CONDA_PREFIX/etc/profile.d/conda.sh
 conda create -p $WD/sw/dhenv python=3.9 gxx_linux-64 gcc_linux-64 pip -y
 conda activate $WD/sw/dhenv/
 
-if test -f "$HERE/pip-requirements.$PLATFORM.lock"; then
-    log "Creating conda environment using pip-requirements.$PLATFORM.lock..."
-    pip install -r $HERE/pip-requirements.$PLATFORM.lock
+if test -f "$WD/pip-requirements.txt.lock"; then
+    log "Creating conda environment using pip-requirements.txt.lock..."
+    pip install -r $WD/pip-requirements.txt.lock
 else
     log "Creating conda environment using pip-requirements.txt..."
     pip install -r $HERE/pip-requirements.txt
-    log "Generating pip-requirements.$PLATFORM.lock for reproducibility..."
-    pip freeze > $HERE/pip-requirements.$PLATFORM.lock
+    log "Generating pip-requirements.lock for reproducibility..."
+    pip freeze > $WD/pip-requirements.txt.lock
 fi
 
 popd # sw
+
+##############################################################
+# setup-env.sh
+##############################################################
+cat > $WD/setup-env.sh <<- EndOfSetup
+#!/usr/bin/env bash
+
+source $WD/util/logging.sh
+source $WD/util/git.sh
+source $WD/util/yaml.sh
+
+log "Setting up spack..."
+. $WD/sw/spack/share/spack/setup-env.sh
+
+log "Activating hepnos environment in spack..."
+spack env activate hepnos
+
+log "Activating dhenv environment in conda..."
+source $CONDA_PREFIX/etc/profile.d/conda.sh
+conda activate $WD/sw/dhenv/
+
+export PYTHONPATH=\$PYTHONPATH:$HERE
+export HEPNOS_EXP_PLATFORM=$PLATFORM
+
+EndOfSetup
+##############################################################

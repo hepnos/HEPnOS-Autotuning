@@ -5,8 +5,6 @@ export DH_NODES_PER_TASK={{ nodes_per_task }}
 
 source {{ activation_script }}
 
-cd {{ exp_dir }}
-
 for port in $(seq 6380 9000); do
     RAY_PORT=$port;
     ray start --head --num-cpus {{ num_cpus_driver }} --port $RAY_PORT;

@@ -32,7 +32,7 @@ and use it to manage all python dependencies.
 
 The script relies on a set of files providing global and platform-specific
 configurations.
-- `settings.sg` provides the URL and references (commit, tag, or branch)
+- `sources.yaml` provides the URL and references (commit, tag, or branch)
   to use for downloading _spack_ and _mochi-spack-packages_, the repository
   that provides Mochi-specific packages.
 - `pip-requirements.txt` provides the list of requirements for `pip` to
@@ -46,18 +46,20 @@ configurations.
   environment variables.
 
 By default, `install.sh` will use the above files to install the necessary
-dependencies. In the process, it will create a `pip-requirements.<platform>.lock`
-file  describing the exact version of each python package installed by pip.
-If such a file is present, `install.sh` will use it in place of `pip-requirements.txt`.
+dependencies. In the process, it will create a a `sources.yaml.lock` file
+specifying the exact commit used for spack and mochi, and a `pip-requirements.txt.lock`
+file describing the exact version of each python package installed by pip.
+If such a files are present in the build directory when calling `install.sh`,
+it will use them in place of `sources.yaml` and `pip-requirements.txt`.
 
 ### Freezing the repository
 
 Once it's time to provide reviewers with an archive from which they
 can reproduce experiments, please do the following:
-- Make sure the `pip-requirements.<platform>.lock` files are provided;
-- Make sure the references in `settings.sh` point to _commits_, NOT branches or tags;
-- Make sure dependencies in `spack-requirements.txt` point to numbered versions
-  (not _main_, _develop_, or other branch-based version).
+- Erase everything from the build directory except for
+  `pip-requirements.txt.lock` and `sources.yaml.lock`
+- Make sure dependencies in `spack-requirements.txt` point to
+  numbered versions (not _main_, _develop_, or other branch-based version).
 
 ## Running the experiments
 

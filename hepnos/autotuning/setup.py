@@ -63,7 +63,7 @@ def setup(w, q, A, t, n, step, nodes_per_task,
     pathlib.Path(exp_dir).mkdir(parents=True, exist_ok=False)
 
     # find the job template
-    job_template = HERE+'/job.tmpl'
+    job_template = HERE+'/job.sh.tmpl'
     job_file = 'job.sh'
 
     # load template
