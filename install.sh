@@ -96,8 +96,8 @@ log "Installing spack environment..."
 spack install
 
 log "Creating a miniconda environment..."
-CONDA_PREFIX=`spack location -i miniconda3`
-source $CONDA_PREFIX/etc/profile.d/conda.sh
+CONDA_LOCATION=`spack location -i miniconda3`
+source $CONDA_LOCATION/etc/profile.d/conda.sh
 conda create -p $WD/sw/dhenv python=3.9 gxx_linux-64 gcc_linux-64 pip -y
 conda activate $WD/sw/dhenv/
 
@@ -130,7 +130,7 @@ log "Activating hepnos environment in spack..."
 spack env activate hepnos
 
 log "Activating dhenv environment in conda..."
-source $CONDA_PREFIX/etc/profile.d/conda.sh
+source $CONDA_LOCATION/etc/profile.d/conda.sh
 conda activate $WD/sw/dhenv/
 
 export PYTHONPATH=\$PYTHONPATH:$HERE
