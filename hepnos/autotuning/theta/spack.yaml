@@ -21,6 +21,8 @@ spack:
       providers:
         mpi:
         - cray-mpich
+        uuid:
+        - util-linux-uuid
       compiler:
       - gcc@9.3.0
       target:

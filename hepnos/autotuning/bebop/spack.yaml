@@ -20,6 +20,7 @@ spack:
     all:
       providers:
         mpi: [ intel-mpi ]
+        uuid: [ util-linux-uuid ]
       compiler: [ gcc@8.2.0 ]
     autoconf:
       buildable: false
