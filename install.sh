@@ -135,6 +135,10 @@ conda activate $WD/sw/dhenv/
 
 export PYTHONPATH=\$PYTHONPATH:$HERE
 export HEPNOS_EXP_PLATFORM=$PLATFORM
+export HEPNOS_BUILD_PREFIX=$WD
+
+log "Sourcing $PLATFORM-specific settings..."
+source $HERE/hepnos/autotuning/$PLATFORM/settings.sh
 
 EndOfSetup
 ##############################################################
