@@ -138,12 +138,9 @@ cython_debug/
 
 # new
 spack/
-sds-repo
 *.log
 *.cobaltlog
 *.error
 *.output
-*.json
-setting.sh
 exp*/
 figures*/
