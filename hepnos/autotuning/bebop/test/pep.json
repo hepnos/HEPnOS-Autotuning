@@ -1,0 +1,7 @@
+{
+    "mercury" : {
+        "na_no_block" : false
+    },
+    "use_progress_thread" : false,
+    "rpc_thread_count" : 0
+}

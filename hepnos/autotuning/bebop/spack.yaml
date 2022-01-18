@@ -10,12 +10,12 @@ spack:
       operating_system: centos7
       target: x86_64
       modules:
-      - gcc/8.2.0-xhxgy33
-      - intel-mpi/2019.9.304-rxpzd6p
+      - gcc/10.2.0-z53hda3
+      - intel-mpi/2019.8.254-hviu7j6
       environment: {}
       extra_rpaths: []
       flags: {}
-      spec: gcc@8.2.0
+      spec: gcc@10.2.0
   packages::
     all:
       providers:
@@ -139,9 +139,9 @@ spack:
       compiler: []
       providers: {}
       externals:
-      - spec: intel-mpi@2019.9.304 arch=linux-centos7-x86_64
+      - spec: intel-mpi@2019.8.254 arch=linux-centos7-x86_64
         modules:
-        - intel-mpi/2019.9.304-rxpzd6p
+        - intel-mpi/2019.8.254-hviu7j6
     libfabric:
       variants: fabrics=psm2,sockets
       version: []
