@@ -1,8 +1,8 @@
 #!/bin/bash
-#SBATCH -N 4
-#SBATCH --time=00:30:00
-#SBATCH -p bdwall
-#SBATCH -A radix-io
+#H -n 4
+#H --time 00:30:00
+#H -p bdwall
+#H -A radix-io
 
 #set -e
 
@@ -64,9 +64,8 @@ fi
 NUM_PES_FOR_HEPNOS=$((${HEPNOS_PES_PER_NODE} * ${NUM_NODES_FOR_HEPNOS}))
 log "Starting up HEPnOS daemon"
 HEPNOS_CORES_PER_PE=$(( 32 / $HEPNOS_PES_PER_NODE ))
-srun --exclusive -n ${NUM_PES_FOR_HEPNOS} -N ${NUM_NODES_FOR_HEPNOS} ${NODES_FOR_HEPNOS} \
-      bedrock ${PROTOCOL} -c ${HEPNOS_CONFIG} -v error &
-HEPNOS_PID=$!
+HEPNOS_PID=`python3 -m hepnos.autotuning.run --async -n ${NUM_PES_FOR_HEPNOS} -N ${NUM_NODES_FOR_HEPNOS} bedrock ${PROTOCOL} -c ${HEPNOS_CONFIG} -v error`
+echo "HEPNOS_PID=${HEPNOS_PID}"
 
 log "Waiting for HEPnOS daemon to start up"
 while [ ! -f ${HEPNOS_SSG} ]; do sleep 1; done
@@ -80,13 +79,18 @@ while [ ! -f ${HEPNOS_SSG} ]; do sleep 1; done
 #fi
 
 log "Requesting databases"
+#timeout ${HEPNOS_UTILITY_TIMEOUT} \
+#    srun --exclusive -n 1 -N 1 ${NODES_FOR_UTILITY} hepnos-list-databases \
+#        ${PROTOCOL} -s ${HEPNOS_SSG} > ${DATABASES_CONFIG}
 timeout ${HEPNOS_UTILITY_TIMEOUT} \
-    srun --exclusive -n 1 -N 1 ${NODES_FOR_UTILITY} hepnos-list-databases \
-        ${PROTOCOL} -s ${HEPNOS_SSG} > ${DATABASES_CONFIG}
+    python3 -m hepnos.autotuning.run -n 1 -N 1 --stdout ${DATABASES_CONFIG} hepnos-list-databases \
+    ${PROTOCOL} -s ${HEPNOS_SSG}
+
 RET=$?
 if [ "$RET" -eq "124" ]; then
     log "ERROR: hepnos-list-databases timed out"
-    kill $HEPNOS_PID
+    #kill $HEPNOS_PID
+    kill -- -$HEPNOS_PID
     exit -1
 fi
 
@@ -95,16 +99,30 @@ for p in ${HEPNOS_LOADER_PRODUCTS[@]}; do
     LOADER_PRODUCT_ARGS="${LOADER_PRODUCT_ARGS} -n ${p}"
 done
 
-#export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/gpfs/fs1/software/centos7/spack-latest/opt/spack/linux-centos7-x86_64/gcc-8.2.0/intel-mpi-2019.9.304-rxpzd6p/compilers_and_libraries_2020.4.304/linux/mpi/intel64/libfabric/lib/prov
-
 log "Starting dataloader"
 log `pwd`
 NUM_PES_FOR_LOADER=$(( $NUM_NODES_FOR_LOADER * $HEPNOS_LOADER_PES_PER_NODE ))
 LOADER_CORES_PER_PE=$(( 32 / $HEPNOS_LOADER_PES_PER_NODE ))
 start_time=`date +%s`
+#timeout ${HEPNOS_LOADER_TIMEOUT} \
+#    srun --exclusive -n ${NUM_PES_FOR_LOADER} -N ${NUM_NODES_FOR_LOADER} \
+#             ${NODES_FOR_LOADER} hepnos-dataloader \
+#             --timeout ${HEPNOS_LOADER_SOFT_TIMEOUT} \
+#             -p ${PROTOCOL} \
+#             -m ${LOADER_MARGO_CONFIG} \
+#             -c ${DATABASES_CONFIG} \
+#             -i ${HEPNOS_LOADER_DATAFILE} \
+#             -o ${HEPNOS_DATASET} \
+#             -l ${HEPNOS_LABEL} \
+#             -b ${HEPNOS_LOADER_BATCH_SIZE} \
+#             ${HEPNOS_LOADER_ASYNC} \
+#             -t ${HEPNOS_LOADER_ASYNC_THREADS} \
+#             ${LOADER_PRODUCT_ARGS} \
+#             -v ${HEPNOS_LOADER_VERBOSE} \
+#    &>> $EXPDIR/dataloader-output.txt
 timeout ${HEPNOS_LOADER_TIMEOUT} \
-    srun --exclusive -n ${NUM_PES_FOR_LOADER} -N ${NUM_NODES_FOR_LOADER} \
-             ${NODES_FOR_LOADER} hepnos-dataloader \
+    python3 -m hepnos.autotuning.run -n ${NUM_PES_FOR_LOADER} -N ${NUM_NODES_FOR_LOADER} --stdout $EXPDIR/dataloader-output.txt --stderr $EXPDIR/dataloader-output.txt \
+             hepnos-dataloader \
              --timeout ${HEPNOS_LOADER_SOFT_TIMEOUT} \
              -p ${PROTOCOL} \
              -m ${LOADER_MARGO_CONFIG} \
@@ -116,14 +134,14 @@ timeout ${HEPNOS_LOADER_TIMEOUT} \
              ${HEPNOS_LOADER_ASYNC} \
              -t ${HEPNOS_LOADER_ASYNC_THREADS} \
              ${LOADER_PRODUCT_ARGS} \
-             -v ${HEPNOS_LOADER_VERBOSE} \
-    &>> $EXPDIR/dataloader-output.txt
+             -v ${HEPNOS_LOADER_VERBOSE}
 RET=$?
 end_time=`date +%s`
 if [ "$RET" -eq "124" ]; then
     log "ERROR: hepnos-dataloader timed out"
     log "RUNTIME: ${CONST_TIMEOUT}" >> $EXPDIR/dataloader-output.txt
-    kill $HEPNOS_PID
+    #kill $HEPNOS_PID
+    kill -- -$HEPNOS_PID
     exit -1
 fi
 if grep -q "ESTIMATED" $EXPDIR/dataloader-output.txt
@@ -133,7 +151,8 @@ then
 else
     log "ERROR: hepnos-dataloader failed"
     log "RUNTIME: ${CONST_FAILURE}" >> $EXPDIR/dataloader-output.txt
-    kill $HEPNOS_PID
+    #kill $HEPNOS_PID
+    kill -- -$HEPNOS_PID
     exit -1
 fi
 
@@ -155,9 +174,25 @@ if [ "$HEPNOS_ENABLE_PEP" -ne "0" ]; then
     log "Running PEP benchmark"
     PEP_CORES_PER_PE=$(( 32 / $HEPNOS_PEP_PES_PER_NODE ))
     start_time=`date +%s`
+#timeout ${HEPNOS_PEP_TIMEOUT} \
+#    srun --exclusive -n ${NUM_PES} -N ${NUM_NODES_FOR_PEP} \
+#              ${NODES_FOR_PEP}  hepnos-pep-benchmark \
+#             -p ${PROTOCOL} \
+#             -m ${PEP_MARGO_CONFIG} \
+#             -c ${DATABASES_CONFIG} \
+#             -d ${HEPNOS_DATASET} \
+#             -l ${HEPNOS_LABEL} \
+#             ${PEP_PRODUCT_ARGS} \
+#             ${HEPNOS_PEP_PRELOAD} \
+#             -v ${HEPNOS_PEP_VERBOSE} \
+#             -o ${HEPNOS_PEP_OBATCH_SIZE} \
+#             -i ${HEPNOS_PEP_IBATCH_SIZE} \
+#             -t ${HEPNOS_PEP_THREADS} \
+#    &>> $EXPDIR/pep-output.txt
     timeout ${HEPNOS_PEP_TIMEOUT} \
-    srun --exclusive -n ${NUM_PES} -N ${NUM_NODES_FOR_PEP} \
-              ${NODES_FOR_PEP}  hepnos-pep-benchmark \
+    python3 -m hepnos.autotuning.run -n ${NUM_PES} -N ${NUM_NODES_FOR_PEP} \
+    	--stdout $EXPDIR/pep-output.txt --stderr $EXPDIR/pep-output.txt \
+             hepnos-pep-benchmark \
              -p ${PROTOCOL} \
              -m ${PEP_MARGO_CONFIG} \
              -c ${DATABASES_CONFIG} \
@@ -168,14 +203,14 @@ if [ "$HEPNOS_ENABLE_PEP" -ne "0" ]; then
              -v ${HEPNOS_PEP_VERBOSE} \
              -o ${HEPNOS_PEP_OBATCH_SIZE} \
              -i ${HEPNOS_PEP_IBATCH_SIZE} \
-             -t ${HEPNOS_PEP_THREADS} \
-    &>> $EXPDIR/pep-output.txt
+             -t ${HEPNOS_PEP_THREADS}
     RET=$?
     end_time=`date +%s`
     if [ "$RET" -eq "124" ]; then
         log "ERROR: hepnos-pep timed out"
         log "TIME: ${CONST_TIMEOUT}" >> $EXPDIR/pep-output.txt
-        kill $HEPNOS_PID
+        #kill $HEPNOS_PID
+    	kill -- -$HEPNOS_PID
         exit -1
     fi
     if grep -q "Benchmark completed" $EXPDIR/pep-output.txt
@@ -185,17 +220,22 @@ if [ "$HEPNOS_ENABLE_PEP" -ne "0" ]; then
     else
         log "ERROR: hepnos-pep failed"
         log "TIME: ${CONST_FAILURE}" >> $EXPDIR/pep-output.txt
-        kill $HEPNOS_PID
+        #kill $HEPNOS_PID
+    	kill -- -$HEPNOS_PID
         exit -1
     fi
 fi
 
 log "Shutting down HEPnOS"
+#timeout ${HEPNOS_UTILITY_TIMEOUT} \
+#srun --exclusive -n 1 -N 1 ${NODES_FOR_UTILITY} hepnos-shutdown $PROTOCOL $DATABASES_CONFIG
 timeout ${HEPNOS_UTILITY_TIMEOUT} \
-srun --exclusive -n 1 -N 1 ${NODES_FOR_UTILITY} hepnos-shutdown $PROTOCOL $DATABASES_CONFIG
+	python3 -m hepnos.autotuning.run -n 1 -N 1 hepnos-shutdown $PROTOCOL $DATABASES_CONFIG
+#srun --exclusive -n 1 -N 1 ${NODES_FOR_UTILITY} hepnos-shutdown $PROTOCOL $DATABASES_CONFIG
 RET=$?
 if [ "$RET" -eq "124" ]; then
     log "ERROR: hepnos-shutdown timed out"
-    kill $HEPNOS_PID
+    #kill $HEPNOS_PID
+    kill -- -$HEPNOS_PID
     exit -1
 fi
