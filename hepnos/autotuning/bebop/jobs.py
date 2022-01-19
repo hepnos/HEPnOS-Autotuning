@@ -102,13 +102,27 @@ def submit(command, **kwargs):
     os.system(cmd)
 
 
-def __run_command_in_subprocess(cmd, use_async):
-    if use_async:
-        os.system(f'nohup {cmd} &')
-        print(os.getpgid(os.getpid()))
-        sys.exit(0)
-    else:
-        sys.exit(os.system(cmd))
+def __output_forwarder(pipe, out):
+    try:
+        with pipe:
+            for line in iter(pipe.readline, b''):
+                out.write(line.decode())
+    finally:
+        pass
+
+
+def __run_command_in_subprocess(cmd):
+    import threading
+    popen = subprocess.Popen(cmd, shell=True,
+                             stdout=subprocess.PIPE,
+                             stderr=subprocess.PIPE)
+    threading.Thread(target=__output_forwarder,
+                     args=[popen.stdout, sys.stdout]).start()
+    threading.Thread(target=__output_forwarder,
+                     args=[popen.stderr, sys.stderr]).start()
+    return_code = popen.wait()
+    sys.exit(return_code)
+
 
 def run(command, **kwargs):
     cmd = ['srun', '--exclusive']
@@ -119,18 +133,5 @@ def run(command, **kwargs):
     cmd += [f'-n {args["ntasks"]}']
     cmd += [f'-N {args["nodes"]}']
     cmd += command
-    if args['async']:
-        if len(args['stdout']) == 0:
-            args['stdout'] = '/dev/null'
-        if len(args['stderr']) == 0:
-            args['stderr'] = '/dev/null'
-        if len(args['stdin']) == 0:
-            args['stdin'] = '/dev/null'
-    if len(args['stdout']) != 0:
-        cmd += [f'1> {args["stdout"]}']
-    if len(args['stderr']) != 0:
-        cmd += [f'2> {args["stderr"]}']
-    if len(args['stdin']) != 0:
-        cmd += [f'< {args["stdin"]}']
     cmd = ' '.join(cmd)
-    __run_command_in_subprocess(cmd, args['async'])
+    __run_command_in_subprocess(cmd)

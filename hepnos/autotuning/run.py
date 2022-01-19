@@ -24,20 +24,9 @@ if __name__ == '__main__':
     parser.add_argument('command', type=str,
                         help="Command to run.",
                         nargs=argparse.REMAINDER)
-    parser.add_argument('--async', action='store_true',
-                        help="Return immediately after submittig the application, printing the group PID.")
     parser.add_argument('-n', '--ntasks', required=True, type=int,
                         help="Total number of processes to spawn.")
     parser.add_argument('-N', '--nodes', required=False, type=int,
                         help="Number of nodes to use.")
-    parser.add_argument('--stdout', required=False, type=str,
-                        default='',
-                        help="File in which to redirect stdout")
-    parser.add_argument('--stderr', required=False, type=str,
-                        default='',
-                        help="File in which to redirect stderr")
-    parser.add_argument('--stdin', required=False, type=str,
-                        default='',
-                        help="File from which to redirect stdin")
     args = parser.parse_args()
     platform.run(**vars(args))
