@@ -34,5 +34,7 @@ if __name__ == '__main__':
                         help="Queue on which to run the job.")
     parser.add_argument('-p', '--partition', required=False, type=str,
                         help="Partition in which to run the job.")
+    parser.add_argument('--extra', required=False, type=str, default='',
+                        help="Extra arguments to pass to the job management system.")
     args = parser.parse_args()
     platform.submit(**vars(args))
