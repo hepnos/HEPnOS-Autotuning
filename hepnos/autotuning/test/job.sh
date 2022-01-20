@@ -77,7 +77,7 @@ NUM_PES_FOR_HEPNOS=$((${HEPNOS_PES_PER_NODE} * ${NUM_NODES_FOR_HEPNOS}))
 log "Starting up HEPnOS daemon"
 HEPNOS_CORES_PER_PE=$(( 32 / $HEPNOS_PES_PER_NODE ))
 python3 -m hepnos.autotuning.run -n ${NUM_PES_FOR_HEPNOS} -N ${NUM_NODES_FOR_HEPNOS} ${EXTRA_FLAGS} \
-        bedrock ${PROTOCOL} -c ${HEPNOS_CONFIG} -v error &> hepnos-out.txt &
+        bedrock ${PROTOCOL} -c ${HEPNOS_CONFIG} -v trace &> hepnos-out.txt &
 HEPNOS_PID=$!
 
 log "Waiting for HEPnOS daemon to start up"
@@ -113,7 +113,6 @@ for p in ${HEPNOS_LOADER_PRODUCTS[@]}; do
 done
 
 log "Starting dataloader"
-log `pwd`
 NUM_PES_FOR_LOADER=$(( $NUM_NODES_FOR_LOADER * $HEPNOS_LOADER_PES_PER_NODE ))
 LOADER_CORES_PER_PE=$(( 32 / $HEPNOS_LOADER_PES_PER_NODE ))
 start_time=`date +%s`
