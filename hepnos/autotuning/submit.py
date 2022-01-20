@@ -2,24 +2,11 @@ import os
 import sys
 import argparse
 import logging
-import importlib
-
-
-def __import_platform():
-    platform_name = os.getenv('HEPNOS_EXP_PLATFORM')
-    if platform_name is None:
-        logging.critical('Could not get platform from HEPNOS_EXP_PLATFORM variable.')
-        sys.exit(-1)
-    try:
-        platform = importlib.import_module('hepnos.autotuning.'+platform_name+'.jobs')
-    except ModuleNotFoundError:
-        loggin.critical(f'Could not find module corresponding to {platform}')
-        sys.exit(-1)
-    return platform
-
+from .platform import detect_platform
+from .header import get_flags_from_header
 
 if __name__ == '__main__':
-    platform = __import_platform()
+    platform = detect_platform()
     parser = argparse.ArgumentParser(description='Submit a job')
     parser.add_argument('command', type=str,
                         help="Command to submit.",
@@ -36,5 +23,13 @@ if __name__ == '__main__':
                         help="Partition in which to run the job.")
     parser.add_argument('--extra', required=False, type=str, default='',
                         help="Extra arguments to pass to the job management system.")
-    args = parser.parse_args()
-    platform.submit(**vars(args))
+    args_from_cmd_line = parser.parse_args()
+    filename = args_from_cmd_line.command[0]
+    args_from_script = parser.parse_args(get_flags_from_header(filename))
+    full_args = {}
+    for k,v in vars(args_from_script).items():
+        full_args[k] = v
+    for k,v in vars(args_from_cmd_line).items():
+        if v is not None:
+            full_args[k] = v
+    platform.submit(**full_args)

@@ -1,8 +1,7 @@
 import logging
 import sys
 import os
-import subprocess
-
+from ..process import run_command
 
 def generate_preamble(A, t, n, q, **kargs):
     """Generates the header of the job script."""
@@ -43,40 +42,6 @@ def generate_mpirun(program, num_nodes, pes_per_node, **kwargs):
     return cmd
 
 
-def __parse_header_from_script(filename):
-    interpreter_dir = False
-    result = dict()
-    flag_translation = {
-        '-A': 'allocation',
-        '--allocation': 'allocation',
-        '-t': 'time',
-        '--time': 'time',
-        '-n': 'nodes',
-        '--nodes': 'nodes',
-        '-q': 'queue',
-        '--queue': 'queue',
-        '-p': 'partition',
-        '--partition': 'partition'
-    }
-    for line in open(filename):
-        if line.startswith('#!'):
-            if interpreter_dir:
-                return args
-            else:
-                interpreter_dir = True
-            continue
-        elif line.startswith('#H '):
-            elems = line.split()[1:]
-            if len(elems) != 2:
-                raise ValueError(f'Invalid header line {line}')
-            flag = elems[0]
-            value = elems[1]
-            if flag in flag_translation:
-                result[flag_translation[flag]] = value
-        else:
-            break
-    return result
-
 
 def submit(command, **kwargs):
     cmd = ['sbatch']
@@ -84,10 +49,6 @@ def submit(command, **kwargs):
     if len(command) == 0:
         logging.critical("No command provided")
         sys.exit(-1)
-    header_args = __parse_header_from_script(command[0])
-    for k, v in header_args.items():
-        if k in args and args[k] is None:
-            args[k] = header_args[k]
     if args['allocation'] is not None:
         cmd += [f'-A {args["allocation"]}']
     if args['time'] is not None:
@@ -108,28 +69,6 @@ def submit(command, **kwargs):
     os.system(cmd)
 
 
-def __output_forwarder(pipe, out):
-    try:
-        with pipe:
-            for line in iter(pipe.readline, b''):
-                out.write(line.decode())
-    finally:
-        pass
-
-
-def __run_command_in_subprocess(cmd):
-    import threading
-    popen = subprocess.Popen(cmd, shell=True,
-                             stdout=subprocess.PIPE,
-                             stderr=subprocess.PIPE)
-    threading.Thread(target=__output_forwarder,
-                     args=[popen.stdout, sys.stdout]).start()
-    threading.Thread(target=__output_forwarder,
-                     args=[popen.stderr, sys.stderr]).start()
-    return_code = popen.wait()
-    sys.exit(return_code)
-
-
 def run(command, **kwargs):
     cmd = ['srun', '--exclusive']
     args = kwargs
@@ -147,4 +86,4 @@ def run(command, **kwargs):
     cmd += extra
     cmd += command
     cmd = ' '.join(cmd)
-    __run_command_in_subprocess(cmd)
+    sys.exit(run_command(cmd))
