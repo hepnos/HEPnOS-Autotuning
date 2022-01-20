@@ -96,7 +96,13 @@ def submit(command, **kwargs):
         cmd += [f'-N {args["nodes"]}']
     if args['partition'] is not None:
         cmd += [f'-p {args["partition"]}']
-    cmd += args['extra']
+    extra = args['extra']
+    if extra.startswith('"') and extra.endswith('"'):
+        extra = extra[1:-1]
+    if extra.startswith("'") and extra.endswith("'"):
+        extra = extra[1:-1]
+    extra = extra.split(',')
+    cmd += extra
     cmd += command
     cmd = ' '.join(cmd)
     os.system(cmd)
@@ -132,7 +138,13 @@ def run(command, **kwargs):
         sys.exit(-1)
     cmd += [f'-n {args["ntasks"]}']
     cmd += [f'-N {args["nodes"]}']
-    cmd += args['extra']
+    extra = args['extra']
+    if extra.startswith('"') and extra.endswith('"'):
+        extra = extra[1:-1]
+    if extra.startswith("'") and extra.endswith("'"):
+        extra = extra[1:-1]
+    extra = extra.split(',')
+    cmd += extra
     cmd += command
     cmd = ' '.join(cmd)
     __run_command_in_subprocess(cmd)
