@@ -76,7 +76,7 @@ fi
 NUM_PES_FOR_HEPNOS=$((${HEPNOS_PES_PER_NODE} * ${NUM_NODES_FOR_HEPNOS}))
 log "Starting up HEPnOS daemon"
 HEPNOS_CORES_PER_PE=$(( 32 / $HEPNOS_PES_PER_NODE ))
-python3 -m hepnos.autotuning.run -n ${NUM_PES_FOR_HEPNOS} -N ${NUM_NODES_FOR_HEPNOS} ${EXTRA_FLAGS} \
+python3 -m hepnos.autotuning.run -n ${NUM_PES_FOR_HEPNOS} -N ${NUM_NODES_FOR_HEPNOS} ${NODES_FOR_HEPNOS} ${EXTRA_FLAGS} \
         bedrock ${PROTOCOL} -c ${HEPNOS_CONFIG} -v trace &> hepnos-out.txt &
 HEPNOS_PID=$!
 
@@ -93,7 +93,7 @@ fi
 
 log "Requesting databases"
 timeout ${HEPNOS_UTILITY_TIMEOUT} \
-    python3 -m hepnos.autotuning.run -n 1 -N 1 ${EXTRA_FLAGS} hepnos-list-databases \
+    python3 -m hepnos.autotuning.run -n 1 -N 1 ${NODES_FOR_UTILITY} ${EXTRA_FLAGS} hepnos-list-databases \
     ${PROTOCOL} -s ${HEPNOS_SSG} > ${DATABASES_CONFIG}
 
 RET=$?
@@ -117,7 +117,7 @@ NUM_PES_FOR_LOADER=$(( $NUM_NODES_FOR_LOADER * $HEPNOS_LOADER_PES_PER_NODE ))
 LOADER_CORES_PER_PE=$(( 32 / $HEPNOS_LOADER_PES_PER_NODE ))
 start_time=`date +%s`
 timeout ${HEPNOS_LOADER_TIMEOUT} \
-    python3 -m hepnos.autotuning.run -n ${NUM_PES_FOR_LOADER} -N ${NUM_NODES_FOR_LOADER} ${EXTRA_FLAGS} \
+    python3 -m hepnos.autotuning.run -n ${NUM_PES_FOR_LOADER} -N ${NUM_NODES_FOR_LOADER} ${NODES_FOR_LOADER} ${EXTRA_FLAGS} \
              hepnos-dataloader \
              --timeout ${HEPNOS_LOADER_SOFT_TIMEOUT} \
              -p ${PROTOCOL} \
@@ -170,7 +170,7 @@ if [ "$HEPNOS_ENABLE_PEP" -ne "0" ]; then
     PEP_CORES_PER_PE=$(( 32 / $HEPNOS_PEP_PES_PER_NODE ))
     start_time=`date +%s`
     timeout ${HEPNOS_PEP_TIMEOUT} \
-    python3 -m hepnos.autotuning.run -n ${NUM_PES} -N ${NUM_NODES_FOR_PEP} ${EXTRA_FLAGS} \
+    python3 -m hepnos.autotuning.run -n ${NUM_PES} -N ${NUM_NODES_FOR_PEP} ${NODES_FOR_PEP} ${EXTRA_FLAGS} \
              hepnos-pep-benchmark \
              -p ${PROTOCOL} \
              -m ${PEP_MARGO_CONFIG} \
@@ -206,7 +206,8 @@ fi
 
 log "Shutting down HEPnOS"
 timeout ${HEPNOS_UTILITY_TIMEOUT} \
-        python3 -m hepnos.autotuning.run -n 1 -N 1 ${EXTRA_FLAGS} hepnos-shutdown $PROTOCOL $DATABASES_CONFIG
+        python3 -m hepnos.autotuning.run -n 1 -N 1 ${NODES_FOR_UTILITY} ${EXTRA_FLAGS} \
+        hepnos-shutdown $PROTOCOL $DATABASES_CONFIG
 RET=$?
 if [ "$RET" -eq "124" ]; then
     log "ERROR: hepnos-shutdown timed out"

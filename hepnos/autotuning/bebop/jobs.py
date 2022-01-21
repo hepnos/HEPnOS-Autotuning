@@ -77,6 +77,8 @@ def run(command, **kwargs):
         sys.exit(-1)
     cmd += [f'-n {args["ntasks"]}']
     cmd += [f'-N {args["nodes"]}']
+    if args['nodelist'] is not None:
+        cmd += [f'--nodelist {args["nodelist"]}']
     extra = args['extra']
     if extra.startswith('"') and extra.endswith('"'):
         extra = extra[1:-1]

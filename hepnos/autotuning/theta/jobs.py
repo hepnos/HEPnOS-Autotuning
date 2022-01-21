@@ -90,8 +90,12 @@ def run(command, **kwargs):
     num_nodes = args["nodes"]
     num_tasks = args["ntasks"]
     num_tasks_per_node = int(num_tasks/num_nodes)
+    num_cores_per_task = int(64/num_tasks_per_node)
     cmd += [f'-n {args["ntasks"]}']
     cmd += [f'-N {num_tasks_per_node}']
+    cmd += [f'-d {num_cores_per_task} -cc none']
+    if args['nodelist'] is not None:
+        cmd += [f'-L {args["nodelist"]}']
     extra = args['extra']
     if extra.startswith('"') and extra.endswith('"'):
         extra = extra[1:-1]
