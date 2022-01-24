@@ -13,6 +13,7 @@ def __generate_hepnos_config(wdir, protocol, busy_spin,
                              hepnos_num_providers,
                              hepnos_pool_type,
                              hepnos_pes_per_node,
+                             hepnos_nodelist,
                              **kwargs):
     """Generate a JSON configuration for Bedrock to deploy HEPnOS."""
     proc_spec = brk.ProcSpec(margo=protocol)
@@ -83,6 +84,7 @@ def __generate_hepnos_config(wdir, protocol, busy_spin,
     # Generate params.sh
     with open(f'{wdir}/params.sh', 'a+') as params:
         params.write(f'HEPNOS_PES_PER_NODE={hepnos_pes_per_node}\n')
+        params.write(f'NODES_FOR_HEPNOS={hepnos_nodelist}\n')
 
 
 def __generate_loader_config(wdir, protocol, busy_spin,
@@ -91,6 +93,7 @@ def __generate_loader_config(wdir, protocol, busy_spin,
                              loader_pes_per_node,
                              loader_async,
                              loader_async_threads,
+                             loader_nodelist,
                              **kwargs):
     """Generate configuration for the Dataloader."""
     margo_spec = brk.MargoSpec(mercury=protocol)
@@ -115,6 +118,7 @@ def __generate_loader_config(wdir, protocol, busy_spin,
             params.write('HEPNOS_LOADER_ASYNC_THREADS=0\n')
         params.write(f'HEPNOS_LOADER_BATCH_SIZE={loader_batch_size}\n')
         params.write(f'HEPNOS_LOADER_PES_PER_NODE={loader_pes_per_node}\n')
+        params.write(f'NODES_FOR_LOADER={loader_nodelist}\n')
 
 
 def __generate_pep_config(wdir, protocol, busy_spin,
@@ -124,6 +128,7 @@ def __generate_pep_config(wdir, protocol, busy_spin,
                           pep_obatch_size,
                           pep_pes_per_node,
                           pep_use_preloading,
+                          pep_nodelist,
                           **kwargs):
     """Generate configuration for the Parallel Event Processing benchmark."""
     margo_spec = brk.MargoSpec(mercury=protocol)
@@ -148,6 +153,7 @@ def __generate_pep_config(wdir, protocol, busy_spin,
             params.write('HEPNOS_PEP_PRELOAD=--preload\n')
         else:
             params.write('HEPNOS_PEP_PRELOAD=\n')
+        params.write(f'NODES_FOR_PEP={pep_nodelist}\n')
 
 
 def __add_parameter_to_parser(parser, name, type, default, domain, description):
@@ -209,11 +215,23 @@ def __fill_context(context, add_parameter):
         "Whether the PEP step should use product-preloading")
 
 
-def generate_experiment_directory(wdir, protocol, **kwargs):
+def generate_experiment_directory(wdir, protocol,
+                                  hepnos_nodelist='',
+                                  loader_nodelist='',
+                                  pep_nodelist='',
+                                  **kwargs):
+    """Creates a directory for a new experiment and generate the
+    configuration files for the various components."""
     os.mkdir(wdir)
-    __generate_hepnos_config(wdir=wdir, protocol=protocol, **kwargs)
-    __generate_loader_config(wdir=wdir, protocol=protocol, **kwargs)
-    __generate_pep_config(wdir=wdir, protocol=protocol, **kwargs)
+    __generate_hepnos_config(wdir=wdir, protocol=protocol, hepnos_nodelist=hepnos_nodelist, **kwargs)
+    __generate_loader_config(wdir=wdir, protocol=protocol, loader_nodelist=loader_nodelist, **kwargs)
+    __generate_pep_config(wdir=wdir, protocol=protocol, pep_nodelist=pep_nodelist, **kwargs)
+    with open(f'{wdir}/params.sh', 'a+') as params:
+        if len(loader_nodelist) > 0:
+            utility_node = loader_nodelist.split(',')[0]
+        else:
+            utility_node = ''
+        params.write(f'NODES_FOR_UTILITY={utility_node}\n')
 
 
 def generate_deephyper_problem():
@@ -230,6 +248,12 @@ if __name__ == '__main__':
                         help='Directory in which to generate the configuration')
     parser.add_argument('--protocol', required=True, type=str,
                         help='Mercury protocol to use')
+    parser.add_argument('--hepnos_nodelist', required=False, default='', type=str,
+                        help='Comma-separated list of nodes to use for HEPnOS')
+    parser.add_argument('--loader_nodelist', required=False, default='', type=str,
+                        help='Comma-separated list of nodes to use for the Dataloader')
+    parser.add_argument('--pep_nodelist', required=False, default='', type=str,
+                        help='Comma-separated list of nodes to use for Parallel Event Processor')
     __fill_context(parser, __add_parameter_to_parser)
     args = parser.parse_args()
     generate_experiment_directory(**vars(args))
