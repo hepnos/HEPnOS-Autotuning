@@ -12,7 +12,7 @@ def __generate_hepnos_config(wdir, protocol, busy_spin,
                              hepnos_num_product_databases,
                              hepnos_num_providers,
                              hepnos_pool_type,
-                             hepnos_pes_per_node, # TODO
+                             hepnos_pes_per_node,
                              **kwargs):
     """Generate a JSON configuration for Bedrock to deploy HEPnOS."""
     proc_spec = brk.ProcSpec(margo=protocol)
@@ -80,16 +80,19 @@ def __generate_hepnos_config(wdir, protocol, busy_spin,
     # Generate configuration
     with open(f'{wdir}/hepnos.json', 'w+') as config:
         config.write(proc_spec.to_json(indent=4))
+    # Generate params.sh
+    with open(f'{wdir}/params.sh', 'a+') as params:
+        params.write(f'HEPNOS_PES_PER_NODE={hepnos_pes_per_node}\n')
 
 
 def __generate_loader_config(wdir, protocol, busy_spin,
                              loader_progress_thread,
-                             loader_batch_size,    # TODO
-                             loader_pes_per_node,  # TODO
-                             loader_async,         # TODO
-                             loader_async_threads, # TODO
+                             loader_batch_size,
+                             loader_pes_per_node,
+                             loader_async,
+                             loader_async_threads,
                              **kwargs):
-    """Generate the Margo JSON configuration for the Dataloader."""
+    """Generate configuration for the Dataloader."""
     margo_spec = brk.MargoSpec(mercury=protocol)
     if busy_spin:
         margo_spec.mercury.na_no_block = True
@@ -102,6 +105,16 @@ def __generate_loader_config(wdir, protocol, busy_spin,
     # Generate configuration
     with open(f'{wdir}/dataloader.json', 'w+') as config:
         config.write(margo_spec.to_json(indent=4))
+    # Generate params.sh
+    with open(f'{wdir}/params.sh', 'a+') as params:
+        if loader_async:
+            params.write('HEPNOS_LOADER_ASYNC=-a\n')
+            params.write(f'HEPNOS_LOADER_ASYNC_THREADS={loader_async_threads}\n')
+        else:
+            params.write('HEPNOS_LOADER_ASYNC=\n')
+            params.write('HEPNOS_LOADER_ASYNC_THREADS=0\n')
+        params.write(f'HEPNOS_LOADER_BATCH_SIZE={loader_batch_size}\n')
+        params.write(f'HEPNOS_LOADER_PES_PER_NODE={loader_pes_per_node}\n')
 
 
 def __generate_pep_config(wdir, protocol, busy_spin,
@@ -112,7 +125,7 @@ def __generate_pep_config(wdir, protocol, busy_spin,
                           pep_pes_per_node,
                           pep_use_preloading,
                           **kwargs):
-    """Generate the configuration for the Parallel Event Processing benchmark."""
+    """Generate configuration for the Parallel Event Processing benchmark."""
     margo_spec = brk.MargoSpec(mercury=protocol)
     if busy_spin:
         margo_spec.mercury.na_no_block = True
@@ -125,6 +138,16 @@ def __generate_pep_config(wdir, protocol, busy_spin,
     # Generate configuration
     with open(f'{wdir}/pep.json', 'w+') as config:
         config.write(margo_spec.to_json(indent=4))
+    # Generate params.sh
+    with open(f'{wdir}/params.sh', 'a+') as params:
+        params.write(f'HEPNOS_PEP_THREADS={pep_num_threads}\n')
+        params.write(f'HEPNOS_PEP_IBATCH_SIZE={pep_ibatch_size}\n')
+        params.write(f'HEPNOS_PEP_OBATCH_SIZE={pep_obatch_size}\n')
+        params.write(f'HEPNOS_PEP_PES_PER_NODE={pep_pes_per_node}\n')
+        if pep_use_preloading:
+            params.write('HEPNOS_PEP_PRELOAD=--preload\n')
+        else:
+            params.write('HEPNOS_PEP_PRELOAD=\n')
 
 
 def __add_parameter_to_parser(parser, name, type, default, domain, description):
