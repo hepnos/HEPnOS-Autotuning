@@ -12,6 +12,7 @@ def __generate_hepnos_config(wdir, protocol, busy_spin,
                              hepnos_num_product_databases,
                              hepnos_num_providers,
                              hepnos_pool_type,
+                             hepnos_pes_per_node, # TODO
                              **kwargs):
     """Generate a JSON configuration for Bedrock to deploy HEPnOS."""
     proc_spec = brk.ProcSpec(margo=protocol)
@@ -83,7 +84,12 @@ def __generate_hepnos_config(wdir, protocol, busy_spin,
 
 def __generate_loader_config(wdir, protocol, busy_spin,
                              loader_progress_thread,
+                             loader_batch_size,    # TODO
+                             loader_pes_per_node,  # TODO
+                             loader_async,         # TODO
+                             loader_async_threads, # TODO
                              **kwargs):
+    """Generate the Margo JSON configuration for the Dataloader."""
     margo_spec = brk.MargoSpec(mercury=protocol)
     if busy_spin:
         margo_spec.mercury.na_no_block = True
@@ -95,6 +101,29 @@ def __generate_loader_config(wdir, protocol, busy_spin,
         margo_spec.progress_pool = pool
     # Generate configuration
     with open(f'{wdir}/dataloader.json', 'w+') as config:
+        config.write(margo_spec.to_json(indent=4))
+
+
+def __generate_pep_config(wdir, protocol, busy_spin,
+                          pep_progress_thread,
+                          pep_num_threads,
+                          pep_ibatch_size,
+                          pep_obatch_size,
+                          pep_pes_per_node,
+                          pep_use_preloading,
+                          **kwargs):
+    """Generate the configuration for the Parallel Event Processing benchmark."""
+    margo_spec = brk.MargoSpec(mercury=protocol)
+    if busy_spin:
+        margo_spec.mercury.na_no_block = True
+    if pep_progress_thread:
+        pool = margo_spec.argobots.pools.add(name='__progress__')
+        margo_spec.argobots.xstreams.add(
+            name='__progress__',
+            scheduler=brk.SchedulerSpec(pools=[pool]))
+        margo_spec.progress_pool = pool
+    # Generate configuration
+    with open(f'{wdir}/pep.json', 'w+') as config:
         config.write(margo_spec.to_json(indent=4))
 
 
@@ -161,6 +190,7 @@ def generate_experiment_directory(wdir, protocol, **kwargs):
     os.mkdir(wdir)
     __generate_hepnos_config(wdir=wdir, protocol=protocol, **kwargs)
     __generate_loader_config(wdir=wdir, protocol=protocol, **kwargs)
+    __generate_pep_config(wdir=wdir, protocol=protocol, **kwargs)
 
 
 def generate_deephyper_problem():
