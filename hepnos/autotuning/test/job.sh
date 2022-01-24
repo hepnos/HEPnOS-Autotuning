@@ -1,7 +1,6 @@
 #!/bin/bash
 #H -n 4
 #H --time 00:30:00
-#H -A radix-io
 #H -p bdwall
 #H -q debug-flat-quad
 
