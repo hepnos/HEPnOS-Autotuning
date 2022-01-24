@@ -5,8 +5,6 @@ import mochi.bedrock.spec as brk
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
 
 
-
-
 def __generate_hepnos_config(wdir, protocol, busy_spin,
                              hepnos_progress_thread,
                              hepnos_num_rpc_threads,
@@ -83,6 +81,23 @@ def __generate_hepnos_config(wdir, protocol, busy_spin,
         config.write(proc_spec.to_json(indent=4))
 
 
+def __generate_loader_config(wdir, protocol, busy_spin,
+                             loader_progress_thread,
+                             **kwargs):
+    margo_spec = brk.MargoSpec(mercury=protocol)
+    if busy_spin:
+        margo_spec.mercury.na_no_block = True
+    if loader_progress_thread:
+        pool = margo_spec.argobots.pools.add(name='__progress__')
+        margo_spec.argobots.xstreams.add(
+            name='__progress__',
+            scheduler=brk.SchedulerSpec(pools=[pool]))
+        margo_spec.progress_pool = pool
+    # Generate configuration
+    with open(f'{wdir}/dataloader.json', 'w+') as config:
+        config.write(margo_spec.to_json(indent=4))
+
+
 def __add_parameter_to_parser(parser, name, type, default, domain, description):
     """Callback to add a parameter to an argparse parser."""
     if type == bool:
@@ -118,7 +133,7 @@ def __fill_context(context, add_parameter):
         "Thread-scheduling policity used by Argobots pools")
     add_parameter(context, "hepnos_pes_per_node", int, 2, [1, 2, 4, 8, 16, 32],
         "Number of HEPnOS processes per node")
-    add_parameter(context, "loader_progress_thread", bool, True, [True, False],
+    add_parameter(context, "loader_progress_thread", bool, False, [True, False],
         "Whether to use a dedicated progress thread in the Dataloader")
     add_parameter(context, "loader_batch_size", int, 512, (1, 2048, "log-uniform"),
         "Size of the batches of events sent by the Dataloader to HEPnOS")
@@ -142,9 +157,10 @@ def __fill_context(context, add_parameter):
         "Whether the PEP step should use product-preloading")
 
 
-def generate_experiment_directory(wdir, **kwargs):
+def generate_experiment_directory(wdir, protocol, **kwargs):
     os.mkdir(wdir)
-    __generate_hepnos_config(wdir=wdir, **kwargs)
+    __generate_hepnos_config(wdir=wdir, protocol=protocol, **kwargs)
+    __generate_loader_config(wdir=wdir, protocol=protocol, **kwargs)
 
 
 def generate_deephyper_problem():
