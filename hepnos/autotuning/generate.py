@@ -305,6 +305,9 @@ def generate_experiment_directory(wdir, protocol,
         else:
             utility_node = ''
         params.write(f'NODES_FOR_UTILITY={utility_node}\n')
+    from shutil import copyfile
+    job_script = os.path.dirname(__file__)+'/scripts/job.sh'
+    copyfile(job_script, f'{wdir}/job.sh')
 
 
 def generate_deephyper_problem():
