@@ -26,6 +26,9 @@ source $WD/util/logging.sh
 source $WD/util/git.sh
 source $WD/util/yaml.sh
 
+# Copying the user.yaml file
+cp $HERE/user.yaml $WD
+
 if [ -f "$WD/sources.yaml.lock" ]; then
     log "Parsing sources settings from $WD/sources.yaml.lock..."
     eval $(parse_yaml $WD/sources.yaml.lock "SOURCES_")
@@ -136,6 +139,8 @@ conda activate $WD/sw/dhenv/
 export PYTHONPATH=\$PYTHONPATH:$HERE
 export HEPNOS_EXP_PLATFORM=$PLATFORM
 export HEPNOS_BUILD_PREFIX=$WD
+
+eval $(parse_yaml $HEPNOS_BUILD_PREFIX/user.yaml "HEPNOS_")
 
 log "Sourcing $PLATFORM-specific settings..."
 source $HERE/hepnos/autotuning/$PLATFORM/settings.sh

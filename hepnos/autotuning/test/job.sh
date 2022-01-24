@@ -5,8 +5,6 @@
 #H -p bdwall
 #H -q debug-flat-quad
 
-#set -e
-
 HEPNOS_BUILD_PREFIX=${HEPNOS_BUILD_PREFIX:-$1}
 EXPDIR=${EXPDIR:-$2}
 
@@ -30,6 +28,7 @@ EXTRA_FLAGS=""
 
 if [ $HEPNOS_EXP_PLATFORM == "theta" ]; then
     log "Setting up protection domain"
+    HEPNOS_PDOMAIN=${HEPNOS_user_theta_pdomain}
     apstat -P | grep ${HEPNOS_PDOMAIN} || apmgr pdomain -c -u ${HEPNOS_PDOMAIN}
     EXTRA_FLAGS="--extra \"-p,${HEPNOS_PDOMAIN}\""
 fi

@@ -7,8 +7,6 @@ os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
 
 __default_params = {
     'NODES_PER_EXP': 4,
-    'HEPNOS_PROJECT': None,
-    'HEPNOS_PDOMAIN': None,
     'HEPNOS_DATASET': 'nova',
     'HEPNOS_LABEL': 'abc',
     'HEPNOS_ENABLE_PROFILING': 0,

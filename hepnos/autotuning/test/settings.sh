@@ -2,7 +2,6 @@
 
 NODES_PER_EXP=4 # should be divisible by 4
 HEPNOS_PROJECT=radix-io # change for your project allocation
-HEPNOS_PDOMAIN=hep-mdorier
 HEPNOS_DATASET=nova # name of the dataset
 HEPNOS_LABEL=abc # label to use for the products
 HEPNOS_ENABLE_PROFILING=0
