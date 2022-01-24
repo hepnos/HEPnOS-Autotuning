@@ -5,6 +5,78 @@ import mochi.bedrock.spec as brk
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
 
 
+__default_params = {
+    'NODES_PER_EXP': 4,
+    'HEPNOS_PROJECT': None,
+    'HEPNOS_PDOMAIN': None,
+    'HEPNOS_DATASET': 'nova',
+    'HEPNOS_LABEL': 'abc',
+    'HEPNOS_ENABLE_PROFILING': 0,
+    'HEPNOS_UTILITY_TIMEOUT': 60,
+    'HEPNOS_LOADER_DATAFILE': '$EXPDIR/$HEPNOS_EXP_PLATFORM-50files.txt',
+    'HEPNOS_LOADER_VERBOSE': 'critical',
+    'HEPNOS_LOADER_PRODUCTS': [
+        'hep::rec_energy_numu',
+        'hep::rec_hdr',
+        'hep::rec_sel_contain',
+        'hep::rec_sel_cvn2017',
+        'hep::rec_sel_cvnProd3Train',
+        'hep::rec_sel_remid',
+        'hep::rec_slc',
+        'hep::rec_spill',
+        'hep::rec_trk_cosmic',
+        'hep::rec_trk_kalman',
+        'hep::rec_trk_kalman_tracks',
+        'hep::rec_vtx',
+        'hep::rec_vtx_elastic_fuzzyk',
+        'hep::rec_vtx_elastic_fuzzyk_png',
+        'hep::rec_vtx_elastic_fuzzyk_png_cvnpart',
+        'hep::rec_vtx_elastic_fuzzyk_png_shwlid' ],
+    'HEPNOS_LOADER_ENABLE_PROFILING': 0,
+    'HEPNOS_LOADER_SOFT_TIMEOUT': 10000,
+    'HEPNOS_LOADER_TIMEOUT': 600,
+    'HEPNOS_PEP_VERBOSE': 'critical',
+    'HEPNOS_PEP_PRODUCTS': [
+        'hep::rec_energy_numu',
+        'hep::rec_hdr',
+        'hep::rec_sel_contain',
+        'hep::rec_sel_cvn2017',
+        'hep::rec_sel_cvnProd3Train',
+        'hep::rec_sel_remid',
+        'hep::rec_slc',
+        'hep::rec_spill',
+        'hep::rec_trk_cosmic',
+        'hep::rec_trk_kalman',
+        'hep::rec_trk_kalman_tracks',
+        'hep::rec_vtx',
+        'hep::rec_vtx_elastic_fuzzyk',
+        'hep::rec_vtx_elastic_fuzzyk_png',
+        'hep::rec_vtx_elastic_fuzzyk_png_cvnpart',
+        'hep::rec_vtx_elastic_fuzzyk_png_shwlid' ],
+    'HEPNOS_PEP_ENABLE_PROFILING':0,
+    'HEPNOS_PEP_TIMEOUT': 600,
+    'CONST_TIMEOUT': 99999999,
+    'CONST_FAILURE': 88888888
+}
+
+
+def __generate_settings(wdir, **kwargs):
+    """Generate the settings.sh file using default parameters."""
+    with open(f'{wdir}/settings.sh', 'w+') as f:
+        for k, v in __default_params.items():
+            f.write(f'{k}=')
+            if v is None:
+                continue
+            if isinstance(v, list):
+                s = '('
+                for e in v:
+                    s += f'\n\t{e}'
+                s += ')'
+                f.write(s+'\n')
+            else:
+                f.write(str(v)+'\n')
+
+
 def __generate_hepnos_config(wdir, protocol, busy_spin,
                              hepnos_progress_thread,
                              hepnos_num_rpc_threads,
@@ -81,8 +153,8 @@ def __generate_hepnos_config(wdir, protocol, busy_spin,
     # Generate configuration
     with open(f'{wdir}/hepnos.json', 'w+') as config:
         config.write(proc_spec.to_json(indent=4))
-    # Generate params.sh
-    with open(f'{wdir}/params.sh', 'a+') as params:
+    # Generate settings.sh
+    with open(f'{wdir}/settings.sh', 'a+') as params:
         params.write(f'HEPNOS_PES_PER_NODE={hepnos_pes_per_node}\n')
         params.write(f'NODES_FOR_HEPNOS={hepnos_nodelist}\n')
 
@@ -108,8 +180,8 @@ def __generate_loader_config(wdir, protocol, busy_spin,
     # Generate configuration
     with open(f'{wdir}/dataloader.json', 'w+') as config:
         config.write(margo_spec.to_json(indent=4))
-    # Generate params.sh
-    with open(f'{wdir}/params.sh', 'a+') as params:
+    # Generate settings.sh
+    with open(f'{wdir}/settings.sh', 'a+') as params:
         if loader_async:
             params.write('HEPNOS_LOADER_ASYNC=-a\n')
             params.write(f'HEPNOS_LOADER_ASYNC_THREADS={loader_async_threads}\n')
@@ -143,8 +215,8 @@ def __generate_pep_config(wdir, protocol, busy_spin,
     # Generate configuration
     with open(f'{wdir}/pep.json', 'w+') as config:
         config.write(margo_spec.to_json(indent=4))
-    # Generate params.sh
-    with open(f'{wdir}/params.sh', 'a+') as params:
+    # Generate settings.sh
+    with open(f'{wdir}/settings.sh', 'a+') as params:
         params.write(f'HEPNOS_PEP_THREADS={pep_num_threads}\n')
         params.write(f'HEPNOS_PEP_IBATCH_SIZE={pep_ibatch_size}\n')
         params.write(f'HEPNOS_PEP_OBATCH_SIZE={pep_obatch_size}\n')
@@ -211,7 +283,7 @@ def __fill_context(context, add_parameter):
         "Batch size used when PEP processes are exchanging events among themselves")
     add_parameter(context, "pep_pes_per_node", int, 8, [1, 2, 4, 8, 16, 32],
         "Number of processes per node for the PEP step")
-    add_parameter(context, "pep_use_preloading", bool, True, [True, False],
+    add_parameter(context, "pep_use_preloading", bool, False, [True, False],
         "Whether the PEP step should use product-preloading")
 
 
@@ -223,10 +295,11 @@ def generate_experiment_directory(wdir, protocol,
     """Creates a directory for a new experiment and generate the
     configuration files for the various components."""
     os.mkdir(wdir)
+    __generate_settings(wdir=wdir, **kwargs)
     __generate_hepnos_config(wdir=wdir, protocol=protocol, hepnos_nodelist=hepnos_nodelist, **kwargs)
     __generate_loader_config(wdir=wdir, protocol=protocol, loader_nodelist=loader_nodelist, **kwargs)
     __generate_pep_config(wdir=wdir, protocol=protocol, pep_nodelist=pep_nodelist, **kwargs)
-    with open(f'{wdir}/params.sh', 'a+') as params:
+    with open(f'{wdir}/settings.sh', 'a+') as params:
         if len(loader_nodelist) > 0:
             utility_node = loader_nodelist.split(',')[0]
         else:
