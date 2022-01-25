@@ -23,6 +23,13 @@ and will install absolutely all the dependencies needed from scratch
 (hence the build time can be pretty long). The `hepnos/autotuning/linux/hosts.txt`
 file can be edited to provide a list of hosts usable by _mpirun_.
 
+Once the installation script completed, you will find, among other files and
+folders, a `user.yaml` file in the build directory. This file needs to be
+edited to provide user-specific information including _project_ (the allocation
+from which to charge node-hours) and _pdomain_ (protection domain for Theta,
+which needs to be a unique name across all users. We recommend setting it to
+`hep-<username>`, replacing `<username>` as appropriate).
+
 ### Note on reproducibility
 
 The `install.sh` script will install the [spack](https://spack.readthedocs.io/)
