@@ -197,7 +197,7 @@ def __generate_pep_config(wdir, protocol, busy_spin,
                           pep_ibatch_size,
                           pep_obatch_size,
                           pep_pes_per_node,
-                          pep_use_preloading,
+                          pep_no_preloading,
                           pep_nodelist,
                           **kwargs):
     """Generate configuration for the Parallel Event Processing benchmark."""
@@ -219,10 +219,10 @@ def __generate_pep_config(wdir, protocol, busy_spin,
         params.write(f'HEPNOS_PEP_IBATCH_SIZE={pep_ibatch_size}\n')
         params.write(f'HEPNOS_PEP_OBATCH_SIZE={pep_obatch_size}\n')
         params.write(f'HEPNOS_PEP_PES_PER_NODE={pep_pes_per_node}\n')
-        if pep_use_preloading:
-            params.write('HEPNOS_PEP_PRELOAD=--preload\n')
-        else:
+        if pep_no_preloading:
             params.write('HEPNOS_PEP_PRELOAD=\n')
+        else:
+            params.write('HEPNOS_PEP_PRELOAD=--preload\n')
         params.write(f'NODES_FOR_PEP={pep_nodelist}\n')
 
 
@@ -281,8 +281,8 @@ def __fill_context(context, add_parameter):
         "Batch size used when PEP processes are exchanging events among themselves")
     add_parameter(context, "pep_pes_per_node", int, 8, [1, 2, 4, 8, 16, 32],
         "Number of processes per node for the PEP step")
-    add_parameter(context, "pep_use_preloading", bool, False, [True, False],
-        "Whether the PEP step should use product-preloading")
+    add_parameter(context, "pep_no_preloading", bool, False, [True, False],
+        "Whether to disable product-preloading in PEP")
 
 
 def generate_experiment_directory(wdir, protocol,
@@ -292,7 +292,9 @@ def generate_experiment_directory(wdir, protocol,
                                   **kwargs):
     """Creates a directory for a new experiment and generate the
     configuration files for the various components."""
-    os.mkdir(wdir)
+    exp_folder = os.path.dirname(__file__)+'/exp'
+    from shutil import copytree
+    copytree(exp_folder, wdir)
     __generate_settings(wdir=wdir, **kwargs)
     __generate_hepnos_config(wdir=wdir, protocol=protocol, hepnos_nodelist=hepnos_nodelist, **kwargs)
     __generate_loader_config(wdir=wdir, protocol=protocol, loader_nodelist=loader_nodelist, **kwargs)
@@ -303,9 +305,6 @@ def generate_experiment_directory(wdir, protocol,
         else:
             utility_node = ''
         params.write(f'NODES_FOR_UTILITY={utility_node}\n')
-    from shutil import copyfile
-    job_script = os.path.dirname(__file__)+'/scripts/job.sh'
-    copyfile(job_script, f'{wdir}/job.sh')
 
 
 def generate_deephyper_problem():

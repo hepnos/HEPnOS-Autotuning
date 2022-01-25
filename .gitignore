@@ -142,5 +142,4 @@ spack/
 *.cobaltlog
 *.error
 *.output
-exp*/
 figures*/
