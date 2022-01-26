@@ -106,29 +106,27 @@ def __generate_hepnos_config(wdir, protocol, busy_spin,
             scheduler=brk.SchedulerSpec(pools=[progress_pool]))
     # Setup additional pools
     rpc_pools = []
-    for i in range(hepnos_num_providers):
-        rpc_pool = proc_spec.margo.argobots.pools.add(
-            name=f'__rpc_pool_{i}__', kind=hepnos_pool_type, access='mpmc')
-        rpc_pools.append(rpc_pool)
-    if hepnos_num_providers == 0:
-        rpc_pools.append(proc_spec.margo.rpc_pool)
+    if hepnos_num_rpc_threads > 0 or hepnos_progress_thread:
+        for i in range(hepnos_num_providers):
+            rpc_pool = proc_spec.margo.argobots.pools.add(
+                name=f'__rpc_pool_{i}__', kind=hepnos_pool_type, access='mpmc')
+            rpc_pools.append(rpc_pool)
+    else:
+        rpc_pools = [proc_spec.margo.argobots.pools[0]]
     # Setup additional xstreams
     for i in range(hepnos_num_rpc_threads):
         pools = []
         if hepnos_num_rpc_threads < hepnos_num_providers:
             j = i
             while j < len(rpc_pools):
-                pools.append(f'__rpc_pool_{j}__')
+                pools.append(rpc_pools[j])
                 j += hepnos_num_rpc_threads
         else:
-            pools = [f'__rpc_pool_{i % hepnos_num_providers}__']
-        pools = [ proc_spec.margo.argobots.pools[p] for p in pools ]
+            pools = [rpc_pools[i % hepnos_num_providers]]
         proc_spec.margo.argobots.xstreams.add(
             name=f'__rpc_es_{i}__', scheduler=brk.SchedulerSpec(pools=pools))
-    if hepnos_num_rpc_threads == 0:
-        pools = [f'__rpc_pool_{i}__' for i in range(hepnos_num_providers)]
-        pools = [proc_spec.margo.argobots.pools[p] for p in pools]
-        proc_spec.margo.argobots.xstreams[0].scheduler.pools = pools
+    if hepnos_num_rpc_threads == 0 and hepnos_progress_thread:
+        proc_spec.margo.argobots.xstreams[0].scheduler.pools.extend(rpc_pools)
     # Create databases
     dbs = []
     dbs.append({ "name": 'hepnos-datasets-0', "type": 'map', "config": {} })
@@ -137,12 +135,12 @@ def __generate_hepnos_config(wdir, protocol, busy_spin,
     for i in range(hepnos_num_event_databases):
         dbs.append({ "name": f'hepnos-events-{i}', "type": 'set', "config": {} })
     for i in range(hepnos_num_product_databases):
-        dbs.append({ "name": f'hepnos-products-{i}', "type": 'set', "config": {} })
+        dbs.append({ "name": f'hepnos-products-{i}', "type": 'map', "config": {} })
     # Setup providers
     providers = []
     for i in range(hepnos_num_providers):
         proc_spec.providers.add(name=f'hepnos_{i}',
-                                type='yokan', pool=rpc_pools[i],
+                                type='yokan', pool=rpc_pools[i % len(rpc_pools)],
                                 provider_id=i+1,
                                 config={'databases': []})
     # Bind databases to providers
@@ -285,11 +283,11 @@ def __fill_context(context, add_parameter):
         "Whether to disable product-preloading in PEP")
 
 
-def generate_experiment_directory(wdir, protocol,
-                                  hepnos_nodelist='',
-                                  loader_nodelist='',
-                                  pep_nodelist='',
-                                  **kwargs):
+def __generate_experiment_directory(wdir, protocol,
+                                    hepnos_nodelist='',
+                                    loader_nodelist='',
+                                    pep_nodelist='',
+                                    **kwargs):
     """Creates a directory for a new experiment and generate the
     configuration files for the various components."""
     exp_folder = os.path.dirname(__file__)+'/exp'
@@ -305,6 +303,14 @@ def generate_experiment_directory(wdir, protocol,
         else:
             utility_node = ''
         params.write(f'NODES_FOR_UTILITY={utility_node}\n')
+
+
+def run(exp_prefix, build_prefix, protocol, **kwargs):
+    import uuid
+    exp_uuid = uuid.uuid4()
+    wdir = exp_prefix + str(exp_uuid)
+    __generate_experiment_directory(wdir=wdir, protocol=protocol, **kwargs)
+    os.system(f'{wdir}/job.sh {build_prefix} {wdir}')
 
 
 def generate_deephyper_problem():
@@ -329,4 +335,4 @@ if __name__ == '__main__':
                         help='Comma-separated list of nodes to use for Parallel Event Processor')
     __fill_context(parser, __add_parameter_to_parser)
     args = parser.parse_args()
-    generate_experiment_directory(**vars(args))
+    __generate_experiment_directory(**vars(args))

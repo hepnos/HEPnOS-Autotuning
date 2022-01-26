@@ -33,7 +33,7 @@ HEPNOS_LOADER_SOFT_TIMEOUT=10000
 HEPNOS_LOADER_TIMEOUT=600 # timeout in seconds, after which the application will be killed
 
 HEPNOS_ENABLE_PEP=1 # enable parallel event processing benchmark
-HEPNOS_PEP_VERBOSE=info # at least info is needed
+HEPNOS_PEP_VERBOSE=trace # at least info is needed
 HEPNOS_PEP_PRODUCTS=(
 	hep::rec_energy_numu
 	hep::rec_hdr

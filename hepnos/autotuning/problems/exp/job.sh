@@ -5,14 +5,11 @@
 #H -p bdwall
 #H -q debug-flat-quad
 
-#set -e
-
 HEPNOS_BUILD_PREFIX=${HEPNOS_BUILD_PREFIX:-$1}
 EXPDIR=${EXPDIR:-$2}
 
 source $HEPNOS_BUILD_PREFIX/setup-env.sh
 
-NODES_PER_EXP=$SLURM_JOB_NUM_NODES
 PROTOCOL=$HEPNOS_LIBFABRIC_PROTOCOL
 HEPNOS_CONFIG=$EXPDIR/hepnos.json
 LOADER_MARGO_CONFIG=$EXPDIR/dataloader.json
@@ -30,6 +27,7 @@ EXTRA_FLAGS=""
 
 if [ $HEPNOS_EXP_PLATFORM == "theta" ]; then
     log "Setting up protection domain"
+    HEPNOS_PDOMAIN=${HEPNOS_user_theta_pdomain}
     apstat -P | grep ${HEPNOS_PDOMAIN} || apmgr pdomain -c -u ${HEPNOS_PDOMAIN}
     EXTRA_FLAGS="--extra \"-p,${HEPNOS_PDOMAIN}\""
 fi
@@ -131,25 +129,24 @@ else
     exit -1
 fi
 
-if [ "$HEPNOS_ENABLE_PEP" -ne "0" ]; then
-    NUM_PES=$(($HEPNOS_PEP_PES_PER_NODE * $NUM_NODES_FOR_PEP))
-    PEP_PRODUCT_ARGS=""
-    for p in ${HEPNOS_PEP_PRODUCTS[@]}; do
-      PEP_PRODUCT_ARGS="${PEP_PRODUCT_ARGS} -n ${p}"
-    done
+NUM_PES=$(($HEPNOS_PEP_PES_PER_NODE * $NUM_NODES_FOR_PEP))
+PEP_PRODUCT_ARGS=""
+for p in ${HEPNOS_PEP_PRODUCTS[@]}; do
+    PEP_PRODUCT_ARGS="${PEP_PRODUCT_ARGS} -n ${p}"
+done
 
-    if [ "$HEPNOS_PEP_ENABLE_PROFILING" -eq "1" ]; then
-        export MARGO_ENABLE_DIAGNOSTICS=1
-        export MARGO_ENABLE_PROFILING=1
-    else
-        export MARGO_ENABLE_DIAGNOSTICS=0
-        export MARGO_ENABLE_PROFILING=0
-    fi
+if [ "$HEPNOS_PEP_ENABLE_PROFILING" -eq "1" ]; then
+    export MARGO_ENABLE_DIAGNOSTICS=1
+    export MARGO_ENABLE_PROFILING=1
+else
+    export MARGO_ENABLE_DIAGNOSTICS=0
+    export MARGO_ENABLE_PROFILING=0
+fi
 
-    log "Running PEP benchmark"
-    PEP_CORES_PER_PE=$(( 32 / $HEPNOS_PEP_PES_PER_NODE ))
-    start_time=`date +%s`
-    timeout ${HEPNOS_PEP_TIMEOUT} \
+log "Running PEP benchmark"
+PEP_CORES_PER_PE=$(( 32 / $HEPNOS_PEP_PES_PER_NODE ))
+start_time=`date +%s`
+timeout ${HEPNOS_PEP_TIMEOUT} \
     python3 -m hepnos.autotuning.run -n ${NUM_PES} -N ${NUM_NODES_FOR_PEP} ${NODES_FOR_PEP} ${EXTRA_FLAGS} \
              hepnos-pep-benchmark \
              -p ${PROTOCOL} \
@@ -164,24 +161,23 @@ if [ "$HEPNOS_ENABLE_PEP" -ne "0" ]; then
              -i ${HEPNOS_PEP_IBATCH_SIZE} \
              -t ${HEPNOS_PEP_THREADS} \
              &>> $EXPDIR/pep-output.txt
-    RET=$?
-    end_time=`date +%s`
-    if [ "$RET" -eq "124" ]; then
-        log "ERROR: hepnos-pep timed out"
-        echo "TIME: ${CONST_TIMEOUT}" >> $EXPDIR/pep-output.txt
-        kill -- -$HEPNOS_PID
-        exit -1
-    fi
-    if grep -q "Benchmark completed" $EXPDIR/pep-output.txt
-    then
-        runtime=$((end_time-start_time))
-        echo "TIME: ${runtime}" >> $EXPDIR/pep-output.txt
-    else
-        log "ERROR: hepnos-pep failed"
-        echo "TIME: ${CONST_FAILURE}" >> $EXPDIR/pep-output.txt
-        kill $HEPNOS_PID
-        exit -1
-    fi
+RET=$?
+end_time=`date +%s`
+if [ "$RET" -eq "124" ]; then
+    log "ERROR: hepnos-pep timed out"
+    echo "TIME: ${CONST_TIMEOUT}" >> $EXPDIR/pep-output.txt
+    kill -- -$HEPNOS_PID
+    exit -1
+fi
+if grep -q "Benchmark completed" $EXPDIR/pep-output.txt
+then
+    runtime=$((end_time-start_time))
+    echo "TIME: ${runtime}" >> $EXPDIR/pep-output.txt
+else
+    log "ERROR: hepnos-pep failed"
+    echo "TIME: ${CONST_FAILURE}" >> $EXPDIR/pep-output.txt
+    kill $HEPNOS_PID
+    exit -1
 fi
 
 log "Shutting down HEPnOS"

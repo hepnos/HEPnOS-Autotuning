@@ -80,35 +80,19 @@ Before trying to run any experiment, please run:
 $ source ../setup-env.sh
 ```
 
-You are now ready to setup an experiment, which you can do with the following command.
+### Running a test experiment
+
+To run a single instance of the HEPnOS Workflow, you can run the following commands
+from the build directory.
 
 ```bash
-$ python -m hepnos.autotuning.setup \
-    --activation-script ../setup-env.sh \
-    -w <experiment-folder> \
-    -q <job-queue> \
-    -A <allocation-name> \
-    -t <job-duration> \
-    -n <number-of-nodes> \
-    --step <hepnos-exp-step> \
-    --nodes-per-task <nodes-per-task>
+$ python3 -m hepnos.autotuning.problems.simple --wdir test --protocol ofi+gni
+$ cd test
+$ ./submit.sh
 ```
 
-This will create a folder and generate a script in it that can be run with the
-platform's job managed, for instance on Theta:
+Replace `ofi+gni` with the appropriate protocol for the platform the experiment runs
+on (`ofi+gni` on Theta, `ofi+psm2` on Bebop, `ofi+tcp` on a TCP-based cluster of linux workstations).
 
-```bash
-$ qsub exp/job.sh
-```
-
-On Bebop:
-
-```bash
-$ sbatch exp/job.sh
-```
-
-Or on a Linux workstation:
-
-```bash
-$ ./exp/job.sh
-```
+This will submit a 4-node job with default parameters to run the workflow. The `dataloader-outout.txt`
+and `pep-output.txt` files will eventually be filled and a runtime will be printed at the end.
