@@ -1,3 +1,8 @@
+"""
+This module allows to call a platform-specific "mpirun" command,
+such as "aprun" on Theta or "srun" on Bebop, using uniform arguments
+that are then translated into platform-specific ones.
+"""
 import os
 import sys
 import argparse
