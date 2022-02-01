@@ -55,6 +55,32 @@ def generate_mpirun(program, num_nodes, pes_per_node, **kwargs):
     return cmd
 
 
+def get_nodelist():
+    import os
+    nidstr = os.environ.get('COBALT_PARTNAME', None)
+    nidlst = []
+    if nidstr is None:
+        return nidlst
+    nidgroups = nidstr.split(',')
+    for nidgroup in nidgroups:
+        if (nidgroup.find("-") != -1):
+            a, b = nidgroup.split("-", 1)
+            a = int(a)
+            b = int(b)
+            if (a > b):
+                tmp = b
+                b = a
+                a = tmp
+            b = b + 1 #need one more for inclusive
+        else:
+            a = int(nidgroup)
+            b = a + 1
+        for nid in range(a, b):
+            nidlst.append(nid)
+    nidlst = sorted(list(set(nidlst)))
+    return nidlst
+
+
 def submit(command, **kwargs):
     cmd = ['qsub']
     args = kwargs
