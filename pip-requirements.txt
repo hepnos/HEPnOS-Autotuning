@@ -3,4 +3,3 @@
 -e git+https://github.com/hepnos/HEPnOS-Wizard.git@main#egg=hepnos_wizard
 -e git+https://github.com/mochi-hpc/py-mochi-bedrock.git@main#egg=py_mochi_bedrock
 -e git+https://github.com/automl/ConfigSpace.git@master#egg=configspace
-Jinja2
