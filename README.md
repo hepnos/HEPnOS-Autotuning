@@ -86,13 +86,10 @@ To run a single instance of the HEPnOS Workflow, you can run the following comma
 from the build directory.
 
 ```bash
-$ python3 -m hepnos.autotuning.problems.simple --wdir test --protocol ofi+gni
+$ python3 -m hepnos.autotuning.problems.simple --wdir test
 $ cd test
 $ ./submit.sh
 ```
-
-Replace `ofi+gni` with the appropriate protocol for the platform the experiment runs
-on (`ofi+gni` on Theta, `ofi+psm2` on Bebop, `ofi+tcp` on a TCP-based cluster of linux workstations).
 
 This will submit a 4-node job with default parameters to run the workflow. The `dataloader-outout.txt`
 and `pep-output.txt` files will eventually be filled and a runtime will be printed at the end.

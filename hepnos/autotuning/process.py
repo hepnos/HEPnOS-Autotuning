@@ -12,7 +12,7 @@ def __output_forwarder(pipe, out):
 
 
 def run_command(cmd):
-    popen = subprocess.Popen(cmd, shell=True,
+    popen = subprocess.Popen(cmd.split(),
                              stdout=subprocess.PIPE,
                              stderr=subprocess.PIPE)
     threading.Thread(target=__output_forwarder,

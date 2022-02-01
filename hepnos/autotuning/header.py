@@ -1,6 +1,11 @@
-
+"""
+This module contains functions to read flags from the header
+of a job script. The header consists of lines starting with #?.
+"""
 
 def get_flags_from_header(filename):
+    """Returns the flags extracted from the header of a file,
+    in the form of an array."""
     interpreter_directive = False
     flag_translation = {
         '-A': 'allocation',

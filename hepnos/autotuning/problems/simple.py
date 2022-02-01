@@ -325,7 +325,8 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Generate an experiment')
     parser.add_argument('--wdir', required=True, type=str,
                         help='Directory in which to generate the configuration')
-    parser.add_argument('--protocol', required=True, type=str,
+    default_protocol = os.environ.get('HEPNOS_LIBFABRIC_PROTOCOL','ofi+tcp')
+    parser.add_argument('--protocol', default=default_protocol, type=str,
                         help='Mercury protocol to use')
     parser.add_argument('--hepnos_nodelist', required=False, default='', type=str,
                         help='Comma-separated list of nodes to use for HEPnOS')

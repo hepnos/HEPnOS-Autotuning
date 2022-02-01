@@ -1,3 +1,6 @@
+"""This module provides a function to detect the platform (via the HEPNOS_EXP_PLATFORM
+environment variable) and import the corresponding module (theta or bebop)."""
+
 import importlib
 import logging
 import sys
