@@ -87,10 +87,18 @@ do
    spack add $dependency
 done
 
+function find_latest_version {
+  echo $(spack info $1 | grep -A1 Preferred | tail -n1 | awk '{ print $1 }')
+}
+
 log "Adding $PLATFORM-specific specs to environment..."
 if test -f "$PLATFORM_PATH/requirements.txt"; then
     cat $PLATFORM_PATH/spack-requirements.txt | while read dependency
     do
+        if [[ $dependency != *"@"* ]]; then
+            VERSION=$(find_latest_version $dependency)
+            dependency="$dependency@$VERSION"
+        fi
         spack add $dependency
     done
 fi
