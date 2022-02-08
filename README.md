@@ -1,5 +1,9 @@
 # HEPnOS Autotuning experiments
 
+Important: the scripts have been written for the bash shell. If you are using
+another shell (e.g. zsh, fish, tcsh, etc.) please switch to bash for reproducing
+these experiments.
+
 ## Installing
 
 This repository is meant to provide reproducible experiments.
@@ -77,7 +81,7 @@ The `setup-env.sh` file is a script that will be used to setup our environment.
 Before trying to run any experiment, please run:
 
 ```bash
-$ source ../setup-env.sh
+$ source setup-env.sh
 ```
 
 ### Running a test experiment
@@ -87,9 +91,14 @@ from the build directory.
 
 ```bash
 $ python3 -m hepnos.autotuning.problems.simple --wdir test
-$ cd test
-$ ./submit.sh
+$ test/submit.sh
 ```
 
 This will submit a 4-node job with default parameters to run the workflow. The `dataloader-outout.txt`
-and `pep-output.txt` files will eventually be filled and a runtime will be printed at the end.
+and `pep-output.txt` files in the `test` directory will eventually be filled
+and a runtime will be printed at the end.
+
+Note: on Bebop you may end up with core files produced by the `hepnos-pep-benchmark` executable.
+These crashes happen at the end of the run when the underlying PSM2 networking library disconnects.
+We have not yet found a way to address this, but it does not affect the reported run times or
+the validity of the results.

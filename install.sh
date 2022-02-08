@@ -81,18 +81,22 @@ spack env activate hepnos
 log "Adding mochi repo to environment..."
 spack repo add $WD/sw/mochi-spack-packages
 
-log "Adding specs to environment..."
-cat $HERE/spack-requirements.txt | while read dependency
-do
-   spack add $dependency
-done
-
 function find_latest_version {
   echo $(spack info $1 | grep -A1 Preferred | tail -n1 | awk '{ print $1 }')
 }
 
+log "Adding specs to environment..."
+cat $HERE/spack-requirements.txt | while read dependency
+do
+    if [[ $dependency != *"@"* ]]; then
+         VERSION=$(find_latest_version $dependency)
+	dependency="$dependency@$VERSION"
+    fi
+    spack add $dependency
+done
+
 log "Adding $PLATFORM-specific specs to environment..."
-if test -f "$PLATFORM_PATH/requirements.txt"; then
+if test -f "$PLATFORM_PATH/spack-requirements.txt"; then
     cat $PLATFORM_PATH/spack-requirements.txt | while read dependency
     do
         if [[ $dependency != *"@"* ]]; then
@@ -144,7 +148,7 @@ log "Activating dhenv environment in conda..."
 source $CONDA_LOCATION/etc/profile.d/conda.sh
 conda activate $WD/sw/dhenv/
 
-export PYTHONPATH=\$PYTHONPATH:$HERE
+export PYTHONPATH=\$PYTHONPATH:$HERE:$WD/sw/dhenv
 export HEPNOS_EXP_PLATFORM=$PLATFORM
 export HEPNOS_BUILD_PREFIX=$WD
 
