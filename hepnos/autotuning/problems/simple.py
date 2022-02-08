@@ -33,7 +33,7 @@ __default_params = {
     'HEPNOS_LOADER_ENABLE_PROFILING': 0,
     'HEPNOS_LOADER_SOFT_TIMEOUT': 10000,
     'HEPNOS_LOADER_TIMEOUT': 600,
-    'HEPNOS_PEP_VERBOSE': 'critical',
+    'HEPNOS_PEP_VERBOSE': 'info',
     'HEPNOS_PEP_PRODUCTS': [
         'hep::rec_energy_numu',
         'hep::rec_hdr',
@@ -91,9 +91,9 @@ def __generate_hepnos_config(wdir, protocol, busy_spin,
     proc_spec.libraries['yokan'] = 'libyokan-bedrock-module.so'
     # Setup busy-spinning if requested
     if busy_spin:
-        proc.margo.mercury.na_no_block = True
+        proc_spec.margo.mercury.na_no_block = True
     # Add SSG group
-    proc_spec.ssg.add(name='hepnos', bootstrap='mpi', group_file='hepnos.ssg',
+    proc_spec.ssg.add(name='hepnos', bootstrap='mpi', group_file=f'{wdir}/hepnos.ssg',
                       pool=proc_spec.margo.argobots.pools[0],
                       swim=brk.SwimSpec(disabled=True))
     # Add progress xstream if requested
@@ -255,7 +255,7 @@ def __fill_context(context, add_parameter):
         "Number of databases per process used to store products")
     add_parameter(context, "hepnos_num_providers", int, 1, (1, 32),
         "Number of database providers per process")
-    add_parameter(context, "hepnos_pool_type", str, 'fifo_wait', ['fifo','fifo_wait','prio_wait'],
+    add_parameter(context, "hepnos_pool_type", str, 'fifo_wait', ['fifo','fifo_wait'],
         "Thread-scheduling policity used by Argobots pools")
     add_parameter(context, "hepnos_pes_per_node", int, 2, [1, 2, 4, 8, 16, 32],
         "Number of HEPnOS processes per node")
@@ -305,15 +305,36 @@ def __generate_experiment_directory(wdir, protocol,
         params.write(f'NODES_FOR_UTILITY={utility_node}\n')
 
 
-def run(exp_prefix, build_prefix, protocol, **kwargs):
+def run_instance(exp_prefix, build_prefix, protocol, **kwargs):
     import uuid
     exp_uuid = uuid.uuid4()
-    wdir = exp_prefix + str(exp_uuid)
+    wdir = exp_prefix + str(exp_uuid)[:8]
     __generate_experiment_directory(wdir=wdir, protocol=protocol, **kwargs)
-    os.system(f'{wdir}/job.sh {build_prefix} {wdir}')
+    cmd = f'EXPDIR="{wdir}" HEPNOS_BUILD_PREFIX="{build_prefix}" {wdir}/job.sh &> "{wdir}.log"'
+    print(f'Lauching {cmd}')
+    os.system(cmd)
+    dataloader_output_file = wdir + '/dataloader-output.txt'
+    pep_output_file = wdir + '/pep-output.txt'
+    dataloader_time = 99999999.0
+    pep_time = 99999999.0
+    try:
+        for line in open(dataloader_output_file):
+            if line.startswith('TIME'):
+                dataloader_time = float(line.split()[1])
+                break
+        if dataloader_time >= 88888888.0:
+            return dataloader_time
+        for line in open(pep_output_file):
+            if 'Benchmark completed' in line:
+                pep_time = float(line.split()[-2])
+        if pep_time >= 88888888.0:
+            return pep_time
+        return dataloader_time + pep_time
+    except FileNotFoundError:
+        return 77777777.0
 
 
-def generate_deephyper_problem():
+def build_deephyper_problem():
     """Generate a returns a DeepHyper problem."""
     from deephyper.problem import HpProblem
     problem = HpProblem()

@@ -6,10 +6,10 @@ if [ -z "$HEPNOS_BUILD_PREFIX" ]; then
 fi
 
 HERE=`dirname "$(realpath $0)"`
-export EXPDIR=$HERE
+export EXPDIR=`pwd`
 
 eval PROJECT='$'HEPNOS_user_${HEPNOS_EXP_PLATFORM}_project
 
 $HERE/cleanup.sh
 
-python -m hepnos.autotuning.submit -A $PROJECT $HERE/job.sh $HEPNOS_BUILD_PREFIX $EXPDIR
+python -m hepnos.autotuning.submit -A $PROJECT $HERE/search.sh $HEPNOS_BUILD_PREFIX $EXPDIR
