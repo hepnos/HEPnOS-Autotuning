@@ -77,7 +77,7 @@ def get_nodelist():
             b = a + 1
         for nid in range(a, b):
             nidlst.append(nid)
-    nidlst = sorted(list(set(nidlst)))
+    nidlst = [str(x) for x in sorted(list(set(nidlst)))]
     return nidlst
 
 
