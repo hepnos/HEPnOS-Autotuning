@@ -32,23 +32,32 @@ if [ $HEPNOS_EXP_PLATFORM == "theta" ]; then
       apstat -P | grep ${HEPNOS_PDOMAIN} || apmgr pdomain -c -u ${HEPNOS_PDOMAIN}
     fi
     EXTRA_FLAGS="--extra \"-p,${HEPNOS_PDOMAIN}\""
+elif [ $HEPNOS_EXP_PLATFORM == "bebop" ]; then
+    EXTRA_FLAGS="--extra \"--exclusive\""
 fi
 
 NUM_NODES_FOR_HEPNOS=$(($NODES_PER_EXP/4))
 NUM_NODES_FOR_LOADER=$(($NODES_PER_EXP - $NUM_NODES_FOR_HEPNOS))
 NUM_NODES_FOR_PEP=$(($NODES_PER_EXP - $NUM_NODES_FOR_HEPNOS))
 
-if [[ ! -z "${NODES_FOR_HEPNOS}" ]]; then
+if [ $HEPNOS_EXP_PLATFORM == "theta" ]; then
+  if [[ ! -z "${NODES_FOR_HEPNOS}" ]]; then
     NODES_FOR_HEPNOS="--nodelist ${NODES_FOR_HEPNOS}"
-fi
-if [[ ! -z "${NODES_FOR_LOADER}" ]]; then
+  fi
+  if [[ ! -z "${NODES_FOR_LOADER}" ]]; then
     NODES_FOR_LOADER="--nodelist ${NODES_FOR_LOADER}"
-fi
-if [[ ! -z "${NODES_FOR_PEP}" ]]; then
+  fi
+  if [[ ! -z "${NODES_FOR_PEP}" ]]; then
     NODES_FOR_PEP="--nodelist ${NODES_FOR_PEP}"
-fi
-if [[ ! -z "${NODES_FOR_UTILITY}" ]]; then
+  fi
+  if [[ ! -z "${NODES_FOR_UTILITY}" ]]; then
     NODES_FOR_UTILITY="--nodelist ${NODES_FOR_UTILITY}"
+  fi
+else
+  NODES_FOR_HEPNOS=""
+  NODES_FOR_LOADER=""
+  NODES_FOR_PEP=""
+  NODES_FOR_UTILITY=""
 fi
 
 if [ "$HEPNOS_ENABLE_PROFILING" -eq "1" ]; then

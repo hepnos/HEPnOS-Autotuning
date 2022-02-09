@@ -145,7 +145,7 @@ def __generate_hepnos_config(wdir, protocol, busy_spin,
                                 config={'databases': []})
     # Bind databases to providers
     for i, db in enumerate(dbs):
-        proc_spec.providers[i%hepnos_num_providers].config['databases'].append(db)
+        proc_spec.providers[int(i%hepnos_num_providers)].config['databases'].append(db)
     # Generate configuration
     with open(f'{wdir}/hepnos.json', 'w+') as config:
         config.write(proc_spec.to_json(indent=4))

@@ -42,6 +42,54 @@ def generate_mpirun(program, num_nodes, pes_per_node, **kwargs):
     return cmd
 
 
+def __expand_group_values(group):
+    subgroups = group.split(',')
+    result = []
+    for sg in subgroups:
+        if '-' in sg:
+            a, b = sg.split('-')
+            for i in range(int(a), int(b)+1):
+                result.append(str(i))
+        else:
+            result.append(sg)
+    return result
+
+
+def get_nodelist():
+    # XXX this function has a problem, it converts nodes like bdw-0123 into btw-123
+    import os
+    liststr = os.environ.get('SLURM_JOB_NODELIST', None)
+    if liststr is None:
+        return []
+    start = 0
+    in_brackets = False
+    nodes = []
+    group_prefix = None
+    group_values = None
+    for index, char in enumerate(liststr):
+        if char == '[':
+            in_brackets = True
+            group_prefix = liststr[start:index]
+            start = index+1
+        elif char == ']':
+            in_brackets = False
+            group_values = __expand_group_values(liststr[start:index])
+        elif char == ',' and not in_brackets:
+            if group_prefix is not None:
+                for v in group_values:
+                    nodes.append(group_prefix + str(v))
+                    group_prefix = None
+                    group_values = None
+            else:
+                nodes.append(liststr[start:index])
+            start = index+1
+    if group_prefix is not None:
+        for v in group_values:
+           nodes.append(group_prefix + str(v))
+    else:
+        nodes.append(liststr[start:])
+    return nodes
+
 
 def submit(command, **kwargs):
     cmd = ['sbatch']
