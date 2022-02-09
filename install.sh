@@ -148,7 +148,8 @@ log "Activating dhenv environment in conda..."
 source $CONDA_LOCATION/etc/profile.d/conda.sh
 conda activate $WD/sw/dhenv/
 
-export PYTHONPATH=\$PYTHONPATH:$HERE:$WD/sw/dhenv
+export PATH=$WD/sw/dhenv/bin:\$PATH
+export PYTHONPATH=$HERE:\$PYTHONPATH
 export HEPNOS_EXP_PLATFORM=$PLATFORM
 export HEPNOS_BUILD_PREFIX=$WD
 

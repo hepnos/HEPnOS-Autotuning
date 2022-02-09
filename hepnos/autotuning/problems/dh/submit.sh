@@ -10,6 +10,4 @@ export EXPDIR=`pwd`
 
 eval PROJECT='$'HEPNOS_user_${HEPNOS_EXP_PLATFORM}_project
 
-$HERE/cleanup.sh
-
 python -m hepnos.autotuning.submit -A $PROJECT $HERE/search.sh $HEPNOS_BUILD_PREFIX $EXPDIR

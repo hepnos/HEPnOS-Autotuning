@@ -60,8 +60,9 @@ if __name__ == '__main__':
         problem = build_problem()
         logging.info(f"Loading run_instance function in {args.problem}")
         run_instance = getattr(mod, 'run_instance')
-    except ModuleNotFoundError:
-        logging.critical(f'Could not find module {module_name}')
+    except ModuleNotFoundError as e:
+        logging.critical(f'Could not load module {module_name}:')
+        logging.critical(f'{e}')
         sys.exit(-1)
     except AttributeError:
         logging.critical(f'No problem {instance_name} found in module {module_name}')
