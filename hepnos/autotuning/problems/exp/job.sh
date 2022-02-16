@@ -68,6 +68,19 @@ else
   export MARGO_ENABLE_PROFILING=0
 fi
 
+function shutdown_hepnos () {
+    log "Shutting down HEPnOS"
+    timeout ${HEPNOS_UTILITY_TIMEOUT} \
+        python3 -m hepnos.autotuning.run -n 1 -N 1 ${NODES_FOR_UTILITY} ${EXTRA_FLAGS} \
+        hepnos-shutdown $PROTOCOL $DATABASES_CONFIG
+    RET=$?
+    if [ "$RET" -eq "124" ]; then
+        log "ERROR: hepnos-shutdown timed out"
+        kill $HEPNOS_PID
+        exit -1
+    fi
+}
+
 NUM_PES_FOR_HEPNOS=$((${HEPNOS_PES_PER_NODE} * ${NUM_NODES_FOR_HEPNOS}))
 log "Starting up HEPnOS daemon"
 HEPNOS_CORES_PER_PE=$(( 32 / $HEPNOS_PES_PER_NODE ))
@@ -94,12 +107,12 @@ timeout ${HEPNOS_UTILITY_TIMEOUT} \
 RET=$?
 if [ "$RET" -eq "124" ]; then
     log "ERROR: hepnos-list-databases timed out"
-    kill $HEPNOS_PID
+    shutdown_hepnos
     exit -1
 fi
 if [ ! "$RET" -eq "0" ]; then
     log "ERROR: hepnos-list-databases failed"
-    kill $HEPNOS_PID
+    shutdown_hepnos
     exit -1
 fi
 
@@ -137,7 +150,7 @@ end_time=`date +%s`
 if [ "$RET" -eq "124" ]; then
     log "ERROR: hepnos-dataloader timed out"
     echo "RUNTIME: ${CONST_TIMEOUT}" >> $EXPDIR/dataloader-output.txt
-    kill $HEPNOS_PID
+    shutdown_hepnos
     exit -1
 fi
 if grep -q "ESTIMATED" $EXPDIR/dataloader-output.txt
@@ -147,7 +160,7 @@ then
 else
     log "ERROR: hepnos-dataloader failed"
     echo "RUNTIME: ${CONST_FAILURE}" >> $EXPDIR/dataloader-output.txt
-    kill $HEPNOS_PID
+    shutdown_hepnos
     exit -1
 fi
 
@@ -188,7 +201,7 @@ end_time=`date +%s`
 if [ "$RET" -eq "124" ]; then
     log "ERROR: hepnos-pep timed out"
     echo "TIME: ${CONST_TIMEOUT}" >> $EXPDIR/pep-output.txt
-    kill $HEPNOS_PID
+    shutdown_hepnos
     exit -1
 fi
 if grep -q "Benchmark completed" $EXPDIR/pep-output.txt
@@ -198,20 +211,11 @@ then
 else
     log "ERROR: hepnos-pep failed"
     echo "TIME: ${CONST_FAILURE}" >> $EXPDIR/pep-output.txt
-    kill $HEPNOS_PID
+    shutdown_hepnos
     exit -1
 fi
 
-log "Shutting down HEPnOS"
-timeout ${HEPNOS_UTILITY_TIMEOUT} \
-        python3 -m hepnos.autotuning.run -n 1 -N 1 ${NODES_FOR_UTILITY} ${EXTRA_FLAGS} \
-        hepnos-shutdown $PROTOCOL $DATABASES_CONFIG
-RET=$?
-if [ "$RET" -eq "124" ]; then
-    log "ERROR: hepnos-shutdown timed out"
-    kill $HEPNOS_PID
-    exit -1
-fi
+shutdown_hepnos
 
 if [ $HEPNOS_EXP_PLATFORM == "theta" ]; then
     if [ -z ${HEPNOS_PDOMAIN_READY+x} ]; then
