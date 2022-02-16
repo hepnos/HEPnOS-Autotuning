@@ -10,7 +10,7 @@ __default_params = {
     'HEPNOS_DATASET': 'nova',
     'HEPNOS_LABEL': 'abc',
     'HEPNOS_ENABLE_PROFILING': 0,
-    'HEPNOS_UTILITY_TIMEOUT': 60,
+    'HEPNOS_UTILITY_TIMEOUT': 30,
     'HEPNOS_LOADER_DATAFILE': '$EXPDIR/$HEPNOS_EXP_PLATFORM-50files.txt',
     'HEPNOS_LOADER_VERBOSE': 'critical',
     'HEPNOS_LOADER_PRODUCTS': [
@@ -32,7 +32,7 @@ __default_params = {
         'hep::rec_vtx_elastic_fuzzyk_png_shwlid' ],
     'HEPNOS_LOADER_ENABLE_PROFILING': 0,
     'HEPNOS_LOADER_SOFT_TIMEOUT': 10000,
-    'HEPNOS_LOADER_TIMEOUT': 600,
+    'HEPNOS_LOADER_TIMEOUT': 300,
     'HEPNOS_PEP_VERBOSE': 'info',
     'HEPNOS_PEP_PRODUCTS': [
         'hep::rec_energy_numu',
@@ -52,7 +52,7 @@ __default_params = {
         'hep::rec_vtx_elastic_fuzzyk_png_cvnpart',
         'hep::rec_vtx_elastic_fuzzyk_png_shwlid' ],
     'HEPNOS_PEP_ENABLE_PROFILING':0,
-    'HEPNOS_PEP_TIMEOUT': 600,
+    'HEPNOS_PEP_TIMEOUT': 300,
     'CONST_TIMEOUT': 99999999,
     'CONST_FAILURE': 88888888
 }
@@ -307,6 +307,7 @@ def __generate_experiment_directory(wdir, protocol,
 
 def run_instance(exp_prefix, build_prefix, protocol, **kwargs):
     import uuid
+    from shutil import rmtree
     exp_uuid = uuid.uuid4()
     wdir = exp_prefix + str(exp_uuid)[:8]
     __generate_experiment_directory(wdir=wdir, protocol=protocol, **kwargs)
@@ -317,21 +318,26 @@ def run_instance(exp_prefix, build_prefix, protocol, **kwargs):
     pep_output_file = wdir + '/pep-output.txt'
     dataloader_time = 99999999.0
     pep_time = 99999999.0
+    result = 0.0
     try:
         for line in open(dataloader_output_file):
             if line.startswith('TIME'):
                 dataloader_time = float(line.split()[1])
                 break
         if dataloader_time >= 88888888.0:
-            return dataloader_time
-        for line in open(pep_output_file):
-            if 'Benchmark completed' in line:
-                pep_time = float(line.split()[-2])
-        if pep_time >= 88888888.0:
-            return pep_time
-        return dataloader_time + pep_time
+            result = dataloader_time
+        else:
+            for line in open(pep_output_file):
+                if 'Benchmark completed' in line:
+                    pep_time = float(line.split()[-2])
+            if pep_time >= 88888888.0:
+                result = pep_time
+            else:
+                result = dataloader_time + pep_time
     except FileNotFoundError:
-        return 77777777.0
+        result = 77777777.0
+    rmtree(wdir)
+    return -result
 
 
 def build_deephyper_problem():
