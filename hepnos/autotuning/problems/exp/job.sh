@@ -72,7 +72,7 @@ NUM_PES_FOR_HEPNOS=$((${HEPNOS_PES_PER_NODE} * ${NUM_NODES_FOR_HEPNOS}))
 log "Starting up HEPnOS daemon"
 HEPNOS_CORES_PER_PE=$(( 32 / $HEPNOS_PES_PER_NODE ))
 python3 -m hepnos.autotuning.run -n ${NUM_PES_FOR_HEPNOS} -N ${NUM_NODES_FOR_HEPNOS} ${NODES_FOR_HEPNOS} ${EXTRA_FLAGS} \
-        bedrock ${PROTOCOL} -c ${HEPNOS_CONFIG} -v trace &> $EXPDIR/hepnos-out.txt &
+        bedrock ${PROTOCOL} -c ${HEPNOS_CONFIG} -v info &> $EXPDIR/hepnos-out.txt &
 HEPNOS_PID=$!
 
 log "Waiting for HEPnOS daemon to start up"
@@ -188,7 +188,7 @@ end_time=`date +%s`
 if [ "$RET" -eq "124" ]; then
     log "ERROR: hepnos-pep timed out"
     echo "TIME: ${CONST_TIMEOUT}" >> $EXPDIR/pep-output.txt
-    kill -- -$HEPNOS_PID
+    kill $HEPNOS_PID
     exit -1
 fi
 if grep -q "Benchmark completed" $EXPDIR/pep-output.txt
