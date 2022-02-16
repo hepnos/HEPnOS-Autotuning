@@ -87,7 +87,7 @@ if __name__ == '__main__':
     objective_function = __make_objective_function(run_instance, args.exp_prefix, build_prefix, protocol)
 
     num_tasks = int(len(nodelist)/args.nodes_per_exp)
-    num_cpus_per_task = 1.0/num_tasks
+    num_cpus_per_task = 4.0/num_tasks
 
     logging.info("Importing deephyper.evaluator")
     import deephyper.evaluator
@@ -99,8 +99,8 @@ if __name__ == '__main__':
     logging.info("Creating evaluator")
     QueuedRayEvaluator = deephyper.evaluator.queued(deephyper.evaluator.RayEvaluator)
     evaluator = QueuedRayEvaluator(
-        objective_function,
-        num_cpus=1,
+        deephyper.evaluator.profile(objective_function),
+        num_cpus=4,
         num_cpus_per_task=num_cpus_per_task,
         callbacks=[LoggerCallback()],
         queue=nodelist,
