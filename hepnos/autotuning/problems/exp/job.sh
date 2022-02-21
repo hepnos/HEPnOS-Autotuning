@@ -164,6 +164,8 @@ else
     exit -1
 fi
 
+if [ ! "$DISABLE_PEP" = true ]; then
+
 NUM_PES=$(($HEPNOS_PEP_PES_PER_NODE * $NUM_NODES_FOR_PEP))
 PEP_PRODUCT_ARGS=""
 for p in ${HEPNOS_PEP_PRODUCTS[@]}; do
@@ -214,6 +216,8 @@ else
     shutdown_hepnos
     exit -1
 fi
+
+fi # DISABLE_PEP
 
 shutdown_hepnos
 

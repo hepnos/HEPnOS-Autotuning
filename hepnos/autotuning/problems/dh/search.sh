@@ -10,6 +10,7 @@ HEPNOS_BUILD_PREFIX=${1:-$HEPNOS_BUILD_PREFIX}
 EXPDIR=${2:-$EXPDIR}
 
 NODES_PER_EXP=${3:-${HEPNOS_NODES_PER_EXP:-4}}
+ENABLE_PEP=${4:-${HEPNOS_EXP_ENABLE_PEP:-true}}
 
 source $HEPNOS_BUILD_PREFIX/setup-env.sh
 
@@ -21,10 +22,16 @@ if [ $HEPNOS_EXP_PLATFORM == "theta" ]; then
 fi
 export HEPNOS_PDOMAIN_READY=true
 
+if [ "$ENABLE_PEP" = false ]; then
+    DISABLE_PEP="--disable_pep"
+else
+    DISABLE_PEP=""
+fi
+
 log "Starting DeepHyper search"
 
 python3 -m hepnos.autotuning.search --problem hepnos.autotuning.problems.simple \
-        --nodes_per_exp ${NODES_PER_EXP}
+        --nodes_per_exp ${NODES_PER_EXP} ${DISABLE_PEP}
 
 if [ $HEPNOS_EXP_PLATFORM == "theta" ]; then
     log "Removing protection domain"

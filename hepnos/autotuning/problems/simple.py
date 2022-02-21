@@ -57,7 +57,7 @@ __default_params = {
 }
 
 
-def __generate_settings(wdir, nodes_per_exp, **kwargs):
+def __generate_settings(wdir, nodes_per_exp, disable_pep, **kwargs):
     """Generate the settings.sh file using default parameters."""
     with open(f'{wdir}/settings.sh', 'w+') as f:
         for k, v in __default_params.items():
@@ -73,6 +73,10 @@ def __generate_settings(wdir, nodes_per_exp, **kwargs):
             else:
                 f.write(str(v)+'\n')
         f.write(f'NODES_PER_EXP={nodes_per_exp}\n')
+        if disable_pep:
+            f.write('DISABLE_PEP=true\n')
+        else:
+            f.write('DISABLE_PEP=false\n')
 
 
 def __generate_hepnos_config(wdir, protocol, busy_spin,
@@ -239,7 +243,7 @@ def __add_parameter_to_problem(problem, name, type, default, domain, description
     problem.add_hyperparameter(domain, name, default_value=default)
 
 
-def __fill_context(context, add_parameter):
+def __fill_context(context, add_parameter, disable_pep=False):
     """Fill either an argparse parser or a DeepHyper problem using
     the provided add_parameter callback."""
 
@@ -269,6 +273,8 @@ def __fill_context(context, add_parameter):
         "Whether to use the HEPnOS AsyncEngine in the Dataloader")
     add_parameter(context, "loader_async_threads", int, 1, (1, 63, "log-uniform"),
         "Number of threads for the AsyncEngine to use")
+    if disable_pep:
+        return
     add_parameter(context, "pep_progress_thread", bool, False, [True, False],
         "Whether to use a dedicated progress thread in the PEP step")
     add_parameter(context, "pep_num_threads", int, 4, (1, 31),
@@ -287,16 +293,18 @@ def __generate_experiment_directory(wdir, protocol,
                                     hepnos_nodelist='',
                                     loader_nodelist='',
                                     pep_nodelist='',
+                                    disable_pep=False,
                                     **kwargs):
     """Creates a directory for a new experiment and generate the
     configuration files for the various components."""
     exp_folder = os.path.dirname(__file__)+'/exp'
     from shutil import copytree
     copytree(exp_folder, wdir)
-    __generate_settings(wdir=wdir, **kwargs)
+    __generate_settings(wdir=wdir, disable_pep=disable_pep, **kwargs)
     __generate_hepnos_config(wdir=wdir, protocol=protocol, hepnos_nodelist=hepnos_nodelist, **kwargs)
     __generate_loader_config(wdir=wdir, protocol=protocol, loader_nodelist=loader_nodelist, **kwargs)
-    __generate_pep_config(wdir=wdir, protocol=protocol, pep_nodelist=pep_nodelist, **kwargs)
+    if not disable_pep:
+        __generate_pep_config(wdir=wdir, protocol=protocol, pep_nodelist=pep_nodelist, **kwargs)
     with open(f'{wdir}/settings.sh', 'a+') as params:
         if len(loader_nodelist) > 0:
             utility_node = loader_nodelist.split(',')[0]
@@ -305,12 +313,12 @@ def __generate_experiment_directory(wdir, protocol,
         params.write(f'NODES_FOR_UTILITY={utility_node}\n')
 
 
-def run_instance(exp_prefix, build_prefix, protocol, nodes_per_exp, **kwargs):
+def run_instance(exp_prefix, build_prefix, protocol, nodes_per_exp, disable_pep, **kwargs):
     import uuid
     from shutil import rmtree
     exp_uuid = uuid.uuid4()
     wdir = exp_prefix + str(exp_uuid)[:8]
-    __generate_experiment_directory(wdir=wdir, protocol=protocol,
+    __generate_experiment_directory(wdir=wdir, protocol=protocol, disable_pep=disable_pep,
                                     nodes_per_exp=nodes_per_exp, **kwargs)
     cmd = f'EXPDIR="{wdir}" HEPNOS_BUILD_PREFIX="{build_prefix}" {wdir}/job.sh &> "{wdir}.log"'
     print(f'Lauching {cmd}')
@@ -327,6 +335,8 @@ def run_instance(exp_prefix, build_prefix, protocol, nodes_per_exp, **kwargs):
                 break
         if dataloader_time >= 88888888.0:
             result = dataloader_time
+        elif disable_pep:
+            result = dataloader_time
         else:
             for line in open(pep_output_file):
                 if 'Benchmark completed' in line:
@@ -341,11 +351,11 @@ def run_instance(exp_prefix, build_prefix, protocol, nodes_per_exp, **kwargs):
     return -result
 
 
-def build_deephyper_problem():
+def build_deephyper_problem(disable_pep):
     """Generate a returns a DeepHyper problem."""
     from deephyper.problem import HpProblem
     problem = HpProblem()
-    __fill_context(problem, __add_parameter_to_problem)
+    __fill_context(problem, __add_parameter_to_problem, disable_pep)
     return problem
 
 
@@ -364,6 +374,8 @@ if __name__ == '__main__':
                         help='Comma-separated list of nodes to use for Parallel Event Processor')
     parser.add_argument('--nodes_per_exp', required=False, default=4, type=int,
                         help='Number of nodes per workflow instance')
+    parser.add_argument('--disable_pep', action='store_true',
+                        help='Disable the PEP step in the workflow')
     __fill_context(parser, __add_parameter_to_parser)
     args = parser.parse_args()
     __generate_experiment_directory(**vars(args))
