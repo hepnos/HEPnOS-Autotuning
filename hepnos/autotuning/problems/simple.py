@@ -6,7 +6,6 @@ os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
 
 
 __default_params = {
-    'NODES_PER_EXP': 4,
     'HEPNOS_DATASET': 'nova',
     'HEPNOS_LABEL': 'abc',
     'HEPNOS_ENABLE_PROFILING': 0,
@@ -58,7 +57,7 @@ __default_params = {
 }
 
 
-def __generate_settings(wdir, **kwargs):
+def __generate_settings(wdir, nodes_per_exp, **kwargs):
     """Generate the settings.sh file using default parameters."""
     with open(f'{wdir}/settings.sh', 'w+') as f:
         for k, v in __default_params.items():
@@ -73,6 +72,7 @@ def __generate_settings(wdir, **kwargs):
                 f.write(s+'\n')
             else:
                 f.write(str(v)+'\n')
+        f.write(f'NODES_PER_EXP={nodes_per_exp}\n')
 
 
 def __generate_hepnos_config(wdir, protocol, busy_spin,
@@ -305,12 +305,13 @@ def __generate_experiment_directory(wdir, protocol,
         params.write(f'NODES_FOR_UTILITY={utility_node}\n')
 
 
-def run_instance(exp_prefix, build_prefix, protocol, **kwargs):
+def run_instance(exp_prefix, build_prefix, protocol, nodes_per_exp, **kwargs):
     import uuid
     from shutil import rmtree
     exp_uuid = uuid.uuid4()
     wdir = exp_prefix + str(exp_uuid)[:8]
-    __generate_experiment_directory(wdir=wdir, protocol=protocol, **kwargs)
+    __generate_experiment_directory(wdir=wdir, protocol=protocol,
+                                    nodes_per_exp=nodes_per_exp, **kwargs)
     cmd = f'EXPDIR="{wdir}" HEPNOS_BUILD_PREFIX="{build_prefix}" {wdir}/job.sh &> "{wdir}.log"'
     print(f'Lauching {cmd}')
     os.system(cmd)
@@ -361,6 +362,8 @@ if __name__ == '__main__':
                         help='Comma-separated list of nodes to use for the Dataloader')
     parser.add_argument('--pep_nodelist', required=False, default='', type=str,
                         help='Comma-separated list of nodes to use for Parallel Event Processor')
+    parser.add_argument('--nodes_per_exp', required=False, default=4, type=int,
+                        help='Number of nodes per workflow instance')
     __fill_context(parser, __add_parameter_to_parser)
     args = parser.parse_args()
     __generate_experiment_directory(**vars(args))

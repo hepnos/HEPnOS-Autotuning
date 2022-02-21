@@ -10,7 +10,7 @@ import importlib
 from .platform import detect_platform
 
 
-def __make_objective_function(f, exp_prefix, build_prefix, protocol):
+def __make_objective_function(f, exp_prefix, build_prefix, protocol, nodes_per_exp):
     if not exp_prefix.startswith('/'):
         exp_prefix = os.path.join(os.getcwd(), exp_prefix)
     def __objective(config, dequed=None):
@@ -19,11 +19,12 @@ def __make_objective_function(f, exp_prefix, build_prefix, protocol):
         loader_nodelist = ''
         if dequed is not None:
             l = len(dequed)
-            x = int(l/4)
+            x = int(l/4.0)
             hepnos_nodelist = ','.join(dequed[:x])
             pep_nodelist = ','.join(dequed[x:])
             loader_nodelist = pep_nodelist
         return f(exp_prefix, build_prefix, protocol,
+                 nodes_per_exp=nodes_per_exp,
                  hepnos_nodelist=hepnos_nodelist,
                  pep_nodelist=pep_nodelist,
                  loader_nodelist=loader_nodelist,
@@ -84,7 +85,8 @@ if __name__ == '__main__':
 
     build_prefix = os.environ['HEPNOS_BUILD_PREFIX']
     protocol = os.environ['HEPNOS_LIBFABRIC_PROTOCOL']
-    objective_function = __make_objective_function(run_instance, args.exp_prefix, build_prefix, protocol)
+    objective_function = __make_objective_function(
+        run_instance, args.exp_prefix, build_prefix, protocol, args.nodes_per_exp)
 
     num_tasks = int(len(nodelist)/args.nodes_per_exp)
     num_cpus_per_task = 4.0/num_tasks

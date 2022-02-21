@@ -10,4 +10,8 @@ export EXPDIR=`pwd`
 
 eval PROJECT='$'HEPNOS_user_${HEPNOS_EXP_PLATFORM}_project
 
-python -m hepnos.autotuning.submit -A $PROJECT $HERE/search.sh $HEPNOS_BUILD_PREFIX $EXPDIR
+NODES_PER_EXP=${1:-${HEPNOS_NODES_PER_EXP:-4}}
+
+python -m hepnos.autotuning.submit -A $PROJECT $HERE/search.sh \
+               $HEPNOS_BUILD_PREFIX $EXPDIR \
+               $NODES_PER_EXP

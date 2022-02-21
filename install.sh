@@ -90,7 +90,7 @@ cat $HERE/spack-requirements.txt | while read dependency
 do
     if [[ $dependency != *"@"* ]]; then
          VERSION=$(find_latest_version $dependency)
-	dependency="$dependency@$VERSION"
+         dependency="$dependency@$VERSION"
     fi
     spack add $dependency
 done
@@ -128,6 +128,10 @@ fi
 
 popd # sw
 
+log "Copying dh folder..."
+cp -r $HERE/hepnos/autotuning/problems/dh $WD/dh
+
+log "Generating setup-env.sh..."
 ##############################################################
 # setup-env.sh
 ##############################################################
