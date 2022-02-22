@@ -53,6 +53,8 @@ if __name__ == '__main__':
                         help='Maximum number of evaluations')
     parser.add_argument('--exp_prefix', type=str, default='exp-',
                         help='Prefix to add to experiment instance folders')
+    parser.add_argument('--fit_search_space', type=str, default='',
+                        help='CSV file to use for transfer-learning')
     parser.add_argument('--disable_pep', action='store_true',
                         help='Disable the PEP step in the workflow')
     parser.add_argument('--more_params', action='store_true',
@@ -120,6 +122,10 @@ if __name__ == '__main__':
 
     logging.info("Creating AMBS instance")
     search = AMBS(problem, evaluator)
+
+    if args.fit_search_space:
+        logging.info("Fitting search space")
+        search.fit_search_space(args.fit_search_space)
 
     logging.info("Starting search")
     results = search.search(max_evals=args.max_evals)
