@@ -243,7 +243,7 @@ def __add_parameter_to_problem(problem, name, type, default, domain, description
     problem.add_hyperparameter(domain, name, default_value=default)
 
 
-def __fill_context(context, add_parameter, disable_pep=False):
+def __fill_context(context, add_parameter, disable_pep=False, more_params=True):
     """Fill either an argparse parser or a DeepHyper problem using
     the provided add_parameter callback."""
 
@@ -269,10 +269,11 @@ def __fill_context(context, add_parameter, disable_pep=False):
         "Size of the batches of events sent by the Dataloader to HEPnOS")
     add_parameter(context, "loader_pes_per_node", int, 2, [1, 2, 4, 8, 16],
         "Number of processes per node for the Dataloader")
-    add_parameter(context, "loader_async", bool, False, [True, False],
-        "Whether to use the HEPnOS AsyncEngine in the Dataloader")
-    add_parameter(context, "loader_async_threads", int, 1, (1, 63, "log-uniform"),
-        "Number of threads for the AsyncEngine to use")
+    if more_params:
+        add_parameter(context, "loader_async", bool, False, [True, False],
+            "Whether to use the HEPnOS AsyncEngine in the Dataloader")
+        add_parameter(context, "loader_async_threads", int, 1, (1, 63, "log-uniform"),
+            "Number of threads for the AsyncEngine to use")
     if disable_pep:
         return
     add_parameter(context, "pep_progress_thread", bool, False, [True, False],
@@ -285,8 +286,9 @@ def __fill_context(context, add_parameter, disable_pep=False):
         "Batch size used when PEP processes are exchanging events among themselves")
     add_parameter(context, "pep_pes_per_node", int, 8, [1, 2, 4, 8, 16, 32],
         "Number of processes per node for the PEP step")
-    add_parameter(context, "pep_no_preloading", bool, False, [True, False],
-        "Whether to disable product-preloading in PEP")
+    if more_params:
+        add_parameter(context, "pep_no_preloading", bool, False, [True, False],
+            "Whether to disable product-preloading in PEP")
 
 
 def __generate_experiment_directory(wdir, protocol,
@@ -294,12 +296,17 @@ def __generate_experiment_directory(wdir, protocol,
                                     loader_nodelist='',
                                     pep_nodelist='',
                                     disable_pep=False,
+                                    more_params=False,
                                     **kwargs):
     """Creates a directory for a new experiment and generate the
     configuration files for the various components."""
     exp_folder = os.path.dirname(__file__)+'/exp'
     from shutil import copytree
     copytree(exp_folder, wdir)
+    if not more_params:
+        kwargs['loader_async'] = False
+        kwargs['loader_async_threads'] = 1
+        kwargs['pep_no_preloading'] = False
     __generate_settings(wdir=wdir, disable_pep=disable_pep, **kwargs)
     __generate_hepnos_config(wdir=wdir, protocol=protocol, hepnos_nodelist=hepnos_nodelist, **kwargs)
     __generate_loader_config(wdir=wdir, protocol=protocol, loader_nodelist=loader_nodelist, **kwargs)
@@ -313,13 +320,13 @@ def __generate_experiment_directory(wdir, protocol,
         params.write(f'NODES_FOR_UTILITY={utility_node}\n')
 
 
-def run_instance(exp_prefix, build_prefix, protocol, nodes_per_exp, disable_pep, **kwargs):
+def run_instance(exp_prefix, build_prefix, protocol, nodes_per_exp, disable_pep, more_params, **kwargs):
     import uuid
     from shutil import rmtree
     exp_uuid = uuid.uuid4()
     wdir = exp_prefix + str(exp_uuid)[:8]
     __generate_experiment_directory(wdir=wdir, protocol=protocol, disable_pep=disable_pep,
-                                    nodes_per_exp=nodes_per_exp, **kwargs)
+                                    nodes_per_exp=nodes_per_exp, more_params=more_params, **kwargs)
     cmd = f'EXPDIR="{wdir}" HEPNOS_BUILD_PREFIX="{build_prefix}" {wdir}/job.sh &> "{wdir}.log"'
     print(f'Lauching {cmd}')
     os.system(cmd)
@@ -351,11 +358,11 @@ def run_instance(exp_prefix, build_prefix, protocol, nodes_per_exp, disable_pep,
     return -result
 
 
-def build_deephyper_problem(disable_pep):
+def build_deephyper_problem(disable_pep, more_params):
     """Generate a returns a DeepHyper problem."""
     from deephyper.problem import HpProblem
     problem = HpProblem()
-    __fill_context(problem, __add_parameter_to_problem, disable_pep)
+    __fill_context(problem, __add_parameter_to_problem, disable_pep, more_params)
     return problem
 
 
@@ -376,6 +383,8 @@ if __name__ == '__main__':
                         help='Number of nodes per workflow instance')
     parser.add_argument('--disable_pep', action='store_true',
                         help='Disable the PEP step in the workflow')
+    parser.add_argument('--more_params', action='store_true',
+                        help='Add 3 more parameters to the search space')
     __fill_context(parser, __add_parameter_to_parser)
     args = parser.parse_args()
     __generate_experiment_directory(**vars(args))
