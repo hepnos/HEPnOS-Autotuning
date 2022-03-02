@@ -41,21 +41,19 @@ def yaml_load(path):
 
 def load_results(exp_root: str, exp_config: dict) -> dict:
     data = {}
-    for exp_folder in exp_config["data"]:
-        if "rep" in exp_config["data"][exp_folder]:
+    for exp_prefix in exp_config["data"]:
+        if "rep" in exp_config["data"][exp_prefix]:
             dfs = []
-            for rep in exp_config["data"][exp_folder].get("rep"):
+            for rep in exp_config["data"][exp_prefix].get("rep"):
                 exp_results_path = os.path.join(exp_root,
-                                                f"{exp_folder}-rep{rep}",
-                                                "results.csv")
+                                                f"{exp_prefix}-{rep}.csv")
                 df = pd.read_csv(exp_results_path)
                 dfs.append(df)
-                data[exp_folder] = dfs
+                data[exp_prefix] = dfs
         else:
-            exp_results_path = os.path.join(exp_root, exp_folder,
-                                            "results.csv")
+            exp_results_path = os.path.join(f"{exp_prefix}.csv")
             df = pd.read_csv(exp_results_path)
-            data[exp_folder] = df
+            data[exp_prefix] = df
     return data
 
 
@@ -80,7 +78,7 @@ def plot_scatter_multi(df, exp_config, output_dir):
         if "rep" in exp_config["data"][exp_name]:
             exp_dfs = exp_df
             for i, exp_df in enumerate(exp_dfs):
-                x, y = exp_df.elapsed_sec.to_numpy(
+                x, y = exp_df.timestamp_end.to_numpy(
                 ), -exp_df.objective.to_numpy()
 
                 plt_kwargs = dict(color=exp_config["data"][exp_name]["color"],
@@ -91,7 +89,7 @@ def plot_scatter_multi(df, exp_config, output_dir):
 
                 plt.scatter(x, y, **plt_kwargs)
         else:
-            x, y = exp_df.elapsed_sec.to_numpy(), -exp_df.objective.to_numpy()
+            x, y = exp_df.timestamp_end.to_numpy(), -exp_df.objective.to_numpy()
 
             plt.scatter(x,
                         y,
@@ -140,15 +138,15 @@ def plot_objective_multi(df, exp_config, output_dir):
             exp_dfs = exp_df
 
             times = np.unique(
-                np.concatenate([df.elapsed_sec.to_numpy() for df in exp_dfs],
+                np.concatenate([df.timestamp_end.to_numpy() for df in exp_dfs],
                                axis=0))
             times = np.concatenate([[0], times, [3600]])
 
             series = []
             for exp_df in exp_dfs:
 
-                exp_df = exp_df.sort_values("elapsed_sec")
-                x, y = exp_df.elapsed_sec.to_numpy(
+                exp_df = exp_df.sort_values("timestamp_end")
+                x, y = exp_df.timestamp_end.to_numpy(
                 ), -exp_df.objective.to_numpy()
                 y = only_min(y)
 
@@ -175,8 +173,8 @@ def plot_objective_multi(df, exp_config, output_dir):
                              facecolor=exp_config["data"][exp_name]["color"],
                              alpha=0.3)
         else:
-            exp_df = exp_df.sort_values("elapsed_sec")
-            x, y = exp_df.elapsed_sec.to_numpy(), -exp_df.objective.to_numpy()
+            exp_df = exp_df.sort_values("timestamp_end")
+            x, y = exp_df.timestamp_end.to_numpy(), -exp_df.objective.to_numpy()
             y = only_min(y)
 
             plt.plot(x,
@@ -218,9 +216,9 @@ def plot_objective_multi_iter(df, exp_config, output_dir):
         if "rep" in exp_config["data"][exp_name]:
             exp_dfs = exp_df
             for i, exp_df in enumerate(exp_dfs):
-                exp_df = exp_df.sort_values("elapsed_sec")
+                exp_df = exp_df.sort_values("timestamp_end")
                 x, y = list(range(1,
-                                  len(exp_df.elapsed_sec.to_list()) +
+                                  len(exp_df.timestamp_end.to_list()) +
                                   1)), (-exp_df.objective).to_list()
 
                 y = only_min(y)
@@ -235,9 +233,9 @@ def plot_objective_multi_iter(df, exp_config, output_dir):
 
                 plt.plot(x, y, **plt_kwargs)
         else:
-            exp_df = exp_df.sort_values("elapsed_sec")
+            exp_df = exp_df.sort_values("timestamp_end")
             x, y = list(range(1,
-                              len(exp_df.elapsed_sec.to_list()) +
+                              len(exp_df.timestamp_end.to_list()) +
                               1)), (-exp_df.objective).to_list()
 
             y = only_min(y)
@@ -277,7 +275,7 @@ def generate_figures(config):
         exp_dirname = str(exp_num)
         output_dir = os.path.join(figures_dir, exp_dirname)
 
-        pathlib.Path(output_dir).mkdir(parents=False, exist_ok=True)
+        pathlib.Path(output_dir).mkdir(parents=True, exist_ok=True)
 
         df = load_results(exp_root, exp_config)
 

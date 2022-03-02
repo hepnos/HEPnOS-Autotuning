@@ -143,3 +143,10 @@ spack/
 *.error
 *.output
 figures*/
+exp/
+
+# macos file
+.DS_Store 
+
+# vscode file
+.vscode/
