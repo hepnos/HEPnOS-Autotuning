@@ -76,7 +76,7 @@ def __generate_settings(wdir, nodes_per_exp, disable_pep, **kwargs):
             f.write('DISABLE_PEP=true\n')
         else:
             f.write('DISABLE_PEP=false\n')
-        if nodes_per_exp < 8
+        if nodes_per_exp < 8:
             f.write('HEPNOS_LOADER_DATAFILE=$EXPDIR/$HEPNOS_EXP_PLATFORM-50files.txt\n')
         elif nodes_per_exp < 16:
             f.write('HEPNOS_LOADER_DATAFILE=$EXPDIR/$HEPNOS_EXP_PLATFORM-100files.txt\n')

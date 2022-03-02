@@ -49,7 +49,7 @@ if __name__ == '__main__':
                         help='Number of nodes per workflow instance')
     parser.add_argument('--problem', type=str, required=True,
                         help='Problem class')
-    parser.add_argument('--max_evals', type=int, default=500,
+    parser.add_argument('--max_evals', type=int, default=1500,
                         help='Maximum number of evaluations')
     parser.add_argument('--exp_prefix', type=str, default='exp-',
                         help='Prefix to add to experiment instance folders')
