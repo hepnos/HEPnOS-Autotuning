@@ -1,101 +1,68 @@
 
-root: /projects/radix-io/HEP-Autotuning/exp
+root: /Users/romainegele/Documents/Argonne/HEPnOS-Autotuning/plots/exp
 experiments:
-  # 0:
-  #   title: "No Pep To Pep"
-  #   data:
-  #     exp-128-8-60-nopep-notl:
-  #       label: 128-8-60 (No Pep + No TL)
-  #       color: "k"
-  #       linestyle: "--"
-  #     exp-128-8-60-pep-notl:
-  #       label: 128-8-60 (Pep + No TL)
-  #       rep: [0, 1, 2]
-  #       color: "orange"
-  #     exp-128-8-60-nopep_to_pep-tl-v1:
-  #       label: 128-8-60 (Pep + TL v1)
-  #       rep: [0, 1, 2]
-  #       color: "blue"
-  #     exp-128-8-60-nopep_to_pep-tl-v2:
-  #       label: 128-8-60 (Pep + TL v2)
-  #       rep: [0, 1, 2]
-  #       color: "cyan"
-  # 1:
-  #   title: "4 To 8"
-  #   data:
-  #     exp-128-8-60-nopep-notl:
-  #       label: 128-8-60 (No Pep + No TL)
-  #       color: "orange"
-  #     exp-128-8-60-nopep-4_to_8-tl-v1:
-  #       label: 128-8-60 (No Pep + TL v1)
-  #       rep: [0]
-  #       color: "blue"
-  #     exp-128-8-60-nopep-4_to_8-tl-v2:
-  #       label: 128-8-60 (No Pep + TL v2)
-  #       rep: [0]
-  #       color: "cyan"
   4-3-preliminary-experiments:
     title: "Preliminary Experiments"
-    ylim: [0,100]
+    ylim: [0,400]
     data:
-      exp-128-4-60-step1-notl:
+      exp-1:
         label: "1, 11, 4"
         color: "orange"
         linestyle: "-"
-        rep: [0,1,2,3,4]
+        rep: [1,2,3,4,5]
   4-4-single-step-to-full-workflow:
     title: "From Single Step to Full Workflow"
-    ylim: [30,70]
+    ylim: [0, 70]
     data:
-      exp-128-4-60-step2-notl:
+      exp-1:
         label: "2, 16, 4"
         color: "orange"
         linestyle: "-"
-        rep: [0,1,2,3,4]
-      exp-128-4-60-step2-tl_from_step1:
+        rep: [1,2,3,4,5]
+      tl-exp-2:
         label: "2, 16, 4, TL"
         color: "cyan"
         linestyle: "-"
-        rep: [0,1,2,3,4]
+        rep: [1,2,3,4,5]
   4-5-adding-new-parameters:
     title: "Adding New Parameters"
-    ylim: [25,70]
+    ylim: [0,100]
     data:
-      exp-128-4-60-step3-notl:
+      exp-3:
         label: "2, 19, 4"
         color: "orange"
         linestyle: "-"
-        rep: [0,1,2,3,4]
-      exp-128-4-60-step3-tl_from_step2:
+        rep: [1,2,3,4,5]
+      tl-exp-3:
         label: "2, 19, 4, TL"
         color: "cyan"
         linestyle: "-"
-        rep: [0,1,2,3,4]
-  4-6-scaling-up-workflow-8:
-    title: "Scaling Up Workflow Instances"
-    ylim: [25,80]
-    data:
-      exp-128-8-60-step3-notl:
-        label: "2, 19, 8"
-        color: "orange"
-        linestyle: "-"
-        rep: [0,1,2,3,4]
-      exp-128-8-60-step3-tl_from_step3:
-        label: "2, 19, 8, TL"
-        color: "cyan"
-        linestyle: "-"
-        rep: [0,1,2,3,4]
-  4-6-scaling-up-workflow-16:
-    title: "Scaling Up Workflow Instances"
-    ylim: [25,200]
-    data:
-      exp-128-16-60-step3-notl:
-        label: "2, 19, 16"
-        color: "orange"
-        linestyle: "-"
-        rep: [0,1,2,3,4]
-      exp-128-8-60-step3-tl_from_step3:
-        label: "2, 19, 16, TL"
-        color: "cyan"
-        linestyle: "-"
-        rep: [0,1,2,3,4]
+        rep: [1,2,3,4,5]
+  # 4-6-scaling-up-workflow-8:
+  #   title: "Scaling Up Workflow Instances"
+  #   ylim: [25,80]
+  #   data:
+  #     exp-128-8-60-step3-notl:
+  #       label: "2, 19, 8"
+  #       color: "orange"
+  #       linestyle: "-"
+  #       rep: [0,1,2,3,4]
+  #     exp-128-8-60-step3-tl_from_step3:
+  #       label: "2, 19, 8, TL"
+  #       color: "cyan"
+  #       linestyle: "-"
+  #       rep: [0,1,2,3,4]
+  # 4-6-scaling-up-workflow-16:
+  #   title: "Scaling Up Workflow Instances"
+  #   ylim: [25,200]
+  #   data:
+  #     exp-128-16-60-step3-notl:
+  #       label: "2, 19, 16"
+  #       color: "orange"
+  #       linestyle: "-"
+  #       rep: [0,1,2,3,4]
+  #     exp-128-8-60-step3-tl_from_step3:
+  #       label: "2, 19, 16, TL"
+  #       color: "cyan"
+  #       linestyle: "-"
+  #       rep: [0,1,2,3,4]
