@@ -7,12 +7,17 @@
 ###H -q debug-flat-quad
 
 HEPNOS_BUILD_PREFIX=${1:-$HEPNOS_BUILD_PREFIX}
-EXPDIR=${2:-$EXPDIR}
+shift
+EXPDIR=${1:-$EXPDIR}
+shift
 
-NODES_PER_EXP=${3:-${HEPNOS_NODES_PER_EXP:-4}}
-ENABLE_PEP=${4:-${HEPNOS_EXP_ENABLE_PEP:-true}}
-MORE_PARAMS=${5:-${HEPNOS_EXP_MORE_PARAMS:-true}}
-FIT_SEARCH_SPACE=$6
+NODES_PER_EXP=${1:-${HEPNOS_NODES_PER_EXP:-4}}
+shift
+ENABLE_PEP=${1:-${HEPNOS_EXP_ENABLE_PEP:-true}}
+shift
+MORE_PARAMS=${1:-${HEPNOS_EXP_MORE_PARAMS:-true}}
+shift
+EXTRA=$@
 
 source $HEPNOS_BUILD_PREFIX/setup-env.sh
 
@@ -20,7 +25,6 @@ if [ $HEPNOS_EXP_PLATFORM == "theta" ]; then
     log "Setting up protection domain"
     HEPNOS_PDOMAIN=${HEPNOS_user_theta_pdomain}
     apstat -P | grep ${HEPNOS_PDOMAIN} || apmgr pdomain -c -u ${HEPNOS_PDOMAIN}
-    EXTRA_FLAGS="--extra \"-p,${HEPNOS_PDOMAIN}\""
 fi
 export HEPNOS_PDOMAIN_READY=true
 
@@ -36,14 +40,10 @@ else
     MORE_PARAMS=""
 fi
 
-if [ ! -z "$FIT_SEARCH_SPACE" ]; then
-    FIT_SEARCH_SPACE="--fit_search_space $FIT_SEARCH_SPACE"
-fi
-
 log "Starting DeepHyper search"
 
 python3 -m hepnos.autotuning.search --problem hepnos.autotuning.problems.simple \
-        --nodes_per_exp ${NODES_PER_EXP} ${DISABLE_PEP} ${MORE_PARAMS} ${FIT_SEARCH_SPACE}
+        --nodes_per_exp ${NODES_PER_EXP} ${DISABLE_PEP} ${MORE_PARAMS} ${EXTRA}
 
 if [ $HEPNOS_EXP_PLATFORM == "theta" ]; then
     log "Removing protection domain"
