@@ -51,8 +51,8 @@ __default_params = {
         'hep::rec_vtx_elastic_fuzzyk_png_shwlid' ],
     'HEPNOS_PEP_ENABLE_PROFILING':0,
     'HEPNOS_PEP_TIMEOUT': 300,
-    'CONST_TIMEOUT': 99999999,
-    'CONST_FAILURE': 88888888
+    'CONST_TIMEOUT': 600,
+    'CONST_FAILURE': 599
 }
 
 
@@ -338,15 +338,15 @@ def run_instance(exp_prefix, build_prefix, protocol, nodes_per_exp, disable_pep,
     os.system(cmd)
     dataloader_output_file = wdir + '/dataloader-output.txt'
     pep_output_file = wdir + '/pep-output.txt'
-    dataloader_time = 99999999.0
-    pep_time = 99999999.0
+    dataloader_time = 600.0
+    pep_time = 600.0
     result = 0.0
     try:
         for line in open(dataloader_output_file):
             if line.startswith('TIME'):
                 dataloader_time = float(line.split()[1])
                 break
-        if dataloader_time >= 88888888.0:
+        if dataloader_time >= 599.0:
             result = dataloader_time
         elif disable_pep:
             result = dataloader_time
@@ -354,12 +354,12 @@ def run_instance(exp_prefix, build_prefix, protocol, nodes_per_exp, disable_pep,
             for line in open(pep_output_file):
                 if 'Benchmark completed' in line:
                     pep_time = float(line.split()[-2])
-            if pep_time >= 88888888.0:
+            if pep_time >= 599.0:
                 result = pep_time
             else:
                 result = dataloader_time + pep_time
     except FileNotFoundError:
-        result = 77777777.0
+        result = 598.0
     rmtree(wdir)
     return -result
 
