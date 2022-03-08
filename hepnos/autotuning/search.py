@@ -54,7 +54,9 @@ if __name__ == '__main__':
     parser.add_argument('--exp_prefix', type=str, default='exp-',
                         help='Prefix to add to experiment instance folders')
     parser.add_argument('--fit_search_space', type=str, default='',
-                        help='CSV file to use for transfer-learning')
+                        help='CSV file to use for transfer-learning with Prior-Update')
+    parser.add_argument('--fit-generative-model', type=str, default='',
+                        help='CSV file to use for transfer-learning with generative model')
     parser.add_argument('--disable_pep', action='store_true',
                         help='Disable the PEP step in the workflow')
     parser.add_argument('--more_params', action='store_true',
@@ -124,8 +126,10 @@ if __name__ == '__main__':
     search = AMBS(problem, evaluator)
 
     if args.fit_search_space:
-        logging.info("Fitting search space")
+        logging.info("Fitting search space with Prior-Update")
         search.fit_search_space(args.fit_search_space)
+    elif args.fit_generative_model:
+        search.fit_generative_model(args.fit_generative_model)
 
     logging.info("Starting search")
     results = search.search(max_evals=args.max_evals)
