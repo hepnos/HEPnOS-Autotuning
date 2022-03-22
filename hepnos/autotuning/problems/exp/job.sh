@@ -143,7 +143,7 @@ timeout ${HEPNOS_LOADER_TIMEOUT} \
              ${HEPNOS_LOADER_ASYNC} \
              -t ${HEPNOS_LOADER_ASYNC_THREADS} \
              ${LOADER_PRODUCT_ARGS} \
-             -v ${HEPNOS_LOADER_VERBOSE} \
+             -v ${HEPNOS_LOADER_VERBOSE} ${HEPNOS_LOADER_SIMULATE} \
              &>> $EXPDIR/dataloader-output.txt
 RET=$?
 end_time=`date +%s`
@@ -193,6 +193,7 @@ timeout ${HEPNOS_PEP_TIMEOUT} \
              -l ${HEPNOS_LABEL} \
              ${PEP_PRODUCT_ARGS} \
              ${HEPNOS_PEP_PRELOAD} \
+             ${HEPNOS_PEP_NO_RDMA} \
              -v ${HEPNOS_PEP_VERBOSE} \
              -o ${HEPNOS_PEP_OBATCH_SIZE} \
              -i ${HEPNOS_PEP_IBATCH_SIZE} \
