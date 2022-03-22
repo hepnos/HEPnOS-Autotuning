@@ -117,19 +117,23 @@ cd my-experiment
 Then, we can submit a DeepHyper experiment as follows.
 
 ```
-../dh/submit.sh <nodes_per_exp> <enable_pep> <more_params>
+../dh/submit.sh <nodes_per_exp> [ <other params> ... ]
 ```
 
 Where `<nodes_per_exp>` is the number of nodes to use per instance of the HEPnOS workflow
-(it should be a multiple of 4); `<enable_pep>` indicates whether to run the PEP part of the
-workflow (`true`) or not (`false`), and `<more_params>` indicates whether to use all the
-19 parameters defined in the problem (`true`) or only 16 (`false`). For example:
+(it should be a multiple of 4).
+Other parameters may include the following:
+- `--model <MODEL>` to specify the model to use (`RF`, `GP`, or `DUMMY`);
+- `--disable_pep` to disable the second step (PEP) of the workflow;
+- `--more_params` to use 20 parameters instead of 16;
+- `--fit-generative-model <file.csv>` to do transfer learning from a previous CSV files.
+For example:
 
 ```
-../dh/submit.sh 4 true false
+../dh/submit.sh 4 --more_params
 ```
 will run the DeepHyper workflow with 4 nodes per HEPnOS workflow instance,
-enabling the PEP part, and using a 16-parameter space.
+enabling the PEP part, and using a 20-parameter space.
 
 As the job progresses, folders in the form `exp-<id>` will appear, along with log
 files named `exp-<id>.log`. As instances finish executing, DeepHyper will remove
@@ -138,7 +142,6 @@ the corresponding folder, but keep the log file.
 The results of the search are appended to a `results.csv` file, where each line corresponds
 to an evaluation of the HEPnOS workflow. The `objective` column contains the run time of
 the workflow instance (negative because DeepHyper attemps to maximize its objective).
-The value -99999999 is used to indicate that DeepHyper killed the instance as it took
-too much time to complete by itself (the timeout is set to 5min for the dataloader part
-of the workflow, and 5min for the PEP part). Other large constants are used to indicate
-other types of errors such as a crash of some component of the workflow.
+The values starting with "F" are used to indicate errors, such as DeepHyper killing the instance
+because it took too much time to complete by itself (the timeout is set to 5min for the dataloader part
+of the workflow, and 5min for the PEP part).
