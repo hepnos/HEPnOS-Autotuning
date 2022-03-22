@@ -206,9 +206,9 @@ def __generate_pep_config(wdir, protocol, busy_spin,
                           pep_ibatch_size,
                           pep_obatch_size,
                           pep_pes_per_node,
+                          pep_nodelist,
                           pep_no_preloading,
                           pep_no_rdma,
-                          pep_nodelist,
                           **kwargs):
     """Generate configuration for the Parallel Event Processing benchmark."""
     margo_spec = brk.MargoSpec(mercury=protocol)
@@ -321,6 +321,7 @@ def __generate_experiment_directory(wdir, protocol,
         kwargs['loader_async'] = False
         kwargs['loader_async_threads'] = 1
         kwargs['pep_no_preloading'] = False
+        kwargs['pep_no_rdma'] = False
     __generate_settings(wdir=wdir, disable_pep=disable_pep, **kwargs)
     __generate_hepnos_config(wdir=wdir, protocol=protocol, hepnos_nodelist=hepnos_nodelist, **kwargs)
     __generate_loader_config(wdir=wdir, protocol=protocol, loader_nodelist=loader_nodelist, **kwargs)
