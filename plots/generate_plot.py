@@ -51,7 +51,7 @@ def load_results(exp_root: str, exp_config: dict) -> dict:
                 dfs.append(df)
                 data[exp_prefix] = dfs
         else:
-            exp_results_path = os.path.join(f"{exp_prefix}.csv")
+            exp_results_path = os.path.join(exp_root, f"{exp_prefix}.csv")
             df = pd.read_csv(exp_results_path)
             data[exp_prefix] = df
     return data
@@ -78,6 +78,8 @@ def plot_scatter_multi(df, exp_config, output_dir):
         if "rep" in exp_config["data"][exp_name]:
             exp_dfs = exp_df
             for i, exp_df in enumerate(exp_dfs):
+                exp_df = exp_df[~exp_df.objective.str.startswith("F")]
+                exp_df.objective = exp_df.objective.astype(float)
                 x, y = exp_df.timestamp_end.to_numpy(
                 ), -exp_df.objective.to_numpy()
 
@@ -89,6 +91,8 @@ def plot_scatter_multi(df, exp_config, output_dir):
 
                 plt.scatter(x, y, **plt_kwargs)
         else:
+            exp_df = exp_df[~exp_df.objective.str.startswith("F")]
+            exp_df.objective = exp_df.objective.astype(float)
             x, y = exp_df.timestamp_end.to_numpy(), -exp_df.objective.to_numpy()
 
             plt.scatter(x,
@@ -266,6 +270,86 @@ def plot_objective_multi_iter(df, exp_config, output_dir):
     plt.show()
 
 
+def compile_profile(df):
+    history = []
+
+    df = df.sort_values("timestamp_end")
+
+    for _, row in df.iterrows():
+        history.append((row['timestamp_start'], 1))
+        history.append((row['timestamp_end'], -1))
+
+    # history = sorted(history, key=lambda v: v[0])
+    nb_workers = 0
+    timestamp = []
+    n_jobs_running = []
+    for time, incr in history:
+        nb_workers += incr
+        timestamp.append(time)
+        n_jobs_running.append(nb_workers)
+    
+    return timestamp, n_jobs_running
+
+
+def plot_utilization_multi_iter(df, exp_config, output_dir):
+    output_file_name = f"{inspect.stack()[0][3]}.{FILE_EXTENSION}"
+    output_path = os.path.join(output_dir, output_file_name)
+
+    plt.figure()
+
+    for exp_name, exp_df in df.items():
+
+        if "rep" in exp_config["data"][exp_name]:
+            ...
+            # exp_dfs = exp_df
+            # for i, exp_df in enumerate(exp_dfs):
+            #     exp_df = exp_df.sort_values("timestamp_end")
+            #     x, y = list(range(1,
+            #                       len(exp_df.timestamp_end.to_list()) +
+            #                       1)), (-exp_df.objective).to_list()
+
+            #     y = only_min(y)
+
+            #     plt_kwargs = dict(color=exp_config["data"][exp_name]["color"],
+            #                       linestyle=exp_config["data"][exp_name].get(
+            #                           "linestyle", "-"))
+
+            #     if i == 0:
+            #         plt_kwargs["label"] = label = exp_config["data"][exp_name][
+            #             "label"]
+
+            #     plt.plot(x, y, **plt_kwargs)
+        else:
+            # exp_df = exp_df.sort_values("timestamp_end")
+            x, y = compile_profile(exp_df)
+
+            plt.step(x,
+                     y,
+                     where="pre",
+                     label=exp_config["data"][exp_name]["label"],
+                     color=exp_config["data"][exp_name]["color"],
+                     linestyle=exp_config["data"][exp_name].get(
+                         "linestyle", "-"))
+
+    ax = plt.gca()
+    ax.xaxis.set_major_locator(ticker.MultipleLocator(900))
+    ax.xaxis.set_major_formatter(hour_major_formatter)
+
+    if exp_config.get("title"):
+        plt.title(exp_config.get("title"))
+
+    plt.legend()
+    plt.ylabel("Worker Utilization")
+    plt.xlabel("Time (sec.)")
+    plt.xlim(0, 3600)
+    
+    plt.grid()
+    plt.tight_layout()
+    plt.savefig(output_path)
+    plt.show()
+
+
+
 def generate_figures(config):
 
     exp_root = config["root"]
@@ -282,6 +366,7 @@ def generate_figures(config):
         plot_scatter_multi(df, exp_config, output_dir)
         plot_objective_multi(df, exp_config, output_dir)
         plot_objective_multi_iter(df, exp_config, output_dir)
+        plot_utilization_multi_iter(df, exp_config, output_dir)
 
 
 if __name__ == "__main__":
