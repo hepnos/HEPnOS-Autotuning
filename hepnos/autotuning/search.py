@@ -49,7 +49,7 @@ if __name__ == '__main__':
                         help='Number of nodes per workflow instance')
     parser.add_argument('--problem', type=str, required=True,
                         help='Problem class')
-    parser.add_argument('--max_evals', type=int, default=1500,
+    parser.add_argument('--max_evals', type=int, default=5000,
                         help='Maximum number of evaluations')
     parser.add_argument('--exp_prefix', type=str, default='exp-',
                         help='Prefix to add to experiment instance folders')
@@ -61,6 +61,8 @@ if __name__ == '__main__':
                         help='Disable the PEP step in the workflow')
     parser.add_argument('--more_params', action='store_true',
                         help='Add 3 more parameters to the search space')
+    parser.add_argument('--model', type=str, default='RF',
+                        help='Surrogate model type (RF, GP, DUMMY)')
     args = parser.parse_args()
 
     try:
@@ -123,7 +125,9 @@ if __name__ == '__main__':
     )
 
     logging.info("Creating AMBS instance")
-    search = AMBS(problem, evaluator)
+    #search = AMBS(problem, evaluator) #, surrogate_model="GP")
+    #search = AMBS(problem, evaluator, surrogate_model="DUMMY")
+    search = AMBS(problem, evaluator, surrogate_model=args.model, filter_failures="min")
 
     if args.fit_search_space:
         logging.info("Fitting search space with Prior-Update")

@@ -10,7 +10,7 @@ __default_params = {
     'HEPNOS_LABEL': 'abc',
     'HEPNOS_ENABLE_PROFILING': 0,
     'HEPNOS_UTILITY_TIMEOUT': 30,
-    'HEPNOS_LOADER_VERBOSE': 'critical',
+    'HEPNOS_LOADER_VERBOSE': 'trace',
     'HEPNOS_LOADER_PRODUCTS': [
         'hep::rec_energy_numu',
         'hep::rec_hdr',
@@ -31,6 +31,7 @@ __default_params = {
     'HEPNOS_LOADER_ENABLE_PROFILING': 0,
     'HEPNOS_LOADER_SOFT_TIMEOUT': 10000,
     'HEPNOS_LOADER_TIMEOUT': 300,
+    'HEPNOS_LOADER_SIMULATE': '',
     'HEPNOS_PEP_VERBOSE': 'info',
     'HEPNOS_PEP_PRODUCTS': [
         'hep::rec_energy_numu',
@@ -51,8 +52,8 @@ __default_params = {
         'hep::rec_vtx_elastic_fuzzyk_png_shwlid' ],
     'HEPNOS_PEP_ENABLE_PROFILING':0,
     'HEPNOS_PEP_TIMEOUT': 300,
-    'CONST_TIMEOUT': 600,
-    'CONST_FAILURE': 599
+    'CONST_TIMEOUT': 10001,
+    'CONST_FAILURE': 10002
 }
 
 
@@ -205,8 +206,9 @@ def __generate_pep_config(wdir, protocol, busy_spin,
                           pep_ibatch_size,
                           pep_obatch_size,
                           pep_pes_per_node,
-                          pep_no_preloading,
                           pep_nodelist,
+                          pep_no_preloading,
+                          pep_no_rdma,
                           **kwargs):
     """Generate configuration for the Parallel Event Processing benchmark."""
     margo_spec = brk.MargoSpec(mercury=protocol)
@@ -231,6 +233,10 @@ def __generate_pep_config(wdir, protocol, busy_spin,
             params.write('HEPNOS_PEP_PRELOAD=\n')
         else:
             params.write('HEPNOS_PEP_PRELOAD=--preload\n')
+        if pep_no_rdma:
+            params.write('HEPNOS_PEP_NO_RDMA=--no-rdma\n')
+        else:
+            params.write('HEPNOS_PEP_NO_RDMA=\n')
         params.write(f'NODES_FOR_PEP={pep_nodelist}\n')
 
 
@@ -295,6 +301,8 @@ def __fill_context(context, add_parameter, disable_pep=False, more_params=True):
     if more_params:
         add_parameter(context, "pep_no_preloading", bool, False, [True, False],
             "Whether to disable product-preloading in PEP")
+        add_parameter(context, "pep_no_rdma", bool, False, [True, False],
+            "Whether to disable RDMA in PEP")
 
 
 def __generate_experiment_directory(wdir, protocol,
@@ -313,6 +321,7 @@ def __generate_experiment_directory(wdir, protocol,
         kwargs['loader_async'] = False
         kwargs['loader_async_threads'] = 1
         kwargs['pep_no_preloading'] = False
+        kwargs['pep_no_rdma'] = False
     __generate_settings(wdir=wdir, disable_pep=disable_pep, **kwargs)
     __generate_hepnos_config(wdir=wdir, protocol=protocol, hepnos_nodelist=hepnos_nodelist, **kwargs)
     __generate_loader_config(wdir=wdir, protocol=protocol, loader_nodelist=loader_nodelist, **kwargs)
@@ -338,15 +347,17 @@ def run_instance(exp_prefix, build_prefix, protocol, nodes_per_exp, disable_pep,
     os.system(cmd)
     dataloader_output_file = wdir + '/dataloader-output.txt'
     pep_output_file = wdir + '/pep-output.txt'
-    dataloader_time = 600.0
-    pep_time = 600.0
+    const_timeout = __default_params['CONST_TIMEOUT']
+    const_failure = __default_params['CONST_FAILURE']
+    dataloader_time = const_timeout
+    pep_time = const_timeout
     result = 0.0
     try:
         for line in open(dataloader_output_file):
             if line.startswith('TIME'):
                 dataloader_time = float(line.split()[1])
                 break
-        if dataloader_time >= 599.0:
+        if dataloader_time >= const_timeout:
             result = dataloader_time
         elif disable_pep:
             result = dataloader_time
@@ -354,14 +365,19 @@ def run_instance(exp_prefix, build_prefix, protocol, nodes_per_exp, disable_pep,
             for line in open(pep_output_file):
                 if 'Benchmark completed' in line:
                     pep_time = float(line.split()[-2])
-            if pep_time >= 599.0:
+            if pep_time >= const_timeout:
                 result = pep_time
             else:
                 result = dataloader_time + pep_time
     except FileNotFoundError:
-        result = 598.0
-    rmtree(wdir)
-    return -result
+        result = const_failure+1
+    for f in  os.listdir(wdir):
+        if f not in ['dataloader-output.txt', 'pep-output.txt', 'hepnos-out.txt']:
+            os.remove(os.path.join(wdir, f))
+    if result >= const_timeout:
+        return f'F{result}'
+    import math
+    return -math.log(result)
 
 
 def build_deephyper_problem(disable_pep, more_params):
