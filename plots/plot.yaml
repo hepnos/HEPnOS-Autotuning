@@ -1,80 +1,87 @@
 
 root: /Users/romainegele/Documents/Argonne/HEPnOS-Autotuning/plots/exp
+show: False
 experiments:
-  test:
-    title: "Test"
-    # ylim: [0,400]
+  DUMMY-4-false-false:
+    title: "DUMMY-4-false-false"
+    t_max: 3600
     data:
-      exp-RF-16-true-true-1:
-        label: "No TL"
+      exp-DUMMY-4-false-false:
+        label: "DUMMY-4-false-false"
         color: "cyan"
         linestyle: "-"
-      exp-tl-RF-16-true-true-1:
-        label: "TL"
+        rep: [1,2,3,4,5]
+  DUMMY-4-true-false:
+    title: "DUMMY-4-true-false"
+    t_max: 3600
+    data:
+      exp-DUMMY-4-true-false:
+        label: "DUMMY-4-true-false"
+        color: "cyan"
+        linestyle: "-"
+        rep: [1,2,3,4,5]
+  DUMMY-4-true-true:
+    title: "DUMMY-4-true-true"
+    t_max: 3600
+    data:
+      exp-DUMMY-4-true-true:
+        label: "DUMMY-4-true-true"
+        color: "cyan"
+        linestyle: "-"
+        rep: [1,2,3,4,5]
+  RF-4-to-8:
+    title: "RF 4 to 8 nodes"
+    t_max: 3600
+    data:
+      exp-RF-8-true-true:
+        label: "8-T-T"
         color: "orange"
         linestyle: "-"
-  # 4-3-preliminary-experiments:
-  #   title: "Preliminary Experiments"
-  #   ylim: [0,400]
-  #   data:
-  #     exp-1:
-  #       label: "1, 11, 4"
-  #       color: "orange"
-  #       linestyle: "-"
-  #       rep: [1] #,2,3,4,5]
-  # 4-4-single-step-to-full-workflow:
-  #   title: "From Single Step to Full Workflow"
-  #   ylim: [0, 70]
-  #   data:
-  #     exp-1:
-  #       label: "2, 16, 4"
-  #       color: "orange"
-  #       linestyle: "-"
-  #       rep: [1,2,3,4,5]
-  #     tl-exp-2:
-  #       label: "2, 16, 4, TL"
-  #       color: "cyan"
-  #       linestyle: "-"
-  #       rep: [1,2,3,4,5]
-  # 4-5-adding-new-parameters:
-  #   title: "Adding New Parameters"
-  #   ylim: [0,100]
-  #   data:
-  #     exp-3:
-  #       label: "2, 19, 4"
-  #       color: "orange"
-  #       linestyle: "-"
-  #       rep: [1,2,3,4,5]
-  #     tl-exp-3:
-  #       label: "2, 19, 4, TL"
-  #       color: "cyan"
-  #       linestyle: "-"
-  #       rep: [1,2,3,4,5]
-  # 4-6-scaling-up-workflow-8:
-  #   title: "Scaling Up Workflow Instances"
-  #   ylim: [25,80]
-  #   data:
-  #     exp-128-8-60-step3-notl:
-  #       label: "2, 19, 8"
-  #       color: "orange"
-  #       linestyle: "-"
-  #       rep: [0,1,2,3,4]
-  #     exp-128-8-60-step3-tl_from_step3:
-  #       label: "2, 19, 8, TL"
-  #       color: "cyan"
-  #       linestyle: "-"
-  #       rep: [0,1,2,3,4]
-  # 4-6-scaling-up-workflow-16:
-  #   title: "Scaling Up Workflow Instances"
-  #   ylim: [25,200]
-  #   data:
-  #     exp-128-16-60-step3-notl:
-  #       label: "2, 19, 16"
-  #       color: "orange"
-  #       linestyle: "-"
-  #       rep: [0,1,2,3,4]
-  #     exp-128-8-60-step3-tl_from_step3:
-  #       label: "2, 19, 16, TL"
-  #       color: "cyan"
-  #       linestyle: "-"
-  #       rep: [0,1,2,3,4]
+        rep: [1,2,3,4,5]
+      exp-tl-RF-8-true-true:
+        label: "8-T-T TL"
+        color: "cyan"
+        linestyle: "-"
+        rep: [1,2,3,4,5]
+  RF-8-to-16:
+    title: "RF 8 to 16 nodes"
+    t_max: 3600
+    data:
+      exp-RF-16-true-true:
+        label: "16-T-T"
+        color: "orange"
+        linestyle: "-"
+        rep: [1,2,3,4,5]
+      exp-tl-RF-16-true-true:
+        label: "16-T-T TL"
+        color: "cyan"
+        linestyle: "-"
+        rep: [1,2,3,4,5]
+  RF-16params-to-20params:
+    title: "RF 16 to 20 params"
+    t_max: 3600
+    data:
+      exp-RF-4-true-true:
+        label: "4-T-T"
+        color: "orange"
+        linestyle: "-"
+        rep: [1,2,3,4,5]
+      exp-tl-RF-4-true-true:
+        label: "4-T-T TL"
+        color: "cyan"
+        linestyle: "-"
+        rep: [1,2,3,4,5]
+  RF-nopep-to-pep:
+    title: "RF no PEP to PEP"
+    t_max: 3600
+    data:
+      exp-RF-4-true-false:
+        label: "4-T-F"
+        color: "orange"
+        linestyle: "-"
+        rep: [1,2,3,4,5]
+      exp-tl-RF-4-true-false:
+        label: "4-T-F TL"
+        color: "cyan"
+        linestyle: "-"
+        rep: [1,2,3,4,5]
