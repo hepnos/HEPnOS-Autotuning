@@ -85,3 +85,12 @@ experiments:
         color: "cyan"
         linestyle: "-"
         rep: [1,2,3,4,5]
+  # test:
+  #   title: "test"
+  #   t_max: 3600
+  #   data:
+  #     exp-DUMMY-4-true-false:
+  #       label: "exp-DUMMY-4-true-false"
+  #       color: "orange"
+  #       linestyle: "-"
+  #       rep: [1,2,3,4,5]

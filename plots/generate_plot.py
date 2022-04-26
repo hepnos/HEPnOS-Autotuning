@@ -180,8 +180,9 @@ def plot_objective_multi(df, exp_config, output_dir, show):
                 y = f(T)
                 y_list.append(y)
 
-            num_workers = compute_num_workers(exp_name)
-            y_list = np.asarray(y_list)/ num_workers * 100
+            # num_workers = compute_num_workers(exp_name)
+            # y_list = np.asarray(y_list)/ num_workers * 100
+            y_list = np.asarray(y_list)
             y_mean = y_list.mean(axis=0)
             y_min = y_list.min(axis=0)
             y_max = y_list.max(axis=0)
