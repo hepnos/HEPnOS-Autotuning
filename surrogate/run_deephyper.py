@@ -109,12 +109,12 @@ if __name__ == "__main__":
 
     print(f"{len(problem.hyperparameter_names)=}")
 
-    cols = "busy_spin,hepnos_num_event_databases,hepnos_num_product_databases,hepnos_num_providers,hepnos_num_rpc_threads,hepnos_pes_per_node,hepnos_pool_type,hepnos_progress_thread,loader_batch_size,loader_pes_per_node,loader_progress_thread".split(",")
+    cols = "busy_spin,hepnos_num_event_databases,hepnos_num_product_databases,hepnos_num_providers,hepnos_num_rpc_threads,hepnos_pes_per_node,hepnos_pool_type,hepnos_progress_thread,loader_async,loader_async_threads,loader_batch_size,loader_pes_per_node,loader_progress_thread,pep_ibatch_size,pep_no_preloading,pep_no_rdma,pep_num_threads,pep_obatch_size,pep_pes_per_node,pep_progress_thread".split(",")
 
     print(f"{len(cols)=}")
 
     for i in range(1,6):
-        init_file = os.path.join(HERE, "exp-DUMMY-4-false-false", f"exp-DUMMY-4-false-false-{i}.csv")
+        init_file = os.path.join(HERE, "exp-DUMMY-4-true-true", f"exp-DUMMY-4-true-true-{i}.csv")
         init_df = pd.read_csv(init_file)
         init_df = init_df[cols].iloc[:5]
 

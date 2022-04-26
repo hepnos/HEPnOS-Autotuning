@@ -1,9 +1,7 @@
 import argparse
 import pickle
 import glob
-import sys
 
-import numpy as np
 import pandas as pd
 from sklearn.compose import ColumnTransformer
 from sklearn.ensemble import RandomForestRegressor
@@ -17,7 +15,7 @@ def create_parser():
     parser = argparse.ArgumentParser(description="Create a surrogate model.")
 
     parser.add_argument(
-        "-i", "--input_dir", type=str, default="exp-DUMMY-4-false-false/", help="Path to the *.csv file."
+        "-i", "--input_dir", type=str, default="exp-DUMMY-4-true-true/", help="Path to the *.csv file."
     )
 
     return parser
@@ -51,6 +49,10 @@ def main(args):
         "hepnos_pool_type",
         "hepnos_progress_thread",
         "loader_progress_thread",
+        "pep_progress_thread",
+        "pep_no_preloading",
+        "pep_no_rdma",
+        "loader_async",
     ]
     num_vars = [
         "hepnos_num_event_databases",	
@@ -60,6 +62,11 @@ def main(args):
         "hepnos_pes_per_node",
         "loader_batch_size",
         "loader_pes_per_node",
+        "pep_num_threads",
+        "pep_ibatch_size",
+        "pep_obatch_size",
+        "pep_pes_per_node",
+        "loader_async_threads"
     ]
     response_vars = ["objective"]
 
@@ -83,7 +90,7 @@ def main(args):
 
     X_train, X_test, y_train, y_test = train_test_split(
         preprocessed_data[:, 1:],
-        preprocessed_data[:, [0]],
+        preprocessed_data[:, 0],
         test_size=0.10,
         random_state=42,
     )
@@ -91,7 +98,7 @@ def main(args):
     regr = RandomForestRegressor()
     regr.fit(X_train,y_train)
     preds = regr.predict(X_test)
-    r2 = r2_score(y_test[:,0],preds)
+    r2 = r2_score(y_test,preds)
     print(f"training objective {r2=}")
 
     preprocessed_data = data_pipeline_model.transform(real_data)

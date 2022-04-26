@@ -78,7 +78,7 @@ def build_deephyper_problem(disable_pep, more_params):
 def run(config):
     
     
-    cols = "busy_spin,hepnos_num_event_databases,hepnos_num_product_databases,hepnos_num_providers,hepnos_num_rpc_threads,hepnos_pes_per_node,hepnos_pool_type,hepnos_progress_thread,loader_batch_size,loader_pes_per_node,loader_progress_thread"
+    cols = "busy_spin,hepnos_num_event_databases,hepnos_num_product_databases,hepnos_num_providers,hepnos_num_rpc_threads,hepnos_pes_per_node,hepnos_pool_type,hepnos_progress_thread,loader_async,loader_async_threads,loader_batch_size,loader_pes_per_node,loader_progress_thread,pep_ibatch_size,pep_no_preloading,pep_no_rdma,pep_num_threads,pep_obatch_size,pep_pes_per_node,pep_progress_thread"
     cols = cols.split(",") + ["objective"]
     config["objective"] = 0
 
@@ -104,7 +104,7 @@ def run(config):
     return objective
 
 if __name__ == "__main__":
-    problem = build_deephyper_problem(disable_pep=True, more_params=False)
+    problem = build_deephyper_problem(disable_pep=False, more_params=True)
     print(problem)
 
     evaluator = Evaluator.create(run, method="serial", method_kwargs={"callbacks": [LoggerCallback()]})

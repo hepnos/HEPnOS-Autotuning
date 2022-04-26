@@ -104,7 +104,7 @@ def run(config):
     return objective
 
 if __name__ == "__main__":
-    problem = build_deephyper_problem(disable_pep=False, more_params=False)
+    problem = build_deephyper_problem(disable_pep=False, more_params=True)
     print(problem)
 
     # test default config
