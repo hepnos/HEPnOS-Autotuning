@@ -64,7 +64,7 @@ if __name__ == "__main__":
             evaluator,
             n_initial_points=10,
             initial_points=initial_points,
-            log_dir=f"exp/deephyper/{model_file[:-4]}-{i}",
+            log_dir=f"exp/deephyper_rf/{model_file[:-4]}-{i}",
             random_state=42,
         )
 
