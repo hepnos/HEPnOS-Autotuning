@@ -1,3 +1,13 @@
+"""How to use examples:
+
+.. code-block:: 
+
+    $ python create_surrogate_model.py -i "data/exp-DUMMY-4-false-false*.csv" -o models/model-4-false-false.pkl
+
+.. code-blcok::
+
+    $ python create_surrogate_model.py -i "data/exp-DUMMY-4-true-true*.csv" -o models/model-4-true-true.pkl
+"""
 import argparse
 import pickle
 import glob
@@ -15,17 +25,58 @@ def create_parser():
     parser = argparse.ArgumentParser(description="Create a surrogate model.")
 
     parser.add_argument(
-        "-i", "--input_dir", type=str, default="exp-DUMMY-4-true-true/", help="Path to the *.csv file."
+        "-i",
+        "--input",
+        type=str,
+        default=None,
+        required=True,
+        help="Path to the *.csv files.",
+    )
+    parser.add_argument(
+        "-o",
+        "--output",
+        type=str,
+        default=None,
+        required=True,
+        help="Path where to store the created pkl file containing the surrogate model.",
     )
 
     return parser
 
 
+VAR_TYPES = {
+    "categorical": [
+        "busy_spin",
+        "hepnos_pool_type",
+        "hepnos_progress_thread",
+        "loader_progress_thread",
+        "pep_progress_thread",
+        "pep_no_preloading",
+        "pep_no_rdma",
+        "loader_async",
+    ],
+    "numerical": [
+        "hepnos_num_event_databases",
+        "hepnos_num_product_databases",
+        "hepnos_num_providers",
+        "hepnos_num_rpc_threads",
+        "hepnos_pes_per_node",
+        "loader_batch_size",
+        "loader_pes_per_node",
+        "pep_num_threads",
+        "pep_ibatch_size",
+        "pep_obatch_size",
+        "pep_pes_per_node",
+        "loader_async_threads",
+    ],
+}
+
+
 def main(args):
 
     # load the data
-    
-    all_files = glob.glob(args.input_dir + "/*.csv")
+
+    all_files = glob.glob(args.input)
     li = []
     for filename in all_files:
         print(f"Loading: {filename}")
@@ -37,36 +88,25 @@ def main(args):
     real_data = real_data[~real_data.objective.str.startswith("F")]
     real_data = real_data.astype({"objective": float})
 
-    real_data[['objective']] = real_data[['objective']].astype(float)
+    real_data[["objective"]] = real_data[["objective"]].astype(float)
 
     real_data = real_data.drop(
-        columns=["job_id","timestamp_submit","timestamp_gather","timestamp_start","timestamp_end","dequed"]
+        columns=[
+            "job_id",
+            "timestamp_submit",
+            "timestamp_gather",
+            "timestamp_start",
+            "timestamp_end",
+            "dequed",
+        ]
     )
 
     # model fitting
     cat_vars = [
-        "busy_spin",
-        "hepnos_pool_type",
-        "hepnos_progress_thread",
-        "loader_progress_thread",
-        "pep_progress_thread",
-        "pep_no_preloading",
-        "pep_no_rdma",
-        "loader_async",
+        c_name for c_name in real_data.columns if c_name in VAR_TYPES["categorical"]
     ]
     num_vars = [
-        "hepnos_num_event_databases",	
-        "hepnos_num_product_databases",	
-        "hepnos_num_providers",	
-        "hepnos_num_rpc_threads",	
-        "hepnos_pes_per_node",
-        "loader_batch_size",
-        "loader_pes_per_node",
-        "pep_num_threads",
-        "pep_ibatch_size",
-        "pep_obatch_size",
-        "pep_pes_per_node",
-        "loader_async_threads"
+        c_name for c_name in real_data.columns if c_name in VAR_TYPES["numerical"]
     ]
     response_vars = ["objective"]
 
@@ -96,9 +136,9 @@ def main(args):
     )
 
     regr = RandomForestRegressor()
-    regr.fit(X_train,y_train)
+    regr.fit(X_train, y_train)
     preds = regr.predict(X_test)
-    r2 = r2_score(y_test,preds)
+    r2 = r2_score(y_test, preds)
     print(f"training objective {r2=}")
 
     preprocessed_data = data_pipeline_model.transform(real_data)
@@ -110,8 +150,10 @@ def main(args):
         "data": data_pipeline_model,
         "model": regr,
     }
-    with open(args.input_dir+"/surrogate.pkl", "wb") as f:
+    with open(args.output, "wb") as f:
+        print("Saving model at: ", args.output)
         pickle.dump(saved_pipeline, f)
+
 
 if __name__ == "__main__":
     parser = create_parser()

@@ -1,3 +1,9 @@
+"""How to use examples:
+
+.. code-block::
+
+    $ python test_surrogate_model.py -i data/exp-DUMMY-4-false-false-1.csv -m models/model-4-false-false.pkl
+"""
 import argparse
 import pickle
 
