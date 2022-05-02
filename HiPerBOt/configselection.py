@@ -83,9 +83,11 @@ def run_bayesian_selection(X_bin_u, y_new_bin, sample_size, train_size, seed, ga
 
 
     train_ids, test_ids = train_test_split(range(X_bin_u.shape[0]), test_size=len(X_bin_u)-train_size, random_state=seed)
+    print ("train_ids", train_ids)
     x_obs = X_bin_u.iloc[train_ids].values
     y_obs = y_new_bin[train_ids]
-    #print('min training ', np.min(y_obs), len(y_obs))
+    print('min training ', np.min(y_obs), len(y_obs))
+    a=b
 
     # construct trials
     trials = []
@@ -124,22 +126,23 @@ def main():
   ds.initialize_dataset()
 
 
-  numSeeds = 10 #50 #10 Uncomment for sensitivity #desired value for runs 10
+  numSeeds = 5 #10 #50 #10 Uncomment for sensitivity #desired value for runs 10
   seedList = np.random.choice(100,numSeeds,replace=False)
   
   idx_min = np.argmin(ds.y_new_bin)
   print('Exhaustive best: ', ds.y_new_bin[idx_min])
   #print('Exhaustive best configuration: ', ds.X_bin_u.iloc[idx_min])
   dataset_len = len(ds.X_bin_u)
-  init_size = int((1-ds.test_size)*dataset_len)
+  init_size = 10 #int((1-ds.test_size)*dataset_len)
   #act_init_size = 1-(float(init_size - 50)/dataset_len)
-  print('dataset len ', dataset_len)
+  print('dataset len ', dataset_len,init_size)
   
   
   #init_size = 250 # Uncomment for sensitivity
   sample_size = np.zeros(ds.nIter, dtype=int) # Uncomment for sensitivity
   for i in range(ds.nIter):
       sample_size[i] = init_size + (i)*ds.to_add
+      print('sample_size', i, sample_size[i])
   
   metric_mean = {}
   metric_std = {}

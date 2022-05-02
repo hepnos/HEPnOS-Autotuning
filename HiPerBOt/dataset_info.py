@@ -19,8 +19,8 @@ class DatasetInfo:
     self.nIter = 8 # Number of iterations for adaptive sampling (to_add samples in each iter)
     self.perc_optimal= 5 # Percentile of good configurations
     self.perc_bad= 90 # 90 above is worst configuration
-    self.to_add = 50 #0 # Uncomment for sensitivity # In each iteration number of samples added. Add 50 in each iteration
-    self.train_size = 20 #50 # default is 50 [10,20,50,70,100]
+    self.to_add = 1 #50 #0 # Uncomment for sensitivity # In each iteration number of samples added. Add 50 in each iteration
+    self.train_size = 10 #50 # default is 50 [10,20,50,70,100]
     self.gamma_perc = 0.2 #[0.02,0.05,0.1,0.2,0.5]
     if dName == 'hypre':
         self.test_size = 0.991 #0.98 # 1-0.98 are used as the initial samples. Start with 100 initial samples.
@@ -47,6 +47,9 @@ class DatasetInfo:
     elif dName == 'mm':
         self.test_size = 0.98
         self.nIter = 9
+    elif dName == 'DH_surrogate':
+        self.test_size = 0.98
+        self.nIter = 101
     #self.nIter = 1 # Uncomment for sensitivity
 
   def initialize_dataset(self):
@@ -62,6 +65,34 @@ class DatasetInfo:
         self.X_bin, self.y_bin = self.X_bin.iloc[pkg100_indices], self.y_bin[pkg100_indices]
         self.X_bin = self.X_bin[['Ranks','OMP','Solver_s0','Solver_s2','Solver_s3','Solver_s51','Solver_s61','Solver_s9','Smoother_3', \
                'Smoother_4','Smoother_6','Smoother_8','Smoother_13','Smoother_14','Smoother_16','PMX','MU']]
+        data_bin_pd = util.data_norm(self.X_bin, self.y_bin, response_name=response, response_norm=False)
+
+    elif self.dName == 'DH_surrogate':
+        filename = "/gpfs/fs0/project/FastBayes/Sandeep/github_repos/HEPnOS-Autotuning/HiPerBOt/datasets/DH_expt/10k-samples.csv"
+        response = "objective" # Dependent variable
+        self.X_bin_all, self.y_bin_all = util.load_data(filename, response)
+
+        self.X_bin_all = self.X_bin_all[['busy_spin','hepnos_num_event_databases','hepnos_num_product_databases','hepnos_num_providers',
+        'hepnos_num_rpc_threads','hepnos_pes_per_node','hepnos_pool_type','hepnos_progress_thread','loader_async',
+        'loader_async_threads','loader_batch_size','loader_pes_per_node','loader_progress_thread','pep_ibatch_size',
+        'pep_no_preloading','pep_no_rdma','pep_num_threads','pep_obatch_size','pep_pes_per_node','pep_progress_thread']]
+
+
+        self.X_bin = self.X_bin_all.iloc[50:]
+        self.X_bin_init1 = self.X_bin_all.iloc[0:10]
+        self.X_bin_init2 = self.X_bin_all.iloc[10:20]
+        self.X_bin_init3 = self.X_bin_all.iloc[20:30]
+        self.X_bin_init4 = self.X_bin_all.iloc[30:40]
+        self.X_bin_init5 = self.X_bin_all.iloc[40:50]
+
+        self.y_bin = self.y_bin_all[50:]
+        self.y_bin_init1 = self.y_bin_all[0:10]
+        self.y_bin_init2 = self.y_bin_all[10:20]
+        self.y_bin_init3 = self.y_bin_all[20:30]
+        self.y_bin_init4 = self.y_bin_all[30:40]
+        self.y_bin_init5 = self.y_bin_all[40:50]
+
+
         data_bin_pd = util.data_norm(self.X_bin, self.y_bin, response_name=response, response_norm=False)
     elif self.dName == 'kripke':
         filename = "datasets/powerperf/binarized/kripke.16nodes.2000_input.l0.norm.binary.csv"
