@@ -49,7 +49,7 @@ class DatasetInfo:
         self.nIter = 9
     elif dName == 'DH_surrogate':
         self.test_size = 0.98
-        self.nIter = 101
+        self.nIter = 101 
     #self.nIter = 1 # Uncomment for sensitivity
 
   def initialize_dataset(self):
@@ -68,7 +68,7 @@ class DatasetInfo:
         data_bin_pd = util.data_norm(self.X_bin, self.y_bin, response_name=response, response_norm=False)
 
     elif self.dName == 'DH_surrogate':
-        filename = "/gpfs/fs0/project/FastBayes/Sandeep/github_repos/HEPnOS-Autotuning/HiPerBOt/datasets/DH_expt/10k-samples.csv"
+        filename = "/gpfs/fs0/project/FastBayes/Sandeep/github_repos/HEPnOS-Autotuning/HiPerBOt/datasets/DH_expt/10k-samples_new2.csv"
         response = "objective" # Dependent variable
         self.X_bin_all, self.y_bin_all = util.load_data(filename, response)
 
@@ -79,18 +79,18 @@ class DatasetInfo:
 
 
         self.X_bin = self.X_bin_all.iloc[50:]
-        self.X_bin_init1 = self.X_bin_all.iloc[0:10]
-        self.X_bin_init2 = self.X_bin_all.iloc[10:20]
-        self.X_bin_init3 = self.X_bin_all.iloc[20:30]
-        self.X_bin_init4 = self.X_bin_all.iloc[30:40]
-        self.X_bin_init5 = self.X_bin_all.iloc[40:50]
+        self.X_bin_init = self.X_bin_all.iloc[0:50]
+        # self.X_bin_init2 = self.X_bin_all.iloc[10:20]
+        # self.X_bin_init3 = self.X_bin_all.iloc[20:30]
+        # self.X_bin_init4 = self.X_bin_all.iloc[30:40]
+        # self.X_bin_init5 = self.X_bin_all.iloc[40:50]
 
         self.y_bin = self.y_bin_all[50:]
-        self.y_bin_init1 = self.y_bin_all[0:10]
-        self.y_bin_init2 = self.y_bin_all[10:20]
-        self.y_bin_init3 = self.y_bin_all[20:30]
-        self.y_bin_init4 = self.y_bin_all[30:40]
-        self.y_bin_init5 = self.y_bin_all[40:50]
+        self.y_bin_init = self.y_bin_all[0:50]
+        # self.y_bin_init2 = self.y_bin_all[10:20]
+        # self.y_bin_init3 = self.y_bin_all[20:30]
+        # self.y_bin_init4 = self.y_bin_all[30:40]
+        # self.y_bin_init5 = self.y_bin_all[40:50]
 
 
         data_bin_pd = util.data_norm(self.X_bin, self.y_bin, response_name=response, response_norm=False)
@@ -169,6 +169,7 @@ class DatasetInfo:
     
     #print(self.X_bin.columns)
     
+    #################################################################
     self.X_new_bin = self.X_bin.copy()
     if feats_drop is not None:
         self.X_new_bin = self.X_new_bin.drop(feats_drop, axis=1)
@@ -184,6 +185,20 @@ class DatasetInfo:
         #print(datalabel, xk)
     
     self.X_bin_u = self.X_new_bin.copy()
+    ##################################################################
+    self.X_new_bin_init = self.X_bin_init.copy()
+    if feats_drop is not None:
+        self.X_new_bin_init = self.X_new_bin_init.drop(feats_drop, axis=1)
+    self.X_new_bin_init[response] = self.y_bin_init
+    
+    self.y_new_bin_init = self.X_new_bin_init[response].values
+    #print(type(self.y_new_bin))
+    self.X_new_bin_init = self.X_new_bin_init.iloc[:,:n_feat_bin]
+    #print(len(self.X_new_bin))
+
+    
+    self.X_bin_u_init = self.X_new_bin_init.copy()
+    ##################################################################
 
     if self.dName == 'lulesh4_exec':
     

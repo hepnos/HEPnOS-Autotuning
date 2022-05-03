@@ -71,7 +71,7 @@ def selection(X_bin_u, y_new_bin, x_obs, y_obs, param_prob, gamma):
 #     display('Best candidate EI: {} param: {}'.format(max_EI, max_param))
     return max_param
 
-def run_bayesian_selection(X_bin_u, y_new_bin, sample_size, train_size, seed, gamma, threshold_good) :
+def run_bayesian_selection(X_bin_u, y_new_bin,X_bin_u_init, y_new_bin_init, sample_size, train_size, seed, s_order, gamma, threshold_good) :
     recall_list = {}
 
     if (sample_size == 139):
@@ -83,11 +83,11 @@ def run_bayesian_selection(X_bin_u, y_new_bin, sample_size, train_size, seed, ga
 
 
     train_ids, test_ids = train_test_split(range(X_bin_u.shape[0]), test_size=len(X_bin_u)-train_size, random_state=seed)
-    print ("train_ids", train_ids)
-    x_obs = X_bin_u.iloc[train_ids].values
-    y_obs = y_new_bin[train_ids]
-    print('min training ', np.min(y_obs), len(y_obs))
-    a=b
+    #print ("seed",seed,"train_ids", train_ids)
+    x_obs = X_bin_u_init.iloc[s_order*10:(s_order+1)*10].values #X_bin_u.iloc[train_ids].values
+    y_obs = y_new_bin_init[s_order*10:(s_order+1)*10]
+    #print('min training ', np.min(y_obs), len(y_obs))
+
 
     # construct trials
     trials = []
@@ -112,7 +112,7 @@ def run_bayesian_selection(X_bin_u, y_new_bin, sample_size, train_size, seed, ga
     num_good = (trials_loss < threshold_good).sum()
     pc_score_g = stats.percentileofscore(trials_loss,threshold_good)
 
-    return best_loss, pc_score_g, num_good
+    return best_loss, pc_score_g, num_good, trials
 
 def main():
   args = sys.argv[1:]
@@ -142,10 +142,12 @@ def main():
   sample_size = np.zeros(ds.nIter, dtype=int) # Uncomment for sensitivity
   for i in range(ds.nIter):
       sample_size[i] = init_size + (i)*ds.to_add
-      print('sample_size', i, sample_size[i])
+      #print('sample_size', i, sample_size[i])
   
   metric_mean = {}
   metric_std = {}
+  metric_mean_list = []
+  metric_std_list = []
   best_loss_all = []
   pc_g_all = []
   num_good_all = []
@@ -157,23 +159,33 @@ def main():
       best_loss_list = []
       pc_g_list = []
       num_good_list = []
+      s_order = 0
       for seed in seedList:
-          best_loss, pc_score_g, num_good = run_bayesian_selection(ds.X_bin_u, ds.y_new_bin, size, ds.train_size, seed, gamma=ds.gamma_perc, threshold_good=threshold_good)
+          best_loss, pc_score_g, num_good, trials = run_bayesian_selection(ds.X_bin_u, ds.y_new_bin,ds.X_bin_u_init, ds.y_new_bin_init, size, ds.train_size, seed, s_order=s_order, gamma=ds.gamma_perc, threshold_good=threshold_good)
           best_loss_list = np.append(best_loss_list, best_loss)
           pc_g_list = np.append(pc_g_list, pc_score_g)
           num_good_list = np.append(num_good_list, num_good)
           #print('Best loss: ', best_loss)
           #print('Good percentile: ', pc_score_g)
           #print('Num good: ', num_good)
+          s_order = s_order+1
   
       metric_mean[size] = np.mean(best_loss_list)
       metric_std[size] = np.std(best_loss_list)
       best_loss_all.append(best_loss_list)
       pc_g_all.append(pc_g_list)
       num_good_all.append(num_good_list)
+      metric_mean_list.append(metric_mean[size])
+      metric_std_list.append(metric_std[size])
       print('sample size: {0} best configuration: {1} std: {2}'.format(size, metric_mean[size], metric_std[size]))
-  
-  
+      #print (metric_mean)
+      np.savetxt('metric_mean.csv', np.array(metric_mean_list), delimiter=',')
+      np.savetxt('metric_std.csv', np.array(metric_std_list), delimiter=',')
+      np.savetxt('best_loss_all.csv', np.array(best_loss_all), delimiter=',')
+      np.savetxt('pc_g_all.csv', np.array(pc_g_all), delimiter=',')
+      np.savetxt('num_good_all.csv', np.array(num_good_all), delimiter=',')
+      np.savetxt('trials.csv', np.array(trials), delimiter=',')
+    
 
 if __name__ == "__main__":
     main()
