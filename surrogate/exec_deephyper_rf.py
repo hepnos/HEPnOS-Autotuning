@@ -84,7 +84,8 @@ if __name__ == "__main__":
         )
 
         if args.tl_learn:
-            print("Applying Transfer Learning...")
-            search.fit_generative_model(args.tl_learn)
+            df_path = args.tl_learn.format(i=i)
+            print(f"Applying Transfer Learning from {df_path}...")
+            search.fit_generative_model(df_path)
 
         results = search.search(max_evals=max_evals)
