@@ -143,7 +143,7 @@ spack/
 *.error
 *.output
 figures*/
-exp/
+run_sh/
 
 # macos file
 .DS_Store 
