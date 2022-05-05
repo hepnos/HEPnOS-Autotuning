@@ -111,7 +111,7 @@ def objectives(config: dict):
     model_path = os.path.join(HERE, f"models/model-{scale}-{str(enable_pep).lower()}-{str(more_params).lower()}.pkl")
     model_file = model_path.split("/")[-1]
     objective = run(config, model_path, maximise=False, with_sleep=False)
-    time.sleep(1)
+    time.sleep(3)
     
     ### save results
     now = time.time()
@@ -203,6 +203,51 @@ def create_gptune(scale_task, enable_pep_task, more_params_task):
     
     problem  = TuningProblem(IS, PS, OS, objectives, constraints, None)  # no performance model  
     # historydb = HistoryDB(meta_dict=tuning_metadata)
+    '''
+    suppose your has M compute nodes, m cores per node, and each run requires N nodes, then you need to set:
+    options['distributed_memory_parallelism']=False
+    options['shared_memory_parallelism'] = True
+    options['objective_evaluation_parallelism']=True
+    options['objective_multisample_threads']=M/N
+    options['objective_nospawn']=True
+    options['objective_nprocmax']=N*m
+    
+    M compute nodes 
+    each has m cores 
+    each batch runs K evaluations, each requires c cores
+    options['objective_multisample_processes'] = K
+    options['objective_nprocmax'] = c
+    then makes sure in .gptune/meta.json that 
+          "nodes": M+1,
+          "cores": m
+    and makes sure that K*c<=M*m when you set K. 
+    M = 1 
+    m = 128 
+    N = 1
+    K evaluations, each requires c cores 
+    k*c <= M*m
+    '''
+    ## parallel 
+#     computer = Computer(nodes=nodes, cores=cores, hosts=None) 
+#     options  = Options()
+#     options['model_restarts'] = 1
+#     options['distributed_memory_parallelism'] = True ######## False
+#     options['shared_memory_parallelism'] = True
+#     options['objective_evaluation_parallelism'] = True ######## False
+#     options['objective_multisample_threads'] = 1    ### M/N  
+#     options['objective_multisample_processes'] = 10 ### k ## maximum number of function evaluations running in parallel
+#     options['objective_nprocmax'] = 1          ### c, N*m ### number of cores per function evaluation
+    
+#     options['model_processes'] = 1
+#     options['search_multitask_processes'] = 1  #########
+#     options['model_class'] = 'Model_GPy_LCM' #'Model_GPy_LCM'
+#     options['verbose'] = False #False
+#     options['sample_class'] = 'SampleOpenTURNS'#'SampleLHSMDU'
+#     options.validate(computer=computer)
+    
+#     ## serial 
+    problem  = TuningProblem(IS, PS, OS, objectives, constraints, None)  # no performance model  
+    # historydb = HistoryDB(meta_dict=tuning_metadata)
     computer = Computer(nodes=nodes, cores=cores, hosts=None) 
     options  = Options()
     options['model_restarts'] = 1
@@ -216,7 +261,7 @@ def create_gptune(scale_task, enable_pep_task, more_params_task):
     options['model_class'] = 'Model_GPy_LCM' #'Model_GPy_LCM'
     options['verbose'] = True #False
     options['sample_class'] = 'SampleOpenTURNS'#'SampleLHSMDU'
-    options.validate(computer=computer)
+    options.validate(computer=computer)    
     
     return problem, computer, options
 
