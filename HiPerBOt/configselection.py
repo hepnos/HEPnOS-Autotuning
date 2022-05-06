@@ -61,6 +61,7 @@ def selection(X_bin_u, y_new_bin, x_obs, y_obs, param_prob, gamma):
     y_ei_sorted_index = np.argsort(-expected_improvement)
     y_selected=y_new_bin[y_ei_sorted_index][0:500]
 
+    # if the configs in x_obs are not in X_bin_u, use the config with max expectation as max_param
     for ei_idx in y_ei_sorted_index:
         param = X_bin_u.values[ei_idx].astype(int)
         if len(x_obs[(x_obs == param).all(axis=1)]) <= 0:
@@ -112,7 +113,7 @@ def run_bayesian_selection(X_bin_u, y_new_bin,X_bin_u_init, y_new_bin_init, samp
     num_good = (trials_loss < threshold_good).sum()
     pc_score_g = stats.percentileofscore(trials_loss,threshold_good)
 
-    return best_loss, pc_score_g, num_good, trials
+    return best_loss, pc_score_g, num_good, trials, trials_loss
 
 def main():
   args = sys.argv[1:]
@@ -151,9 +152,13 @@ def main():
   best_loss_all = []
   pc_g_all = []
   num_good_all = []
+  trials_all = np.zeros((1,20))
+
   #print(ds.X_new_bin.columns)
   #print(len(sample_size), sample_size)
   threshold_good = np.percentile(ds.y_bin,ds.perc_optimal)
+  feats = ds.X_bin_feat_sel
+  feats.append("objective")
   for size in sample_size:
       #print('Sample size: ', size)
       best_loss_list = []
@@ -161,15 +166,21 @@ def main():
       num_good_list = []
       s_order = 0
       for seed in seedList:
-          best_loss, pc_score_g, num_good, trials = run_bayesian_selection(ds.X_bin_u, ds.y_new_bin,ds.X_bin_u_init, ds.y_new_bin_init, size, ds.train_size, seed, s_order=s_order, gamma=ds.gamma_perc, threshold_good=threshold_good)
+          best_loss, pc_score_g, num_good, trials,trials_loss = run_bayesian_selection(ds.X_bin_u, ds.y_new_bin,ds.X_bin_u_init, ds.y_new_bin_init, size, ds.train_size, seed, s_order=s_order, gamma=ds.gamma_perc, threshold_good=threshold_good)
           best_loss_list = np.append(best_loss_list, best_loss)
           pc_g_list = np.append(pc_g_list, pc_score_g)
           num_good_list = np.append(num_good_list, num_good)
+
+          
           #print('Best loss: ', best_loss)
           #print('Good percentile: ', pc_score_g)
           #print('Num good: ', num_good)
           s_order = s_order+1
-  
+          if (size == sample_size[-1]):
+                T1 = np.concatenate((trials,trials_loss.reshape(-1,1)), axis=1)
+                df = pd.DataFrame(data=T1, columns=feats)
+                df.to_csv('trials_{}.csv'.format(s_order),sep=',')
+
       metric_mean[size] = np.mean(best_loss_list)
       metric_std[size] = np.std(best_loss_list)
       best_loss_all.append(best_loss_list)
@@ -184,7 +195,7 @@ def main():
       np.savetxt('best_loss_all.csv', np.array(best_loss_all), delimiter=',')
       np.savetxt('pc_g_all.csv', np.array(pc_g_all), delimiter=',')
       np.savetxt('num_good_all.csv', np.array(num_good_all), delimiter=',')
-      np.savetxt('trials.csv', np.array(trials), delimiter=',')
+      #np.savetxt('trials.csv', np.array(trials_all), delimiter=',')
     
 
 if __name__ == "__main__":

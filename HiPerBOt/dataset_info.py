@@ -71,11 +71,12 @@ class DatasetInfo:
         filename = "/gpfs/fs0/project/FastBayes/Sandeep/github_repos/HEPnOS-Autotuning/HiPerBOt/datasets/DH_expt/results_with_init.csv"
         response = "objective" # Dependent variable
         self.X_bin_all, self.y_bin_all = util.load_data(filename, response)
-
-        self.X_bin_all = self.X_bin_all[['busy_spin','hepnos_num_event_databases','hepnos_num_product_databases','hepnos_num_providers',
+        self.X_bin_feat_sel = ['busy_spin','hepnos_num_event_databases','hepnos_num_product_databases','hepnos_num_providers',
         'hepnos_num_rpc_threads','hepnos_pes_per_node','hepnos_pool_type','hepnos_progress_thread','loader_async',
         'loader_async_threads','loader_batch_size','loader_pes_per_node','loader_progress_thread','pep_ibatch_size',
-        'pep_no_preloading','pep_no_rdma','pep_num_threads','pep_obatch_size','pep_pes_per_node','pep_progress_thread']]
+        'pep_no_preloading','pep_no_rdma','pep_num_threads','pep_obatch_size','pep_pes_per_node','pep_progress_thread']
+
+        self.X_bin_all = self.X_bin_all[self.X_bin_feat_sel]
 
 
         self.X_bin = self.X_bin_all.iloc[50:]
