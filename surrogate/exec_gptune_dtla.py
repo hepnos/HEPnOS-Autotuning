@@ -36,7 +36,7 @@ logging.getLogger('matplotlib.font_manager').disabled = True
 from autotune.search import *
 from autotune.space import *
 from autotune.problem import *
-from gptune import * # import all
+from gptune_tl import * # import all
 import openturns as ot
 import matplotlib.pyplot as plt
 
@@ -116,17 +116,24 @@ def objectives(config: dict):
     enable_pep  = config['enable_pep']
     more_params = config['more_params']
     
-    ## new task:
-    if scale == 8 and enable_pep == True and more_params == True:
+    ## new task
+    if scale == 8 and enable_pep == 'True' and more_params == 'True':
+        print (f"................NEW.....Task: {scale}-{enable_pep}-{more_params}")  
         model_path = os.path.join(HERE, f"models/model-{scale}-{str(enable_pep).lower()}-{str(more_params).lower()}.pkl")
         model_file = model_path.split("/")[-1]
-        objective = run(config, model_path, maximise=False, with_sleep=False)
-    ## old task:
-    if scale == 4 and enable_pep == False and more_params == False:    
-        print (".....................Task: ", config['t'])
-        print (".....................point",config)      
-        objective = model_functions[[scale,enable_pep,more_params]](config)    
-        print (".....................model ret: ", ret) 
+        objective = run(config, model_path, maximise=False, with_sleep=True)
+        print (".....................objective: ", objective) 
+#         time.sleep(1)
+    ## old task
+    if scale == 4 and enable_pep == 'True' and more_params == 'True':    
+        print (f"................OLD.....Task: {scale}-{enable_pep}-{more_params}")   
+        print (config) 
+        objective = model_functions[tuple([scale,enable_pep,more_params])](config)
+        objective = objective['y'][0][0]
+        model_path = os.path.join(HERE, f"models/model-{scale}-{str(enable_pep).lower()}-{str(more_params).lower()}.pkl")
+        model_file = model_path.split("/")[-1]
+        print (".....................objective: ", objective) 
+#         time.sleep(1)
     
     ### save results
     now = time.time()
@@ -134,7 +141,7 @@ def objectives(config: dict):
     result = pd.DataFrame(data=[config], columns=list(config.keys()))
     result["objective"] = objective
     result["elapsed_sec"] = elapsed_eval
-    dir_path = f"exp/gptune/{model_file[:-4]}-{Run_index}"         
+    dir_path = f"exp/gptune/{model_file[:-4]}-tl-{Run_index}"         
     pathlib.Path(dir_path).mkdir(parents=False, exist_ok=True)                          
     try:
         results_cvs = pd.read_csv(dir_path+"/results.csv")
@@ -178,41 +185,72 @@ def create_gptune(scale_task, enable_pep_task, more_params_task):
     print ("machine: " + machine + " processor: " + processor + " num_nodes: " + str(nodes) + " num_cores: " + str(cores))
     os.environ['MACHINE_NAME'] = machine
     os.environ['TUNER_NAME'] = TUNER_NAME
-
+    
     ## input space 
     scale       = Integer(1, 16, transform="normalize", name="scale")
-    enable_pep  = Categoricalnorm([True, False], transform="onehot", name="enable_pep")
-    more_params = Categoricalnorm([True, False], transform="onehot", name="more_params")
+    enable_pep  = Categoricalnorm(list(map(str, [True, False])), transform="onehot", name="enable_pep")
+    more_params = Categoricalnorm(list(map(str, [True, False])), transform="onehot", name="more_params")
     
     ## param space     
-    p0 = Categoricalnorm([True, False], transform="onehot", name="busy_spin")
+    p0 = Categoricalnorm(list(map(str, [True, False])), transform="onehot", name="busy_spin")
     p1 = Integer(1, 16, transform="normalize", name="hepnos_num_event_databases")    
     p2 = Integer(1, 16, transform="normalize", name="hepnos_num_product_databases")
     p3 = Integer(1, 32, transform="normalize", name="hepnos_num_providers")    
     p4 = Integer(0, 63, transform="normalize", name="hepnos_num_rpc_threads") 
-    p5 = Categoricalnorm([1, 2, 4, 8, 16, 32], transform="onehot", name="hepnos_pes_per_node")     
+    p5 = Categoricalnorm(list(map(str, [1, 2, 4, 8, 16, 32])), transform="onehot", name="hepnos_pes_per_node")     
     p6 = Categoricalnorm(['fifo','fifo_wait'], transform="onehot", name="hepnos_pool_type")     
-    p7 = Categoricalnorm([True, False], transform="onehot", name="hepnos_progress_thread") 
+    p7 = Categoricalnorm(list(map(str, [True, False])), transform="onehot", name="hepnos_progress_thread") 
     p8 = Integer(1, 2048, transform="normalize", name="loader_batch_size")     
-    p9 = Categoricalnorm([1, 2, 4, 8, 16], transform="onehot", name="loader_pes_per_node") 
-    p10 = Categoricalnorm([True, False], transform="onehot", name="loader_progress_thread")     
+    p9 = Categoricalnorm(list(map(str, [1, 2, 4, 8, 16])), transform="onehot", name="loader_pes_per_node") 
+    p10 = Categoricalnorm(list(map(str, [True, False])), transform="onehot", name="loader_progress_thread")     
     Tuning_params = [p0, p1, p2, p3, p4, p5, p6, p7, p8, p9, p10]
     
     if more_params_task:
-#         print ('.....include more params...')
-        p11 = Categoricalnorm([True, False], transform="onehot", name="loader_async") 
+        p11 = Categoricalnorm(list(map(str, [True, False])), transform="onehot", name="loader_async") 
         p12 = Integer(1, 63, transform="normalize", name="loader_async_threads")   
         Tuning_params.extend([p11, p12])
     if enable_pep_task: 
-#         print ('.....include enable_pep...')
-        p13 = Categoricalnorm([True, False], transform="onehot", name="pep_progress_thread") 
+        p13 = Categoricalnorm(list(map(str, [True, False])), transform="onehot", name="pep_progress_thread") 
         p14 = Integer(1, 31, transform="normalize", name="pep_num_threads")
         p15 = Integer(8, 1024, transform="normalize", name="pep_ibatch_size")
         p16 = Integer(8, 1024, transform="normalize", name="pep_obatch_size")
-        p17 = Categoricalnorm([1, 2, 4, 8, 16, 32], transform="onehot", name="pep_pes_per_node") 
-        p18 = Categoricalnorm([True, False], transform="onehot", name="pep_no_preloading") 
-        p19 = Categoricalnorm([True, False], transform="onehot", name="pep_no_rdma") 
-        Tuning_params.extend([p13, p14, p15, p16, p17, p18, p19])
+        p17 = Categoricalnorm(list(map(str, [1, 2, 4, 8, 16, 32])), transform="onehot", name="pep_pes_per_node") 
+        p18 = Categoricalnorm(list(map(str, [True, False])), transform="onehot", name="pep_no_preloading") 
+        p19 = Categoricalnorm(list(map(str, [True, False])), transform="onehot", name="pep_no_rdma") 
+        Tuning_params.extend([p13, p14, p15, p16, p17, p18, p19])    
+    
+#     ## input space 
+#     scale       = Integer(1, 16, transform="normalize", name="scale")
+#     enable_pep  = Categoricalnorm([True, False], transform="onehot", name="enable_pep")
+#     more_params = Categoricalnorm([True, False], transform="onehot", name="more_params")
+    
+#     ## param space     
+#     p0 = Categoricalnorm([True, False], transform="onehot", name="busy_spin")
+#     p1 = Integer(1, 16, transform="normalize", name="hepnos_num_event_databases")    
+#     p2 = Integer(1, 16, transform="normalize", name="hepnos_num_product_databases")
+#     p3 = Integer(1, 32, transform="normalize", name="hepnos_num_providers")    
+#     p4 = Integer(0, 63, transform="normalize", name="hepnos_num_rpc_threads") 
+#     p5 = Categoricalnorm([1, 2, 4, 8, 16, 32], transform="onehot", name="hepnos_pes_per_node")     
+#     p6 = Categoricalnorm(['fifo','fifo_wait'], transform="onehot", name="hepnos_pool_type")     
+#     p7 = Categoricalnorm([True, False], transform="onehot", name="hepnos_progress_thread") 
+#     p8 = Integer(1, 2048, transform="normalize", name="loader_batch_size")     
+#     p9 = Categoricalnorm([1, 2, 4, 8, 16], transform="onehot", name="loader_pes_per_node") 
+#     p10 = Categoricalnorm([True, False], transform="onehot", name="loader_progress_thread")     
+#     Tuning_params = [p0, p1, p2, p3, p4, p5, p6, p7, p8, p9, p10]
+    
+#     if more_params_task:
+#         p11 = Categoricalnorm([True, False], transform="onehot", name="loader_async") 
+#         p12 = Integer(1, 63, transform="normalize", name="loader_async_threads")   
+#         Tuning_params.extend([p11, p12])
+#     if enable_pep_task: 
+#         p13 = Categoricalnorm([True, False], transform="onehot", name="pep_progress_thread") 
+#         p14 = Integer(1, 31, transform="normalize", name="pep_num_threads")
+#         p15 = Integer(8, 1024, transform="normalize", name="pep_ibatch_size")
+#         p16 = Integer(8, 1024, transform="normalize", name="pep_obatch_size")
+#         p17 = Categoricalnorm([1, 2, 4, 8, 16, 32], transform="onehot", name="pep_pes_per_node") 
+#         p18 = Categoricalnorm([True, False], transform="onehot", name="pep_no_preloading") 
+#         p19 = Categoricalnorm([True, False], transform="onehot", name="pep_no_rdma") 
+#         Tuning_params.extend([p13, p14, p15, p16, p17, p18, p19])
     
     ## output space    
     y = Real(float("-Inf"), float("Inf"), name="y")
@@ -240,7 +278,27 @@ def create_gptune(scale_task, enable_pep_task, more_params_task):
     options['sample_class'] = 'SampleOpenTURNS'#'SampleLHSMDU'
     options.validate(computer=computer)    
     
-    return problem, computer, options
+    return problem, computer, options, historydb
+
+
+VAR_TYPES = {
+    "bool": [
+        "enable_pep",
+        "more_params",
+        "busy_spin",
+        "hepnos_progress_thread",
+        "loader_progress_thread",
+        "loader_async",
+        "pep_progress_thread",
+        "pep_no_preloading",
+        "pep_no_rdma"
+    ],
+    "categorical": [
+        "hepnos_pes_per_node",
+        "loader_pes_per_node",
+        "pep_pes_per_node"
+    ],
+}
 
 if __name__ == "__main__":
     
@@ -265,65 +323,100 @@ if __name__ == "__main__":
     
     model_file = args.model.split("/")[-1]
     scale, enable_pep, more_params = model_file[:-4].split("-")[1:4]
-    scale, enable_pep, more_params = int(scale), enable_pep == "true", more_params == "true"  
+#     scale, enable_pep, more_params = int(scale), enable_pep == "true", more_params == "true"
+    scale, enable_pep, more_params = int(scale), str(enable_pep == "true"), str(more_params == "true")
     
     model_file_tl = args.model_tl.split("/")[-1]
     scale_tl, enable_pep_tl, more_params_tl = model_file_tl[:-4].split("-")[1:4]
-    scale_tl, enable_pep_tl, more_params_tl = int(scale_tl), enable_pep_tl == "true", more_params_tl == "true"      
+#     scale_tl, enable_pep_tl, more_params_tl = int(scale_tl), enable_pep_tl == "true", more_params_tl == "true"
+    scale_tl, enable_pep_tl, more_params_tl = int(scale_tl), str(enable_pep_tl == "true"), str(more_params_tl == "true")
     
-    problem, computer, options = create_gptune(scale, enable_pep, more_params)
+    problem, computer, options, historydb = create_gptune(scale, enable_pep, more_params)
 
     if ntask == 1:
-        giventask =  [[scale, enable_pep, more_params]] #[[input_sizes[DSIZE][0]]]
-        print ('problem size is', DSIZE, giventask)
+        giventask = [[scale, enable_pep, more_params]] 
     elif ntask == 2:
-        giventask = [[scale, enable_pep, more_params], [scale_tl, enable_pep_tl, more_params_tl]] #[[input_sizes[DSIZE][0]]]
+        giventask = [[scale, enable_pep, more_params], [scale_tl, enable_pep_tl, more_params_tl]] 
     else:
         giventask = [[round(tvalue*float(i+1),1)] for i in range(ntask)]
 
     ### tl model    
     model_functions = {}
-    for i in range(1,len(giventask),1):     
+    for i in range(1,len(giventask),1):   
+        task_tl = giventask[i]
+        print (task_tl)
+#         meta_dict = {
+#             "tuning_problem_name":"hepnos",
+#             "modeler":"Model_GPy_LCM",
+#             "task_parameter":[task_tl],
+#             "input_space": [
+#                 {"name":"scale","type":"int","transformer":"normalize","lower_bound":1,"upper_bound":16},
+#                 {"name":"enable_pep","transformer": "onehot","type": "categorical","categories":[True,False]},
+#                 {"name":"more_params","transformer": "onehot","type": "categorical","categories":[True,False]}],
+#             "parameter_space": [
+#         {"name":"busy_spin","transformer": "onehot","type": "categorical","categories": [True,False]},
+#         {"name":"hepnos_num_event_databases","type":"int","transformer":"normalize","lower_bound":1,"upper_bound":16},
+#         {"name":"hepnos_num_product_databases","type":"int","transformer":"normalize","lower_bound":1,"upper_bound":16},
+#         {"name":"hepnos_num_providers","type":"int","transformer":"normalize","lower_bound":1,"upper_bound":32},
+#         {"name":"hepnos_num_rpc_threads","type":"int","transformer":"normalize","lower_bound":0,"upper_bound":63},
+#         {"name":"hepnos_pes_per_node","transformer": "onehot","type": "categorical","categories":[1, 2, 4, 8, 16, 32]},
+#         {"name":"hepnos_pool_type","transformer": "onehot","type": "categorical","categories":['fifo','fifo_wait']},
+#         {"name":"hepnos_progress_thread","transformer": "onehot","type": "categorical","categories":[True, False]},
+#         {"name":"loader_batch_size","type":"int","transformer":"normalize","lower_bound":1,"upper_bound":2048},
+#         {"name":"loader_pes_per_node","transformer": "onehot","type": "categorical","categories":[1, 2, 4, 8, 16]},
+#         {"name":"loader_progress_thread","transformer": "onehot","type": "categorical","categories":[True, False]},
+#         {"name":"loader_async","transformer": "onehot","type": "categorical","categories":[True, False]},
+#         {"name":"loader_async_threads","type":"int","transformer":"normalize","lower_bound":1,"upper_bound":63},
+#         {"name":"pep_progress_thread","transformer": "onehot","type": "categorical","categories":[True, False]},
+#         {"name":"pep_num_threads","type":"int","transformer":"normalize","lower_bound":1,"upper_bound":31},
+#         {"name":"pep_ibatch_size","type":"int","transformer":"normalize","lower_bound":8,"upper_bound":1024},
+#         {"name":"pep_obatch_size","type":"int","transformer":"normalize","lower_bound":8,"upper_bound":1024},
+#         {"name":"pep_pes_per_node","transformer": "onehot","type": "categorical","categories":[1, 2, 4, 8, 16, 32]},
+#         {"name":"pep_no_preloading","transformer": "onehot","type": "categorical","categories":[True, False]},
+#         {"name":"pep_no_rdma","transformer": "onehot","type": "categorical","categories":[True, False]}],
+#             "output_space": [{"name":"y","type":"real","transformer":"identity","lower_bound":float('-Inf'),"upper_bound":float('Inf')}],
+#             "loadable_machine_configurations":{"swing":{"amd":{"nodes":[1],"cores":128}}},
+#             "loadable_software_configurations":{}
+#         }  
         meta_dict = {
             "tuning_problem_name":"hepnos",
             "modeler":"Model_GPy_LCM",
-            "task_parameter":[[tvalue_]],
+            "task_parameter":[task_tl],
             "input_space": [
-                {"name":"scale","type":"int","transformer":"normalize","lower_bound":1,"upper_bound":2100000000},
-                {"name":"scale","type":"int","transformer":"normalize","lower_bound":1,"upper_bound":2100000000},
-                {"name":"scale","type":"int","transformer":"normalize","lower_bound":1,"upper_bound":2100000000}
-            ],
+                {"name":"scale","type":"int","transformer":"normalize","lower_bound":1,"upper_bound":16},
+                {"name":"enable_pep","transformer": "onehot","type": "categorical","categories":['True','False']},
+                {"name":"more_params","transformer": "onehot","type": "categorical","categories":['True','False']}],
             "parameter_space": [
-        {"name": "p0","transformer": "onehot","type": "categorical","categories": []},
-        {"name": "p1","transformer": "onehot","type": "categorical","categories": []},
-        {"name": "p2","transformer": "onehot","type": "categorical","categories": []},
-        {"name": "p3","transformer": "onehot","type": "categorical","categories": []},
-        {"name": "p4","transformer": "onehot","type": "categorical","categories": []},
-        {"name": "p5","transformer": "onehot","type": "categorical","categories": []},
-        {"name": "p6","transformer": "onehot","type": "categorical","categories": []},
-        {"name": "p7","transformer": "onehot","type": "categorical","categories": []},
-        {"name": "p8","transformer": "onehot","type": "categorical","categories": []},
-        {"name": "p9","transformer": "onehot","type": "categorical","categories": []},
-        {"name": "p10","transformer": "onehot","type": "categorical","categories": []},
-        {"name": "p11","transformer": "onehot","type": "categorical","categories": []},
-        {"name": "p12","transformer": "onehot","type": "categorical","categories": []},
-        {"name": "p13","transformer": "onehot","type": "categorical","categories": []},
-        {"name": "p14","transformer": "onehot","type": "categorical","categories": []},
-        {"name": "p15","transformer": "onehot","type": "categorical","categories": []},
-        {"name": "p16","transformer": "onehot","type": "categorical","categories": []},
-        {"name": "p17","transformer": "onehot","type": "categorical","categories": []},
-        {"name": "p18","transformer": "onehot","type": "categorical","categories": []},
-        {"name": "p19","transformer": "onehot","type": "categorical","categories": []},
-      ],
+        {"name":"busy_spin","transformer": "onehot","type": "categorical","categories": ['True','False']},
+        {"name":"hepnos_num_event_databases","type":"int","transformer":"normalize","lower_bound":1,"upper_bound":16},
+        {"name":"hepnos_num_product_databases","type":"int","transformer":"normalize","lower_bound":1,"upper_bound":16},
+        {"name":"hepnos_num_providers","type":"int","transformer":"normalize","lower_bound":1,"upper_bound":32},
+        {"name":"hepnos_num_rpc_threads","type":"int","transformer":"normalize","lower_bound":0,"upper_bound":63},
+        {"name":"hepnos_pes_per_node","transformer": "onehot","type": "categorical","categories":['1', '2', '4', '8', '16', '32']},
+        {"name":"hepnos_pool_type","transformer": "onehot","type": "categorical","categories":['fifo','fifo_wait']},
+        {"name":"hepnos_progress_thread","transformer": "onehot","type": "categorical","categories":['True', 'False']},
+        {"name":"loader_batch_size","type":"int","transformer":"normalize","lower_bound":1,"upper_bound":2048},
+        {"name":"loader_pes_per_node","transformer": "onehot","type": "categorical","categories":['1', '2', '4', '8', '16']},
+        {"name":"loader_progress_thread","transformer": "onehot","type": "categorical","categories":['True', 'False']},
+        {"name":"loader_async","transformer": "onehot","type": "categorical","categories":['True', 'False']},
+        {"name":"loader_async_threads","type":"int","transformer":"normalize","lower_bound":1,"upper_bound":63},
+        {"name":"pep_progress_thread","transformer": "onehot","type": "categorical","categories":['True', 'False']},
+        {"name":"pep_num_threads","type":"int","transformer":"normalize","lower_bound":1,"upper_bound":31},
+        {"name":"pep_ibatch_size","type":"int","transformer":"normalize","lower_bound":8,"upper_bound":1024},
+        {"name":"pep_obatch_size","type":"int","transformer":"normalize","lower_bound":8,"upper_bound":1024},
+        {"name":"pep_pes_per_node","transformer": "onehot","type": "categorical","categories":['1', '2', '4', '8', '16', '32']},
+        {"name":"pep_no_preloading","transformer": "onehot","type": "categorical","categories":['True', 'False']},
+        {"name":"pep_no_rdma","transformer": "onehot","type": "categorical","categories":['True', 'False']}],
             "output_space": [{"name":"y","type":"real","transformer":"identity","lower_bound":float('-Inf'),"upper_bound":float('Inf')}],
-            "loadable_machine_configurations":{"mymachine":{"myprocessor":{"nodes":[1],"cores":128}}},
+            "loadable_machine_configurations":{"swing":{"amd":{"nodes":[1],"cores":128}}},
             "loadable_software_configurations":{}
-        }         
-        
+        }  
+#         print ( f"exp/gptune/{model_file_tl[:-4]}-{Run_index}/hepnos.json")
         f = open(f"exp/gptune/{model_file_tl[:-4]}-{Run_index}/hepnos.json")
         func_evals = json.load(f)
         f.close()
-        model_functions[giventask[i]] = BuildSurrogateModel(metadata_path=None,metadata=meta_dict,function_evaluations=func_evals['func_eval'])        
+        model_functions[tuple(task_tl)] = BuildSurrogateModel(metadata_path=None,metadata=meta_dict,function_evaluations=func_evals['func_eval'])
+#         model_functions[tuple(task_tl)] = BuildSurrogateModel(problem_space=meta_dict,input_task=[task_tl], function_evaluations=[func_evals['func_eval']])
         
     NI=len(giventask)  ## number of tasks
     NS=nrun ## number of runs 
@@ -331,8 +424,8 @@ if __name__ == "__main__":
 
     if(TUNER_NAME=='GPTune'):
         data = Data(problem)
-        ## add inital points
-        data.I = giventask[0] 
+        ### add inital points for new task 
+        data.I = giventask
         init_file = os.path.join(HERE, "data", f"exp-DUMMY-{model_file[6:-4]}-{Run_index}.csv")
         init_df = pd.read_csv(init_file).drop(columns="job_id,objective,timestamp_submit,timestamp_gather,timestamp_start,timestamp_end,dequed".split(","))
         init_df = init_df.iloc[:NINIT]
@@ -340,9 +433,14 @@ if __name__ == "__main__":
         for idx, row in init_df.iterrows():
             point = [] 
             for i in range(len(problem.parameter_space)):
-                point.append(row[problem.parameter_space[i].name])
+                pname = problem.parameter_space[i].name
+                pval  = row[pname]
+                if pname in VAR_TYPES['bool'] or pname in VAR_TYPES['categorical']:
+                    point.append(str(pval))
+                else:
+                    point.append(pval)                
             initial_points.append(point)
-        data.P = [initial_points]
+        data.P = [initial_points,initial_points]
         
         ## create and run gptune 
         gt = GPTune(problem, computer=computer, data=data,options=options,driverabspath=os.path.abspath(__file__))

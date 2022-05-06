@@ -197,12 +197,36 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 #     __fill_context(problem, __add_parameter_to_problem, disable_pep, more_params)
 #     return problem
 
+VAR_TYPES = {
+    "bool": [
+        "enable_pep",
+        "more_params",
+        "busy_spin",
+        "hepnos_progress_thread",
+        "loader_progress_thread",
+        "loader_async",
+        "pep_progress_thread",
+        "pep_no_preloading",
+        "pep_no_rdma"
+    ],
+    "categorical": [
+        "hepnos_pes_per_node",
+        "loader_pes_per_node",
+        "pep_pes_per_node"
+    ],
+}
 
 # @profile
 def run(config, model_path, maximise=True, with_sleep=False):
 
     cols = [k for k in config if k != "job_id"] + ["objective"]
     config["objective"] = 0
+    
+    for key in config.keys(): 
+        if key in VAR_TYPES['bool']:
+            config[key] = bool(config[key])
+        elif key in VAR_TYPES['categorical']:
+            config[key] = int(config[key])
 
     df = pd.DataFrame(data=[config], columns=cols)
 
