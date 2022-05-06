@@ -1,5 +1,6 @@
 """
-python exec_deephyper -m models/model-4-true-true.pkl
+python exec_deephyper_rf.py -m models/model-4-true-true.pkl
+python exec_deephyper_rf.py -m models/model-8-true-true.pkl -tl exp/deephyper_rf/model-4-true-true-1/results.csv
 """
 import argparse
 import os
@@ -25,6 +26,14 @@ def create_parser():
         default=None,
         required=True,
         help="Model from which to generate random points",
+    )
+    parser.add_argument(
+        "-tl",
+        "--tl-learn",
+        type=str,
+        default=None,
+        required=False,
+        help="Path to CSV file used for transfer-learning."
     )
     return parser
 
@@ -59,13 +68,24 @@ if __name__ == "__main__":
             },
         )
 
+        if args.tl_learn:
+            log_dir = f"exp/deephyper_rf/{model_file[:-4]}-tl-{i}"
+            initial_points = None
+        else:
+            log_dir = f"exp/deephyper_rf/{model_file[:-4]}-{i}"
+
         search = AMBS(
             problem,
             evaluator,
             n_initial_points=10,
             initial_points=initial_points,
-            log_dir=f"exp/deephyper_rf/{model_file[:-4]}-{i}",
+            log_dir=log_dir,
             random_state=42,
         )
+
+        if args.tl_learn:
+            df_path = args.tl_learn.format(i=i)
+            print(f"Applying Transfer Learning from {df_path}...")
+            search.fit_generative_model(df_path)
 
         results = search.search(max_evals=max_evals)
