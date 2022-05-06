@@ -24,6 +24,7 @@ mpirun -np 1 python exec_gptune_sla.py -ntask 1 -seed 42 -m models/model-4-true-
 
 """
 
+
 ################################################################################
 import sys
 import os
@@ -100,17 +101,32 @@ def create_parser():
         required=True,
         help="Model from which to generate random points",
     )
+    parser.add_argument(
+        "-m_tl",
+        "--model_tl",
+        type=str,
+        default=None,
+        required=True,
+        help="TL model",
+    )
     return parser
 
 def objectives(config: dict):
     scale       = config['scale']
     enable_pep  = config['enable_pep']
     more_params = config['more_params']
-
-    model_path = os.path.join(HERE, f"models/model-{scale}-{str(enable_pep).lower()}-{str(more_params).lower()}.pkl")
-    model_file = model_path.split("/")[-1]
-    objective = run(config, model_path, maximise=False, with_sleep=True)
-#     time.sleep(3)
+    
+    ## new task:
+    if scale == 8 and enable_pep == True and more_params == True:
+        model_path = os.path.join(HERE, f"models/model-{scale}-{str(enable_pep).lower()}-{str(more_params).lower()}.pkl")
+        model_file = model_path.split("/")[-1]
+        objective = run(config, model_path, maximise=False, with_sleep=False)
+    ## old task:
+    if scale == 4 and enable_pep == False and more_params == False:    
+        print (".....................Task: ", config['t'])
+        print (".....................point",config)      
+        objective = model_functions[[scale,enable_pep,more_params]](config)    
+        print (".....................model ret: ", ret) 
     
     ### save results
     now = time.time()
@@ -147,7 +163,14 @@ def create_gptune(scale_task, enable_pep_task, more_params_task):
             "amd": { "nodes": 1, "cores": 128 }
         },
         "software_configuration": {},
-        "loadable_machine_configurations": {},
+        "loadable_machine_configurations": {
+            "swing": {
+                "amd": {
+                    "nodes": 1,
+                    "cores": 128
+                }
+            }
+        },
         "loadable_software_configurations": {}
     }  
     
@@ -201,52 +224,7 @@ def create_gptune(scale_task, enable_pep_task, more_params_task):
     constraints = {} #{"cst1": "x >= 1 and x <= 100"}    
     
     problem  = TuningProblem(IS, PS, OS, objectives, constraints, None)  # no performance model  
-    # historydb = HistoryDB(meta_dict=tuning_metadata)
-    '''
-    suppose your has M compute nodes, m cores per node, and each run requires N nodes, then you need to set:
-    options['distributed_memory_parallelism']=False
-    options['shared_memory_parallelism'] = True
-    options['objective_evaluation_parallelism']=True
-    options['objective_multisample_threads']=M/N
-    options['objective_nospawn']=True
-    options['objective_nprocmax']=N*m
-    
-    M compute nodes 
-    each has m cores 
-    each batch runs K evaluations, each requires c cores
-    options['objective_multisample_processes'] = K
-    options['objective_nprocmax'] = c
-    then makes sure in .gptune/meta.json that 
-          "nodes": M+1,
-          "cores": m
-    and makes sure that K*c<=M*m when you set K. 
-    M = 1 
-    m = 128 
-    N = 1
-    K evaluations, each requires c cores 
-    k*c <= M*m
-    '''
-    ## parallel 
-#     computer = Computer(nodes=nodes, cores=cores, hosts=None) 
-#     options  = Options()
-#     options['model_restarts'] = 1
-#     options['distributed_memory_parallelism'] = True ######## False
-#     options['shared_memory_parallelism'] = True
-#     options['objective_evaluation_parallelism'] = True ######## False
-#     options['objective_multisample_threads'] = 1    ### M/N  
-#     options['objective_multisample_processes'] = 10 ### k ## maximum number of function evaluations running in parallel
-#     options['objective_nprocmax'] = 1          ### c, N*m ### number of cores per function evaluation
-    
-#     options['model_processes'] = 1
-#     options['search_multitask_processes'] = 1  #########
-#     options['model_class'] = 'Model_GPy_LCM' #'Model_GPy_LCM'
-#     options['verbose'] = False #False
-#     options['sample_class'] = 'SampleOpenTURNS'#'SampleLHSMDU'
-#     options.validate(computer=computer)
-    
-#     ## serial 
-    problem  = TuningProblem(IS, PS, OS, objectives, constraints, None)  # no performance model  
-    # historydb = HistoryDB(meta_dict=tuning_metadata)
+    historydb = HistoryDB(meta_dict=tuning_metadata)
     computer = Computer(nodes=nodes, cores=cores, hosts=None) 
     options  = Options()
     options['model_restarts'] = 1
@@ -258,7 +236,7 @@ def create_gptune(scale_task, enable_pep_task, more_params_task):
     options['objective_nprocmax'] = 1
     options['model_processes'] = 1
     options['model_class'] = 'Model_GPy_LCM' #'Model_GPy_LCM'
-    options['verbose'] = True #False
+    options['verbose'] = False #False
     options['sample_class'] = 'SampleOpenTURNS'#'SampleLHSMDU'
     options.validate(computer=computer)    
     
@@ -287,7 +265,11 @@ if __name__ == "__main__":
     
     model_file = args.model.split("/")[-1]
     scale, enable_pep, more_params = model_file[:-4].split("-")[1:4]
-    scale, enable_pep, more_params = int(scale), enable_pep == "true", more_params == "true"    
+    scale, enable_pep, more_params = int(scale), enable_pep == "true", more_params == "true"  
+    
+    model_file_tl = args.model_tl.split("/")[-1]
+    scale_tl, enable_pep_tl, more_params_tl = model_file_tl[:-4].split("-")[1:4]
+    scale_tl, enable_pep_tl, more_params_tl = int(scale_tl), enable_pep_tl == "true", more_params_tl == "true"      
     
     problem, computer, options = create_gptune(scale, enable_pep, more_params)
 
@@ -295,10 +277,54 @@ if __name__ == "__main__":
         giventask =  [[scale, enable_pep, more_params]] #[[input_sizes[DSIZE][0]]]
         print ('problem size is', DSIZE, giventask)
     elif ntask == 2:
-        giventask = [[scale, enable_pep, more_params], [scale, enable_pep, more_params]] #[[input_sizes[DSIZE][0]]]
+        giventask = [[scale, enable_pep, more_params], [scale_tl, enable_pep_tl, more_params_tl]] #[[input_sizes[DSIZE][0]]]
     else:
         giventask = [[round(tvalue*float(i+1),1)] for i in range(ntask)]
 
+    ### tl model    
+    model_functions = {}
+    for i in range(1,len(giventask),1):     
+        meta_dict = {
+            "tuning_problem_name":"hepnos",
+            "modeler":"Model_GPy_LCM",
+            "task_parameter":[[tvalue_]],
+            "input_space": [
+                {"name":"scale","type":"int","transformer":"normalize","lower_bound":1,"upper_bound":2100000000},
+                {"name":"scale","type":"int","transformer":"normalize","lower_bound":1,"upper_bound":2100000000},
+                {"name":"scale","type":"int","transformer":"normalize","lower_bound":1,"upper_bound":2100000000}
+            ],
+            "parameter_space": [
+        {"name": "p0","transformer": "onehot","type": "categorical","categories": []},
+        {"name": "p1","transformer": "onehot","type": "categorical","categories": []},
+        {"name": "p2","transformer": "onehot","type": "categorical","categories": []},
+        {"name": "p3","transformer": "onehot","type": "categorical","categories": []},
+        {"name": "p4","transformer": "onehot","type": "categorical","categories": []},
+        {"name": "p5","transformer": "onehot","type": "categorical","categories": []},
+        {"name": "p6","transformer": "onehot","type": "categorical","categories": []},
+        {"name": "p7","transformer": "onehot","type": "categorical","categories": []},
+        {"name": "p8","transformer": "onehot","type": "categorical","categories": []},
+        {"name": "p9","transformer": "onehot","type": "categorical","categories": []},
+        {"name": "p10","transformer": "onehot","type": "categorical","categories": []},
+        {"name": "p11","transformer": "onehot","type": "categorical","categories": []},
+        {"name": "p12","transformer": "onehot","type": "categorical","categories": []},
+        {"name": "p13","transformer": "onehot","type": "categorical","categories": []},
+        {"name": "p14","transformer": "onehot","type": "categorical","categories": []},
+        {"name": "p15","transformer": "onehot","type": "categorical","categories": []},
+        {"name": "p16","transformer": "onehot","type": "categorical","categories": []},
+        {"name": "p17","transformer": "onehot","type": "categorical","categories": []},
+        {"name": "p18","transformer": "onehot","type": "categorical","categories": []},
+        {"name": "p19","transformer": "onehot","type": "categorical","categories": []},
+      ],
+            "output_space": [{"name":"y","type":"real","transformer":"identity","lower_bound":float('-Inf'),"upper_bound":float('Inf')}],
+            "loadable_machine_configurations":{"mymachine":{"myprocessor":{"nodes":[1],"cores":128}}},
+            "loadable_software_configurations":{}
+        }         
+        
+        f = open(f"exp/gptune/{model_file_tl[:-4]}-{Run_index}/hepnos.json")
+        func_evals = json.load(f)
+        f.close()
+        model_functions[giventask[i]] = BuildSurrogateModel(metadata_path=None,metadata=meta_dict,function_evaluations=func_evals['func_eval'])        
+        
     NI=len(giventask)  ## number of tasks
     NS=nrun ## number of runs 
     TUNER_NAME = os.environ['TUNER_NAME']
@@ -306,7 +332,7 @@ if __name__ == "__main__":
     if(TUNER_NAME=='GPTune'):
         data = Data(problem)
         ## add inital points
-        data.I = giventask 
+        data.I = giventask[0] 
         init_file = os.path.join(HERE, "data", f"exp-DUMMY-{model_file[6:-4]}-{Run_index}.csv")
         init_df = pd.read_csv(init_file).drop(columns="job_id,objective,timestamp_submit,timestamp_gather,timestamp_start,timestamp_end,dequed".split(","))
         init_df = init_df.iloc[:NINIT]
