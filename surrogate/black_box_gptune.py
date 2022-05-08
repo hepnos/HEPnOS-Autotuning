@@ -221,13 +221,11 @@ def run(config, model_path, maximise=True, with_sleep=False):
 
     cols = [k for k in config if k != "job_id"] + ["objective"]
     config["objective"] = 0
-    
     for key in config.keys(): 
         if key in VAR_TYPES['bool']:
-            config[key] = bool(config[key])
+            config[key] = True if config[key] == 'True' else False
         elif key in VAR_TYPES['categorical']:
             config[key] = int(config[key])
-
     df = pd.DataFrame(data=[config], columns=cols)
 
     with open(model_path, "rb") as f:

@@ -1,0 +1,5619 @@
+{
+  "tuning_problem_name": "hepnos",
+  "tuning_problem_category": null,
+  "surrogate_model": [],
+  "func_eval": [
+    {
+      "task_parameter": {
+        "scale": 8,
+        "enable_pep": "True",
+        "more_params": "True"
+      },
+      "tuning_parameter": {
+        "busy_spin": "False",
+        "hepnos_num_event_databases": 2,
+        "hepnos_num_product_databases": 15,
+        "hepnos_num_providers": 16,
+        "hepnos_num_rpc_threads": 37,
+        "hepnos_pes_per_node": "16",
+        "hepnos_pool_type": "fifo",
+        "hepnos_progress_thread": "True",
+        "loader_batch_size": 1543,
+        "loader_pes_per_node": "16",
+        "loader_progress_thread": "True",
+        "loader_async": "True",
+        "loader_async_threads": 4,
+        "pep_progress_thread": "True",
+        "pep_num_threads": 20,
+        "pep_ibatch_size": 330,
+        "pep_obatch_size": 811,
+        "pep_pes_per_node": "1",
+        "pep_no_preloading": "False",
+        "pep_no_rdma": "True"
+      },
+      "constants": {},
+      "machine_configuration": {
+        "machine_name": "swing",
+        "amd": {
+          "nodes": 1,
+          "cores": 128
+        }
+      },
+      "software_configuration": {},
+      "evaluation_result": {
+        "y": 4.444526
+      },
+      "evaluation_detail": {
+        "y": {
+          "evaluations": 4.4445261610045925,
+          "objective_scheme": "average"
+        }
+      },
+      "additional_output": {},
+      "source": "measure",
+      "time": {
+        "tm_year": 2022,
+        "tm_mon": 5,
+        "tm_mday": 7,
+        "tm_hour": 22,
+        "tm_min": 28,
+        "tm_sec": 59,
+        "tm_wday": 5,
+        "tm_yday": 127,
+        "tm_isdst": 1
+      },
+      "uid": "ffda3dd4-ce7e-11ec-b25b-5cff35e3510b"
+    },
+    {
+      "task_parameter": {
+        "scale": 8,
+        "enable_pep": "True",
+        "more_params": "True"
+      },
+      "tuning_parameter": {
+        "busy_spin": "False",
+        "hepnos_num_event_databases": 4,
+        "hepnos_num_product_databases": 10,
+        "hepnos_num_providers": 4,
+        "hepnos_num_rpc_threads": 13,
+        "hepnos_pes_per_node": "4",
+        "hepnos_pool_type": "fifo",
+        "hepnos_progress_thread": "True",
+        "loader_batch_size": 612,
+        "loader_pes_per_node": "2",
+        "loader_progress_thread": "False",
+        "loader_async": "False",
+        "loader_async_threads": 28,
+        "pep_progress_thread": "True",
+        "pep_num_threads": 19,
+        "pep_ibatch_size": 171,
+        "pep_obatch_size": 288,
+        "pep_pes_per_node": "1",
+        "pep_no_preloading": "True",
+        "pep_no_rdma": "True"
+      },
+      "constants": {},
+      "machine_configuration": {
+        "machine_name": "swing",
+        "amd": {
+          "nodes": 1,
+          "cores": 128
+        }
+      },
+      "software_configuration": {},
+      "evaluation_result": {
+        "y": 5.123878
+      },
+      "evaluation_detail": {
+        "y": {
+          "evaluations": 5.123878260727311,
+          "objective_scheme": "average"
+        }
+      },
+      "additional_output": {},
+      "source": "measure",
+      "time": {
+        "tm_year": 2022,
+        "tm_mon": 5,
+        "tm_mday": 7,
+        "tm_hour": 22,
+        "tm_min": 31,
+        "tm_sec": 48,
+        "tm_wday": 5,
+        "tm_yday": 127,
+        "tm_isdst": 1
+      },
+      "uid": "64cbaad4-ce7f-11ec-b25b-5cff35e3510b"
+    },
+    {
+      "task_parameter": {
+        "scale": 8,
+        "enable_pep": "True",
+        "more_params": "True"
+      },
+      "tuning_parameter": {
+        "busy_spin": "False",
+        "hepnos_num_event_databases": 12,
+        "hepnos_num_product_databases": 6,
+        "hepnos_num_providers": 27,
+        "hepnos_num_rpc_threads": 61,
+        "hepnos_pes_per_node": "32",
+        "hepnos_pool_type": "fifo",
+        "hepnos_progress_thread": "True",
+        "loader_batch_size": 1277,
+        "loader_pes_per_node": "4",
+        "loader_progress_thread": "True",
+        "loader_async": "True",
+        "loader_async_threads": 18,
+        "pep_progress_thread": "False",
+        "pep_num_threads": 8,
+        "pep_ibatch_size": 429,
+        "pep_obatch_size": 567,
+        "pep_pes_per_node": "8",
+        "pep_no_preloading": "False",
+        "pep_no_rdma": "False"
+      },
+      "constants": {},
+      "machine_configuration": {
+        "machine_name": "swing",
+        "amd": {
+          "nodes": 1,
+          "cores": 128
+        }
+      },
+      "software_configuration": {},
+      "evaluation_result": {
+        "y": 4.581725
+      },
+      "evaluation_detail": {
+        "y": {
+          "evaluations": 4.581725382830646,
+          "objective_scheme": "average"
+        }
+      },
+      "additional_output": {},
+      "source": "measure",
+      "time": {
+        "tm_year": 2022,
+        "tm_mon": 5,
+        "tm_mday": 7,
+        "tm_hour": 22,
+        "tm_min": 33,
+        "tm_sec": 26,
+        "tm_wday": 5,
+        "tm_yday": 127,
+        "tm_isdst": 1
+      },
+      "uid": "9f1827ee-ce7f-11ec-b25b-5cff35e3510b"
+    },
+    {
+      "task_parameter": {
+        "scale": 8,
+        "enable_pep": "True",
+        "more_params": "True"
+      },
+      "tuning_parameter": {
+        "busy_spin": "True",
+        "hepnos_num_event_databases": 7,
+        "hepnos_num_product_databases": 13,
+        "hepnos_num_providers": 19,
+        "hepnos_num_rpc_threads": 40,
+        "hepnos_pes_per_node": "2",
+        "hepnos_pool_type": "fifo_wait",
+        "hepnos_progress_thread": "True",
+        "loader_batch_size": 1947,
+        "loader_pes_per_node": "8",
+        "loader_progress_thread": "False",
+        "loader_async": "False",
+        "loader_async_threads": 60,
+        "pep_progress_thread": "False",
+        "pep_num_threads": 26,
+        "pep_ibatch_size": 731,
+        "pep_obatch_size": 334,
+        "pep_pes_per_node": "32",
+        "pep_no_preloading": "False",
+        "pep_no_rdma": "False"
+      },
+      "constants": {},
+      "machine_configuration": {
+        "machine_name": "swing",
+        "amd": {
+          "nodes": 1,
+          "cores": 128
+        }
+      },
+      "software_configuration": {},
+      "evaluation_result": {
+        "y": 4.173962
+      },
+      "evaluation_detail": {
+        "y": {
+          "evaluations": 4.173961688279239,
+          "objective_scheme": "average"
+        }
+      },
+      "additional_output": {},
+      "source": "measure",
+      "time": {
+        "tm_year": 2022,
+        "tm_mon": 5,
+        "tm_mday": 7,
+        "tm_hour": 22,
+        "tm_min": 34,
+        "tm_sec": 31,
+        "tm_wday": 5,
+        "tm_yday": 127,
+        "tm_isdst": 1
+      },
+      "uid": "c5e065da-ce7f-11ec-b25b-5cff35e3510b"
+    },
+    {
+      "task_parameter": {
+        "scale": 8,
+        "enable_pep": "True",
+        "more_params": "True"
+      },
+      "tuning_parameter": {
+        "busy_spin": "False",
+        "hepnos_num_event_databases": 7,
+        "hepnos_num_product_databases": 12,
+        "hepnos_num_providers": 20,
+        "hepnos_num_rpc_threads": 22,
+        "hepnos_pes_per_node": "32",
+        "hepnos_pool_type": "fifo_wait",
+        "hepnos_progress_thread": "False",
+        "loader_batch_size": 784,
+        "loader_pes_per_node": "16",
+        "loader_progress_thread": "False",
+        "loader_async": "True",
+        "loader_async_threads": 50,
+        "pep_progress_thread": "False",
+        "pep_num_threads": 24,
+        "pep_ibatch_size": 954,
+        "pep_obatch_size": 490,
+        "pep_pes_per_node": "4",
+        "pep_no_preloading": "False",
+        "pep_no_rdma": "False"
+      },
+      "constants": {},
+      "machine_configuration": {
+        "machine_name": "swing",
+        "amd": {
+          "nodes": 1,
+          "cores": 128
+        }
+      },
+      "software_configuration": {},
+      "evaluation_result": {
+        "y": 4.439428
+      },
+      "evaluation_detail": {
+        "y": {
+          "evaluations": 4.43942768898724,
+          "objective_scheme": "average"
+        }
+      },
+      "additional_output": {},
+      "source": "measure",
+      "time": {
+        "tm_year": 2022,
+        "tm_mon": 5,
+        "tm_mday": 7,
+        "tm_hour": 22,
+        "tm_min": 35,
+        "tm_sec": 56,
+        "tm_wday": 5,
+        "tm_yday": 127,
+        "tm_isdst": 1
+      },
+      "uid": "f8720ddc-ce7f-11ec-b25b-5cff35e3510b"
+    },
+    {
+      "task_parameter": {
+        "scale": 8,
+        "enable_pep": "True",
+        "more_params": "True"
+      },
+      "tuning_parameter": {
+        "busy_spin": "True",
+        "hepnos_num_event_databases": 4,
+        "hepnos_num_product_databases": 4,
+        "hepnos_num_providers": 30,
+        "hepnos_num_rpc_threads": 7,
+        "hepnos_pes_per_node": "2",
+        "hepnos_pool_type": "fifo_wait",
+        "hepnos_progress_thread": "False",
+        "loader_batch_size": 217,
+        "loader_pes_per_node": "8",
+        "loader_progress_thread": "False",
+        "loader_async": "False",
+        "loader_async_threads": 32,
+        "pep_progress_thread": "True",
+        "pep_num_threads": 1,
+        "pep_ibatch_size": 31,
+        "pep_obatch_size": 643,
+        "pep_pes_per_node": "8",
+        "pep_no_preloading": "True",
+        "pep_no_rdma": "False"
+      },
+      "constants": {},
+      "machine_configuration": {
+        "machine_name": "swing",
+        "amd": {
+          "nodes": 1,
+          "cores": 128
+        }
+      },
+      "software_configuration": {},
+      "evaluation_result": {
+        "y": 5.070088
+      },
+      "evaluation_detail": {
+        "y": {
+          "evaluations": 5.07008780217628,
+          "objective_scheme": "average"
+        }
+      },
+      "additional_output": {},
+      "source": "measure",
+      "time": {
+        "tm_year": 2022,
+        "tm_mon": 5,
+        "tm_mday": 7,
+        "tm_hour": 22,
+        "tm_min": 38,
+        "tm_sec": 35,
+        "tm_wday": 5,
+        "tm_yday": 127,
+        "tm_isdst": 1
+      },
+      "uid": "5767868c-ce80-11ec-b25b-5cff35e3510b"
+    },
+    {
+      "task_parameter": {
+        "scale": 8,
+        "enable_pep": "True",
+        "more_params": "True"
+      },
+      "tuning_parameter": {
+        "busy_spin": "True",
+        "hepnos_num_event_databases": 9,
+        "hepnos_num_product_databases": 5,
+        "hepnos_num_providers": 2,
+        "hepnos_num_rpc_threads": 2,
+        "hepnos_pes_per_node": "16",
+        "hepnos_pool_type": "fifo_wait",
+        "hepnos_progress_thread": "False",
+        "loader_batch_size": 1701,
+        "loader_pes_per_node": "4",
+        "loader_progress_thread": "False",
+        "loader_async": "True",
+        "loader_async_threads": 41,
+        "pep_progress_thread": "True",
+        "pep_num_threads": 29,
+        "pep_ibatch_size": 219,
+        "pep_obatch_size": 996,
+        "pep_pes_per_node": "16",
+        "pep_no_preloading": "True",
+        "pep_no_rdma": "True"
+      },
+      "constants": {},
+      "machine_configuration": {
+        "machine_name": "swing",
+        "amd": {
+          "nodes": 1,
+          "cores": 128
+        }
+      },
+      "software_configuration": {},
+      "evaluation_result": {
+        "y": 4.982395
+      },
+      "evaluation_detail": {
+        "y": {
+          "evaluations": 4.982394520249133,
+          "objective_scheme": "average"
+        }
+      },
+      "additional_output": {},
+      "source": "measure",
+      "time": {
+        "tm_year": 2022,
+        "tm_mon": 5,
+        "tm_mday": 7,
+        "tm_hour": 22,
+        "tm_min": 41,
+        "tm_sec": 1,
+        "tm_wday": 5,
+        "tm_yday": 127,
+        "tm_isdst": 1
+      },
+      "uid": "ae661b24-ce80-11ec-b25b-5cff35e3510b"
+    },
+    {
+      "task_parameter": {
+        "scale": 8,
+        "enable_pep": "True",
+        "more_params": "True"
+      },
+      "tuning_parameter": {
+        "busy_spin": "True",
+        "hepnos_num_event_databases": 14,
+        "hepnos_num_product_databases": 7,
+        "hepnos_num_providers": 24,
+        "hepnos_num_rpc_threads": 47,
+        "hepnos_pes_per_node": "8",
+        "hepnos_pool_type": "fifo",
+        "hepnos_progress_thread": "False",
+        "loader_batch_size": 156,
+        "loader_pes_per_node": "2",
+        "loader_progress_thread": "True",
+        "loader_async": "True",
+        "loader_async_threads": 20,
+        "pep_progress_thread": "True",
+        "pep_num_threads": 11,
+        "pep_ibatch_size": 518,
+        "pep_obatch_size": 887,
+        "pep_pes_per_node": "4",
+        "pep_no_preloading": "True",
+        "pep_no_rdma": "False"
+      },
+      "constants": {},
+      "machine_configuration": {
+        "machine_name": "swing",
+        "amd": {
+          "nodes": 1,
+          "cores": 128
+        }
+      },
+      "software_configuration": {},
+      "evaluation_result": {
+        "y": 5.055717
+      },
+      "evaluation_detail": {
+        "y": {
+          "evaluations": 5.055717383241403,
+          "objective_scheme": "average"
+        }
+      },
+      "additional_output": {},
+      "source": "measure",
+      "time": {
+        "tm_year": 2022,
+        "tm_mon": 5,
+        "tm_mday": 7,
+        "tm_hour": 22,
+        "tm_min": 43,
+        "tm_sec": 38,
+        "tm_wday": 5,
+        "tm_yday": 127,
+        "tm_isdst": 1
+      },
+      "uid": "0c019fb0-ce81-11ec-b25b-5cff35e3510b"
+    },
+    {
+      "task_parameter": {
+        "scale": 8,
+        "enable_pep": "True",
+        "more_params": "True"
+      },
+      "tuning_parameter": {
+        "busy_spin": "False",
+        "hepnos_num_event_databases": 15,
+        "hepnos_num_product_databases": 1,
+        "hepnos_num_providers": 13,
+        "hepnos_num_rpc_threads": 25,
+        "hepnos_pes_per_node": "4",
+        "hepnos_pool_type": "fifo_wait",
+        "hepnos_progress_thread": "True",
+        "loader_batch_size": 992,
+        "loader_pes_per_node": "1",
+        "loader_progress_thread": "True",
+        "loader_async": "False",
+        "loader_async_threads": 8,
+        "pep_progress_thread": "False",
+        "pep_num_threads": 5,
+        "pep_ibatch_size": 917,
+        "pep_obatch_size": 34,
+        "pep_pes_per_node": "2",
+        "pep_no_preloading": "True",
+        "pep_no_rdma": "True"
+      },
+      "constants": {},
+      "machine_configuration": {
+        "machine_name": "swing",
+        "amd": {
+          "nodes": 1,
+          "cores": 128
+        }
+      },
+      "software_configuration": {},
+      "evaluation_result": {
+        "y": 5.374279
+      },
+      "evaluation_detail": {
+        "y": {
+          "evaluations": 5.374278927132413,
+          "objective_scheme": "average"
+        }
+      },
+      "additional_output": {},
+      "source": "measure",
+      "time": {
+        "tm_year": 2022,
+        "tm_mon": 5,
+        "tm_mday": 7,
+        "tm_hour": 22,
+        "tm_min": 47,
+        "tm_sec": 14,
+        "tm_wday": 5,
+        "tm_yday": 127,
+        "tm_isdst": 1
+      },
+      "uid": "8cb382e0-ce81-11ec-b25b-5cff35e3510b"
+    },
+    {
+      "task_parameter": {
+        "scale": 8,
+        "enable_pep": "True",
+        "more_params": "True"
+      },
+      "tuning_parameter": {
+        "busy_spin": "True",
+        "hepnos_num_event_databases": 11,
+        "hepnos_num_product_databases": 9,
+        "hepnos_num_providers": 8,
+        "hepnos_num_rpc_threads": 53,
+        "hepnos_pes_per_node": "1",
+        "hepnos_pool_type": "fifo",
+        "hepnos_progress_thread": "False",
+        "loader_batch_size": 1048,
+        "loader_pes_per_node": "1",
+        "loader_progress_thread": "True",
+        "loader_async": "False",
+        "loader_async_threads": 53,
+        "pep_progress_thread": "False",
+        "pep_num_threads": 15,
+        "pep_ibatch_size": 628,
+        "pep_obatch_size": 187,
+        "pep_pes_per_node": "32",
+        "pep_no_preloading": "False",
+        "pep_no_rdma": "True"
+      },
+      "constants": {},
+      "machine_configuration": {
+        "machine_name": "swing",
+        "amd": {
+          "nodes": 1,
+          "cores": 128
+        }
+      },
+      "software_configuration": {},
+      "evaluation_result": {
+        "y": 5.021152
+      },
+      "evaluation_detail": {
+        "y": {
+          "evaluations": 5.0211522196996885,
+          "objective_scheme": "average"
+        }
+      },
+      "additional_output": {},
+      "source": "measure",
+      "time": {
+        "tm_year": 2022,
+        "tm_mon": 5,
+        "tm_mday": 7,
+        "tm_hour": 22,
+        "tm_min": 49,
+        "tm_sec": 46,
+        "tm_wday": 5,
+        "tm_yday": 127,
+        "tm_isdst": 1
+      },
+      "uid": "e72184c0-ce81-11ec-b25b-5cff35e3510b"
+    },
+    {
+      "task_parameter": {
+        "scale": 4,
+        "enable_pep": "True",
+        "more_params": "True"
+      },
+      "tuning_parameter": {
+        "busy_spin": "True",
+        "hepnos_num_event_databases": 16,
+        "hepnos_num_product_databases": 15,
+        "hepnos_num_providers": 11,
+        "hepnos_num_rpc_threads": 6,
+        "hepnos_pes_per_node": "4",
+        "hepnos_pool_type": "fifo_wait",
+        "hepnos_progress_thread": "True",
+        "loader_batch_size": 1780,
+        "loader_pes_per_node": "2",
+        "loader_progress_thread": "False",
+        "loader_async": "False",
+        "loader_async_threads": 20,
+        "pep_progress_thread": "True",
+        "pep_num_threads": 20,
+        "pep_ibatch_size": 747,
+        "pep_obatch_size": 487,
+        "pep_pes_per_node": "8",
+        "pep_no_preloading": "True",
+        "pep_no_rdma": "True"
+      },
+      "constants": {},
+      "machine_configuration": {
+        "machine_name": "swing",
+        "amd": {
+          "nodes": 1,
+          "cores": 128
+        }
+      },
+      "software_configuration": {},
+      "evaluation_result": {
+        "y": 4.402263
+      },
+      "evaluation_detail": {
+        "y": {
+          "evaluations": 4.402263153272827,
+          "objective_scheme": "average"
+        }
+      },
+      "additional_output": {},
+      "source": "measure",
+      "time": {
+        "tm_year": 2022,
+        "tm_mon": 5,
+        "tm_mday": 7,
+        "tm_hour": 22,
+        "tm_min": 49,
+        "tm_sec": 46,
+        "tm_wday": 5,
+        "tm_yday": 127,
+        "tm_isdst": 1
+      },
+      "uid": "e72366c8-ce81-11ec-b25b-5cff35e3510b"
+    },
+    {
+      "task_parameter": {
+        "scale": 4,
+        "enable_pep": "True",
+        "more_params": "True"
+      },
+      "tuning_parameter": {
+        "busy_spin": "True",
+        "hepnos_num_event_databases": 14,
+        "hepnos_num_product_databases": 3,
+        "hepnos_num_providers": 32,
+        "hepnos_num_rpc_threads": 29,
+        "hepnos_pes_per_node": "1",
+        "hepnos_pool_type": "fifo_wait",
+        "hepnos_progress_thread": "False",
+        "loader_batch_size": 1614,
+        "loader_pes_per_node": "8",
+        "loader_progress_thread": "True",
+        "loader_async": "True",
+        "loader_async_threads": 59,
+        "pep_progress_thread": "False",
+        "pep_num_threads": 17,
+        "pep_ibatch_size": 221,
+        "pep_obatch_size": 717,
+        "pep_pes_per_node": "2",
+        "pep_no_preloading": "False",
+        "pep_no_rdma": "False"
+      },
+      "constants": {},
+      "machine_configuration": {
+        "machine_name": "swing",
+        "amd": {
+          "nodes": 1,
+          "cores": 128
+        }
+      },
+      "software_configuration": {},
+      "evaluation_result": {
+        "y": 4.48155
+      },
+      "evaluation_detail": {
+        "y": {
+          "evaluations": 4.481549960327982,
+          "objective_scheme": "average"
+        }
+      },
+      "additional_output": {},
+      "source": "measure",
+      "time": {
+        "tm_year": 2022,
+        "tm_mon": 5,
+        "tm_mday": 7,
+        "tm_hour": 22,
+        "tm_min": 49,
+        "tm_sec": 46,
+        "tm_wday": 5,
+        "tm_yday": 127,
+        "tm_isdst": 1
+      },
+      "uid": "e7257d5a-ce81-11ec-b25b-5cff35e3510b"
+    },
+    {
+      "task_parameter": {
+        "scale": 4,
+        "enable_pep": "True",
+        "more_params": "True"
+      },
+      "tuning_parameter": {
+        "busy_spin": "True",
+        "hepnos_num_event_databases": 11,
+        "hepnos_num_product_databases": 14,
+        "hepnos_num_providers": 16,
+        "hepnos_num_rpc_threads": 10,
+        "hepnos_pes_per_node": "16",
+        "hepnos_pool_type": "fifo_wait",
+        "hepnos_progress_thread": "True",
+        "loader_batch_size": 877,
+        "loader_pes_per_node": "2",
+        "loader_progress_thread": "True",
+        "loader_async": "True",
+        "loader_async_threads": 13,
+        "pep_progress_thread": "True",
+        "pep_num_threads": 14,
+        "pep_ibatch_size": 612,
+        "pep_obatch_size": 98,
+        "pep_pes_per_node": "1",
+        "pep_no_preloading": "True",
+        "pep_no_rdma": "True"
+      },
+      "constants": {},
+      "machine_configuration": {
+        "machine_name": "swing",
+        "amd": {
+          "nodes": 1,
+          "cores": 128
+        }
+      },
+      "software_configuration": {},
+      "evaluation_result": {
+        "y": 5.354913
+      },
+      "evaluation_detail": {
+        "y": {
+          "evaluations": 5.354912997574701,
+          "objective_scheme": "average"
+        }
+      },
+      "additional_output": {},
+      "source": "measure",
+      "time": {
+        "tm_year": 2022,
+        "tm_mon": 5,
+        "tm_mday": 7,
+        "tm_hour": 22,
+        "tm_min": 49,
+        "tm_sec": 46,
+        "tm_wday": 5,
+        "tm_yday": 127,
+        "tm_isdst": 1
+      },
+      "uid": "e7279aae-ce81-11ec-b25b-5cff35e3510b"
+    },
+    {
+      "task_parameter": {
+        "scale": 4,
+        "enable_pep": "True",
+        "more_params": "True"
+      },
+      "tuning_parameter": {
+        "busy_spin": "False",
+        "hepnos_num_event_databases": 13,
+        "hepnos_num_product_databases": 8,
+        "hepnos_num_providers": 23,
+        "hepnos_num_rpc_threads": 22,
+        "hepnos_pes_per_node": "32",
+        "hepnos_pool_type": "fifo",
+        "hepnos_progress_thread": "True",
+        "loader_batch_size": 629,
+        "loader_pes_per_node": "16",
+        "loader_progress_thread": "True",
+        "loader_async": "False",
+        "loader_async_threads": 29,
+        "pep_progress_thread": "True",
+        "pep_num_threads": 12,
+        "pep_ibatch_size": 356,
+        "pep_obatch_size": 391,
+        "pep_pes_per_node": "2",
+        "pep_no_preloading": "True",
+        "pep_no_rdma": "False"
+      },
+      "constants": {},
+      "machine_configuration": {
+        "machine_name": "swing",
+        "amd": {
+          "nodes": 1,
+          "cores": 128
+        }
+      },
+      "software_configuration": {},
+      "evaluation_result": {
+        "y": 5.813551
+      },
+      "evaluation_detail": {
+        "y": {
+          "evaluations": 5.813551020066086,
+          "objective_scheme": "average"
+        }
+      },
+      "additional_output": {},
+      "source": "measure",
+      "time": {
+        "tm_year": 2022,
+        "tm_mon": 5,
+        "tm_mday": 7,
+        "tm_hour": 22,
+        "tm_min": 49,
+        "tm_sec": 46,
+        "tm_wday": 5,
+        "tm_yday": 127,
+        "tm_isdst": 1
+      },
+      "uid": "e729b8c0-ce81-11ec-b25b-5cff35e3510b"
+    },
+    {
+      "task_parameter": {
+        "scale": 4,
+        "enable_pep": "True",
+        "more_params": "True"
+      },
+      "tuning_parameter": {
+        "busy_spin": "False",
+        "hepnos_num_event_databases": 10,
+        "hepnos_num_product_databases": 4,
+        "hepnos_num_providers": 19,
+        "hepnos_num_rpc_threads": 33,
+        "hepnos_pes_per_node": "2",
+        "hepnos_pool_type": "fifo_wait",
+        "hepnos_progress_thread": "True",
+        "loader_batch_size": 534,
+        "loader_pes_per_node": "1",
+        "loader_progress_thread": "False",
+        "loader_async": "True",
+        "loader_async_threads": 39,
+        "pep_progress_thread": "False",
+        "pep_num_threads": 7,
+        "pep_ibatch_size": 935,
+        "pep_obatch_size": 531,
+        "pep_pes_per_node": "16",
+        "pep_no_preloading": "True",
+        "pep_no_rdma": "True"
+      },
+      "constants": {},
+      "machine_configuration": {
+        "machine_name": "swing",
+        "amd": {
+          "nodes": 1,
+          "cores": 128
+        }
+      },
+      "software_configuration": {},
+      "evaluation_result": {
+        "y": 4.889645
+      },
+      "evaluation_detail": {
+        "y": {
+          "evaluations": 4.889645052493677,
+          "objective_scheme": "average"
+        }
+      },
+      "additional_output": {},
+      "source": "measure",
+      "time": {
+        "tm_year": 2022,
+        "tm_mon": 5,
+        "tm_mday": 7,
+        "tm_hour": 22,
+        "tm_min": 49,
+        "tm_sec": 46,
+        "tm_wday": 5,
+        "tm_yday": 127,
+        "tm_isdst": 1
+      },
+      "uid": "e72bd8b2-ce81-11ec-b25b-5cff35e3510b"
+    },
+    {
+      "task_parameter": {
+        "scale": 4,
+        "enable_pep": "True",
+        "more_params": "True"
+      },
+      "tuning_parameter": {
+        "busy_spin": "True",
+        "hepnos_num_event_databases": 4,
+        "hepnos_num_product_databases": 2,
+        "hepnos_num_providers": 6,
+        "hepnos_num_rpc_threads": 48,
+        "hepnos_pes_per_node": "32",
+        "hepnos_pool_type": "fifo",
+        "hepnos_progress_thread": "False",
+        "loader_batch_size": 1248,
+        "loader_pes_per_node": "8",
+        "loader_progress_thread": "False",
+        "loader_async": "True",
+        "loader_async_threads": 35,
+        "pep_progress_thread": "False",
+        "pep_num_threads": 30,
+        "pep_ibatch_size": 153,
+        "pep_obatch_size": 795,
+        "pep_pes_per_node": "16",
+        "pep_no_preloading": "False",
+        "pep_no_rdma": "True"
+      },
+      "constants": {},
+      "machine_configuration": {
+        "machine_name": "swing",
+        "amd": {
+          "nodes": 1,
+          "cores": 128
+        }
+      },
+      "software_configuration": {},
+      "evaluation_result": {
+        "y": 3.937838
+      },
+      "evaluation_detail": {
+        "y": {
+          "evaluations": 3.937837772190676,
+          "objective_scheme": "average"
+        }
+      },
+      "additional_output": {},
+      "source": "measure",
+      "time": {
+        "tm_year": 2022,
+        "tm_mon": 5,
+        "tm_mday": 7,
+        "tm_hour": 22,
+        "tm_min": 49,
+        "tm_sec": 46,
+        "tm_wday": 5,
+        "tm_yday": 127,
+        "tm_isdst": 1
+      },
+      "uid": "e72dfdf4-ce81-11ec-b25b-5cff35e3510b"
+    },
+    {
+      "task_parameter": {
+        "scale": 4,
+        "enable_pep": "True",
+        "more_params": "True"
+      },
+      "tuning_parameter": {
+        "busy_spin": "False",
+        "hepnos_num_event_databases": 5,
+        "hepnos_num_product_databases": 11,
+        "hepnos_num_providers": 8,
+        "hepnos_num_rpc_threads": 14,
+        "hepnos_pes_per_node": "8",
+        "hepnos_pool_type": "fifo",
+        "hepnos_progress_thread": "False",
+        "loader_batch_size": 1964,
+        "loader_pes_per_node": "1",
+        "loader_progress_thread": "False",
+        "loader_async": "True",
+        "loader_async_threads": 52,
+        "pep_progress_thread": "False",
+        "pep_num_threads": 7,
+        "pep_ibatch_size": 52,
+        "pep_obatch_size": 924,
+        "pep_pes_per_node": "32",
+        "pep_no_preloading": "False",
+        "pep_no_rdma": "True"
+      },
+      "constants": {},
+      "machine_configuration": {
+        "machine_name": "swing",
+        "amd": {
+          "nodes": 1,
+          "cores": 128
+        }
+      },
+      "software_configuration": {},
+      "evaluation_result": {
+        "y": 6.004928
+      },
+      "evaluation_detail": {
+        "y": {
+          "evaluations": 6.004927913169979,
+          "objective_scheme": "average"
+        }
+      },
+      "additional_output": {},
+      "source": "measure",
+      "time": {
+        "tm_year": 2022,
+        "tm_mon": 5,
+        "tm_mday": 7,
+        "tm_hour": 22,
+        "tm_min": 49,
+        "tm_sec": 46,
+        "tm_wday": 5,
+        "tm_yday": 127,
+        "tm_isdst": 1
+      },
+      "uid": "e7302b2e-ce81-11ec-b25b-5cff35e3510b"
+    },
+    {
+      "task_parameter": {
+        "scale": 4,
+        "enable_pep": "True",
+        "more_params": "True"
+      },
+      "tuning_parameter": {
+        "busy_spin": "False",
+        "hepnos_num_event_databases": 6,
+        "hepnos_num_product_databases": 6,
+        "hepnos_num_providers": 28,
+        "hepnos_num_rpc_threads": 62,
+        "hepnos_pes_per_node": "2",
+        "hepnos_pool_type": "fifo_wait",
+        "hepnos_progress_thread": "False",
+        "loader_batch_size": 234,
+        "loader_pes_per_node": "16",
+        "loader_progress_thread": "True",
+        "loader_async": "False",
+        "loader_async_threads": 13,
+        "pep_progress_thread": "True",
+        "pep_num_threads": 27,
+        "pep_ibatch_size": 623,
+        "pep_obatch_size": 848,
+        "pep_pes_per_node": "1",
+        "pep_no_preloading": "True",
+        "pep_no_rdma": "False"
+      },
+      "constants": {},
+      "machine_configuration": {
+        "machine_name": "swing",
+        "amd": {
+          "nodes": 1,
+          "cores": 128
+        }
+      },
+      "software_configuration": {},
+      "evaluation_result": {
+        "y": 4.959268
+      },
+      "evaluation_detail": {
+        "y": {
+          "evaluations": 4.959267647931796,
+          "objective_scheme": "average"
+        }
+      },
+      "additional_output": {},
+      "source": "measure",
+      "time": {
+        "tm_year": 2022,
+        "tm_mon": 5,
+        "tm_mday": 7,
+        "tm_hour": 22,
+        "tm_min": 49,
+        "tm_sec": 46,
+        "tm_wday": 5,
+        "tm_yday": 127,
+        "tm_isdst": 1
+      },
+      "uid": "e73258c2-ce81-11ec-b25b-5cff35e3510b"
+    },
+    {
+      "task_parameter": {
+        "scale": 4,
+        "enable_pep": "True",
+        "more_params": "True"
+      },
+      "tuning_parameter": {
+        "busy_spin": "True",
+        "hepnos_num_event_databases": 2,
+        "hepnos_num_product_databases": 9,
+        "hepnos_num_providers": 2,
+        "hepnos_num_rpc_threads": 54,
+        "hepnos_pes_per_node": "4",
+        "hepnos_pool_type": "fifo",
+        "hepnos_progress_thread": "False",
+        "loader_batch_size": 1199,
+        "loader_pes_per_node": "4",
+        "loader_progress_thread": "False",
+        "loader_async": "False",
+        "loader_async_threads": 4,
+        "pep_progress_thread": "True",
+        "pep_num_threads": 24,
+        "pep_ibatch_size": 463,
+        "pep_obatch_size": 146,
+        "pep_pes_per_node": "4",
+        "pep_no_preloading": "False",
+        "pep_no_rdma": "False"
+      },
+      "constants": {},
+      "machine_configuration": {
+        "machine_name": "swing",
+        "amd": {
+          "nodes": 1,
+          "cores": 128
+        }
+      },
+      "software_configuration": {},
+      "evaluation_result": {
+        "y": 4.188818
+      },
+      "evaluation_detail": {
+        "y": {
+          "evaluations": 4.188817969899816,
+          "objective_scheme": "average"
+        }
+      },
+      "additional_output": {},
+      "source": "measure",
+      "time": {
+        "tm_year": 2022,
+        "tm_mon": 5,
+        "tm_mday": 7,
+        "tm_hour": 22,
+        "tm_min": 49,
+        "tm_sec": 46,
+        "tm_wday": 5,
+        "tm_yday": 127,
+        "tm_isdst": 1
+      },
+      "uid": "e7348ce6-ce81-11ec-b25b-5cff35e3510b"
+    },
+    {
+      "task_parameter": {
+        "scale": 4,
+        "enable_pep": "True",
+        "more_params": "True"
+      },
+      "tuning_parameter": {
+        "busy_spin": "False",
+        "hepnos_num_event_databases": 8,
+        "hepnos_num_product_databases": 13,
+        "hepnos_num_providers": 24,
+        "hepnos_num_rpc_threads": 38,
+        "hepnos_pes_per_node": "16",
+        "hepnos_pool_type": "fifo",
+        "hepnos_progress_thread": "True",
+        "loader_batch_size": 23,
+        "loader_pes_per_node": "4",
+        "loader_progress_thread": "True",
+        "loader_async": "False",
+        "loader_async_threads": 45,
+        "pep_progress_thread": "False",
+        "pep_num_threads": 2,
+        "pep_ibatch_size": 825,
+        "pep_obatch_size": 295,
+        "pep_pes_per_node": "16",
+        "pep_no_preloading": "False",
+        "pep_no_rdma": "False"
+      },
+      "constants": {},
+      "machine_configuration": {
+        "machine_name": "swing",
+        "amd": {
+          "nodes": 1,
+          "cores": 128
+        }
+      },
+      "software_configuration": {},
+      "evaluation_result": {
+        "y": 5.117927
+      },
+      "evaluation_detail": {
+        "y": {
+          "evaluations": 5.1179265392243,
+          "objective_scheme": "average"
+        }
+      },
+      "additional_output": {},
+      "source": "measure",
+      "time": {
+        "tm_year": 2022,
+        "tm_mon": 5,
+        "tm_mday": 7,
+        "tm_hour": 22,
+        "tm_min": 49,
+        "tm_sec": 46,
+        "tm_wday": 5,
+        "tm_yday": 127,
+        "tm_isdst": 1
+      },
+      "uid": "e736c8a8-ce81-11ec-b25b-5cff35e3510b"
+    },
+    {
+      "task_parameter": {
+        "scale": 8,
+        "enable_pep": "True",
+        "more_params": "True"
+      },
+      "tuning_parameter": {
+        "busy_spin": "False",
+        "hepnos_num_event_databases": 4,
+        "hepnos_num_product_databases": 15,
+        "hepnos_num_providers": 10,
+        "hepnos_num_rpc_threads": 62,
+        "hepnos_pes_per_node": "4",
+        "hepnos_pool_type": "fifo_wait",
+        "hepnos_progress_thread": "True",
+        "loader_batch_size": 1216,
+        "loader_pes_per_node": "16",
+        "loader_progress_thread": "False",
+        "loader_async": "False",
+        "loader_async_threads": 63,
+        "pep_progress_thread": "False",
+        "pep_num_threads": 28,
+        "pep_ibatch_size": 45,
+        "pep_obatch_size": 864,
+        "pep_pes_per_node": "1",
+        "pep_no_preloading": "True",
+        "pep_no_rdma": "True"
+      },
+      "constants": {},
+      "machine_configuration": {
+        "machine_name": "swing",
+        "amd": {
+          "nodes": 1,
+          "cores": 128
+        }
+      },
+      "software_configuration": {},
+      "evaluation_result": {
+        "y": 4.725093
+      },
+      "evaluation_detail": {
+        "y": {
+          "evaluations": 4.725093124989332,
+          "objective_scheme": "average"
+        }
+      },
+      "additional_output": {},
+      "source": "measure",
+      "time": {
+        "tm_year": 2022,
+        "tm_mon": 5,
+        "tm_mday": 7,
+        "tm_hour": 22,
+        "tm_min": 52,
+        "tm_sec": 10,
+        "tm_wday": 5,
+        "tm_yday": 127,
+        "tm_isdst": 1
+      },
+      "uid": "3cc9892c-ce82-11ec-b25b-5cff35e3510b"
+    },
+    {
+      "task_parameter": {
+        "scale": 4,
+        "enable_pep": "True",
+        "more_params": "True"
+      },
+      "tuning_parameter": {
+        "busy_spin": "True",
+        "hepnos_num_event_databases": 13,
+        "hepnos_num_product_databases": 12,
+        "hepnos_num_providers": 29,
+        "hepnos_num_rpc_threads": 62,
+        "hepnos_pes_per_node": "2",
+        "hepnos_pool_type": "fifo_wait",
+        "hepnos_progress_thread": "True",
+        "loader_batch_size": 1182,
+        "loader_pes_per_node": "16",
+        "loader_progress_thread": "False",
+        "loader_async": "False",
+        "loader_async_threads": 22,
+        "pep_progress_thread": "False",
+        "pep_num_threads": 27,
+        "pep_ibatch_size": 1014,
+        "pep_obatch_size": 447,
+        "pep_pes_per_node": "32",
+        "pep_no_preloading": "False",
+        "pep_no_rdma": "True"
+      },
+      "constants": {},
+      "machine_configuration": {
+        "machine_name": "swing",
+        "amd": {
+          "nodes": 1,
+          "cores": 128
+        }
+      },
+      "software_configuration": {},
+      "evaluation_result": {
+        "y": 3.526817
+      },
+      "evaluation_detail": {
+        "y": {
+          "evaluations": 3.5268171482845503,
+          "objective_scheme": "average"
+        }
+      },
+      "additional_output": {},
+      "source": "measure",
+      "time": {
+        "tm_year": 2022,
+        "tm_mon": 5,
+        "tm_mday": 7,
+        "tm_hour": 22,
+        "tm_min": 52,
+        "tm_sec": 10,
+        "tm_wday": 5,
+        "tm_yday": 127,
+        "tm_isdst": 1
+      },
+      "uid": "3ccbfefa-ce82-11ec-b25b-5cff35e3510b"
+    },
+    {
+      "task_parameter": {
+        "scale": 8,
+        "enable_pep": "True",
+        "more_params": "True"
+      },
+      "tuning_parameter": {
+        "busy_spin": "False",
+        "hepnos_num_event_databases": 11,
+        "hepnos_num_product_databases": 9,
+        "hepnos_num_providers": 23,
+        "hepnos_num_rpc_threads": 49,
+        "hepnos_pes_per_node": "4",
+        "hepnos_pool_type": "fifo_wait",
+        "hepnos_progress_thread": "True",
+        "loader_batch_size": 1622,
+        "loader_pes_per_node": "16",
+        "loader_progress_thread": "False",
+        "loader_async": "True",
+        "loader_async_threads": 20,
+        "pep_progress_thread": "False",
+        "pep_num_threads": 30,
+        "pep_ibatch_size": 456,
+        "pep_obatch_size": 909,
+        "pep_pes_per_node": "16",
+        "pep_no_preloading": "False",
+        "pep_no_rdma": "False"
+      },
+      "constants": {},
+      "machine_configuration": {
+        "machine_name": "swing",
+        "amd": {
+          "nodes": 1,
+          "cores": 128
+        }
+      },
+      "software_configuration": {},
+      "evaluation_result": {
+        "y": 4.23634
+      },
+      "evaluation_detail": {
+        "y": {
+          "evaluations": 4.236340162044202,
+          "objective_scheme": "average"
+        }
+      },
+      "additional_output": {},
+      "source": "measure",
+      "time": {
+        "tm_year": 2022,
+        "tm_mon": 5,
+        "tm_mday": 7,
+        "tm_hour": 22,
+        "tm_min": 53,
+        "tm_sec": 57,
+        "tm_wday": 5,
+        "tm_yday": 127,
+        "tm_isdst": 1
+      },
+      "uid": "7cd9d62a-ce82-11ec-b25b-5cff35e3510b"
+    },
+    {
+      "task_parameter": {
+        "scale": 4,
+        "enable_pep": "True",
+        "more_params": "True"
+      },
+      "tuning_parameter": {
+        "busy_spin": "True",
+        "hepnos_num_event_databases": 3,
+        "hepnos_num_product_databases": 8,
+        "hepnos_num_providers": 8,
+        "hepnos_num_rpc_threads": 53,
+        "hepnos_pes_per_node": "8",
+        "hepnos_pool_type": "fifo_wait",
+        "hepnos_progress_thread": "True",
+        "loader_batch_size": 1212,
+        "loader_pes_per_node": "4",
+        "loader_progress_thread": "False",
+        "loader_async": "True",
+        "loader_async_threads": 33,
+        "pep_progress_thread": "True",
+        "pep_num_threads": 21,
+        "pep_ibatch_size": 959,
+        "pep_obatch_size": 973,
+        "pep_pes_per_node": "4",
+        "pep_no_preloading": "False",
+        "pep_no_rdma": "False"
+      },
+      "constants": {},
+      "machine_configuration": {
+        "machine_name": "swing",
+        "amd": {
+          "nodes": 1,
+          "cores": 128
+        }
+      },
+      "software_configuration": {},
+      "evaluation_result": {
+        "y": 4.468173
+      },
+      "evaluation_detail": {
+        "y": {
+          "evaluations": 4.4681731487434035,
+          "objective_scheme": "average"
+        }
+      },
+      "additional_output": {},
+      "source": "measure",
+      "time": {
+        "tm_year": 2022,
+        "tm_mon": 5,
+        "tm_mday": 7,
+        "tm_hour": 22,
+        "tm_min": 53,
+        "tm_sec": 57,
+        "tm_wday": 5,
+        "tm_yday": 127,
+        "tm_isdst": 1
+      },
+      "uid": "7cdc5562-ce82-11ec-b25b-5cff35e3510b"
+    },
+    {
+      "task_parameter": {
+        "scale": 8,
+        "enable_pep": "True",
+        "more_params": "True"
+      },
+      "tuning_parameter": {
+        "busy_spin": "True",
+        "hepnos_num_event_databases": 5,
+        "hepnos_num_product_databases": 13,
+        "hepnos_num_providers": 30,
+        "hepnos_num_rpc_threads": 31,
+        "hepnos_pes_per_node": "8",
+        "hepnos_pool_type": "fifo",
+        "hepnos_progress_thread": "True",
+        "loader_batch_size": 1851,
+        "loader_pes_per_node": "1",
+        "loader_progress_thread": "False",
+        "loader_async": "True",
+        "loader_async_threads": 27,
+        "pep_progress_thread": "False",
+        "pep_num_threads": 24,
+        "pep_ibatch_size": 397,
+        "pep_obatch_size": 23,
+        "pep_pes_per_node": "8",
+        "pep_no_preloading": "False",
+        "pep_no_rdma": "True"
+      },
+      "constants": {},
+      "machine_configuration": {
+        "machine_name": "swing",
+        "amd": {
+          "nodes": 1,
+          "cores": 128
+        }
+      },
+      "software_configuration": {},
+      "evaluation_result": {
+        "y": 5.108206
+      },
+      "evaluation_detail": {
+        "y": {
+          "evaluations": 5.108205887310486,
+          "objective_scheme": "average"
+        }
+      },
+      "additional_output": {},
+      "source": "measure",
+      "time": {
+        "tm_year": 2022,
+        "tm_mon": 5,
+        "tm_mday": 7,
+        "tm_hour": 22,
+        "tm_min": 57,
+        "tm_sec": 23,
+        "tm_wday": 5,
+        "tm_yday": 127,
+        "tm_isdst": 1
+      },
+      "uid": "f7ae4e4e-ce82-11ec-b25b-5cff35e3510b"
+    },
+    {
+      "task_parameter": {
+        "scale": 4,
+        "enable_pep": "True",
+        "more_params": "True"
+      },
+      "tuning_parameter": {
+        "busy_spin": "True",
+        "hepnos_num_event_databases": 15,
+        "hepnos_num_product_databases": 1,
+        "hepnos_num_providers": 22,
+        "hepnos_num_rpc_threads": 17,
+        "hepnos_pes_per_node": "4",
+        "hepnos_pool_type": "fifo_wait",
+        "hepnos_progress_thread": "False",
+        "loader_batch_size": 88,
+        "loader_pes_per_node": "8",
+        "loader_progress_thread": "True",
+        "loader_async": "False",
+        "loader_async_threads": 3,
+        "pep_progress_thread": "False",
+        "pep_num_threads": 3,
+        "pep_ibatch_size": 16,
+        "pep_obatch_size": 397,
+        "pep_pes_per_node": "2",
+        "pep_no_preloading": "False",
+        "pep_no_rdma": "False"
+      },
+      "constants": {},
+      "machine_configuration": {
+        "machine_name": "swing",
+        "amd": {
+          "nodes": 1,
+          "cores": 128
+        }
+      },
+      "software_configuration": {},
+      "evaluation_result": {
+        "y": 4.942445
+      },
+      "evaluation_detail": {
+        "y": {
+          "evaluations": 4.94244488922044,
+          "objective_scheme": "average"
+        }
+      },
+      "additional_output": {},
+      "source": "measure",
+      "time": {
+        "tm_year": 2022,
+        "tm_mon": 5,
+        "tm_mday": 7,
+        "tm_hour": 22,
+        "tm_min": 57,
+        "tm_sec": 23,
+        "tm_wday": 5,
+        "tm_yday": 127,
+        "tm_isdst": 1
+      },
+      "uid": "f7b0d934-ce82-11ec-b25b-5cff35e3510b"
+    },
+    {
+      "task_parameter": {
+        "scale": 8,
+        "enable_pep": "True",
+        "more_params": "True"
+      },
+      "tuning_parameter": {
+        "busy_spin": "True",
+        "hepnos_num_event_databases": 3,
+        "hepnos_num_product_databases": 2,
+        "hepnos_num_providers": 19,
+        "hepnos_num_rpc_threads": 63,
+        "hepnos_pes_per_node": "8",
+        "hepnos_pool_type": "fifo_wait",
+        "hepnos_progress_thread": "False",
+        "loader_batch_size": 1361,
+        "loader_pes_per_node": "16",
+        "loader_progress_thread": "False",
+        "loader_async": "True",
+        "loader_async_threads": 7,
+        "pep_progress_thread": "True",
+        "pep_num_threads": 4,
+        "pep_ibatch_size": 999,
+        "pep_obatch_size": 756,
+        "pep_pes_per_node": "8",
+        "pep_no_preloading": "False",
+        "pep_no_rdma": "False"
+      },
+      "constants": {},
+      "machine_configuration": {
+        "machine_name": "swing",
+        "amd": {
+          "nodes": 1,
+          "cores": 128
+        }
+      },
+      "software_configuration": {},
+      "evaluation_result": {
+        "y": 3.64624
+      },
+      "evaluation_detail": {
+        "y": {
+          "evaluations": 3.646240009859918,
+          "objective_scheme": "average"
+        }
+      },
+      "additional_output": {},
+      "source": "measure",
+      "time": {
+        "tm_year": 2022,
+        "tm_mon": 5,
+        "tm_mday": 7,
+        "tm_hour": 22,
+        "tm_min": 58,
+        "tm_sec": 27,
+        "tm_wday": 5,
+        "tm_yday": 127,
+        "tm_isdst": 1
+      },
+      "uid": "1ddfaad6-ce83-11ec-b25b-5cff35e3510b"
+    },
+    {
+      "task_parameter": {
+        "scale": 4,
+        "enable_pep": "True",
+        "more_params": "True"
+      },
+      "tuning_parameter": {
+        "busy_spin": "True",
+        "hepnos_num_event_databases": 8,
+        "hepnos_num_product_databases": 2,
+        "hepnos_num_providers": 30,
+        "hepnos_num_rpc_threads": 60,
+        "hepnos_pes_per_node": "4",
+        "hepnos_pool_type": "fifo",
+        "hepnos_progress_thread": "False",
+        "loader_batch_size": 1045,
+        "loader_pes_per_node": "16",
+        "loader_progress_thread": "False",
+        "loader_async": "False",
+        "loader_async_threads": 47,
+        "pep_progress_thread": "True",
+        "pep_num_threads": 22,
+        "pep_ibatch_size": 420,
+        "pep_obatch_size": 40,
+        "pep_pes_per_node": "16",
+        "pep_no_preloading": "True",
+        "pep_no_rdma": "True"
+      },
+      "constants": {},
+      "machine_configuration": {
+        "machine_name": "swing",
+        "amd": {
+          "nodes": 1,
+          "cores": 128
+        }
+      },
+      "software_configuration": {},
+      "evaluation_result": {
+        "y": 4.032723
+      },
+      "evaluation_detail": {
+        "y": {
+          "evaluations": 4.0327232353992315,
+          "objective_scheme": "average"
+        }
+      },
+      "additional_output": {},
+      "source": "measure",
+      "time": {
+        "tm_year": 2022,
+        "tm_mon": 5,
+        "tm_mday": 7,
+        "tm_hour": 22,
+        "tm_min": 58,
+        "tm_sec": 27,
+        "tm_wday": 5,
+        "tm_yday": 127,
+        "tm_isdst": 1
+      },
+      "uid": "1de23ec2-ce83-11ec-b25b-5cff35e3510b"
+    },
+    {
+      "task_parameter": {
+        "scale": 8,
+        "enable_pep": "True",
+        "more_params": "True"
+      },
+      "tuning_parameter": {
+        "busy_spin": "True",
+        "hepnos_num_event_databases": 4,
+        "hepnos_num_product_databases": 4,
+        "hepnos_num_providers": 30,
+        "hepnos_num_rpc_threads": 55,
+        "hepnos_pes_per_node": "8",
+        "hepnos_pool_type": "fifo_wait",
+        "hepnos_progress_thread": "True",
+        "loader_batch_size": 1530,
+        "loader_pes_per_node": "16",
+        "loader_progress_thread": "False",
+        "loader_async": "True",
+        "loader_async_threads": 3,
+        "pep_progress_thread": "False",
+        "pep_num_threads": 2,
+        "pep_ibatch_size": 783,
+        "pep_obatch_size": 58,
+        "pep_pes_per_node": "8",
+        "pep_no_preloading": "False",
+        "pep_no_rdma": "True"
+      },
+      "constants": {},
+      "machine_configuration": {
+        "machine_name": "swing",
+        "amd": {
+          "nodes": 1,
+          "cores": 128
+        }
+      },
+      "software_configuration": {},
+      "evaluation_result": {
+        "y": 3.695249
+      },
+      "evaluation_detail": {
+        "y": {
+          "evaluations": 3.6952494603732116,
+          "objective_scheme": "average"
+        }
+      },
+      "additional_output": {},
+      "source": "measure",
+      "time": {
+        "tm_year": 2022,
+        "tm_mon": 5,
+        "tm_mday": 7,
+        "tm_hour": 22,
+        "tm_min": 59,
+        "tm_sec": 36,
+        "tm_wday": 5,
+        "tm_yday": 127,
+        "tm_isdst": 1
+      },
+      "uid": "467f5be4-ce83-11ec-b25b-5cff35e3510b"
+    },
+    {
+      "task_parameter": {
+        "scale": 4,
+        "enable_pep": "True",
+        "more_params": "True"
+      },
+      "tuning_parameter": {
+        "busy_spin": "True",
+        "hepnos_num_event_databases": 13,
+        "hepnos_num_product_databases": 2,
+        "hepnos_num_providers": 21,
+        "hepnos_num_rpc_threads": 58,
+        "hepnos_pes_per_node": "8",
+        "hepnos_pool_type": "fifo_wait",
+        "hepnos_progress_thread": "True",
+        "loader_batch_size": 1496,
+        "loader_pes_per_node": "8",
+        "loader_progress_thread": "False",
+        "loader_async": "False",
+        "loader_async_threads": 14,
+        "pep_progress_thread": "True",
+        "pep_num_threads": 9,
+        "pep_ibatch_size": 982,
+        "pep_obatch_size": 536,
+        "pep_pes_per_node": "32",
+        "pep_no_preloading": "False",
+        "pep_no_rdma": "True"
+      },
+      "constants": {},
+      "machine_configuration": {
+        "machine_name": "swing",
+        "amd": {
+          "nodes": 1,
+          "cores": 128
+        }
+      },
+      "software_configuration": {},
+      "evaluation_result": {
+        "y": 4.422457
+      },
+      "evaluation_detail": {
+        "y": {
+          "evaluations": 4.422457465029282,
+          "objective_scheme": "average"
+        }
+      },
+      "additional_output": {},
+      "source": "measure",
+      "time": {
+        "tm_year": 2022,
+        "tm_mon": 5,
+        "tm_mday": 7,
+        "tm_hour": 22,
+        "tm_min": 59,
+        "tm_sec": 36,
+        "tm_wday": 5,
+        "tm_yday": 127,
+        "tm_isdst": 1
+      },
+      "uid": "4681f32c-ce83-11ec-b25b-5cff35e3510b"
+    },
+    {
+      "task_parameter": {
+        "scale": 8,
+        "enable_pep": "True",
+        "more_params": "True"
+      },
+      "tuning_parameter": {
+        "busy_spin": "True",
+        "hepnos_num_event_databases": 2,
+        "hepnos_num_product_databases": 2,
+        "hepnos_num_providers": 20,
+        "hepnos_num_rpc_threads": 53,
+        "hepnos_pes_per_node": "32",
+        "hepnos_pool_type": "fifo",
+        "hepnos_progress_thread": "False",
+        "loader_batch_size": 945,
+        "loader_pes_per_node": "16",
+        "loader_progress_thread": "True",
+        "loader_async": "True",
+        "loader_async_threads": 61,
+        "pep_progress_thread": "False",
+        "pep_num_threads": 31,
+        "pep_ibatch_size": 958,
+        "pep_obatch_size": 268,
+        "pep_pes_per_node": "32",
+        "pep_no_preloading": "True",
+        "pep_no_rdma": "True"
+      },
+      "constants": {},
+      "machine_configuration": {
+        "machine_name": "swing",
+        "amd": {
+          "nodes": 1,
+          "cores": 128
+        }
+      },
+      "software_configuration": {},
+      "evaluation_result": {
+        "y": 4.736516
+      },
+      "evaluation_detail": {
+        "y": {
+          "evaluations": 4.736516284332332,
+          "objective_scheme": "average"
+        }
+      },
+      "additional_output": {},
+      "source": "measure",
+      "time": {
+        "tm_year": 2022,
+        "tm_mon": 5,
+        "tm_mday": 7,
+        "tm_hour": 23,
+        "tm_min": 2,
+        "tm_sec": 24,
+        "tm_wday": 5,
+        "tm_yday": 127,
+        "tm_isdst": 1
+      },
+      "uid": "ab1c019c-ce83-11ec-b25b-5cff35e3510b"
+    },
+    {
+      "task_parameter": {
+        "scale": 4,
+        "enable_pep": "True",
+        "more_params": "True"
+      },
+      "tuning_parameter": {
+        "busy_spin": "True",
+        "hepnos_num_event_databases": 15,
+        "hepnos_num_product_databases": 3,
+        "hepnos_num_providers": 20,
+        "hepnos_num_rpc_threads": 34,
+        "hepnos_pes_per_node": "1",
+        "hepnos_pool_type": "fifo_wait",
+        "hepnos_progress_thread": "True",
+        "loader_batch_size": 167,
+        "loader_pes_per_node": "1",
+        "loader_progress_thread": "True",
+        "loader_async": "False",
+        "loader_async_threads": 58,
+        "pep_progress_thread": "False",
+        "pep_num_threads": 31,
+        "pep_ibatch_size": 702,
+        "pep_obatch_size": 506,
+        "pep_pes_per_node": "32",
+        "pep_no_preloading": "True",
+        "pep_no_rdma": "True"
+      },
+      "constants": {},
+      "machine_configuration": {
+        "machine_name": "swing",
+        "amd": {
+          "nodes": 1,
+          "cores": 128
+        }
+      },
+      "software_configuration": {},
+      "evaluation_result": {
+        "y": 3.851735
+      },
+      "evaluation_detail": {
+        "y": {
+          "evaluations": 3.8517350332637648,
+          "objective_scheme": "average"
+        }
+      },
+      "additional_output": {},
+      "source": "measure",
+      "time": {
+        "tm_year": 2022,
+        "tm_mon": 5,
+        "tm_mday": 7,
+        "tm_hour": 23,
+        "tm_min": 2,
+        "tm_sec": 24,
+        "tm_wday": 5,
+        "tm_yday": 127,
+        "tm_isdst": 1
+      },
+      "uid": "ab1ea9ce-ce83-11ec-b25b-5cff35e3510b"
+    },
+    {
+      "task_parameter": {
+        "scale": 8,
+        "enable_pep": "True",
+        "more_params": "True"
+      },
+      "tuning_parameter": {
+        "busy_spin": "True",
+        "hepnos_num_event_databases": 9,
+        "hepnos_num_product_databases": 6,
+        "hepnos_num_providers": 20,
+        "hepnos_num_rpc_threads": 63,
+        "hepnos_pes_per_node": "32",
+        "hepnos_pool_type": "fifo_wait",
+        "hepnos_progress_thread": "True",
+        "loader_batch_size": 1540,
+        "loader_pes_per_node": "16",
+        "loader_progress_thread": "False",
+        "loader_async": "False",
+        "loader_async_threads": 3,
+        "pep_progress_thread": "False",
+        "pep_num_threads": 16,
+        "pep_ibatch_size": 584,
+        "pep_obatch_size": 284,
+        "pep_pes_per_node": "2",
+        "pep_no_preloading": "False",
+        "pep_no_rdma": "False"
+      },
+      "constants": {},
+      "machine_configuration": {
+        "machine_name": "swing",
+        "amd": {
+          "nodes": 1,
+          "cores": 128
+        }
+      },
+      "software_configuration": {},
+      "evaluation_result": {
+        "y": 4.245902
+      },
+      "evaluation_detail": {
+        "y": {
+          "evaluations": 4.245901855575983,
+          "objective_scheme": "average"
+        }
+      },
+      "additional_output": {},
+      "source": "measure",
+      "time": {
+        "tm_year": 2022,
+        "tm_mon": 5,
+        "tm_mday": 7,
+        "tm_hour": 23,
+        "tm_min": 4,
+        "tm_sec": 21,
+        "tm_wday": 5,
+        "tm_yday": 127,
+        "tm_isdst": 1
+      },
+      "uid": "f0abef88-ce83-11ec-b25b-5cff35e3510b"
+    },
+    {
+      "task_parameter": {
+        "scale": 4,
+        "enable_pep": "True",
+        "more_params": "True"
+      },
+      "tuning_parameter": {
+        "busy_spin": "True",
+        "hepnos_num_event_databases": 15,
+        "hepnos_num_product_databases": 1,
+        "hepnos_num_providers": 13,
+        "hepnos_num_rpc_threads": 46,
+        "hepnos_pes_per_node": "2",
+        "hepnos_pool_type": "fifo",
+        "hepnos_progress_thread": "True",
+        "loader_batch_size": 323,
+        "loader_pes_per_node": "1",
+        "loader_progress_thread": "False",
+        "loader_async": "False",
+        "loader_async_threads": 23,
+        "pep_progress_thread": "False",
+        "pep_num_threads": 22,
+        "pep_ibatch_size": 1016,
+        "pep_obatch_size": 54,
+        "pep_pes_per_node": "1",
+        "pep_no_preloading": "False",
+        "pep_no_rdma": "True"
+      },
+      "constants": {},
+      "machine_configuration": {
+        "machine_name": "swing",
+        "amd": {
+          "nodes": 1,
+          "cores": 128
+        }
+      },
+      "software_configuration": {},
+      "evaluation_result": {
+        "y": 5.498417
+      },
+      "evaluation_detail": {
+        "y": {
+          "evaluations": 5.498417391006313,
+          "objective_scheme": "average"
+        }
+      },
+      "additional_output": {},
+      "source": "measure",
+      "time": {
+        "tm_year": 2022,
+        "tm_mon": 5,
+        "tm_mday": 7,
+        "tm_hour": 23,
+        "tm_min": 4,
+        "tm_sec": 21,
+        "tm_wday": 5,
+        "tm_yday": 127,
+        "tm_isdst": 1
+      },
+      "uid": "f0aedd10-ce83-11ec-b25b-5cff35e3510b"
+    },
+    {
+      "task_parameter": {
+        "scale": 8,
+        "enable_pep": "True",
+        "more_params": "True"
+      },
+      "tuning_parameter": {
+        "busy_spin": "True",
+        "hepnos_num_event_databases": 5,
+        "hepnos_num_product_databases": 9,
+        "hepnos_num_providers": 22,
+        "hepnos_num_rpc_threads": 59,
+        "hepnos_pes_per_node": "2",
+        "hepnos_pool_type": "fifo",
+        "hepnos_progress_thread": "True",
+        "loader_batch_size": 488,
+        "loader_pes_per_node": "16",
+        "loader_progress_thread": "False",
+        "loader_async": "True",
+        "loader_async_threads": 31,
+        "pep_progress_thread": "False",
+        "pep_num_threads": 5,
+        "pep_ibatch_size": 361,
+        "pep_obatch_size": 674,
+        "pep_pes_per_node": "32",
+        "pep_no_preloading": "False",
+        "pep_no_rdma": "True"
+      },
+      "constants": {},
+      "machine_configuration": {
+        "machine_name": "swing",
+        "amd": {
+          "nodes": 1,
+          "cores": 128
+        }
+      },
+      "software_configuration": {},
+      "evaluation_result": {
+        "y": 4.239501
+      },
+      "evaluation_detail": {
+        "y": {
+          "evaluations": 4.239500999894552,
+          "objective_scheme": "average"
+        }
+      },
+      "additional_output": {},
+      "source": "measure",
+      "time": {
+        "tm_year": 2022,
+        "tm_mon": 5,
+        "tm_mday": 7,
+        "tm_hour": 23,
+        "tm_min": 5,
+        "tm_sec": 55,
+        "tm_wday": 5,
+        "tm_yday": 127,
+        "tm_isdst": 1
+      },
+      "uid": "287a026a-ce84-11ec-b25b-5cff35e3510b"
+    },
+    {
+      "task_parameter": {
+        "scale": 4,
+        "enable_pep": "True",
+        "more_params": "True"
+      },
+      "tuning_parameter": {
+        "busy_spin": "True",
+        "hepnos_num_event_databases": 8,
+        "hepnos_num_product_databases": 8,
+        "hepnos_num_providers": 26,
+        "hepnos_num_rpc_threads": 52,
+        "hepnos_pes_per_node": "1",
+        "hepnos_pool_type": "fifo_wait",
+        "hepnos_progress_thread": "False",
+        "loader_batch_size": 1610,
+        "loader_pes_per_node": "16",
+        "loader_progress_thread": "True",
+        "loader_async": "False",
+        "loader_async_threads": 42,
+        "pep_progress_thread": "True",
+        "pep_num_threads": 3,
+        "pep_ibatch_size": 635,
+        "pep_obatch_size": 922,
+        "pep_pes_per_node": "32",
+        "pep_no_preloading": "False",
+        "pep_no_rdma": "True"
+      },
+      "constants": {},
+      "machine_configuration": {
+        "machine_name": "swing",
+        "amd": {
+          "nodes": 1,
+          "cores": 128
+        }
+      },
+      "software_configuration": {},
+      "evaluation_result": {
+        "y": 4.032468
+      },
+      "evaluation_detail": {
+        "y": {
+          "evaluations": 4.032468040526112,
+          "objective_scheme": "average"
+        }
+      },
+      "additional_output": {},
+      "source": "measure",
+      "time": {
+        "tm_year": 2022,
+        "tm_mon": 5,
+        "tm_mday": 7,
+        "tm_hour": 23,
+        "tm_min": 5,
+        "tm_sec": 55,
+        "tm_wday": 5,
+        "tm_yday": 127,
+        "tm_isdst": 1
+      },
+      "uid": "287cb8c0-ce84-11ec-b25b-5cff35e3510b"
+    },
+    {
+      "task_parameter": {
+        "scale": 8,
+        "enable_pep": "True",
+        "more_params": "True"
+      },
+      "tuning_parameter": {
+        "busy_spin": "True",
+        "hepnos_num_event_databases": 6,
+        "hepnos_num_product_databases": 2,
+        "hepnos_num_providers": 17,
+        "hepnos_num_rpc_threads": 37,
+        "hepnos_pes_per_node": "32",
+        "hepnos_pool_type": "fifo_wait",
+        "hepnos_progress_thread": "False",
+        "loader_batch_size": 517,
+        "loader_pes_per_node": "16",
+        "loader_progress_thread": "False",
+        "loader_async": "True",
+        "loader_async_threads": 6,
+        "pep_progress_thread": "False",
+        "pep_num_threads": 3,
+        "pep_ibatch_size": 289,
+        "pep_obatch_size": 810,
+        "pep_pes_per_node": "32",
+        "pep_no_preloading": "False",
+        "pep_no_rdma": "False"
+      },
+      "constants": {},
+      "machine_configuration": {
+        "machine_name": "swing",
+        "amd": {
+          "nodes": 1,
+          "cores": 128
+        }
+      },
+      "software_configuration": {},
+      "evaluation_result": {
+        "y": 3.961095
+      },
+      "evaluation_detail": {
+        "y": {
+          "evaluations": 3.9610947007131334,
+          "objective_scheme": "average"
+        }
+      },
+      "additional_output": {},
+      "source": "measure",
+      "time": {
+        "tm_year": 2022,
+        "tm_mon": 5,
+        "tm_mday": 7,
+        "tm_hour": 23,
+        "tm_min": 7,
+        "tm_sec": 0,
+        "tm_wday": 5,
+        "tm_yday": 127,
+        "tm_isdst": 1
+      },
+      "uid": "4f873ada-ce84-11ec-b25b-5cff35e3510b"
+    },
+    {
+      "task_parameter": {
+        "scale": 4,
+        "enable_pep": "True",
+        "more_params": "True"
+      },
+      "tuning_parameter": {
+        "busy_spin": "True",
+        "hepnos_num_event_databases": 14,
+        "hepnos_num_product_databases": 12,
+        "hepnos_num_providers": 13,
+        "hepnos_num_rpc_threads": 35,
+        "hepnos_pes_per_node": "4",
+        "hepnos_pool_type": "fifo_wait",
+        "hepnos_progress_thread": "True",
+        "loader_batch_size": 641,
+        "loader_pes_per_node": "16",
+        "loader_progress_thread": "True",
+        "loader_async": "True",
+        "loader_async_threads": 23,
+        "pep_progress_thread": "True",
+        "pep_num_threads": 1,
+        "pep_ibatch_size": 723,
+        "pep_obatch_size": 433,
+        "pep_pes_per_node": "16",
+        "pep_no_preloading": "False",
+        "pep_no_rdma": "False"
+      },
+      "constants": {},
+      "machine_configuration": {
+        "machine_name": "swing",
+        "amd": {
+          "nodes": 1,
+          "cores": 128
+        }
+      },
+      "software_configuration": {},
+      "evaluation_result": {
+        "y": 3.333936
+      },
+      "evaluation_detail": {
+        "y": {
+          "evaluations": 3.3339363694312283,
+          "objective_scheme": "average"
+        }
+      },
+      "additional_output": {},
+      "source": "measure",
+      "time": {
+        "tm_year": 2022,
+        "tm_mon": 5,
+        "tm_mday": 7,
+        "tm_hour": 23,
+        "tm_min": 7,
+        "tm_sec": 0,
+        "tm_wday": 5,
+        "tm_yday": 127,
+        "tm_isdst": 1
+      },
+      "uid": "4f89fb12-ce84-11ec-b25b-5cff35e3510b"
+    },
+    {
+      "task_parameter": {
+        "scale": 8,
+        "enable_pep": "True",
+        "more_params": "True"
+      },
+      "tuning_parameter": {
+        "busy_spin": "False",
+        "hepnos_num_event_databases": 10,
+        "hepnos_num_product_databases": 13,
+        "hepnos_num_providers": 15,
+        "hepnos_num_rpc_threads": 55,
+        "hepnos_pes_per_node": "2",
+        "hepnos_pool_type": "fifo_wait",
+        "hepnos_progress_thread": "False",
+        "loader_batch_size": 652,
+        "loader_pes_per_node": "8",
+        "loader_progress_thread": "False",
+        "loader_async": "False",
+        "loader_async_threads": 49,
+        "pep_progress_thread": "False",
+        "pep_num_threads": 29,
+        "pep_ibatch_size": 972,
+        "pep_obatch_size": 874,
+        "pep_pes_per_node": "32",
+        "pep_no_preloading": "False",
+        "pep_no_rdma": "False"
+      },
+      "constants": {},
+      "machine_configuration": {
+        "machine_name": "swing",
+        "amd": {
+          "nodes": 1,
+          "cores": 128
+        }
+      },
+      "software_configuration": {},
+      "evaluation_result": {
+        "y": 4.163147
+      },
+      "evaluation_detail": {
+        "y": {
+          "evaluations": 4.16314748413005,
+          "objective_scheme": "average"
+        }
+      },
+      "additional_output": {},
+      "source": "measure",
+      "time": {
+        "tm_year": 2022,
+        "tm_mon": 5,
+        "tm_mday": 7,
+        "tm_hour": 23,
+        "tm_min": 8,
+        "tm_sec": 22,
+        "tm_wday": 5,
+        "tm_yday": 127,
+        "tm_isdst": 1
+      },
+      "uid": "803d6eec-ce84-11ec-b25b-5cff35e3510b"
+    },
+    {
+      "task_parameter": {
+        "scale": 4,
+        "enable_pep": "True",
+        "more_params": "True"
+      },
+      "tuning_parameter": {
+        "busy_spin": "False",
+        "hepnos_num_event_databases": 4,
+        "hepnos_num_product_databases": 12,
+        "hepnos_num_providers": 15,
+        "hepnos_num_rpc_threads": 18,
+        "hepnos_pes_per_node": "32",
+        "hepnos_pool_type": "fifo_wait",
+        "hepnos_progress_thread": "False",
+        "loader_batch_size": 596,
+        "loader_pes_per_node": "8",
+        "loader_progress_thread": "True",
+        "loader_async": "False",
+        "loader_async_threads": 50,
+        "pep_progress_thread": "False",
+        "pep_num_threads": 31,
+        "pep_ibatch_size": 600,
+        "pep_obatch_size": 826,
+        "pep_pes_per_node": "8",
+        "pep_no_preloading": "False",
+        "pep_no_rdma": "True"
+      },
+      "constants": {},
+      "machine_configuration": {
+        "machine_name": "swing",
+        "amd": {
+          "nodes": 1,
+          "cores": 128
+        }
+      },
+      "software_configuration": {},
+      "evaluation_result": {
+        "y": 5.010207
+      },
+      "evaluation_detail": {
+        "y": {
+          "evaluations": 5.010206878613445,
+          "objective_scheme": "average"
+        }
+      },
+      "additional_output": {},
+      "source": "measure",
+      "time": {
+        "tm_year": 2022,
+        "tm_mon": 5,
+        "tm_mday": 7,
+        "tm_hour": 23,
+        "tm_min": 8,
+        "tm_sec": 22,
+        "tm_wday": 5,
+        "tm_yday": 127,
+        "tm_isdst": 1
+      },
+      "uid": "804038d4-ce84-11ec-b25b-5cff35e3510b"
+    },
+    {
+      "task_parameter": {
+        "scale": 8,
+        "enable_pep": "True",
+        "more_params": "True"
+      },
+      "tuning_parameter": {
+        "busy_spin": "True",
+        "hepnos_num_event_databases": 12,
+        "hepnos_num_product_databases": 15,
+        "hepnos_num_providers": 24,
+        "hepnos_num_rpc_threads": 40,
+        "hepnos_pes_per_node": "1",
+        "hepnos_pool_type": "fifo_wait",
+        "hepnos_progress_thread": "False",
+        "loader_batch_size": 1408,
+        "loader_pes_per_node": "16",
+        "loader_progress_thread": "False",
+        "loader_async": "True",
+        "loader_async_threads": 10,
+        "pep_progress_thread": "True",
+        "pep_num_threads": 2,
+        "pep_ibatch_size": 394,
+        "pep_obatch_size": 518,
+        "pep_pes_per_node": "1",
+        "pep_no_preloading": "True",
+        "pep_no_rdma": "True"
+      },
+      "constants": {},
+      "machine_configuration": {
+        "machine_name": "swing",
+        "amd": {
+          "nodes": 1,
+          "cores": 128
+        }
+      },
+      "software_configuration": {},
+      "evaluation_result": {
+        "y": 4.528629
+      },
+      "evaluation_detail": {
+        "y": {
+          "evaluations": 4.528628672557995,
+          "objective_scheme": "average"
+        }
+      },
+      "additional_output": {},
+      "source": "measure",
+      "time": {
+        "tm_year": 2022,
+        "tm_mon": 5,
+        "tm_mday": 7,
+        "tm_hour": 23,
+        "tm_min": 10,
+        "tm_sec": 7,
+        "tm_wday": 5,
+        "tm_yday": 127,
+        "tm_isdst": 1
+      },
+      "uid": "bf000f36-ce84-11ec-b25b-5cff35e3510b"
+    },
+    {
+      "task_parameter": {
+        "scale": 4,
+        "enable_pep": "True",
+        "more_params": "True"
+      },
+      "tuning_parameter": {
+        "busy_spin": "True",
+        "hepnos_num_event_databases": 4,
+        "hepnos_num_product_databases": 4,
+        "hepnos_num_providers": 3,
+        "hepnos_num_rpc_threads": 54,
+        "hepnos_pes_per_node": "32",
+        "hepnos_pool_type": "fifo_wait",
+        "hepnos_progress_thread": "False",
+        "loader_batch_size": 109,
+        "loader_pes_per_node": "16",
+        "loader_progress_thread": "False",
+        "loader_async": "True",
+        "loader_async_threads": 6,
+        "pep_progress_thread": "False",
+        "pep_num_threads": 20,
+        "pep_ibatch_size": 973,
+        "pep_obatch_size": 214,
+        "pep_pes_per_node": "32",
+        "pep_no_preloading": "True",
+        "pep_no_rdma": "False"
+      },
+      "constants": {},
+      "machine_configuration": {
+        "machine_name": "swing",
+        "amd": {
+          "nodes": 1,
+          "cores": 128
+        }
+      },
+      "software_configuration": {},
+      "evaluation_result": {
+        "y": 3.817313
+      },
+      "evaluation_detail": {
+        "y": {
+          "evaluations": 3.817313031387073,
+          "objective_scheme": "average"
+        }
+      },
+      "additional_output": {},
+      "source": "measure",
+      "time": {
+        "tm_year": 2022,
+        "tm_mon": 5,
+        "tm_mday": 7,
+        "tm_hour": 23,
+        "tm_min": 10,
+        "tm_sec": 7,
+        "tm_wday": 5,
+        "tm_yday": 127,
+        "tm_isdst": 1
+      },
+      "uid": "bf02e51c-ce84-11ec-b25b-5cff35e3510b"
+    },
+    {
+      "task_parameter": {
+        "scale": 8,
+        "enable_pep": "True",
+        "more_params": "True"
+      },
+      "tuning_parameter": {
+        "busy_spin": "True",
+        "hepnos_num_event_databases": 16,
+        "hepnos_num_product_databases": 8,
+        "hepnos_num_providers": 5,
+        "hepnos_num_rpc_threads": 19,
+        "hepnos_pes_per_node": "2",
+        "hepnos_pool_type": "fifo",
+        "hepnos_progress_thread": "True",
+        "loader_batch_size": 830,
+        "loader_pes_per_node": "16",
+        "loader_progress_thread": "False",
+        "loader_async": "True",
+        "loader_async_threads": 12,
+        "pep_progress_thread": "True",
+        "pep_num_threads": 11,
+        "pep_ibatch_size": 272,
+        "pep_obatch_size": 472,
+        "pep_pes_per_node": "16",
+        "pep_no_preloading": "False",
+        "pep_no_rdma": "True"
+      },
+      "constants": {},
+      "machine_configuration": {
+        "machine_name": "swing",
+        "amd": {
+          "nodes": 1,
+          "cores": 128
+        }
+      },
+      "software_configuration": {},
+      "evaluation_result": {
+        "y": 4.337099
+      },
+      "evaluation_detail": {
+        "y": {
+          "evaluations": 4.337098698115197,
+          "objective_scheme": "average"
+        }
+      },
+      "additional_output": {},
+      "source": "measure",
+      "time": {
+        "tm_year": 2022,
+        "tm_mon": 5,
+        "tm_mday": 7,
+        "tm_hour": 23,
+        "tm_min": 11,
+        "tm_sec": 43,
+        "tm_wday": 5,
+        "tm_yday": 127,
+        "tm_isdst": 1
+      },
+      "uid": "f7f30294-ce84-11ec-b25b-5cff35e3510b"
+    },
+    {
+      "task_parameter": {
+        "scale": 4,
+        "enable_pep": "True",
+        "more_params": "True"
+      },
+      "tuning_parameter": {
+        "busy_spin": "True",
+        "hepnos_num_event_databases": 4,
+        "hepnos_num_product_databases": 13,
+        "hepnos_num_providers": 30,
+        "hepnos_num_rpc_threads": 19,
+        "hepnos_pes_per_node": "1",
+        "hepnos_pool_type": "fifo_wait",
+        "hepnos_progress_thread": "True",
+        "loader_batch_size": 1804,
+        "loader_pes_per_node": "16",
+        "loader_progress_thread": "True",
+        "loader_async": "True",
+        "loader_async_threads": 17,
+        "pep_progress_thread": "True",
+        "pep_num_threads": 5,
+        "pep_ibatch_size": 522,
+        "pep_obatch_size": 23,
+        "pep_pes_per_node": "16",
+        "pep_no_preloading": "False",
+        "pep_no_rdma": "True"
+      },
+      "constants": {},
+      "machine_configuration": {
+        "machine_name": "swing",
+        "amd": {
+          "nodes": 1,
+          "cores": 128
+        }
+      },
+      "software_configuration": {},
+      "evaluation_result": {
+        "y": 3.943054
+      },
+      "evaluation_detail": {
+        "y": {
+          "evaluations": 3.943054004503125,
+          "objective_scheme": "average"
+        }
+      },
+      "additional_output": {},
+      "source": "measure",
+      "time": {
+        "tm_year": 2022,
+        "tm_mon": 5,
+        "tm_mday": 7,
+        "tm_hour": 23,
+        "tm_min": 11,
+        "tm_sec": 43,
+        "tm_wday": 5,
+        "tm_yday": 127,
+        "tm_isdst": 1
+      },
+      "uid": "f7f5e0c2-ce84-11ec-b25b-5cff35e3510b"
+    },
+    {
+      "task_parameter": {
+        "scale": 8,
+        "enable_pep": "True",
+        "more_params": "True"
+      },
+      "tuning_parameter": {
+        "busy_spin": "True",
+        "hepnos_num_event_databases": 13,
+        "hepnos_num_product_databases": 3,
+        "hepnos_num_providers": 22,
+        "hepnos_num_rpc_threads": 60,
+        "hepnos_pes_per_node": "8",
+        "hepnos_pool_type": "fifo",
+        "hepnos_progress_thread": "True",
+        "loader_batch_size": 9,
+        "loader_pes_per_node": "16",
+        "loader_progress_thread": "False",
+        "loader_async": "False",
+        "loader_async_threads": 50,
+        "pep_progress_thread": "True",
+        "pep_num_threads": 29,
+        "pep_ibatch_size": 251,
+        "pep_obatch_size": 865,
+        "pep_pes_per_node": "32",
+        "pep_no_preloading": "False",
+        "pep_no_rdma": "False"
+      },
+      "constants": {},
+      "machine_configuration": {
+        "machine_name": "swing",
+        "amd": {
+          "nodes": 1,
+          "cores": 128
+        }
+      },
+      "software_configuration": {},
+      "evaluation_result": {
+        "y": 5.066893
+      },
+      "evaluation_detail": {
+        "y": {
+          "evaluations": 5.066893383338058,
+          "objective_scheme": "average"
+        }
+      },
+      "additional_output": {},
+      "source": "measure",
+      "time": {
+        "tm_year": 2022,
+        "tm_mon": 5,
+        "tm_mday": 7,
+        "tm_hour": 23,
+        "tm_min": 14,
+        "tm_sec": 46,
+        "tm_wday": 5,
+        "tm_yday": 127,
+        "tm_isdst": 1
+      },
+      "uid": "6568d966-ce85-11ec-b25b-5cff35e3510b"
+    },
+    {
+      "task_parameter": {
+        "scale": 4,
+        "enable_pep": "True",
+        "more_params": "True"
+      },
+      "tuning_parameter": {
+        "busy_spin": "True",
+        "hepnos_num_event_databases": 2,
+        "hepnos_num_product_databases": 15,
+        "hepnos_num_providers": 13,
+        "hepnos_num_rpc_threads": 53,
+        "hepnos_pes_per_node": "8",
+        "hepnos_pool_type": "fifo",
+        "hepnos_progress_thread": "True",
+        "loader_batch_size": 534,
+        "loader_pes_per_node": "16",
+        "loader_progress_thread": "False",
+        "loader_async": "False",
+        "loader_async_threads": 34,
+        "pep_progress_thread": "True",
+        "pep_num_threads": 6,
+        "pep_ibatch_size": 991,
+        "pep_obatch_size": 824,
+        "pep_pes_per_node": "16",
+        "pep_no_preloading": "False",
+        "pep_no_rdma": "True"
+      },
+      "constants": {},
+      "machine_configuration": {
+        "machine_name": "swing",
+        "amd": {
+          "nodes": 1,
+          "cores": 128
+        }
+      },
+      "software_configuration": {},
+      "evaluation_result": {
+        "y": 4.386767
+      },
+      "evaluation_detail": {
+        "y": {
+          "evaluations": 4.386767079320634,
+          "objective_scheme": "average"
+        }
+      },
+      "additional_output": {},
+      "source": "measure",
+      "time": {
+        "tm_year": 2022,
+        "tm_mon": 5,
+        "tm_mday": 7,
+        "tm_hour": 23,
+        "tm_min": 14,
+        "tm_sec": 46,
+        "tm_wday": 5,
+        "tm_yday": 127,
+        "tm_isdst": 1
+      },
+      "uid": "656bd2a6-ce85-11ec-b25b-5cff35e3510b"
+    },
+    {
+      "task_parameter": {
+        "scale": 8,
+        "enable_pep": "True",
+        "more_params": "True"
+      },
+      "tuning_parameter": {
+        "busy_spin": "True",
+        "hepnos_num_event_databases": 11,
+        "hepnos_num_product_databases": 11,
+        "hepnos_num_providers": 15,
+        "hepnos_num_rpc_threads": 49,
+        "hepnos_pes_per_node": "4",
+        "hepnos_pool_type": "fifo_wait",
+        "hepnos_progress_thread": "True",
+        "loader_batch_size": 1446,
+        "loader_pes_per_node": "8",
+        "loader_progress_thread": "False",
+        "loader_async": "True",
+        "loader_async_threads": 13,
+        "pep_progress_thread": "True",
+        "pep_num_threads": 2,
+        "pep_ibatch_size": 820,
+        "pep_obatch_size": 534,
+        "pep_pes_per_node": "8",
+        "pep_no_preloading": "False",
+        "pep_no_rdma": "True"
+      },
+      "constants": {},
+      "machine_configuration": {
+        "machine_name": "swing",
+        "amd": {
+          "nodes": 1,
+          "cores": 128
+        }
+      },
+      "software_configuration": {},
+      "evaluation_result": {
+        "y": 3.742063
+      },
+      "evaluation_detail": {
+        "y": {
+          "evaluations": 3.7420629608056064,
+          "objective_scheme": "average"
+        }
+      },
+      "additional_output": {},
+      "source": "measure",
+      "time": {
+        "tm_year": 2022,
+        "tm_mon": 5,
+        "tm_mday": 7,
+        "tm_hour": 23,
+        "tm_min": 15,
+        "tm_sec": 57,
+        "tm_wday": 5,
+        "tm_yday": 127,
+        "tm_isdst": 1
+      },
+      "uid": "8facbc4c-ce85-11ec-b25b-5cff35e3510b"
+    },
+    {
+      "task_parameter": {
+        "scale": 4,
+        "enable_pep": "True",
+        "more_params": "True"
+      },
+      "tuning_parameter": {
+        "busy_spin": "True",
+        "hepnos_num_event_databases": 1,
+        "hepnos_num_product_databases": 7,
+        "hepnos_num_providers": 17,
+        "hepnos_num_rpc_threads": 12,
+        "hepnos_pes_per_node": "8",
+        "hepnos_pool_type": "fifo",
+        "hepnos_progress_thread": "True",
+        "loader_batch_size": 963,
+        "loader_pes_per_node": "16",
+        "loader_progress_thread": "True",
+        "loader_async": "True",
+        "loader_async_threads": 5,
+        "pep_progress_thread": "False",
+        "pep_num_threads": 3,
+        "pep_ibatch_size": 875,
+        "pep_obatch_size": 450,
+        "pep_pes_per_node": "8",
+        "pep_no_preloading": "False",
+        "pep_no_rdma": "True"
+      },
+      "constants": {},
+      "machine_configuration": {
+        "machine_name": "swing",
+        "amd": {
+          "nodes": 1,
+          "cores": 128
+        }
+      },
+      "software_configuration": {},
+      "evaluation_result": {
+        "y": 5.248664
+      },
+      "evaluation_detail": {
+        "y": {
+          "evaluations": 5.248663686619125,
+          "objective_scheme": "average"
+        }
+      },
+      "additional_output": {},
+      "source": "measure",
+      "time": {
+        "tm_year": 2022,
+        "tm_mon": 5,
+        "tm_mday": 7,
+        "tm_hour": 23,
+        "tm_min": 15,
+        "tm_sec": 57,
+        "tm_wday": 5,
+        "tm_yday": 127,
+        "tm_isdst": 1
+      },
+      "uid": "8fafb1b8-ce85-11ec-b25b-5cff35e3510b"
+    },
+    {
+      "task_parameter": {
+        "scale": 8,
+        "enable_pep": "True",
+        "more_params": "True"
+      },
+      "tuning_parameter": {
+        "busy_spin": "False",
+        "hepnos_num_event_databases": 15,
+        "hepnos_num_product_databases": 15,
+        "hepnos_num_providers": 24,
+        "hepnos_num_rpc_threads": 10,
+        "hepnos_pes_per_node": "2",
+        "hepnos_pool_type": "fifo_wait",
+        "hepnos_progress_thread": "False",
+        "loader_batch_size": 1093,
+        "loader_pes_per_node": "16",
+        "loader_progress_thread": "False",
+        "loader_async": "True",
+        "loader_async_threads": 13,
+        "pep_progress_thread": "False",
+        "pep_num_threads": 4,
+        "pep_ibatch_size": 172,
+        "pep_obatch_size": 126,
+        "pep_pes_per_node": "1",
+        "pep_no_preloading": "False",
+        "pep_no_rdma": "False"
+      },
+      "constants": {},
+      "machine_configuration": {
+        "machine_name": "swing",
+        "amd": {
+          "nodes": 1,
+          "cores": 128
+        }
+      },
+      "software_configuration": {},
+      "evaluation_result": {
+        "y": 4.47588
+      },
+      "evaluation_detail": {
+        "y": {
+          "evaluations": 4.475880238805489,
+          "objective_scheme": "average"
+        }
+      },
+      "additional_output": {},
+      "source": "measure",
+      "time": {
+        "tm_year": 2022,
+        "tm_mon": 5,
+        "tm_mday": 7,
+        "tm_hour": 23,
+        "tm_min": 17,
+        "tm_sec": 42,
+        "tm_wday": 5,
+        "tm_yday": 127,
+        "tm_isdst": 1
+      },
+      "uid": "cdc999aa-ce85-11ec-b25b-5cff35e3510b"
+    },
+    {
+      "task_parameter": {
+        "scale": 4,
+        "enable_pep": "True",
+        "more_params": "True"
+      },
+      "tuning_parameter": {
+        "busy_spin": "True",
+        "hepnos_num_event_databases": 9,
+        "hepnos_num_product_databases": 11,
+        "hepnos_num_providers": 6,
+        "hepnos_num_rpc_threads": 56,
+        "hepnos_pes_per_node": "8",
+        "hepnos_pool_type": "fifo_wait",
+        "hepnos_progress_thread": "True",
+        "loader_batch_size": 779,
+        "loader_pes_per_node": "8",
+        "loader_progress_thread": "True",
+        "loader_async": "True",
+        "loader_async_threads": 9,
+        "pep_progress_thread": "False",
+        "pep_num_threads": 3,
+        "pep_ibatch_size": 661,
+        "pep_obatch_size": 178,
+        "pep_pes_per_node": "1",
+        "pep_no_preloading": "False",
+        "pep_no_rdma": "False"
+      },
+      "constants": {},
+      "machine_configuration": {
+        "machine_name": "swing",
+        "amd": {
+          "nodes": 1,
+          "cores": 128
+        }
+      },
+      "software_configuration": {},
+      "evaluation_result": {
+        "y": 4.373056
+      },
+      "evaluation_detail": {
+        "y": {
+          "evaluations": 4.3730564076512906,
+          "objective_scheme": "average"
+        }
+      },
+      "additional_output": {},
+      "source": "measure",
+      "time": {
+        "tm_year": 2022,
+        "tm_mon": 5,
+        "tm_mday": 7,
+        "tm_hour": 23,
+        "tm_min": 17,
+        "tm_sec": 42,
+        "tm_wday": 5,
+        "tm_yday": 127,
+        "tm_isdst": 1
+      },
+      "uid": "cdcc9ec0-ce85-11ec-b25b-5cff35e3510b"
+    },
+    {
+      "task_parameter": {
+        "scale": 8,
+        "enable_pep": "True",
+        "more_params": "True"
+      },
+      "tuning_parameter": {
+        "busy_spin": "True",
+        "hepnos_num_event_databases": 3,
+        "hepnos_num_product_databases": 14,
+        "hepnos_num_providers": 1,
+        "hepnos_num_rpc_threads": 15,
+        "hepnos_pes_per_node": "2",
+        "hepnos_pool_type": "fifo_wait",
+        "hepnos_progress_thread": "False",
+        "loader_batch_size": 1945,
+        "loader_pes_per_node": "16",
+        "loader_progress_thread": "False",
+        "loader_async": "True",
+        "loader_async_threads": 33,
+        "pep_progress_thread": "False",
+        "pep_num_threads": 7,
+        "pep_ibatch_size": 552,
+        "pep_obatch_size": 864,
+        "pep_pes_per_node": "1",
+        "pep_no_preloading": "False",
+        "pep_no_rdma": "False"
+      },
+      "constants": {},
+      "machine_configuration": {
+        "machine_name": "swing",
+        "amd": {
+          "nodes": 1,
+          "cores": 128
+        }
+      },
+      "software_configuration": {},
+      "evaluation_result": {
+        "y": 4.217011
+      },
+      "evaluation_detail": {
+        "y": {
+          "evaluations": 4.217011440431397,
+          "objective_scheme": "average"
+        }
+      },
+      "additional_output": {},
+      "source": "measure",
+      "time": {
+        "tm_year": 2022,
+        "tm_mon": 5,
+        "tm_mday": 7,
+        "tm_hour": 23,
+        "tm_min": 19,
+        "tm_sec": 21,
+        "tm_wday": 5,
+        "tm_yday": 127,
+        "tm_isdst": 1
+      },
+      "uid": "090e1c70-ce86-11ec-b25b-5cff35e3510b"
+    },
+    {
+      "task_parameter": {
+        "scale": 4,
+        "enable_pep": "True",
+        "more_params": "True"
+      },
+      "tuning_parameter": {
+        "busy_spin": "True",
+        "hepnos_num_event_databases": 11,
+        "hepnos_num_product_databases": 14,
+        "hepnos_num_providers": 8,
+        "hepnos_num_rpc_threads": 1,
+        "hepnos_pes_per_node": "32",
+        "hepnos_pool_type": "fifo_wait",
+        "hepnos_progress_thread": "True",
+        "loader_batch_size": 503,
+        "loader_pes_per_node": "16",
+        "loader_progress_thread": "True",
+        "loader_async": "True",
+        "loader_async_threads": 43,
+        "pep_progress_thread": "False",
+        "pep_num_threads": 17,
+        "pep_ibatch_size": 575,
+        "pep_obatch_size": 746,
+        "pep_pes_per_node": "32",
+        "pep_no_preloading": "False",
+        "pep_no_rdma": "False"
+      },
+      "constants": {},
+      "machine_configuration": {
+        "machine_name": "swing",
+        "amd": {
+          "nodes": 1,
+          "cores": 128
+        }
+      },
+      "software_configuration": {},
+      "evaluation_result": {
+        "y": 4.381226
+      },
+      "evaluation_detail": {
+        "y": {
+          "evaluations": 4.381225760474791,
+          "objective_scheme": "average"
+        }
+      },
+      "additional_output": {},
+      "source": "measure",
+      "time": {
+        "tm_year": 2022,
+        "tm_mon": 5,
+        "tm_mday": 7,
+        "tm_hour": 23,
+        "tm_min": 19,
+        "tm_sec": 21,
+        "tm_wday": 5,
+        "tm_yday": 127,
+        "tm_isdst": 1
+      },
+      "uid": "091128ac-ce86-11ec-b25b-5cff35e3510b"
+    },
+    {
+      "task_parameter": {
+        "scale": 8,
+        "enable_pep": "True",
+        "more_params": "True"
+      },
+      "tuning_parameter": {
+        "busy_spin": "True",
+        "hepnos_num_event_databases": 5,
+        "hepnos_num_product_databases": 16,
+        "hepnos_num_providers": 17,
+        "hepnos_num_rpc_threads": 62,
+        "hepnos_pes_per_node": "32",
+        "hepnos_pool_type": "fifo_wait",
+        "hepnos_progress_thread": "False",
+        "loader_batch_size": 1927,
+        "loader_pes_per_node": "16",
+        "loader_progress_thread": "False",
+        "loader_async": "True",
+        "loader_async_threads": 59,
+        "pep_progress_thread": "False",
+        "pep_num_threads": 17,
+        "pep_ibatch_size": 956,
+        "pep_obatch_size": 646,
+        "pep_pes_per_node": "16",
+        "pep_no_preloading": "False",
+        "pep_no_rdma": "True"
+      },
+      "constants": {},
+      "machine_configuration": {
+        "machine_name": "swing",
+        "amd": {
+          "nodes": 1,
+          "cores": 128
+        }
+      },
+      "software_configuration": {},
+      "evaluation_result": {
+        "y": 4.297434
+      },
+      "evaluation_detail": {
+        "y": {
+          "evaluations": 4.297434067407124,
+          "objective_scheme": "average"
+        }
+      },
+      "additional_output": {},
+      "source": "measure",
+      "time": {
+        "tm_year": 2022,
+        "tm_mon": 5,
+        "tm_mday": 7,
+        "tm_hour": 23,
+        "tm_min": 20,
+        "tm_sec": 51,
+        "tm_wday": 5,
+        "tm_yday": 127,
+        "tm_isdst": 1
+      },
+      "uid": "3e814d00-ce86-11ec-b25b-5cff35e3510b"
+    },
+    {
+      "task_parameter": {
+        "scale": 4,
+        "enable_pep": "True",
+        "more_params": "True"
+      },
+      "tuning_parameter": {
+        "busy_spin": "True",
+        "hepnos_num_event_databases": 4,
+        "hepnos_num_product_databases": 9,
+        "hepnos_num_providers": 28,
+        "hepnos_num_rpc_threads": 44,
+        "hepnos_pes_per_node": "16",
+        "hepnos_pool_type": "fifo",
+        "hepnos_progress_thread": "True",
+        "loader_batch_size": 531,
+        "loader_pes_per_node": "16",
+        "loader_progress_thread": "True",
+        "loader_async": "True",
+        "loader_async_threads": 10,
+        "pep_progress_thread": "False",
+        "pep_num_threads": 30,
+        "pep_ibatch_size": 709,
+        "pep_obatch_size": 24,
+        "pep_pes_per_node": "32",
+        "pep_no_preloading": "False",
+        "pep_no_rdma": "False"
+      },
+      "constants": {},
+      "machine_configuration": {
+        "machine_name": "swing",
+        "amd": {
+          "nodes": 1,
+          "cores": 128
+        }
+      },
+      "software_configuration": {},
+      "evaluation_result": {
+        "y": 4.030205
+      },
+      "evaluation_detail": {
+        "y": {
+          "evaluations": 4.03020497620372,
+          "objective_scheme": "average"
+        }
+      },
+      "additional_output": {},
+      "source": "measure",
+      "time": {
+        "tm_year": 2022,
+        "tm_mon": 5,
+        "tm_mday": 7,
+        "tm_hour": 23,
+        "tm_min": 20,
+        "tm_sec": 51,
+        "tm_wday": 5,
+        "tm_yday": 127,
+        "tm_isdst": 1
+      },
+      "uid": "3e84ffae-ce86-11ec-b25b-5cff35e3510b"
+    },
+    {
+      "task_parameter": {
+        "scale": 8,
+        "enable_pep": "True",
+        "more_params": "True"
+      },
+      "tuning_parameter": {
+        "busy_spin": "True",
+        "hepnos_num_event_databases": 11,
+        "hepnos_num_product_databases": 11,
+        "hepnos_num_providers": 5,
+        "hepnos_num_rpc_threads": 37,
+        "hepnos_pes_per_node": "4",
+        "hepnos_pool_type": "fifo_wait",
+        "hepnos_progress_thread": "True",
+        "loader_batch_size": 793,
+        "loader_pes_per_node": "16",
+        "loader_progress_thread": "False",
+        "loader_async": "False",
+        "loader_async_threads": 42,
+        "pep_progress_thread": "False",
+        "pep_num_threads": 5,
+        "pep_ibatch_size": 551,
+        "pep_obatch_size": 626,
+        "pep_pes_per_node": "32",
+        "pep_no_preloading": "False",
+        "pep_no_rdma": "False"
+      },
+      "constants": {},
+      "machine_configuration": {
+        "machine_name": "swing",
+        "amd": {
+          "nodes": 1,
+          "cores": 128
+        }
+      },
+      "software_configuration": {},
+      "evaluation_result": {
+        "y": 3.845569
+      },
+      "evaluation_detail": {
+        "y": {
+          "evaluations": 3.8455691034140704,
+          "objective_scheme": "average"
+        }
+      },
+      "additional_output": {},
+      "source": "measure",
+      "time": {
+        "tm_year": 2022,
+        "tm_mon": 5,
+        "tm_mday": 7,
+        "tm_hour": 23,
+        "tm_min": 21,
+        "tm_sec": 51,
+        "tm_wday": 5,
+        "tm_yday": 127,
+        "tm_isdst": 1
+      },
+      "uid": "62988604-ce86-11ec-b25b-5cff35e3510b"
+    },
+    {
+      "task_parameter": {
+        "scale": 4,
+        "enable_pep": "True",
+        "more_params": "True"
+      },
+      "tuning_parameter": {
+        "busy_spin": "True",
+        "hepnos_num_event_databases": 13,
+        "hepnos_num_product_databases": 3,
+        "hepnos_num_providers": 14,
+        "hepnos_num_rpc_threads": 5,
+        "hepnos_pes_per_node": "32",
+        "hepnos_pool_type": "fifo_wait",
+        "hepnos_progress_thread": "True",
+        "loader_batch_size": 1899,
+        "loader_pes_per_node": "8",
+        "loader_progress_thread": "False",
+        "loader_async": "True",
+        "loader_async_threads": 5,
+        "pep_progress_thread": "False",
+        "pep_num_threads": 6,
+        "pep_ibatch_size": 796,
+        "pep_obatch_size": 362,
+        "pep_pes_per_node": "8",
+        "pep_no_preloading": "False",
+        "pep_no_rdma": "False"
+      },
+      "constants": {},
+      "machine_configuration": {
+        "machine_name": "swing",
+        "amd": {
+          "nodes": 1,
+          "cores": 128
+        }
+      },
+      "software_configuration": {},
+      "evaluation_result": {
+        "y": 4.733654
+      },
+      "evaluation_detail": {
+        "y": {
+          "evaluations": 4.733653893393438,
+          "objective_scheme": "average"
+        }
+      },
+      "additional_output": {},
+      "source": "measure",
+      "time": {
+        "tm_year": 2022,
+        "tm_mon": 5,
+        "tm_mday": 7,
+        "tm_hour": 23,
+        "tm_min": 21,
+        "tm_sec": 51,
+        "tm_wday": 5,
+        "tm_yday": 127,
+        "tm_isdst": 1
+      },
+      "uid": "629ba460-ce86-11ec-b25b-5cff35e3510b"
+    },
+    {
+      "task_parameter": {
+        "scale": 8,
+        "enable_pep": "True",
+        "more_params": "True"
+      },
+      "tuning_parameter": {
+        "busy_spin": "False",
+        "hepnos_num_event_databases": 2,
+        "hepnos_num_product_databases": 2,
+        "hepnos_num_providers": 19,
+        "hepnos_num_rpc_threads": 15,
+        "hepnos_pes_per_node": "32",
+        "hepnos_pool_type": "fifo",
+        "hepnos_progress_thread": "True",
+        "loader_batch_size": 1233,
+        "loader_pes_per_node": "16",
+        "loader_progress_thread": "True",
+        "loader_async": "False",
+        "loader_async_threads": 45,
+        "pep_progress_thread": "False",
+        "pep_num_threads": 1,
+        "pep_ibatch_size": 681,
+        "pep_obatch_size": 214,
+        "pep_pes_per_node": "16",
+        "pep_no_preloading": "False",
+        "pep_no_rdma": "False"
+      },
+      "constants": {},
+      "machine_configuration": {
+        "machine_name": "swing",
+        "amd": {
+          "nodes": 1,
+          "cores": 128
+        }
+      },
+      "software_configuration": {},
+      "evaluation_result": {
+        "y": 4.061625
+      },
+      "evaluation_detail": {
+        "y": {
+          "evaluations": 4.061624919332047,
+          "objective_scheme": "average"
+        }
+      },
+      "additional_output": {},
+      "source": "measure",
+      "time": {
+        "tm_year": 2022,
+        "tm_mon": 5,
+        "tm_mday": 7,
+        "tm_hour": 23,
+        "tm_min": 23,
+        "tm_sec": 11,
+        "tm_wday": 5,
+        "tm_yday": 127,
+        "tm_isdst": 1
+      },
+      "uid": "920ec902-ce86-11ec-b25b-5cff35e3510b"
+    },
+    {
+      "task_parameter": {
+        "scale": 4,
+        "enable_pep": "True",
+        "more_params": "True"
+      },
+      "tuning_parameter": {
+        "busy_spin": "False",
+        "hepnos_num_event_databases": 12,
+        "hepnos_num_product_databases": 13,
+        "hepnos_num_providers": 5,
+        "hepnos_num_rpc_threads": 12,
+        "hepnos_pes_per_node": "32",
+        "hepnos_pool_type": "fifo_wait",
+        "hepnos_progress_thread": "False",
+        "loader_batch_size": 1115,
+        "loader_pes_per_node": "16",
+        "loader_progress_thread": "False",
+        "loader_async": "True",
+        "loader_async_threads": 31,
+        "pep_progress_thread": "True",
+        "pep_num_threads": 2,
+        "pep_ibatch_size": 901,
+        "pep_obatch_size": 89,
+        "pep_pes_per_node": "16",
+        "pep_no_preloading": "False",
+        "pep_no_rdma": "False"
+      },
+      "constants": {},
+      "machine_configuration": {
+        "machine_name": "swing",
+        "amd": {
+          "nodes": 1,
+          "cores": 128
+        }
+      },
+      "software_configuration": {},
+      "evaluation_result": {
+        "y": 3.540916
+      },
+      "evaluation_detail": {
+        "y": {
+          "evaluations": 3.5409164689876036,
+          "objective_scheme": "average"
+        }
+      },
+      "additional_output": {},
+      "source": "measure",
+      "time": {
+        "tm_year": 2022,
+        "tm_mon": 5,
+        "tm_mday": 7,
+        "tm_hour": 23,
+        "tm_min": 23,
+        "tm_sec": 11,
+        "tm_wday": 5,
+        "tm_yday": 127,
+        "tm_isdst": 1
+      },
+      "uid": "9211fcb2-ce86-11ec-b25b-5cff35e3510b"
+    },
+    {
+      "task_parameter": {
+        "scale": 8,
+        "enable_pep": "True",
+        "more_params": "True"
+      },
+      "tuning_parameter": {
+        "busy_spin": "False",
+        "hepnos_num_event_databases": 4,
+        "hepnos_num_product_databases": 6,
+        "hepnos_num_providers": 2,
+        "hepnos_num_rpc_threads": 45,
+        "hepnos_pes_per_node": "2",
+        "hepnos_pool_type": "fifo",
+        "hepnos_progress_thread": "True",
+        "loader_batch_size": 1664,
+        "loader_pes_per_node": "16",
+        "loader_progress_thread": "True",
+        "loader_async": "True",
+        "loader_async_threads": 11,
+        "pep_progress_thread": "True",
+        "pep_num_threads": 2,
+        "pep_ibatch_size": 98,
+        "pep_obatch_size": 242,
+        "pep_pes_per_node": "8",
+        "pep_no_preloading": "False",
+        "pep_no_rdma": "False"
+      },
+      "constants": {},
+      "machine_configuration": {
+        "machine_name": "swing",
+        "amd": {
+          "nodes": 1,
+          "cores": 128
+        }
+      },
+      "software_configuration": {},
+      "evaluation_result": {
+        "y": 3.714068
+      },
+      "evaluation_detail": {
+        "y": {
+          "evaluations": 3.714068378448169,
+          "objective_scheme": "average"
+        }
+      },
+      "additional_output": {},
+      "source": "measure",
+      "time": {
+        "tm_year": 2022,
+        "tm_mon": 5,
+        "tm_mday": 7,
+        "tm_hour": 23,
+        "tm_min": 24,
+        "tm_sec": 27,
+        "tm_wday": 5,
+        "tm_yday": 127,
+        "tm_isdst": 1
+      },
+      "uid": "bf65687a-ce86-11ec-b25b-5cff35e3510b"
+    },
+    {
+      "task_parameter": {
+        "scale": 4,
+        "enable_pep": "True",
+        "more_params": "True"
+      },
+      "tuning_parameter": {
+        "busy_spin": "True",
+        "hepnos_num_event_databases": 6,
+        "hepnos_num_product_databases": 6,
+        "hepnos_num_providers": 19,
+        "hepnos_num_rpc_threads": 46,
+        "hepnos_pes_per_node": "2",
+        "hepnos_pool_type": "fifo_wait",
+        "hepnos_progress_thread": "True",
+        "loader_batch_size": 1003,
+        "loader_pes_per_node": "1",
+        "loader_progress_thread": "True",
+        "loader_async": "True",
+        "loader_async_threads": 21,
+        "pep_progress_thread": "True",
+        "pep_num_threads": 26,
+        "pep_ibatch_size": 348,
+        "pep_obatch_size": 446,
+        "pep_pes_per_node": "16",
+        "pep_no_preloading": "True",
+        "pep_no_rdma": "False"
+      },
+      "constants": {},
+      "machine_configuration": {
+        "machine_name": "swing",
+        "amd": {
+          "nodes": 1,
+          "cores": 128
+        }
+      },
+      "software_configuration": {},
+      "evaluation_result": {
+        "y": 4.351177
+      },
+      "evaluation_detail": {
+        "y": {
+          "evaluations": 4.351176727641899,
+          "objective_scheme": "average"
+        }
+      },
+      "additional_output": {},
+      "source": "measure",
+      "time": {
+        "tm_year": 2022,
+        "tm_mon": 5,
+        "tm_mday": 7,
+        "tm_hour": 23,
+        "tm_min": 24,
+        "tm_sec": 27,
+        "tm_wday": 5,
+        "tm_yday": 127,
+        "tm_isdst": 1
+      },
+      "uid": "bf68ed74-ce86-11ec-b25b-5cff35e3510b"
+    },
+    {
+      "task_parameter": {
+        "scale": 8,
+        "enable_pep": "True",
+        "more_params": "True"
+      },
+      "tuning_parameter": {
+        "busy_spin": "True",
+        "hepnos_num_event_databases": 6,
+        "hepnos_num_product_databases": 6,
+        "hepnos_num_providers": 18,
+        "hepnos_num_rpc_threads": 47,
+        "hepnos_pes_per_node": "32",
+        "hepnos_pool_type": "fifo",
+        "hepnos_progress_thread": "False",
+        "loader_batch_size": 1317,
+        "loader_pes_per_node": "16",
+        "loader_progress_thread": "False",
+        "loader_async": "False",
+        "loader_async_threads": 58,
+        "pep_progress_thread": "True",
+        "pep_num_threads": 2,
+        "pep_ibatch_size": 798,
+        "pep_obatch_size": 1001,
+        "pep_pes_per_node": "8",
+        "pep_no_preloading": "False",
+        "pep_no_rdma": "False"
+      },
+      "constants": {},
+      "machine_configuration": {
+        "machine_name": "swing",
+        "amd": {
+          "nodes": 1,
+          "cores": 128
+        }
+      },
+      "software_configuration": {},
+      "evaluation_result": {
+        "y": 3.835023
+      },
+      "evaluation_detail": {
+        "y": {
+          "evaluations": 3.8350229037671943,
+          "objective_scheme": "average"
+        }
+      },
+      "additional_output": {},
+      "source": "measure",
+      "time": {
+        "tm_year": 2022,
+        "tm_mon": 5,
+        "tm_mday": 7,
+        "tm_hour": 23,
+        "tm_min": 25,
+        "tm_sec": 42,
+        "tm_wday": 5,
+        "tm_yday": 127,
+        "tm_isdst": 1
+      },
+      "uid": "ec330da8-ce86-11ec-b25b-5cff35e3510b"
+    },
+    {
+      "task_parameter": {
+        "scale": 4,
+        "enable_pep": "True",
+        "more_params": "True"
+      },
+      "tuning_parameter": {
+        "busy_spin": "False",
+        "hepnos_num_event_databases": 15,
+        "hepnos_num_product_databases": 8,
+        "hepnos_num_providers": 8,
+        "hepnos_num_rpc_threads": 15,
+        "hepnos_pes_per_node": "1",
+        "hepnos_pool_type": "fifo_wait",
+        "hepnos_progress_thread": "False",
+        "loader_batch_size": 1858,
+        "loader_pes_per_node": "2",
+        "loader_progress_thread": "False",
+        "loader_async": "True",
+        "loader_async_threads": 56,
+        "pep_progress_thread": "False",
+        "pep_num_threads": 29,
+        "pep_ibatch_size": 434,
+        "pep_obatch_size": 579,
+        "pep_pes_per_node": "2",
+        "pep_no_preloading": "True",
+        "pep_no_rdma": "False"
+      },
+      "constants": {},
+      "machine_configuration": {
+        "machine_name": "swing",
+        "amd": {
+          "nodes": 1,
+          "cores": 128
+        }
+      },
+      "software_configuration": {},
+      "evaluation_result": {
+        "y": 4.244891
+      },
+      "evaluation_detail": {
+        "y": {
+          "evaluations": 4.244891356827807,
+          "objective_scheme": "average"
+        }
+      },
+      "additional_output": {},
+      "source": "measure",
+      "time": {
+        "tm_year": 2022,
+        "tm_mon": 5,
+        "tm_mday": 7,
+        "tm_hour": 23,
+        "tm_min": 25,
+        "tm_sec": 42,
+        "tm_wday": 5,
+        "tm_yday": 127,
+        "tm_isdst": 1
+      },
+      "uid": "ec3671e6-ce86-11ec-b25b-5cff35e3510b"
+    },
+    {
+      "task_parameter": {
+        "scale": 8,
+        "enable_pep": "True",
+        "more_params": "True"
+      },
+      "tuning_parameter": {
+        "busy_spin": "True",
+        "hepnos_num_event_databases": 8,
+        "hepnos_num_product_databases": 10,
+        "hepnos_num_providers": 8,
+        "hepnos_num_rpc_threads": 60,
+        "hepnos_pes_per_node": "4",
+        "hepnos_pool_type": "fifo",
+        "hepnos_progress_thread": "True",
+        "loader_batch_size": 1664,
+        "loader_pes_per_node": "16",
+        "loader_progress_thread": "False",
+        "loader_async": "True",
+        "loader_async_threads": 4,
+        "pep_progress_thread": "False",
+        "pep_num_threads": 29,
+        "pep_ibatch_size": 578,
+        "pep_obatch_size": 38,
+        "pep_pes_per_node": "32",
+        "pep_no_preloading": "True",
+        "pep_no_rdma": "False"
+      },
+      "constants": {},
+      "machine_configuration": {
+        "machine_name": "swing",
+        "amd": {
+          "nodes": 1,
+          "cores": 128
+        }
+      },
+      "software_configuration": {},
+      "evaluation_result": {
+        "y": 4.510452
+      },
+      "evaluation_detail": {
+        "y": {
+          "evaluations": 4.510451577572496,
+          "objective_scheme": "average"
+        }
+      },
+      "additional_output": {},
+      "source": "measure",
+      "time": {
+        "tm_year": 2022,
+        "tm_mon": 5,
+        "tm_mday": 7,
+        "tm_hour": 23,
+        "tm_min": 27,
+        "tm_sec": 41,
+        "tm_wday": 5,
+        "tm_yday": 127,
+        "tm_isdst": 1
+      },
+      "uid": "333ff760-ce87-11ec-b25b-5cff35e3510b"
+    },
+    {
+      "task_parameter": {
+        "scale": 4,
+        "enable_pep": "True",
+        "more_params": "True"
+      },
+      "tuning_parameter": {
+        "busy_spin": "True",
+        "hepnos_num_event_databases": 10,
+        "hepnos_num_product_databases": 11,
+        "hepnos_num_providers": 17,
+        "hepnos_num_rpc_threads": 56,
+        "hepnos_pes_per_node": "2",
+        "hepnos_pool_type": "fifo",
+        "hepnos_progress_thread": "False",
+        "loader_batch_size": 1718,
+        "loader_pes_per_node": "4",
+        "loader_progress_thread": "False",
+        "loader_async": "False",
+        "loader_async_threads": 59,
+        "pep_progress_thread": "True",
+        "pep_num_threads": 30,
+        "pep_ibatch_size": 643,
+        "pep_obatch_size": 170,
+        "pep_pes_per_node": "16",
+        "pep_no_preloading": "True",
+        "pep_no_rdma": "True"
+      },
+      "constants": {},
+      "machine_configuration": {
+        "machine_name": "swing",
+        "amd": {
+          "nodes": 1,
+          "cores": 128
+        }
+      },
+      "software_configuration": {},
+      "evaluation_result": {
+        "y": 3.368631
+      },
+      "evaluation_detail": {
+        "y": {
+          "evaluations": 3.368631071847318,
+          "objective_scheme": "average"
+        }
+      },
+      "additional_output": {},
+      "source": "measure",
+      "time": {
+        "tm_year": 2022,
+        "tm_mon": 5,
+        "tm_mday": 7,
+        "tm_hour": 23,
+        "tm_min": 27,
+        "tm_sec": 41,
+        "tm_wday": 5,
+        "tm_yday": 127,
+        "tm_isdst": 1
+      },
+      "uid": "334351bc-ce87-11ec-b25b-5cff35e3510b"
+    },
+    {
+      "task_parameter": {
+        "scale": 8,
+        "enable_pep": "True",
+        "more_params": "True"
+      },
+      "tuning_parameter": {
+        "busy_spin": "True",
+        "hepnos_num_event_databases": 3,
+        "hepnos_num_product_databases": 16,
+        "hepnos_num_providers": 7,
+        "hepnos_num_rpc_threads": 52,
+        "hepnos_pes_per_node": "1",
+        "hepnos_pool_type": "fifo",
+        "hepnos_progress_thread": "True",
+        "loader_batch_size": 1253,
+        "loader_pes_per_node": "16",
+        "loader_progress_thread": "False",
+        "loader_async": "False",
+        "loader_async_threads": 17,
+        "pep_progress_thread": "False",
+        "pep_num_threads": 6,
+        "pep_ibatch_size": 972,
+        "pep_obatch_size": 400,
+        "pep_pes_per_node": "16",
+        "pep_no_preloading": "False",
+        "pep_no_rdma": "True"
+      },
+      "constants": {},
+      "machine_configuration": {
+        "machine_name": "swing",
+        "amd": {
+          "nodes": 1,
+          "cores": 128
+        }
+      },
+      "software_configuration": {},
+      "evaluation_result": {
+        "y": 4.213611
+      },
+      "evaluation_detail": {
+        "y": {
+          "evaluations": 4.213611069683571,
+          "objective_scheme": "average"
+        }
+      },
+      "additional_output": {},
+      "source": "measure",
+      "time": {
+        "tm_year": 2022,
+        "tm_mon": 5,
+        "tm_mday": 7,
+        "tm_hour": 23,
+        "tm_min": 29,
+        "tm_sec": 30,
+        "tm_wday": 5,
+        "tm_yday": 127,
+        "tm_isdst": 1
+      },
+      "uid": "73cd41c0-ce87-11ec-b25b-5cff35e3510b"
+    },
+    {
+      "task_parameter": {
+        "scale": 4,
+        "enable_pep": "True",
+        "more_params": "True"
+      },
+      "tuning_parameter": {
+        "busy_spin": "True",
+        "hepnos_num_event_databases": 8,
+        "hepnos_num_product_databases": 10,
+        "hepnos_num_providers": 1,
+        "hepnos_num_rpc_threads": 9,
+        "hepnos_pes_per_node": "4",
+        "hepnos_pool_type": "fifo",
+        "hepnos_progress_thread": "False",
+        "loader_batch_size": 1741,
+        "loader_pes_per_node": "8",
+        "loader_progress_thread": "True",
+        "loader_async": "False",
+        "loader_async_threads": 47,
+        "pep_progress_thread": "False",
+        "pep_num_threads": 30,
+        "pep_ibatch_size": 195,
+        "pep_obatch_size": 945,
+        "pep_pes_per_node": "32",
+        "pep_no_preloading": "False",
+        "pep_no_rdma": "False"
+      },
+      "constants": {},
+      "machine_configuration": {
+        "machine_name": "swing",
+        "amd": {
+          "nodes": 1,
+          "cores": 128
+        }
+      },
+      "software_configuration": {},
+      "evaluation_result": {
+        "y": 3.376656
+      },
+      "evaluation_detail": {
+        "y": {
+          "evaluations": 3.376655949876664,
+          "objective_scheme": "average"
+        }
+      },
+      "additional_output": {},
+      "source": "measure",
+      "time": {
+        "tm_year": 2022,
+        "tm_mon": 5,
+        "tm_mday": 7,
+        "tm_hour": 23,
+        "tm_min": 29,
+        "tm_sec": 30,
+        "tm_wday": 5,
+        "tm_yday": 127,
+        "tm_isdst": 1
+      },
+      "uid": "73d09c44-ce87-11ec-b25b-5cff35e3510b"
+    },
+    {
+      "task_parameter": {
+        "scale": 8,
+        "enable_pep": "True",
+        "more_params": "True"
+      },
+      "tuning_parameter": {
+        "busy_spin": "True",
+        "hepnos_num_event_databases": 10,
+        "hepnos_num_product_databases": 3,
+        "hepnos_num_providers": 12,
+        "hepnos_num_rpc_threads": 52,
+        "hepnos_pes_per_node": "1",
+        "hepnos_pool_type": "fifo",
+        "hepnos_progress_thread": "False",
+        "loader_batch_size": 1893,
+        "loader_pes_per_node": "2",
+        "loader_progress_thread": "True",
+        "loader_async": "False",
+        "loader_async_threads": 30,
+        "pep_progress_thread": "False",
+        "pep_num_threads": 31,
+        "pep_ibatch_size": 844,
+        "pep_obatch_size": 24,
+        "pep_pes_per_node": "1",
+        "pep_no_preloading": "False",
+        "pep_no_rdma": "False"
+      },
+      "constants": {},
+      "machine_configuration": {
+        "machine_name": "swing",
+        "amd": {
+          "nodes": 1,
+          "cores": 128
+        }
+      },
+      "software_configuration": {},
+      "evaluation_result": {
+        "y": 5.054747
+      },
+      "evaluation_detail": {
+        "y": {
+          "evaluations": 5.0547467401848385,
+          "objective_scheme": "average"
+        }
+      },
+      "additional_output": {},
+      "source": "measure",
+      "time": {
+        "tm_year": 2022,
+        "tm_mon": 5,
+        "tm_mday": 7,
+        "tm_hour": 23,
+        "tm_min": 32,
+        "tm_sec": 40,
+        "tm_wday": 5,
+        "tm_yday": 127,
+        "tm_isdst": 1
+      },
+      "uid": "e5854eb6-ce87-11ec-b25b-5cff35e3510b"
+    },
+    {
+      "task_parameter": {
+        "scale": 4,
+        "enable_pep": "True",
+        "more_params": "True"
+      },
+      "tuning_parameter": {
+        "busy_spin": "False",
+        "hepnos_num_event_databases": 1,
+        "hepnos_num_product_databases": 12,
+        "hepnos_num_providers": 27,
+        "hepnos_num_rpc_threads": 23,
+        "hepnos_pes_per_node": "2",
+        "hepnos_pool_type": "fifo",
+        "hepnos_progress_thread": "True",
+        "loader_batch_size": 1488,
+        "loader_pes_per_node": "2",
+        "loader_progress_thread": "True",
+        "loader_async": "True",
+        "loader_async_threads": 60,
+        "pep_progress_thread": "True",
+        "pep_num_threads": 29,
+        "pep_ibatch_size": 436,
+        "pep_obatch_size": 241,
+        "pep_pes_per_node": "16",
+        "pep_no_preloading": "False",
+        "pep_no_rdma": "False"
+      },
+      "constants": {},
+      "machine_configuration": {
+        "machine_name": "swing",
+        "amd": {
+          "nodes": 1,
+          "cores": 128
+        }
+      },
+      "software_configuration": {},
+      "evaluation_result": {
+        "y": 4.81166
+      },
+      "evaluation_detail": {
+        "y": {
+          "evaluations": 4.811659575504564,
+          "objective_scheme": "average"
+        }
+      },
+      "additional_output": {},
+      "source": "measure",
+      "time": {
+        "tm_year": 2022,
+        "tm_mon": 5,
+        "tm_mday": 7,
+        "tm_hour": 23,
+        "tm_min": 32,
+        "tm_sec": 40,
+        "tm_wday": 5,
+        "tm_yday": 127,
+        "tm_isdst": 1
+      },
+      "uid": "e588fc0a-ce87-11ec-b25b-5cff35e3510b"
+    },
+    {
+      "task_parameter": {
+        "scale": 8,
+        "enable_pep": "True",
+        "more_params": "True"
+      },
+      "tuning_parameter": {
+        "busy_spin": "True",
+        "hepnos_num_event_databases": 15,
+        "hepnos_num_product_databases": 14,
+        "hepnos_num_providers": 10,
+        "hepnos_num_rpc_threads": 58,
+        "hepnos_pes_per_node": "32",
+        "hepnos_pool_type": "fifo_wait",
+        "hepnos_progress_thread": "True",
+        "loader_batch_size": 2016,
+        "loader_pes_per_node": "16",
+        "loader_progress_thread": "True",
+        "loader_async": "True",
+        "loader_async_threads": 23,
+        "pep_progress_thread": "False",
+        "pep_num_threads": 2,
+        "pep_ibatch_size": 408,
+        "pep_obatch_size": 164,
+        "pep_pes_per_node": "1",
+        "pep_no_preloading": "False",
+        "pep_no_rdma": "False"
+      },
+      "constants": {},
+      "machine_configuration": {
+        "machine_name": "swing",
+        "amd": {
+          "nodes": 1,
+          "cores": 128
+        }
+      },
+      "software_configuration": {},
+      "evaluation_result": {
+        "y": 3.930428
+      },
+      "evaluation_detail": {
+        "y": {
+          "evaluations": 3.930428498582324,
+          "objective_scheme": "average"
+        }
+      },
+      "additional_output": {},
+      "source": "measure",
+      "time": {
+        "tm_year": 2022,
+        "tm_mon": 5,
+        "tm_mday": 7,
+        "tm_hour": 23,
+        "tm_min": 33,
+        "tm_sec": 51,
+        "tm_wday": 5,
+        "tm_yday": 127,
+        "tm_isdst": 1
+      },
+      "uid": "0fba92cc-ce88-11ec-b25b-5cff35e3510b"
+    },
+    {
+      "task_parameter": {
+        "scale": 4,
+        "enable_pep": "True",
+        "more_params": "True"
+      },
+      "tuning_parameter": {
+        "busy_spin": "True",
+        "hepnos_num_event_databases": 7,
+        "hepnos_num_product_databases": 7,
+        "hepnos_num_providers": 15,
+        "hepnos_num_rpc_threads": 19,
+        "hepnos_pes_per_node": "2",
+        "hepnos_pool_type": "fifo_wait",
+        "hepnos_progress_thread": "True",
+        "loader_batch_size": 1489,
+        "loader_pes_per_node": "8",
+        "loader_progress_thread": "True",
+        "loader_async": "False",
+        "loader_async_threads": 58,
+        "pep_progress_thread": "True",
+        "pep_num_threads": 31,
+        "pep_ibatch_size": 793,
+        "pep_obatch_size": 108,
+        "pep_pes_per_node": "8",
+        "pep_no_preloading": "True",
+        "pep_no_rdma": "False"
+      },
+      "constants": {},
+      "machine_configuration": {
+        "machine_name": "swing",
+        "amd": {
+          "nodes": 1,
+          "cores": 128
+        }
+      },
+      "software_configuration": {},
+      "evaluation_result": {
+        "y": 3.884484
+      },
+      "evaluation_detail": {
+        "y": {
+          "evaluations": 3.8844843170859065,
+          "objective_scheme": "average"
+        }
+      },
+      "additional_output": {},
+      "source": "measure",
+      "time": {
+        "tm_year": 2022,
+        "tm_mon": 5,
+        "tm_mday": 7,
+        "tm_hour": 23,
+        "tm_min": 33,
+        "tm_sec": 51,
+        "tm_wday": 5,
+        "tm_yday": 127,
+        "tm_isdst": 1
+      },
+      "uid": "0fbdfc96-ce88-11ec-b25b-5cff35e3510b"
+    },
+    {
+      "task_parameter": {
+        "scale": 8,
+        "enable_pep": "True",
+        "more_params": "True"
+      },
+      "tuning_parameter": {
+        "busy_spin": "True",
+        "hepnos_num_event_databases": 9,
+        "hepnos_num_product_databases": 8,
+        "hepnos_num_providers": 3,
+        "hepnos_num_rpc_threads": 13,
+        "hepnos_pes_per_node": "32",
+        "hepnos_pool_type": "fifo",
+        "hepnos_progress_thread": "False",
+        "loader_batch_size": 1307,
+        "loader_pes_per_node": "4",
+        "loader_progress_thread": "False",
+        "loader_async": "False",
+        "loader_async_threads": 60,
+        "pep_progress_thread": "False",
+        "pep_num_threads": 1,
+        "pep_ibatch_size": 560,
+        "pep_obatch_size": 743,
+        "pep_pes_per_node": "8",
+        "pep_no_preloading": "False",
+        "pep_no_rdma": "False"
+      },
+      "constants": {},
+      "machine_configuration": {
+        "machine_name": "swing",
+        "amd": {
+          "nodes": 1,
+          "cores": 128
+        }
+      },
+      "software_configuration": {},
+      "evaluation_result": {
+        "y": 4.602588
+      },
+      "evaluation_detail": {
+        "y": {
+          "evaluations": 4.6025880835063955,
+          "objective_scheme": "average"
+        }
+      },
+      "additional_output": {},
+      "source": "measure",
+      "time": {
+        "tm_year": 2022,
+        "tm_mon": 5,
+        "tm_mday": 7,
+        "tm_hour": 23,
+        "tm_min": 36,
+        "tm_sec": 0,
+        "tm_wday": 5,
+        "tm_yday": 127,
+        "tm_isdst": 1
+      },
+      "uid": "5c635b04-ce88-11ec-b25b-5cff35e3510b"
+    },
+    {
+      "task_parameter": {
+        "scale": 4,
+        "enable_pep": "True",
+        "more_params": "True"
+      },
+      "tuning_parameter": {
+        "busy_spin": "True",
+        "hepnos_num_event_databases": 8,
+        "hepnos_num_product_databases": 7,
+        "hepnos_num_providers": 12,
+        "hepnos_num_rpc_threads": 52,
+        "hepnos_pes_per_node": "4",
+        "hepnos_pool_type": "fifo_wait",
+        "hepnos_progress_thread": "False",
+        "loader_batch_size": 732,
+        "loader_pes_per_node": "8",
+        "loader_progress_thread": "False",
+        "loader_async": "False",
+        "loader_async_threads": 56,
+        "pep_progress_thread": "True",
+        "pep_num_threads": 30,
+        "pep_ibatch_size": 121,
+        "pep_obatch_size": 923,
+        "pep_pes_per_node": "32",
+        "pep_no_preloading": "False",
+        "pep_no_rdma": "False"
+      },
+      "constants": {},
+      "machine_configuration": {
+        "machine_name": "swing",
+        "amd": {
+          "nodes": 1,
+          "cores": 128
+        }
+      },
+      "software_configuration": {},
+      "evaluation_result": {
+        "y": 4.181851
+      },
+      "evaluation_detail": {
+        "y": {
+          "evaluations": 4.181850628195264,
+          "objective_scheme": "average"
+        }
+      },
+      "additional_output": {},
+      "source": "measure",
+      "time": {
+        "tm_year": 2022,
+        "tm_mon": 5,
+        "tm_mday": 7,
+        "tm_hour": 23,
+        "tm_min": 36,
+        "tm_sec": 0,
+        "tm_wday": 5,
+        "tm_yday": 127,
+        "tm_isdst": 1
+      },
+      "uid": "5c67315c-ce88-11ec-b25b-5cff35e3510b"
+    },
+    {
+      "task_parameter": {
+        "scale": 8,
+        "enable_pep": "True",
+        "more_params": "True"
+      },
+      "tuning_parameter": {
+        "busy_spin": "True",
+        "hepnos_num_event_databases": 6,
+        "hepnos_num_product_databases": 7,
+        "hepnos_num_providers": 22,
+        "hepnos_num_rpc_threads": 39,
+        "hepnos_pes_per_node": "1",
+        "hepnos_pool_type": "fifo",
+        "hepnos_progress_thread": "True",
+        "loader_batch_size": 1744,
+        "loader_pes_per_node": "16",
+        "loader_progress_thread": "True",
+        "loader_async": "False",
+        "loader_async_threads": 8,
+        "pep_progress_thread": "True",
+        "pep_num_threads": 2,
+        "pep_ibatch_size": 929,
+        "pep_obatch_size": 94,
+        "pep_pes_per_node": "16",
+        "pep_no_preloading": "False",
+        "pep_no_rdma": "True"
+      },
+      "constants": {},
+      "machine_configuration": {
+        "machine_name": "swing",
+        "amd": {
+          "nodes": 1,
+          "cores": 128
+        }
+      },
+      "software_configuration": {},
+      "evaluation_result": {
+        "y": 3.656133
+      },
+      "evaluation_detail": {
+        "y": {
+          "evaluations": 3.6561333327187016,
+          "objective_scheme": "average"
+        }
+      },
+      "additional_output": {},
+      "source": "measure",
+      "time": {
+        "tm_year": 2022,
+        "tm_mon": 5,
+        "tm_mday": 7,
+        "tm_hour": 23,
+        "tm_min": 37,
+        "tm_sec": 52,
+        "tm_wday": 5,
+        "tm_yday": 127,
+        "tm_isdst": 1
+      },
+      "uid": "9f408f82-ce88-11ec-b25b-5cff35e3510b"
+    },
+    {
+      "task_parameter": {
+        "scale": 4,
+        "enable_pep": "True",
+        "more_params": "True"
+      },
+      "tuning_parameter": {
+        "busy_spin": "False",
+        "hepnos_num_event_databases": 4,
+        "hepnos_num_product_databases": 12,
+        "hepnos_num_providers": 1,
+        "hepnos_num_rpc_threads": 43,
+        "hepnos_pes_per_node": "1",
+        "hepnos_pool_type": "fifo_wait",
+        "hepnos_progress_thread": "True",
+        "loader_batch_size": 1647,
+        "loader_pes_per_node": "8",
+        "loader_progress_thread": "True",
+        "loader_async": "False",
+        "loader_async_threads": 32,
+        "pep_progress_thread": "False",
+        "pep_num_threads": 22,
+        "pep_ibatch_size": 914,
+        "pep_obatch_size": 478,
+        "pep_pes_per_node": "8",
+        "pep_no_preloading": "True",
+        "pep_no_rdma": "False"
+      },
+      "constants": {},
+      "machine_configuration": {
+        "machine_name": "swing",
+        "amd": {
+          "nodes": 1,
+          "cores": 128
+        }
+      },
+      "software_configuration": {},
+      "evaluation_result": {
+        "y": 3.764401
+      },
+      "evaluation_detail": {
+        "y": {
+          "evaluations": 3.7644010490616324,
+          "objective_scheme": "average"
+        }
+      },
+      "additional_output": {},
+      "source": "measure",
+      "time": {
+        "tm_year": 2022,
+        "tm_mon": 5,
+        "tm_mday": 7,
+        "tm_hour": 23,
+        "tm_min": 37,
+        "tm_sec": 52,
+        "tm_wday": 5,
+        "tm_yday": 127,
+        "tm_isdst": 1
+      },
+      "uid": "9f44269c-ce88-11ec-b25b-5cff35e3510b"
+    },
+    {
+      "task_parameter": {
+        "scale": 8,
+        "enable_pep": "True",
+        "more_params": "True"
+      },
+      "tuning_parameter": {
+        "busy_spin": "True",
+        "hepnos_num_event_databases": 4,
+        "hepnos_num_product_databases": 11,
+        "hepnos_num_providers": 9,
+        "hepnos_num_rpc_threads": 25,
+        "hepnos_pes_per_node": "32",
+        "hepnos_pool_type": "fifo_wait",
+        "hepnos_progress_thread": "False",
+        "loader_batch_size": 1376,
+        "loader_pes_per_node": "16",
+        "loader_progress_thread": "False",
+        "loader_async": "True",
+        "loader_async_threads": 29,
+        "pep_progress_thread": "False",
+        "pep_num_threads": 1,
+        "pep_ibatch_size": 174,
+        "pep_obatch_size": 13,
+        "pep_pes_per_node": "32",
+        "pep_no_preloading": "False",
+        "pep_no_rdma": "False"
+      },
+      "constants": {},
+      "machine_configuration": {
+        "machine_name": "swing",
+        "amd": {
+          "nodes": 1,
+          "cores": 128
+        }
+      },
+      "software_configuration": {},
+      "evaluation_result": {
+        "y": 3.809994
+      },
+      "evaluation_detail": {
+        "y": {
+          "evaluations": 3.8099939291126637,
+          "objective_scheme": "average"
+        }
+      },
+      "additional_output": {},
+      "source": "measure",
+      "time": {
+        "tm_year": 2022,
+        "tm_mon": 5,
+        "tm_mday": 7,
+        "tm_hour": 23,
+        "tm_min": 39,
+        "tm_sec": 11,
+        "tm_wday": 5,
+        "tm_yday": 127,
+        "tm_isdst": 1
+      },
+      "uid": "ce4b1108-ce88-11ec-b25b-5cff35e3510b"
+    },
+    {
+      "task_parameter": {
+        "scale": 4,
+        "enable_pep": "True",
+        "more_params": "True"
+      },
+      "tuning_parameter": {
+        "busy_spin": "True",
+        "hepnos_num_event_databases": 5,
+        "hepnos_num_product_databases": 6,
+        "hepnos_num_providers": 13,
+        "hepnos_num_rpc_threads": 52,
+        "hepnos_pes_per_node": "2",
+        "hepnos_pool_type": "fifo_wait",
+        "hepnos_progress_thread": "False",
+        "loader_batch_size": 1718,
+        "loader_pes_per_node": "4",
+        "loader_progress_thread": "False",
+        "loader_async": "True",
+        "loader_async_threads": 52,
+        "pep_progress_thread": "False",
+        "pep_num_threads": 27,
+        "pep_ibatch_size": 750,
+        "pep_obatch_size": 892,
+        "pep_pes_per_node": "32",
+        "pep_no_preloading": "True",
+        "pep_no_rdma": "False"
+      },
+      "constants": {},
+      "machine_configuration": {
+        "machine_name": "swing",
+        "amd": {
+          "nodes": 1,
+          "cores": 128
+        }
+      },
+      "software_configuration": {},
+      "evaluation_result": {
+        "y": 2.947825
+      },
+      "evaluation_detail": {
+        "y": {
+          "evaluations": 2.9478247620753706,
+          "objective_scheme": "average"
+        }
+      },
+      "additional_output": {},
+      "source": "measure",
+      "time": {
+        "tm_year": 2022,
+        "tm_mon": 5,
+        "tm_mday": 7,
+        "tm_hour": 23,
+        "tm_min": 39,
+        "tm_sec": 11,
+        "tm_wday": 5,
+        "tm_yday": 127,
+        "tm_isdst": 1
+      },
+      "uid": "ce4ea9d0-ce88-11ec-b25b-5cff35e3510b"
+    },
+    {
+      "task_parameter": {
+        "scale": 8,
+        "enable_pep": "True",
+        "more_params": "True"
+      },
+      "tuning_parameter": {
+        "busy_spin": "False",
+        "hepnos_num_event_databases": 3,
+        "hepnos_num_product_databases": 9,
+        "hepnos_num_providers": 10,
+        "hepnos_num_rpc_threads": 5,
+        "hepnos_pes_per_node": "16",
+        "hepnos_pool_type": "fifo",
+        "hepnos_progress_thread": "False",
+        "loader_batch_size": 1710,
+        "loader_pes_per_node": "16",
+        "loader_progress_thread": "True",
+        "loader_async": "True",
+        "loader_async_threads": 48,
+        "pep_progress_thread": "False",
+        "pep_num_threads": 3,
+        "pep_ibatch_size": 993,
+        "pep_obatch_size": 88,
+        "pep_pes_per_node": "16",
+        "pep_no_preloading": "False",
+        "pep_no_rdma": "False"
+      },
+      "constants": {},
+      "machine_configuration": {
+        "machine_name": "swing",
+        "amd": {
+          "nodes": 1,
+          "cores": 128
+        }
+      },
+      "software_configuration": {},
+      "evaluation_result": {
+        "y": 4.325775
+      },
+      "evaluation_detail": {
+        "y": {
+          "evaluations": 4.325774817197713,
+          "objective_scheme": "average"
+        }
+      },
+      "additional_output": {},
+      "source": "measure",
+      "time": {
+        "tm_year": 2022,
+        "tm_mon": 5,
+        "tm_mday": 7,
+        "tm_hour": 23,
+        "tm_min": 41,
+        "tm_sec": 26,
+        "tm_wday": 5,
+        "tm_yday": 127,
+        "tm_isdst": 1
+      },
+      "uid": "1eaca40e-ce89-11ec-b25b-5cff35e3510b"
+    },
+    {
+      "task_parameter": {
+        "scale": 4,
+        "enable_pep": "True",
+        "more_params": "True"
+      },
+      "tuning_parameter": {
+        "busy_spin": "True",
+        "hepnos_num_event_databases": 14,
+        "hepnos_num_product_databases": 8,
+        "hepnos_num_providers": 13,
+        "hepnos_num_rpc_threads": 18,
+        "hepnos_pes_per_node": "32",
+        "hepnos_pool_type": "fifo_wait",
+        "hepnos_progress_thread": "False",
+        "loader_batch_size": 810,
+        "loader_pes_per_node": "4",
+        "loader_progress_thread": "True",
+        "loader_async": "True",
+        "loader_async_threads": 17,
+        "pep_progress_thread": "False",
+        "pep_num_threads": 28,
+        "pep_ibatch_size": 790,
+        "pep_obatch_size": 790,
+        "pep_pes_per_node": "32",
+        "pep_no_preloading": "True",
+        "pep_no_rdma": "False"
+      },
+      "constants": {},
+      "machine_configuration": {
+        "machine_name": "swing",
+        "amd": {
+          "nodes": 1,
+          "cores": 128
+        }
+      },
+      "software_configuration": {},
+      "evaluation_result": {
+        "y": 3.886176
+      },
+      "evaluation_detail": {
+        "y": {
+          "evaluations": 3.886176000220786,
+          "objective_scheme": "average"
+        }
+      },
+      "additional_output": {},
+      "source": "measure",
+      "time": {
+        "tm_year": 2022,
+        "tm_mon": 5,
+        "tm_mday": 7,
+        "tm_hour": 23,
+        "tm_min": 41,
+        "tm_sec": 26,
+        "tm_wday": 5,
+        "tm_yday": 127,
+        "tm_isdst": 1
+      },
+      "uid": "1eb041f4-ce89-11ec-b25b-5cff35e3510b"
+    },
+    {
+      "task_parameter": {
+        "scale": 8,
+        "enable_pep": "True",
+        "more_params": "True"
+      },
+      "tuning_parameter": {
+        "busy_spin": "True",
+        "hepnos_num_event_databases": 14,
+        "hepnos_num_product_databases": 4,
+        "hepnos_num_providers": 10,
+        "hepnos_num_rpc_threads": 52,
+        "hepnos_pes_per_node": "2",
+        "hepnos_pool_type": "fifo_wait",
+        "hepnos_progress_thread": "False",
+        "loader_batch_size": 1327,
+        "loader_pes_per_node": "16",
+        "loader_progress_thread": "False",
+        "loader_async": "False",
+        "loader_async_threads": 38,
+        "pep_progress_thread": "True",
+        "pep_num_threads": 7,
+        "pep_ibatch_size": 977,
+        "pep_obatch_size": 969,
+        "pep_pes_per_node": "32",
+        "pep_no_preloading": "False",
+        "pep_no_rdma": "True"
+      },
+      "constants": {},
+      "machine_configuration": {
+        "machine_name": "swing",
+        "amd": {
+          "nodes": 1,
+          "cores": 128
+        }
+      },
+      "software_configuration": {},
+      "evaluation_result": {
+        "y": 3.933585
+      },
+      "evaluation_detail": {
+        "y": {
+          "evaluations": 3.933584993167414,
+          "objective_scheme": "average"
+        }
+      },
+      "additional_output": {},
+      "source": "measure",
+      "time": {
+        "tm_year": 2022,
+        "tm_mon": 5,
+        "tm_mday": 7,
+        "tm_hour": 23,
+        "tm_min": 42,
+        "tm_sec": 32,
+        "tm_wday": 5,
+        "tm_yday": 127,
+        "tm_isdst": 1
+      },
+      "uid": "45facd06-ce89-11ec-b25b-5cff35e3510b"
+    },
+    {
+      "task_parameter": {
+        "scale": 4,
+        "enable_pep": "True",
+        "more_params": "True"
+      },
+      "tuning_parameter": {
+        "busy_spin": "True",
+        "hepnos_num_event_databases": 10,
+        "hepnos_num_product_databases": 7,
+        "hepnos_num_providers": 3,
+        "hepnos_num_rpc_threads": 32,
+        "hepnos_pes_per_node": "2",
+        "hepnos_pool_type": "fifo_wait",
+        "hepnos_progress_thread": "False",
+        "loader_batch_size": 480,
+        "loader_pes_per_node": "16",
+        "loader_progress_thread": "False",
+        "loader_async": "False",
+        "loader_async_threads": 48,
+        "pep_progress_thread": "True",
+        "pep_num_threads": 31,
+        "pep_ibatch_size": 803,
+        "pep_obatch_size": 388,
+        "pep_pes_per_node": "16",
+        "pep_no_preloading": "True",
+        "pep_no_rdma": "True"
+      },
+      "constants": {},
+      "machine_configuration": {
+        "machine_name": "swing",
+        "amd": {
+          "nodes": 1,
+          "cores": 128
+        }
+      },
+      "software_configuration": {},
+      "evaluation_result": {
+        "y": 4.140964
+      },
+      "evaluation_detail": {
+        "y": {
+          "evaluations": 4.140963751277383,
+          "objective_scheme": "average"
+        }
+      },
+      "additional_output": {},
+      "source": "measure",
+      "time": {
+        "tm_year": 2022,
+        "tm_mon": 5,
+        "tm_mday": 7,
+        "tm_hour": 23,
+        "tm_min": 42,
+        "tm_sec": 32,
+        "tm_wday": 5,
+        "tm_yday": 127,
+        "tm_isdst": 1
+      },
+      "uid": "45fe791a-ce89-11ec-b25b-5cff35e3510b"
+    },
+    {
+      "task_parameter": {
+        "scale": 8,
+        "enable_pep": "True",
+        "more_params": "True"
+      },
+      "tuning_parameter": {
+        "busy_spin": "True",
+        "hepnos_num_event_databases": 9,
+        "hepnos_num_product_databases": 1,
+        "hepnos_num_providers": 5,
+        "hepnos_num_rpc_threads": 27,
+        "hepnos_pes_per_node": "1",
+        "hepnos_pool_type": "fifo_wait",
+        "hepnos_progress_thread": "False",
+        "loader_batch_size": 73,
+        "loader_pes_per_node": "16",
+        "loader_progress_thread": "True",
+        "loader_async": "True",
+        "loader_async_threads": 31,
+        "pep_progress_thread": "True",
+        "pep_num_threads": 7,
+        "pep_ibatch_size": 841,
+        "pep_obatch_size": 316,
+        "pep_pes_per_node": "8",
+        "pep_no_preloading": "False",
+        "pep_no_rdma": "True"
+      },
+      "constants": {},
+      "machine_configuration": {
+        "machine_name": "swing",
+        "amd": {
+          "nodes": 1,
+          "cores": 128
+        }
+      },
+      "software_configuration": {},
+      "evaluation_result": {
+        "y": 4.749102
+      },
+      "evaluation_detail": {
+        "y": {
+          "evaluations": 4.749102241101598,
+          "objective_scheme": "average"
+        }
+      },
+      "additional_output": {},
+      "source": "measure",
+      "time": {
+        "tm_year": 2022,
+        "tm_mon": 5,
+        "tm_mday": 7,
+        "tm_hour": 23,
+        "tm_min": 45,
+        "tm_sec": 7,
+        "tm_wday": 5,
+        "tm_yday": 127,
+        "tm_isdst": 1
+      },
+      "uid": "a2cf732e-ce89-11ec-b25b-5cff35e3510b"
+    },
+    {
+      "task_parameter": {
+        "scale": 4,
+        "enable_pep": "True",
+        "more_params": "True"
+      },
+      "tuning_parameter": {
+        "busy_spin": "True",
+        "hepnos_num_event_databases": 10,
+        "hepnos_num_product_databases": 6,
+        "hepnos_num_providers": 29,
+        "hepnos_num_rpc_threads": 59,
+        "hepnos_pes_per_node": "16",
+        "hepnos_pool_type": "fifo_wait",
+        "hepnos_progress_thread": "False",
+        "loader_batch_size": 1868,
+        "loader_pes_per_node": "16",
+        "loader_progress_thread": "True",
+        "loader_async": "True",
+        "loader_async_threads": 36,
+        "pep_progress_thread": "True",
+        "pep_num_threads": 30,
+        "pep_ibatch_size": 612,
+        "pep_obatch_size": 593,
+        "pep_pes_per_node": "32",
+        "pep_no_preloading": "True",
+        "pep_no_rdma": "True"
+      },
+      "constants": {},
+      "machine_configuration": {
+        "machine_name": "swing",
+        "amd": {
+          "nodes": 1,
+          "cores": 128
+        }
+      },
+      "software_configuration": {},
+      "evaluation_result": {
+        "y": 3.133238
+      },
+      "evaluation_detail": {
+        "y": {
+          "evaluations": 3.133237807069179,
+          "objective_scheme": "average"
+        }
+      },
+      "additional_output": {},
+      "source": "measure",
+      "time": {
+        "tm_year": 2022,
+        "tm_mon": 5,
+        "tm_mday": 7,
+        "tm_hour": 23,
+        "tm_min": 45,
+        "tm_sec": 7,
+        "tm_wday": 5,
+        "tm_yday": 127,
+        "tm_isdst": 1
+      },
+      "uid": "a2d32352-ce89-11ec-b25b-5cff35e3510b"
+    },
+    {
+      "task_parameter": {
+        "scale": 8,
+        "enable_pep": "True",
+        "more_params": "True"
+      },
+      "tuning_parameter": {
+        "busy_spin": "False",
+        "hepnos_num_event_databases": 1,
+        "hepnos_num_product_databases": 14,
+        "hepnos_num_providers": 14,
+        "hepnos_num_rpc_threads": 61,
+        "hepnos_pes_per_node": "32",
+        "hepnos_pool_type": "fifo",
+        "hepnos_progress_thread": "True",
+        "loader_batch_size": 1391,
+        "loader_pes_per_node": "1",
+        "loader_progress_thread": "True",
+        "loader_async": "True",
+        "loader_async_threads": 50,
+        "pep_progress_thread": "False",
+        "pep_num_threads": 31,
+        "pep_ibatch_size": 21,
+        "pep_obatch_size": 199,
+        "pep_pes_per_node": "32",
+        "pep_no_preloading": "True",
+        "pep_no_rdma": "False"
+      },
+      "constants": {},
+      "machine_configuration": {
+        "machine_name": "swing",
+        "amd": {
+          "nodes": 1,
+          "cores": 128
+        }
+      },
+      "software_configuration": {},
+      "evaluation_result": {
+        "y": 5.241184
+      },
+      "evaluation_detail": {
+        "y": {
+          "evaluations": 5.241184405660165,
+          "objective_scheme": "average"
+        }
+      },
+      "additional_output": {},
+      "source": "measure",
+      "time": {
+        "tm_year": 2022,
+        "tm_mon": 5,
+        "tm_mday": 7,
+        "tm_hour": 23,
+        "tm_min": 49,
+        "tm_sec": 8,
+        "tm_wday": 5,
+        "tm_yday": 127,
+        "tm_isdst": 1
+      },
+      "uid": "323da9a4-ce8a-11ec-b25b-5cff35e3510b"
+    },
+    {
+      "task_parameter": {
+        "scale": 4,
+        "enable_pep": "True",
+        "more_params": "True"
+      },
+      "tuning_parameter": {
+        "busy_spin": "False",
+        "hepnos_num_event_databases": 3,
+        "hepnos_num_product_databases": 6,
+        "hepnos_num_providers": 23,
+        "hepnos_num_rpc_threads": 60,
+        "hepnos_pes_per_node": "16",
+        "hepnos_pool_type": "fifo_wait",
+        "hepnos_progress_thread": "False",
+        "loader_batch_size": 1965,
+        "loader_pes_per_node": "8",
+        "loader_progress_thread": "True",
+        "loader_async": "True",
+        "loader_async_threads": 20,
+        "pep_progress_thread": "False",
+        "pep_num_threads": 30,
+        "pep_ibatch_size": 551,
+        "pep_obatch_size": 996,
+        "pep_pes_per_node": "32",
+        "pep_no_preloading": "True",
+        "pep_no_rdma": "True"
+      },
+      "constants": {},
+      "machine_configuration": {
+        "machine_name": "swing",
+        "amd": {
+          "nodes": 1,
+          "cores": 128
+        }
+      },
+      "software_configuration": {},
+      "evaluation_result": {
+        "y": 2.811736
+      },
+      "evaluation_detail": {
+        "y": {
+          "evaluations": 2.8117359816859278,
+          "objective_scheme": "average"
+        }
+      },
+      "additional_output": {},
+      "source": "measure",
+      "time": {
+        "tm_year": 2022,
+        "tm_mon": 5,
+        "tm_mday": 7,
+        "tm_hour": 23,
+        "tm_min": 49,
+        "tm_sec": 8,
+        "tm_wday": 5,
+        "tm_yday": 127,
+        "tm_isdst": 1
+      },
+      "uid": "3242152a-ce8a-11ec-b25b-5cff35e3510b"
+    },
+    {
+      "task_parameter": {
+        "scale": 8,
+        "enable_pep": "True",
+        "more_params": "True"
+      },
+      "tuning_parameter": {
+        "busy_spin": "True",
+        "hepnos_num_event_databases": 6,
+        "hepnos_num_product_databases": 16,
+        "hepnos_num_providers": 20,
+        "hepnos_num_rpc_threads": 34,
+        "hepnos_pes_per_node": "4",
+        "hepnos_pool_type": "fifo_wait",
+        "hepnos_progress_thread": "True",
+        "loader_batch_size": 1480,
+        "loader_pes_per_node": "16",
+        "loader_progress_thread": "False",
+        "loader_async": "True",
+        "loader_async_threads": 31,
+        "pep_progress_thread": "False",
+        "pep_num_threads": 5,
+        "pep_ibatch_size": 350,
+        "pep_obatch_size": 717,
+        "pep_pes_per_node": "16",
+        "pep_no_preloading": "False",
+        "pep_no_rdma": "True"
+      },
+      "constants": {},
+      "machine_configuration": {
+        "machine_name": "swing",
+        "amd": {
+          "nodes": 1,
+          "cores": 128
+        }
+      },
+      "software_configuration": {},
+      "evaluation_result": {
+        "y": 4.196249
+      },
+      "evaluation_detail": {
+        "y": {
+          "evaluations": 4.196249180001971,
+          "objective_scheme": "average"
+        }
+      },
+      "additional_output": {},
+      "source": "measure",
+      "time": {
+        "tm_year": 2022,
+        "tm_mon": 5,
+        "tm_mday": 7,
+        "tm_hour": 23,
+        "tm_min": 50,
+        "tm_sec": 29,
+        "tm_wday": 5,
+        "tm_yday": 127,
+        "tm_isdst": 1
+      },
+      "uid": "624de12c-ce8a-11ec-b25b-5cff35e3510b"
+    },
+    {
+      "task_parameter": {
+        "scale": 4,
+        "enable_pep": "True",
+        "more_params": "True"
+      },
+      "tuning_parameter": {
+        "busy_spin": "False",
+        "hepnos_num_event_databases": 4,
+        "hepnos_num_product_databases": 14,
+        "hepnos_num_providers": 22,
+        "hepnos_num_rpc_threads": 53,
+        "hepnos_pes_per_node": "1",
+        "hepnos_pool_type": "fifo_wait",
+        "hepnos_progress_thread": "True",
+        "loader_batch_size": 477,
+        "loader_pes_per_node": "16",
+        "loader_progress_thread": "True",
+        "loader_async": "True",
+        "loader_async_threads": 1,
+        "pep_progress_thread": "False",
+        "pep_num_threads": 25,
+        "pep_ibatch_size": 34,
+        "pep_obatch_size": 400,
+        "pep_pes_per_node": "32",
+        "pep_no_preloading": "True",
+        "pep_no_rdma": "False"
+      },
+      "constants": {},
+      "machine_configuration": {
+        "machine_name": "swing",
+        "amd": {
+          "nodes": 1,
+          "cores": 128
+        }
+      },
+      "software_configuration": {},
+      "evaluation_result": {
+        "y": 3.664668
+      },
+      "evaluation_detail": {
+        "y": {
+          "evaluations": 3.6646677703895847,
+          "objective_scheme": "average"
+        }
+      },
+      "additional_output": {},
+      "source": "measure",
+      "time": {
+        "tm_year": 2022,
+        "tm_mon": 5,
+        "tm_mday": 7,
+        "tm_hour": 23,
+        "tm_min": 50,
+        "tm_sec": 29,
+        "tm_wday": 5,
+        "tm_yday": 127,
+        "tm_isdst": 1
+      },
+      "uid": "6251a280-ce8a-11ec-b25b-5cff35e3510b"
+    },
+    {
+      "task_parameter": {
+        "scale": 8,
+        "enable_pep": "True",
+        "more_params": "True"
+      },
+      "tuning_parameter": {
+        "busy_spin": "False",
+        "hepnos_num_event_databases": 9,
+        "hepnos_num_product_databases": 4,
+        "hepnos_num_providers": 7,
+        "hepnos_num_rpc_threads": 2,
+        "hepnos_pes_per_node": "4",
+        "hepnos_pool_type": "fifo_wait",
+        "hepnos_progress_thread": "True",
+        "loader_batch_size": 1336,
+        "loader_pes_per_node": "16",
+        "loader_progress_thread": "False",
+        "loader_async": "True",
+        "loader_async_threads": 43,
+        "pep_progress_thread": "True",
+        "pep_num_threads": 1,
+        "pep_ibatch_size": 407,
+        "pep_obatch_size": 930,
+        "pep_pes_per_node": "8",
+        "pep_no_preloading": "False",
+        "pep_no_rdma": "True"
+      },
+      "constants": {},
+      "machine_configuration": {
+        "machine_name": "swing",
+        "amd": {
+          "nodes": 1,
+          "cores": 128
+        }
+      },
+      "software_configuration": {},
+      "evaluation_result": {
+        "y": 4.326326
+      },
+      "evaluation_detail": {
+        "y": {
+          "evaluations": 4.326325613782554,
+          "objective_scheme": "average"
+        }
+      },
+      "additional_output": {},
+      "source": "measure",
+      "time": {
+        "tm_year": 2022,
+        "tm_mon": 5,
+        "tm_mday": 7,
+        "tm_hour": 23,
+        "tm_min": 52,
+        "tm_sec": 11,
+        "tm_wday": 5,
+        "tm_yday": 127,
+        "tm_isdst": 1
+      },
+      "uid": "9f347dda-ce8a-11ec-b25b-5cff35e3510b"
+    },
+    {
+      "task_parameter": {
+        "scale": 4,
+        "enable_pep": "True",
+        "more_params": "True"
+      },
+      "tuning_parameter": {
+        "busy_spin": "False",
+        "hepnos_num_event_databases": 15,
+        "hepnos_num_product_databases": 10,
+        "hepnos_num_providers": 18,
+        "hepnos_num_rpc_threads": 52,
+        "hepnos_pes_per_node": "2",
+        "hepnos_pool_type": "fifo",
+        "hepnos_progress_thread": "False",
+        "loader_batch_size": 1959,
+        "loader_pes_per_node": "2",
+        "loader_progress_thread": "True",
+        "loader_async": "False",
+        "loader_async_threads": 11,
+        "pep_progress_thread": "True",
+        "pep_num_threads": 24,
+        "pep_ibatch_size": 103,
+        "pep_obatch_size": 1008,
+        "pep_pes_per_node": "32",
+        "pep_no_preloading": "True",
+        "pep_no_rdma": "False"
+      },
+      "constants": {},
+      "machine_configuration": {
+        "machine_name": "swing",
+        "amd": {
+          "nodes": 1,
+          "cores": 128
+        }
+      },
+      "software_configuration": {},
+      "evaluation_result": {
+        "y": 4.096833
+      },
+      "evaluation_detail": {
+        "y": {
+          "evaluations": 4.096833089118036,
+          "objective_scheme": "average"
+        }
+      },
+      "additional_output": {},
+      "source": "measure",
+      "time": {
+        "tm_year": 2022,
+        "tm_mon": 5,
+        "tm_mday": 7,
+        "tm_hour": 23,
+        "tm_min": 52,
+        "tm_sec": 11,
+        "tm_wday": 5,
+        "tm_yday": 127,
+        "tm_isdst": 1
+      },
+      "uid": "9f388b32-ce8a-11ec-b25b-5cff35e3510b"
+    },
+    {
+      "task_parameter": {
+        "scale": 8,
+        "enable_pep": "True",
+        "more_params": "True"
+      },
+      "tuning_parameter": {
+        "busy_spin": "False",
+        "hepnos_num_event_databases": 6,
+        "hepnos_num_product_databases": 3,
+        "hepnos_num_providers": 3,
+        "hepnos_num_rpc_threads": 39,
+        "hepnos_pes_per_node": "8",
+        "hepnos_pool_type": "fifo",
+        "hepnos_progress_thread": "True",
+        "loader_batch_size": 1783,
+        "loader_pes_per_node": "16",
+        "loader_progress_thread": "True",
+        "loader_async": "False",
+        "loader_async_threads": 28,
+        "pep_progress_thread": "False",
+        "pep_num_threads": 2,
+        "pep_ibatch_size": 56,
+        "pep_obatch_size": 179,
+        "pep_pes_per_node": "8",
+        "pep_no_preloading": "False",
+        "pep_no_rdma": "True"
+      },
+      "constants": {},
+      "machine_configuration": {
+        "machine_name": "swing",
+        "amd": {
+          "nodes": 1,
+          "cores": 128
+        }
+      },
+      "software_configuration": {},
+      "evaluation_result": {
+        "y": 3.892681
+      },
+      "evaluation_detail": {
+        "y": {
+          "evaluations": 3.8926805472591965,
+          "objective_scheme": "average"
+        }
+      },
+      "additional_output": {},
+      "source": "measure",
+      "time": {
+        "tm_year": 2022,
+        "tm_mon": 5,
+        "tm_mday": 7,
+        "tm_hour": 23,
+        "tm_min": 53,
+        "tm_sec": 53,
+        "tm_wday": 5,
+        "tm_yday": 127,
+        "tm_isdst": 1
+      },
+      "uid": "dc3d7470-ce8a-11ec-b25b-5cff35e3510b"
+    },
+    {
+      "task_parameter": {
+        "scale": 4,
+        "enable_pep": "True",
+        "more_params": "True"
+      },
+      "tuning_parameter": {
+        "busy_spin": "True",
+        "hepnos_num_event_databases": 3,
+        "hepnos_num_product_databases": 6,
+        "hepnos_num_providers": 5,
+        "hepnos_num_rpc_threads": 44,
+        "hepnos_pes_per_node": "2",
+        "hepnos_pool_type": "fifo_wait",
+        "hepnos_progress_thread": "True",
+        "loader_batch_size": 1873,
+        "loader_pes_per_node": "16",
+        "loader_progress_thread": "False",
+        "loader_async": "True",
+        "loader_async_threads": 54,
+        "pep_progress_thread": "False",
+        "pep_num_threads": 30,
+        "pep_ibatch_size": 39,
+        "pep_obatch_size": 593,
+        "pep_pes_per_node": "2",
+        "pep_no_preloading": "False",
+        "pep_no_rdma": "False"
+      },
+      "constants": {},
+      "machine_configuration": {
+        "machine_name": "swing",
+        "amd": {
+          "nodes": 1,
+          "cores": 128
+        }
+      },
+      "software_configuration": {},
+      "evaluation_result": {
+        "y": 3.240834
+      },
+      "evaluation_detail": {
+        "y": {
+          "evaluations": 3.240834270414595,
+          "objective_scheme": "average"
+        }
+      },
+      "additional_output": {},
+      "source": "measure",
+      "time": {
+        "tm_year": 2022,
+        "tm_mon": 5,
+        "tm_mday": 7,
+        "tm_hour": 23,
+        "tm_min": 53,
+        "tm_sec": 53,
+        "tm_wday": 5,
+        "tm_yday": 127,
+        "tm_isdst": 1
+      },
+      "uid": "dc4153c4-ce8a-11ec-b25b-5cff35e3510b"
+    },
+    {
+      "task_parameter": {
+        "scale": 8,
+        "enable_pep": "True",
+        "more_params": "True"
+      },
+      "tuning_parameter": {
+        "busy_spin": "True",
+        "hepnos_num_event_databases": 13,
+        "hepnos_num_product_databases": 12,
+        "hepnos_num_providers": 16,
+        "hepnos_num_rpc_threads": 11,
+        "hepnos_pes_per_node": "16",
+        "hepnos_pool_type": "fifo",
+        "hepnos_progress_thread": "False",
+        "loader_batch_size": 1418,
+        "loader_pes_per_node": "16",
+        "loader_progress_thread": "False",
+        "loader_async": "False",
+        "loader_async_threads": 62,
+        "pep_progress_thread": "True",
+        "pep_num_threads": 3,
+        "pep_ibatch_size": 521,
+        "pep_obatch_size": 1014,
+        "pep_pes_per_node": "1",
+        "pep_no_preloading": "False",
+        "pep_no_rdma": "False"
+      },
+      "constants": {},
+      "machine_configuration": {
+        "machine_name": "swing",
+        "amd": {
+          "nodes": 1,
+          "cores": 128
+        }
+      },
+      "software_configuration": {},
+      "evaluation_result": {
+        "y": 4.177477
+      },
+      "evaluation_detail": {
+        "y": {
+          "evaluations": 4.17747698170444,
+          "objective_scheme": "average"
+        }
+      },
+      "additional_output": {},
+      "source": "measure",
+      "time": {
+        "tm_year": 2022,
+        "tm_mon": 5,
+        "tm_mday": 7,
+        "tm_hour": 23,
+        "tm_min": 55,
+        "tm_sec": 36,
+        "tm_wday": 5,
+        "tm_yday": 127,
+        "tm_isdst": 1
+      },
+      "uid": "199bf90e-ce8b-11ec-b25b-5cff35e3510b"
+    },
+    {
+      "task_parameter": {
+        "scale": 4,
+        "enable_pep": "True",
+        "more_params": "True"
+      },
+      "tuning_parameter": {
+        "busy_spin": "True",
+        "hepnos_num_event_databases": 8,
+        "hepnos_num_product_databases": 7,
+        "hepnos_num_providers": 21,
+        "hepnos_num_rpc_threads": 59,
+        "hepnos_pes_per_node": "16",
+        "hepnos_pool_type": "fifo_wait",
+        "hepnos_progress_thread": "True",
+        "loader_batch_size": 1785,
+        "loader_pes_per_node": "8",
+        "loader_progress_thread": "True",
+        "loader_async": "False",
+        "loader_async_threads": 38,
+        "pep_progress_thread": "False",
+        "pep_num_threads": 27,
+        "pep_ibatch_size": 807,
+        "pep_obatch_size": 397,
+        "pep_pes_per_node": "16",
+        "pep_no_preloading": "True",
+        "pep_no_rdma": "False"
+      },
+      "constants": {},
+      "machine_configuration": {
+        "machine_name": "swing",
+        "amd": {
+          "nodes": 1,
+          "cores": 128
+        }
+      },
+      "software_configuration": {},
+      "evaluation_result": {
+        "y": 2.926088
+      },
+      "evaluation_detail": {
+        "y": {
+          "evaluations": 2.926087640020114,
+          "objective_scheme": "average"
+        }
+      },
+      "additional_output": {},
+      "source": "measure",
+      "time": {
+        "tm_year": 2022,
+        "tm_mon": 5,
+        "tm_mday": 7,
+        "tm_hour": 23,
+        "tm_min": 55,
+        "tm_sec": 36,
+        "tm_wday": 5,
+        "tm_yday": 127,
+        "tm_isdst": 1
+      },
+      "uid": "199fdefc-ce8b-11ec-b25b-5cff35e3510b"
+    }
+  ]
+}

@@ -41,11 +41,11 @@
       },
       "software_configuration": {},
       "evaluation_result": {
-        "y": 4.930723
+        "y": 4.604322
       },
       "evaluation_detail": {
         "y": {
-          "evaluations": 4.9307227108447655,
+          "evaluations": 4.6043217249190285,
           "objective_scheme": "average"
         }
       },
@@ -54,15 +54,15 @@
       "time": {
         "tm_year": 2022,
         "tm_mon": 5,
-        "tm_mday": 6,
+        "tm_mday": 7,
         "tm_hour": 23,
-        "tm_min": 40,
-        "tm_sec": 13,
-        "tm_wday": 4,
-        "tm_yday": 126,
+        "tm_min": 49,
+        "tm_sec": 46,
+        "tm_wday": 5,
+        "tm_yday": 127,
         "tm_isdst": 1
       },
-      "uid": "c8c23bf4-cdbf-11ec-b8e6-5cff35e2561e"
+      "uid": "48a53e28-ce8a-11ec-944a-5cff35e3510b"
     },
     {
       "task_parameter": {
@@ -102,11 +102,11 @@
       },
       "software_configuration": {},
       "evaluation_result": {
-        "y": 4.597434
+        "y": 4.594924
       },
       "evaluation_detail": {
         "y": {
-          "evaluations": 4.5974344766356285,
+          "evaluations": 4.594924216639656,
           "objective_scheme": "average"
         }
       },
@@ -115,15 +115,15 @@
       "time": {
         "tm_year": 2022,
         "tm_mon": 5,
-        "tm_mday": 6,
+        "tm_mday": 7,
         "tm_hour": 23,
-        "tm_min": 41,
-        "tm_sec": 53,
-        "tm_wday": 4,
-        "tm_yday": 126,
+        "tm_min": 51,
+        "tm_sec": 26,
+        "tm_wday": 5,
+        "tm_yday": 127,
         "tm_isdst": 1
       },
-      "uid": "0493d110-cdc0-11ec-b8e6-5cff35e2561e"
+      "uid": "8477795c-ce8a-11ec-944a-5cff35e3510b"
     },
     {
       "task_parameter": {
@@ -163,11 +163,11 @@
       },
       "software_configuration": {},
       "evaluation_result": {
-        "y": 4.780863
+        "y": 4.827716
       },
       "evaluation_detail": {
         "y": {
-          "evaluations": 4.780863266961064,
+          "evaluations": 4.827716346910223,
           "objective_scheme": "average"
         }
       },
@@ -176,15 +176,15 @@
       "time": {
         "tm_year": 2022,
         "tm_mon": 5,
-        "tm_mday": 6,
+        "tm_mday": 7,
         "tm_hour": 23,
-        "tm_min": 43,
-        "tm_sec": 52,
-        "tm_wday": 4,
-        "tm_yday": 126,
+        "tm_min": 53,
+        "tm_sec": 31,
+        "tm_wday": 5,
+        "tm_yday": 127,
         "tm_isdst": 1
       },
-      "uid": "4bb4f3b2-cdc0-11ec-b8e6-5cff35e2561e"
+      "uid": "cf0127e8-ce8a-11ec-944a-5cff35e3510b"
     },
     {
       "task_parameter": {
@@ -224,11 +224,11 @@
       },
       "software_configuration": {},
       "evaluation_result": {
-        "y": 5.003112
+        "y": 5.050498
       },
       "evaluation_detail": {
         "y": {
-          "evaluations": 5.00311163765768,
+          "evaluations": 5.050498072619955,
           "objective_scheme": "average"
         }
       },
@@ -237,15 +237,15 @@
       "time": {
         "tm_year": 2022,
         "tm_mon": 5,
-        "tm_mday": 6,
+        "tm_mday": 7,
         "tm_hour": 23,
-        "tm_min": 46,
-        "tm_sec": 21,
-        "tm_wday": 4,
-        "tm_yday": 126,
+        "tm_min": 56,
+        "tm_sec": 7,
+        "tm_wday": 5,
+        "tm_yday": 127,
         "tm_isdst": 1
       },
-      "uid": "a48531c8-cdc0-11ec-b8e6-5cff35e2561e"
+      "uid": "2c198a38-ce8b-11ec-944a-5cff35e3510b"
     },
     {
       "task_parameter": {
@@ -285,11 +285,11 @@
       },
       "software_configuration": {},
       "evaluation_result": {
-        "y": 4.996287
+        "y": 4.986055
       },
       "evaluation_detail": {
         "y": {
-          "evaluations": 4.996286950809535,
+          "evaluations": 4.986054921004612,
           "objective_scheme": "average"
         }
       },
@@ -298,15 +298,15 @@
       "time": {
         "tm_year": 2022,
         "tm_mon": 5,
-        "tm_mday": 6,
+        "tm_mday": 7,
         "tm_hour": 23,
-        "tm_min": 48,
-        "tm_sec": 49,
-        "tm_wday": 4,
-        "tm_yday": 126,
+        "tm_min": 58,
+        "tm_sec": 34,
+        "tm_wday": 5,
+        "tm_yday": 127,
         "tm_isdst": 1
       },
-      "uid": "fcbb51ce-cdc0-11ec-b8e6-5cff35e2561e"
+      "uid": "836a4322-ce8b-11ec-944a-5cff35e3510b"
     },
     {
       "task_parameter": {
@@ -346,11 +346,11 @@
       },
       "software_configuration": {},
       "evaluation_result": {
-        "y": 5.11627
+        "y": 4.914371
       },
       "evaluation_detail": {
         "y": {
-          "evaluations": 5.11626976633758,
+          "evaluations": 4.914371418514508,
           "objective_scheme": "average"
         }
       },
@@ -359,15 +359,15 @@
       "time": {
         "tm_year": 2022,
         "tm_mon": 5,
-        "tm_mday": 6,
-        "tm_hour": 23,
-        "tm_min": 51,
-        "tm_sec": 36,
-        "tm_wday": 4,
-        "tm_yday": 126,
+        "tm_mday": 8,
+        "tm_hour": 0,
+        "tm_min": 0,
+        "tm_sec": 50,
+        "tm_wday": 6,
+        "tm_yday": 128,
         "tm_isdst": 1
       },
-      "uid": "602d4cf8-cdc1-11ec-b8e6-5cff35e2561e"
+      "uid": "d4b4c324-ce8b-11ec-944a-5cff35e3510b"
     },
     {
       "task_parameter": {
@@ -407,11 +407,11 @@
       },
       "software_configuration": {},
       "evaluation_result": {
-        "y": 5.114955
+        "y": 5.132109
       },
       "evaluation_detail": {
         "y": {
-          "evaluations": 5.114955311545457,
+          "evaluations": 5.132108829077417,
           "objective_scheme": "average"
         }
       },
@@ -420,15 +420,15 @@
       "time": {
         "tm_year": 2022,
         "tm_mon": 5,
-        "tm_mday": 6,
-        "tm_hour": 23,
-        "tm_min": 54,
-        "tm_sec": 23,
-        "tm_wday": 4,
-        "tm_yday": 126,
+        "tm_mday": 8,
+        "tm_hour": 0,
+        "tm_min": 3,
+        "tm_sec": 40,
+        "tm_wday": 6,
+        "tm_yday": 128,
         "tm_isdst": 1
       },
-      "uid": "c37de196-cdc1-11ec-b8e6-5cff35e2561e"
+      "uid": "39bcd752-ce8c-11ec-944a-5cff35e3510b"
     },
     {
       "task_parameter": {
@@ -468,11 +468,11 @@
       },
       "software_configuration": {},
       "evaluation_result": {
-        "y": 4.331719
+        "y": 3.375906
       },
       "evaluation_detail": {
         "y": {
-          "evaluations": 4.331718683334913,
+          "evaluations": 3.3759061317401127,
           "objective_scheme": "average"
         }
       },
@@ -481,15 +481,15 @@
       "time": {
         "tm_year": 2022,
         "tm_mon": 5,
-        "tm_mday": 6,
-        "tm_hour": 23,
-        "tm_min": 55,
-        "tm_sec": 39,
-        "tm_wday": 4,
-        "tm_yday": 126,
+        "tm_mday": 8,
+        "tm_hour": 0,
+        "tm_min": 4,
+        "tm_sec": 9,
+        "tm_wday": 6,
+        "tm_yday": 128,
         "tm_isdst": 1
       },
-      "uid": "f0e61a5e-cdc1-11ec-b8e6-5cff35e2561e"
+      "uid": "4b350bda-ce8c-11ec-944a-5cff35e3510b"
     },
     {
       "task_parameter": {
@@ -529,11 +529,11 @@
       },
       "software_configuration": {},
       "evaluation_result": {
-        "y": 5.243664
+        "y": 5.322381
       },
       "evaluation_detail": {
         "y": {
-          "evaluations": 5.2436640707078155,
+          "evaluations": 5.322381319006598,
           "objective_scheme": "average"
         }
       },
@@ -542,15 +542,15 @@
       "time": {
         "tm_year": 2022,
         "tm_mon": 5,
-        "tm_mday": 6,
-        "tm_hour": 23,
-        "tm_min": 58,
-        "tm_sec": 49,
-        "tm_wday": 4,
-        "tm_yday": 126,
+        "tm_mday": 8,
+        "tm_hour": 0,
+        "tm_min": 7,
+        "tm_sec": 34,
+        "tm_wday": 6,
+        "tm_yday": 128,
         "tm_isdst": 1
       },
-      "uid": "61d85484-cdc2-11ec-b8e6-5cff35e2561e"
+      "uid": "c565988e-ce8c-11ec-944a-5cff35e3510b"
     },
     {
       "task_parameter": {
@@ -590,11 +590,11 @@
       },
       "software_configuration": {},
       "evaluation_result": {
-        "y": 4.903773
+        "y": 4.807838
       },
       "evaluation_detail": {
         "y": {
-          "evaluations": 4.9037732528016615,
+          "evaluations": 4.807837629011438,
           "objective_scheme": "average"
         }
       },
@@ -603,15 +603,15 @@
       "time": {
         "tm_year": 2022,
         "tm_mon": 5,
-        "tm_mday": 7,
+        "tm_mday": 8,
         "tm_hour": 0,
-        "tm_min": 1,
-        "tm_sec": 3,
-        "tm_wday": 5,
-        "tm_yday": 127,
+        "tm_min": 9,
+        "tm_sec": 37,
+        "tm_wday": 6,
+        "tm_yday": 128,
         "tm_isdst": 1
       },
-      "uid": "b2414b38-cdc2-11ec-b8e6-5cff35e2561e"
+      "uid": "0e78336a-ce8d-11ec-944a-5cff35e3510b"
     },
     {
       "task_parameter": {
@@ -664,15 +664,15 @@
       "time": {
         "tm_year": 2022,
         "tm_mon": 5,
-        "tm_mday": 7,
+        "tm_mday": 8,
         "tm_hour": 0,
-        "tm_min": 1,
-        "tm_sec": 3,
-        "tm_wday": 5,
-        "tm_yday": 127,
+        "tm_min": 9,
+        "tm_sec": 37,
+        "tm_wday": 6,
+        "tm_yday": 128,
         "tm_isdst": 1
       },
-      "uid": "b2431dbe-cdc2-11ec-b8e6-5cff35e2561e"
+      "uid": "0e7a0640-ce8d-11ec-944a-5cff35e3510b"
     },
     {
       "task_parameter": {
@@ -725,15 +725,15 @@
       "time": {
         "tm_year": 2022,
         "tm_mon": 5,
-        "tm_mday": 7,
+        "tm_mday": 8,
         "tm_hour": 0,
-        "tm_min": 1,
-        "tm_sec": 3,
-        "tm_wday": 5,
-        "tm_yday": 127,
+        "tm_min": 9,
+        "tm_sec": 37,
+        "tm_wday": 6,
+        "tm_yday": 128,
         "tm_isdst": 1
       },
-      "uid": "b2452c76-cdc2-11ec-b8e6-5cff35e2561e"
+      "uid": "0e7c1a7a-ce8d-11ec-944a-5cff35e3510b"
     },
     {
       "task_parameter": {
@@ -786,15 +786,15 @@
       "time": {
         "tm_year": 2022,
         "tm_mon": 5,
-        "tm_mday": 7,
+        "tm_mday": 8,
         "tm_hour": 0,
-        "tm_min": 1,
-        "tm_sec": 3,
-        "tm_wday": 5,
-        "tm_yday": 127,
+        "tm_min": 9,
+        "tm_sec": 37,
+        "tm_wday": 6,
+        "tm_yday": 128,
         "tm_isdst": 1
       },
-      "uid": "b2473e6c-cdc2-11ec-b8e6-5cff35e2561e"
+      "uid": "0e7e2f68-ce8d-11ec-944a-5cff35e3510b"
     },
     {
       "task_parameter": {
@@ -847,15 +847,15 @@
       "time": {
         "tm_year": 2022,
         "tm_mon": 5,
-        "tm_mday": 7,
+        "tm_mday": 8,
         "tm_hour": 0,
-        "tm_min": 1,
-        "tm_sec": 4,
-        "tm_wday": 5,
-        "tm_yday": 127,
+        "tm_min": 9,
+        "tm_sec": 37,
+        "tm_wday": 6,
+        "tm_yday": 128,
         "tm_isdst": 1
       },
-      "uid": "b2495012-cdc2-11ec-b8e6-5cff35e2561e"
+      "uid": "0e80441a-ce8d-11ec-944a-5cff35e3510b"
     },
     {
       "task_parameter": {
@@ -908,15 +908,15 @@
       "time": {
         "tm_year": 2022,
         "tm_mon": 5,
-        "tm_mday": 7,
+        "tm_mday": 8,
         "tm_hour": 0,
-        "tm_min": 1,
-        "tm_sec": 4,
-        "tm_wday": 5,
-        "tm_yday": 127,
+        "tm_min": 9,
+        "tm_sec": 37,
+        "tm_wday": 6,
+        "tm_yday": 128,
         "tm_isdst": 1
       },
-      "uid": "b24b665e-cdc2-11ec-b8e6-5cff35e2561e"
+      "uid": "0e825ea8-ce8d-11ec-944a-5cff35e3510b"
     },
     {
       "task_parameter": {
@@ -969,15 +969,15 @@
       "time": {
         "tm_year": 2022,
         "tm_mon": 5,
-        "tm_mday": 7,
+        "tm_mday": 8,
         "tm_hour": 0,
-        "tm_min": 1,
-        "tm_sec": 4,
-        "tm_wday": 5,
-        "tm_yday": 127,
+        "tm_min": 9,
+        "tm_sec": 37,
+        "tm_wday": 6,
+        "tm_yday": 128,
         "tm_isdst": 1
       },
-      "uid": "b24d816e-cdc2-11ec-b8e6-5cff35e2561e"
+      "uid": "0e847c92-ce8d-11ec-944a-5cff35e3510b"
     },
     {
       "task_parameter": {
@@ -1030,15 +1030,15 @@
       "time": {
         "tm_year": 2022,
         "tm_mon": 5,
-        "tm_mday": 7,
+        "tm_mday": 8,
         "tm_hour": 0,
-        "tm_min": 1,
-        "tm_sec": 4,
-        "tm_wday": 5,
-        "tm_yday": 127,
+        "tm_min": 9,
+        "tm_sec": 37,
+        "tm_wday": 6,
+        "tm_yday": 128,
         "tm_isdst": 1
       },
-      "uid": "b24fa408-cdc2-11ec-b8e6-5cff35e2561e"
+      "uid": "0e86a2c4-ce8d-11ec-944a-5cff35e3510b"
     },
     {
       "task_parameter": {
@@ -1091,15 +1091,15 @@
       "time": {
         "tm_year": 2022,
         "tm_mon": 5,
-        "tm_mday": 7,
+        "tm_mday": 8,
         "tm_hour": 0,
-        "tm_min": 1,
-        "tm_sec": 4,
-        "tm_wday": 5,
-        "tm_yday": 127,
+        "tm_min": 9,
+        "tm_sec": 37,
+        "tm_wday": 6,
+        "tm_yday": 128,
         "tm_isdst": 1
       },
-      "uid": "b251c6d4-cdc2-11ec-b8e6-5cff35e2561e"
+      "uid": "0e88ca4a-ce8d-11ec-944a-5cff35e3510b"
     },
     {
       "task_parameter": {
@@ -1152,15 +1152,15 @@
       "time": {
         "tm_year": 2022,
         "tm_mon": 5,
-        "tm_mday": 7,
+        "tm_mday": 8,
         "tm_hour": 0,
-        "tm_min": 1,
-        "tm_sec": 4,
-        "tm_wday": 5,
-        "tm_yday": 127,
+        "tm_min": 9,
+        "tm_sec": 37,
+        "tm_wday": 6,
+        "tm_yday": 128,
         "tm_isdst": 1
       },
-      "uid": "b253ef72-cdc2-11ec-b8e6-5cff35e2561e"
+      "uid": "0e8af6da-ce8d-11ec-944a-5cff35e3510b"
     },
     {
       "task_parameter": {
@@ -1213,15 +1213,15 @@
       "time": {
         "tm_year": 2022,
         "tm_mon": 5,
-        "tm_mday": 7,
+        "tm_mday": 8,
         "tm_hour": 0,
-        "tm_min": 1,
-        "tm_sec": 4,
-        "tm_wday": 5,
-        "tm_yday": 127,
+        "tm_min": 9,
+        "tm_sec": 37,
+        "tm_wday": 6,
+        "tm_yday": 128,
         "tm_isdst": 1
       },
-      "uid": "b2562030-cdc2-11ec-b8e6-5cff35e2561e"
+      "uid": "0e8d2bd0-ce8d-11ec-944a-5cff35e3510b"
     },
     {
       "task_parameter": {
@@ -1230,26 +1230,26 @@
         "more_params": "True"
       },
       "tuning_parameter": {
-        "busy_spin": "True",
-        "hepnos_num_event_databases": 12,
-        "hepnos_num_product_databases": 1,
-        "hepnos_num_providers": 3,
-        "hepnos_num_rpc_threads": 2,
-        "hepnos_pes_per_node": "32",
+        "busy_spin": "False",
+        "hepnos_num_event_databases": 15,
+        "hepnos_num_product_databases": 7,
+        "hepnos_num_providers": 22,
+        "hepnos_num_rpc_threads": 0,
+        "hepnos_pes_per_node": "16",
         "hepnos_pool_type": "fifo_wait",
         "hepnos_progress_thread": "False",
-        "loader_batch_size": 1188,
+        "loader_batch_size": 1264,
         "loader_pes_per_node": "4",
-        "loader_progress_thread": "False",
-        "loader_async": "True",
-        "loader_async_threads": 54,
-        "pep_progress_thread": "False",
-        "pep_num_threads": 24,
-        "pep_ibatch_size": 237,
-        "pep_obatch_size": 320,
-        "pep_pes_per_node": "16",
+        "loader_progress_thread": "True",
+        "loader_async": "False",
+        "loader_async_threads": 5,
+        "pep_progress_thread": "True",
+        "pep_num_threads": 2,
+        "pep_ibatch_size": 990,
+        "pep_obatch_size": 665,
+        "pep_pes_per_node": "1",
         "pep_no_preloading": "True",
-        "pep_no_rdma": "False"
+        "pep_no_rdma": "True"
       },
       "constants": {},
       "machine_configuration": {
@@ -1261,11 +1261,11 @@
       },
       "software_configuration": {},
       "evaluation_result": {
-        "y": 4.928104
+        "y": 5.221253
       },
       "evaluation_detail": {
         "y": {
-          "evaluations": 4.9281037045559195,
+          "evaluations": 5.221252552377596,
           "objective_scheme": "average"
         }
       },
@@ -1274,15 +1274,15 @@
       "time": {
         "tm_year": 2022,
         "tm_mon": 5,
-        "tm_mday": 7,
+        "tm_mday": 8,
         "tm_hour": 0,
-        "tm_min": 3,
-        "tm_sec": 35,
-        "tm_wday": 5,
-        "tm_yday": 127,
+        "tm_min": 12,
+        "tm_sec": 54,
+        "tm_wday": 6,
+        "tm_yday": 128,
         "tm_isdst": 1
       },
-      "uid": "0c9fb3bc-cdc3-11ec-b8e6-5cff35e2561e"
+      "uid": "83f9f6c8-ce8d-11ec-944a-5cff35e3510b"
     },
     {
       "task_parameter": {
@@ -1291,85 +1291,24 @@
         "more_params": "True"
       },
       "tuning_parameter": {
-        "busy_spin": "False",
-        "hepnos_num_event_databases": 14,
-        "hepnos_num_product_databases": 2,
-        "hepnos_num_providers": 2,
-        "hepnos_num_rpc_threads": 6,
-        "hepnos_pes_per_node": "32",
-        "hepnos_pool_type": "fifo_wait",
-        "hepnos_progress_thread": "False",
-        "loader_batch_size": 1585,
-        "loader_pes_per_node": "4",
-        "loader_progress_thread": "True",
-        "loader_async": "False",
-        "loader_async_threads": 36,
-        "pep_progress_thread": "False",
-        "pep_num_threads": 29,
-        "pep_ibatch_size": 371,
-        "pep_obatch_size": 529,
-        "pep_pes_per_node": "1",
-        "pep_no_preloading": "True",
-        "pep_no_rdma": "False"
-      },
-      "constants": {},
-      "machine_configuration": {
-        "machine_name": "swing",
-        "amd": {
-          "nodes": 1,
-          "cores": 128
-        }
-      },
-      "software_configuration": {},
-      "evaluation_result": {
-        "y": 4.491153
-      },
-      "evaluation_detail": {
-        "y": {
-          "evaluations": 4.491152551884079,
-          "objective_scheme": "average"
-        }
-      },
-      "additional_output": {},
-      "source": "measure",
-      "time": {
-        "tm_year": 2022,
-        "tm_mon": 5,
-        "tm_mday": 7,
-        "tm_hour": 0,
-        "tm_min": 3,
-        "tm_sec": 35,
-        "tm_wday": 5,
-        "tm_yday": 127,
-        "tm_isdst": 1
-      },
-      "uid": "0ca2253e-cdc3-11ec-b8e6-5cff35e2561e"
-    },
-    {
-      "task_parameter": {
-        "scale": 8,
-        "enable_pep": "True",
-        "more_params": "True"
-      },
-      "tuning_parameter": {
         "busy_spin": "True",
-        "hepnos_num_event_databases": 5,
-        "hepnos_num_product_databases": 1,
-        "hepnos_num_providers": 14,
-        "hepnos_num_rpc_threads": 41,
-        "hepnos_pes_per_node": "1",
-        "hepnos_pool_type": "fifo_wait",
-        "hepnos_progress_thread": "True",
-        "loader_batch_size": 323,
-        "loader_pes_per_node": "4",
-        "loader_progress_thread": "True",
-        "loader_async": "True",
-        "loader_async_threads": 14,
-        "pep_progress_thread": "True",
-        "pep_num_threads": 11,
-        "pep_ibatch_size": 178,
-        "pep_obatch_size": 1003,
-        "pep_pes_per_node": "2",
+        "hepnos_num_event_databases": 14,
+        "hepnos_num_product_databases": 9,
+        "hepnos_num_providers": 6,
+        "hepnos_num_rpc_threads": 2,
+        "hepnos_pes_per_node": "4",
+        "hepnos_pool_type": "fifo",
+        "hepnos_progress_thread": "False",
+        "loader_batch_size": 659,
+        "loader_pes_per_node": "2",
+        "loader_progress_thread": "False",
+        "loader_async": "False",
+        "loader_async_threads": 7,
+        "pep_progress_thread": "False",
+        "pep_num_threads": 13,
+        "pep_ibatch_size": 973,
+        "pep_obatch_size": 166,
+        "pep_pes_per_node": "16",
         "pep_no_preloading": "False",
         "pep_no_rdma": "True"
       },
@@ -1383,11 +1322,11 @@
       },
       "software_configuration": {},
       "evaluation_result": {
-        "y": 4.902186
+        "y": 5.288906
       },
       "evaluation_detail": {
         "y": {
-          "evaluations": 4.902186076738779,
+          "evaluations": 5.2889058296002505,
           "objective_scheme": "average"
         }
       },
@@ -1396,42 +1335,42 @@
       "time": {
         "tm_year": 2022,
         "tm_mon": 5,
-        "tm_mday": 7,
+        "tm_mday": 8,
         "tm_hour": 0,
-        "tm_min": 6,
-        "tm_sec": 2,
-        "tm_wday": 5,
-        "tm_yday": 127,
+        "tm_min": 12,
+        "tm_sec": 54,
+        "tm_wday": 6,
+        "tm_yday": 128,
         "tm_isdst": 1
       },
-      "uid": "6414f5ee-cdc3-11ec-b8e6-5cff35e2561e"
+      "uid": "83fc6af2-ce8d-11ec-944a-5cff35e3510b"
     },
     {
       "task_parameter": {
-        "scale": 4,
+        "scale": 8,
         "enable_pep": "True",
         "more_params": "True"
       },
       "tuning_parameter": {
-        "busy_spin": "False",
-        "hepnos_num_event_databases": 7,
-        "hepnos_num_product_databases": 1,
-        "hepnos_num_providers": 6,
-        "hepnos_num_rpc_threads": 20,
-        "hepnos_pes_per_node": "32",
+        "busy_spin": "True",
+        "hepnos_num_event_databases": 6,
+        "hepnos_num_product_databases": 2,
+        "hepnos_num_providers": 3,
+        "hepnos_num_rpc_threads": 32,
+        "hepnos_pes_per_node": "1",
         "hepnos_pool_type": "fifo_wait",
         "hepnos_progress_thread": "True",
-        "loader_batch_size": 270,
-        "loader_pes_per_node": "16",
+        "loader_batch_size": 943,
+        "loader_pes_per_node": "8",
         "loader_progress_thread": "True",
-        "loader_async": "True",
-        "loader_async_threads": 15,
+        "loader_async": "False",
+        "loader_async_threads": 60,
         "pep_progress_thread": "True",
-        "pep_num_threads": 11,
-        "pep_ibatch_size": 65,
-        "pep_obatch_size": 890,
-        "pep_pes_per_node": "4",
-        "pep_no_preloading": "True",
+        "pep_num_threads": 12,
+        "pep_ibatch_size": 254,
+        "pep_obatch_size": 496,
+        "pep_pes_per_node": "32",
+        "pep_no_preloading": "False",
         "pep_no_rdma": "False"
       },
       "constants": {},
@@ -1444,11 +1383,11 @@
       },
       "software_configuration": {},
       "evaluation_result": {
-        "y": 5.364791
+        "y": 4.007462
       },
       "evaluation_detail": {
         "y": {
-          "evaluations": 5.364790745129355,
+          "evaluations": 4.0074622649347855,
           "objective_scheme": "average"
         }
       },
@@ -1457,15 +1396,198 @@
       "time": {
         "tm_year": 2022,
         "tm_mon": 5,
-        "tm_mday": 7,
+        "tm_mday": 8,
         "tm_hour": 0,
-        "tm_min": 6,
-        "tm_sec": 2,
-        "tm_wday": 5,
-        "tm_yday": 127,
+        "tm_min": 14,
+        "tm_sec": 0,
+        "tm_wday": 6,
+        "tm_yday": 128,
         "tm_isdst": 1
       },
-      "uid": "64176ba8-cdc3-11ec-b8e6-5cff35e2561e"
+      "uid": "abaca03a-ce8d-11ec-944a-5cff35e3510b"
+    },
+    {
+      "task_parameter": {
+        "scale": 4,
+        "enable_pep": "True",
+        "more_params": "True"
+      },
+      "tuning_parameter": {
+        "busy_spin": "False",
+        "hepnos_num_event_databases": 7,
+        "hepnos_num_product_databases": 3,
+        "hepnos_num_providers": 9,
+        "hepnos_num_rpc_threads": 49,
+        "hepnos_pes_per_node": "1",
+        "hepnos_pool_type": "fifo_wait",
+        "hepnos_progress_thread": "True",
+        "loader_batch_size": 1844,
+        "loader_pes_per_node": "16",
+        "loader_progress_thread": "True",
+        "loader_async": "False",
+        "loader_async_threads": 6,
+        "pep_progress_thread": "True",
+        "pep_num_threads": 21,
+        "pep_ibatch_size": 150,
+        "pep_obatch_size": 523,
+        "pep_pes_per_node": "4",
+        "pep_no_preloading": "True",
+        "pep_no_rdma": "True"
+      },
+      "constants": {},
+      "machine_configuration": {
+        "machine_name": "swing",
+        "amd": {
+          "nodes": 1,
+          "cores": 128
+        }
+      },
+      "software_configuration": {},
+      "evaluation_result": {
+        "y": 4.399628
+      },
+      "evaluation_detail": {
+        "y": {
+          "evaluations": 4.399628446810874,
+          "objective_scheme": "average"
+        }
+      },
+      "additional_output": {},
+      "source": "measure",
+      "time": {
+        "tm_year": 2022,
+        "tm_mon": 5,
+        "tm_mday": 8,
+        "tm_hour": 0,
+        "tm_min": 14,
+        "tm_sec": 0,
+        "tm_wday": 6,
+        "tm_yday": 128,
+        "tm_isdst": 1
+      },
+      "uid": "abaf1180-ce8d-11ec-944a-5cff35e3510b"
+    },
+    {
+      "task_parameter": {
+        "scale": 8,
+        "enable_pep": "True",
+        "more_params": "True"
+      },
+      "tuning_parameter": {
+        "busy_spin": "False",
+        "hepnos_num_event_databases": 4,
+        "hepnos_num_product_databases": 14,
+        "hepnos_num_providers": 4,
+        "hepnos_num_rpc_threads": 53,
+        "hepnos_pes_per_node": "4",
+        "hepnos_pool_type": "fifo_wait",
+        "hepnos_progress_thread": "True",
+        "loader_batch_size": 1179,
+        "loader_pes_per_node": "16",
+        "loader_progress_thread": "True",
+        "loader_async": "True",
+        "loader_async_threads": 39,
+        "pep_progress_thread": "True",
+        "pep_num_threads": 12,
+        "pep_ibatch_size": 463,
+        "pep_obatch_size": 485,
+        "pep_pes_per_node": "1",
+        "pep_no_preloading": "True",
+        "pep_no_rdma": "True"
+      },
+      "constants": {},
+      "machine_configuration": {
+        "machine_name": "swing",
+        "amd": {
+          "nodes": 1,
+          "cores": 128
+        }
+      },
+      "software_configuration": {},
+      "evaluation_result": {
+        "y": 4.604394
+      },
+      "evaluation_detail": {
+        "y": {
+          "evaluations": 4.6043936116673,
+          "objective_scheme": "average"
+        }
+      },
+      "additional_output": {},
+      "source": "measure",
+      "time": {
+        "tm_year": 2022,
+        "tm_mon": 5,
+        "tm_mday": 8,
+        "tm_hour": 0,
+        "tm_min": 15,
+        "tm_sec": 52,
+        "tm_wday": 6,
+        "tm_yday": 128,
+        "tm_isdst": 1
+      },
+      "uid": "ee2b981c-ce8d-11ec-944a-5cff35e3510b"
+    },
+    {
+      "task_parameter": {
+        "scale": 4,
+        "enable_pep": "True",
+        "more_params": "True"
+      },
+      "tuning_parameter": {
+        "busy_spin": "False",
+        "hepnos_num_event_databases": 2,
+        "hepnos_num_product_databases": 9,
+        "hepnos_num_providers": 3,
+        "hepnos_num_rpc_threads": 26,
+        "hepnos_pes_per_node": "1",
+        "hepnos_pool_type": "fifo_wait",
+        "hepnos_progress_thread": "True",
+        "loader_batch_size": 1535,
+        "loader_pes_per_node": "16",
+        "loader_progress_thread": "True",
+        "loader_async": "True",
+        "loader_async_threads": 24,
+        "pep_progress_thread": "False",
+        "pep_num_threads": 14,
+        "pep_ibatch_size": 296,
+        "pep_obatch_size": 244,
+        "pep_pes_per_node": "8",
+        "pep_no_preloading": "False",
+        "pep_no_rdma": "False"
+      },
+      "constants": {},
+      "machine_configuration": {
+        "machine_name": "swing",
+        "amd": {
+          "nodes": 1,
+          "cores": 128
+        }
+      },
+      "software_configuration": {},
+      "evaluation_result": {
+        "y": 4.770093
+      },
+      "evaluation_detail": {
+        "y": {
+          "evaluations": 4.770092819617835,
+          "objective_scheme": "average"
+        }
+      },
+      "additional_output": {},
+      "source": "measure",
+      "time": {
+        "tm_year": 2022,
+        "tm_mon": 5,
+        "tm_mday": 8,
+        "tm_hour": 0,
+        "tm_min": 15,
+        "tm_sec": 52,
+        "tm_wday": 6,
+        "tm_yday": 128,
+        "tm_isdst": 1
+      },
+      "uid": "ee2e7302-ce8d-11ec-944a-5cff35e3510b"
     },
     {
       "task_parameter": {
@@ -1475,22 +1597,22 @@
       },
       "tuning_parameter": {
         "busy_spin": "True",
-        "hepnos_num_event_databases": 3,
-        "hepnos_num_product_databases": 11,
+        "hepnos_num_event_databases": 10,
+        "hepnos_num_product_databases": 1,
         "hepnos_num_providers": 23,
-        "hepnos_num_rpc_threads": 63,
-        "hepnos_pes_per_node": "8",
-        "hepnos_pool_type": "fifo_wait",
-        "hepnos_progress_thread": "True",
-        "loader_batch_size": 1859,
-        "loader_pes_per_node": "8",
+        "hepnos_num_rpc_threads": 6,
+        "hepnos_pes_per_node": "2",
+        "hepnos_pool_type": "fifo",
+        "hepnos_progress_thread": "False",
+        "loader_batch_size": 710,
+        "loader_pes_per_node": "2",
         "loader_progress_thread": "True",
-        "loader_async": "True",
-        "loader_async_threads": 32,
-        "pep_progress_thread": "True",
-        "pep_num_threads": 3,
-        "pep_ibatch_size": 98,
-        "pep_obatch_size": 379,
+        "loader_async": "False",
+        "loader_async_threads": 15,
+        "pep_progress_thread": "False",
+        "pep_num_threads": 16,
+        "pep_ibatch_size": 859,
+        "pep_obatch_size": 142,
         "pep_pes_per_node": "32",
         "pep_no_preloading": "False",
         "pep_no_rdma": "True"
@@ -1505,11 +1627,11 @@
       },
       "software_configuration": {},
       "evaluation_result": {
-        "y": 4.447228
+        "y": 5.025782
       },
       "evaluation_detail": {
         "y": {
-          "evaluations": 4.4472279450609635,
+          "evaluations": 5.025781758569282,
           "objective_scheme": "average"
         }
       },
@@ -1518,15 +1640,15 @@
       "time": {
         "tm_year": 2022,
         "tm_mon": 5,
-        "tm_mday": 7,
+        "tm_mday": 8,
         "tm_hour": 0,
-        "tm_min": 7,
-        "tm_sec": 43,
-        "tm_wday": 5,
-        "tm_yday": 127,
+        "tm_min": 18,
+        "tm_sec": 45,
+        "tm_wday": 6,
+        "tm_yday": 128,
         "tm_isdst": 1
       },
-      "uid": "a054f748-cdc3-11ec-b8e6-5cff35e2561e"
+      "uid": "553cbcde-ce8e-11ec-944a-5cff35e3510b"
     },
     {
       "task_parameter": {
@@ -1536,21 +1658,2339 @@
       },
       "tuning_parameter": {
         "busy_spin": "True",
-        "hepnos_num_event_databases": 16,
-        "hepnos_num_product_databases": 9,
-        "hepnos_num_providers": 20,
-        "hepnos_num_rpc_threads": 62,
-        "hepnos_pes_per_node": "4",
+        "hepnos_num_event_databases": 7,
+        "hepnos_num_product_databases": 1,
+        "hepnos_num_providers": 15,
+        "hepnos_num_rpc_threads": 25,
+        "hepnos_pes_per_node": "16",
         "hepnos_pool_type": "fifo_wait",
         "hepnos_progress_thread": "True",
-        "loader_batch_size": 1862,
+        "loader_batch_size": 104,
+        "loader_pes_per_node": "1",
+        "loader_progress_thread": "True",
+        "loader_async": "False",
+        "loader_async_threads": 15,
+        "pep_progress_thread": "False",
+        "pep_num_threads": 13,
+        "pep_ibatch_size": 14,
+        "pep_obatch_size": 245,
+        "pep_pes_per_node": "1",
+        "pep_no_preloading": "False",
+        "pep_no_rdma": "True"
+      },
+      "constants": {},
+      "machine_configuration": {
+        "machine_name": "swing",
+        "amd": {
+          "nodes": 1,
+          "cores": 128
+        }
+      },
+      "software_configuration": {},
+      "evaluation_result": {
+        "y": 5.240645
+      },
+      "evaluation_detail": {
+        "y": {
+          "evaluations": 5.240644956706431,
+          "objective_scheme": "average"
+        }
+      },
+      "additional_output": {},
+      "source": "measure",
+      "time": {
+        "tm_year": 2022,
+        "tm_mon": 5,
+        "tm_mday": 8,
+        "tm_hour": 0,
+        "tm_min": 18,
+        "tm_sec": 45,
+        "tm_wday": 6,
+        "tm_yday": 128,
+        "tm_isdst": 1
+      },
+      "uid": "553f6d08-ce8e-11ec-944a-5cff35e3510b"
+    },
+    {
+      "task_parameter": {
+        "scale": 8,
+        "enable_pep": "True",
+        "more_params": "True"
+      },
+      "tuning_parameter": {
+        "busy_spin": "True",
+        "hepnos_num_event_databases": 13,
+        "hepnos_num_product_databases": 1,
+        "hepnos_num_providers": 17,
+        "hepnos_num_rpc_threads": 31,
+        "hepnos_pes_per_node": "16",
+        "hepnos_pool_type": "fifo_wait",
+        "hepnos_progress_thread": "True",
+        "loader_batch_size": 2015,
+        "loader_pes_per_node": "16",
+        "loader_progress_thread": "False",
+        "loader_async": "True",
+        "loader_async_threads": 62,
+        "pep_progress_thread": "True",
+        "pep_num_threads": 2,
+        "pep_ibatch_size": 98,
+        "pep_obatch_size": 389,
+        "pep_pes_per_node": "1",
+        "pep_no_preloading": "False",
+        "pep_no_rdma": "True"
+      },
+      "constants": {},
+      "machine_configuration": {
+        "machine_name": "swing",
+        "amd": {
+          "nodes": 1,
+          "cores": 128
+        }
+      },
+      "software_configuration": {},
+      "evaluation_result": {
+        "y": 3.93646
+      },
+      "evaluation_detail": {
+        "y": {
+          "evaluations": 3.936459922746014,
+          "objective_scheme": "average"
+        }
+      },
+      "additional_output": {},
+      "source": "measure",
+      "time": {
+        "tm_year": 2022,
+        "tm_mon": 5,
+        "tm_mday": 8,
+        "tm_hour": 0,
+        "tm_min": 20,
+        "tm_sec": 6,
+        "tm_wday": 6,
+        "tm_yday": 128,
+        "tm_isdst": 1
+      },
+      "uid": "85de9d9e-ce8e-11ec-944a-5cff35e3510b"
+    },
+    {
+      "task_parameter": {
+        "scale": 4,
+        "enable_pep": "True",
+        "more_params": "True"
+      },
+      "tuning_parameter": {
+        "busy_spin": "False",
+        "hepnos_num_event_databases": 13,
+        "hepnos_num_product_databases": 1,
+        "hepnos_num_providers": 25,
+        "hepnos_num_rpc_threads": 30,
+        "hepnos_pes_per_node": "1",
+        "hepnos_pool_type": "fifo_wait",
+        "hepnos_progress_thread": "True",
+        "loader_batch_size": 2017,
+        "loader_pes_per_node": "1",
+        "loader_progress_thread": "True",
+        "loader_async": "False",
+        "loader_async_threads": 39,
+        "pep_progress_thread": "True",
+        "pep_num_threads": 16,
+        "pep_ibatch_size": 47,
+        "pep_obatch_size": 949,
+        "pep_pes_per_node": "32",
+        "pep_no_preloading": "False",
+        "pep_no_rdma": "False"
+      },
+      "constants": {},
+      "machine_configuration": {
+        "machine_name": "swing",
+        "amd": {
+          "nodes": 1,
+          "cores": 128
+        }
+      },
+      "software_configuration": {},
+      "evaluation_result": {
+        "y": 5.803402
+      },
+      "evaluation_detail": {
+        "y": {
+          "evaluations": 5.803402491437863,
+          "objective_scheme": "average"
+        }
+      },
+      "additional_output": {},
+      "source": "measure",
+      "time": {
+        "tm_year": 2022,
+        "tm_mon": 5,
+        "tm_mday": 8,
+        "tm_hour": 0,
+        "tm_min": 20,
+        "tm_sec": 6,
+        "tm_wday": 6,
+        "tm_yday": 128,
+        "tm_isdst": 1
+      },
+      "uid": "85e135cc-ce8e-11ec-944a-5cff35e3510b"
+    },
+    {
+      "task_parameter": {
+        "scale": 8,
+        "enable_pep": "True",
+        "more_params": "True"
+      },
+      "tuning_parameter": {
+        "busy_spin": "False",
+        "hepnos_num_event_databases": 5,
+        "hepnos_num_product_databases": 2,
+        "hepnos_num_providers": 22,
+        "hepnos_num_rpc_threads": 60,
+        "hepnos_pes_per_node": "16",
+        "hepnos_pool_type": "fifo_wait",
+        "hepnos_progress_thread": "False",
+        "loader_batch_size": 825,
+        "loader_pes_per_node": "2",
+        "loader_progress_thread": "True",
+        "loader_async": "True",
+        "loader_async_threads": 21,
+        "pep_progress_thread": "True",
+        "pep_num_threads": 9,
+        "pep_ibatch_size": 384,
+        "pep_obatch_size": 1002,
+        "pep_pes_per_node": "32",
+        "pep_no_preloading": "False",
+        "pep_no_rdma": "True"
+      },
+      "constants": {},
+      "machine_configuration": {
+        "machine_name": "swing",
+        "amd": {
+          "nodes": 1,
+          "cores": 128
+        }
+      },
+      "software_configuration": {},
+      "evaluation_result": {
+        "y": 4.682094
+      },
+      "evaluation_detail": {
+        "y": {
+          "evaluations": 4.682093667063191,
+          "objective_scheme": "average"
+        }
+      },
+      "additional_output": {},
+      "source": "measure",
+      "time": {
+        "tm_year": 2022,
+        "tm_mon": 5,
+        "tm_mday": 8,
+        "tm_hour": 0,
+        "tm_min": 22,
+        "tm_sec": 16,
+        "tm_wday": 6,
+        "tm_yday": 128,
+        "tm_isdst": 1
+      },
+      "uid": "d2e102d0-ce8e-11ec-944a-5cff35e3510b"
+    },
+    {
+      "task_parameter": {
+        "scale": 4,
+        "enable_pep": "True",
+        "more_params": "True"
+      },
+      "tuning_parameter": {
+        "busy_spin": "False",
+        "hepnos_num_event_databases": 2,
+        "hepnos_num_product_databases": 2,
+        "hepnos_num_providers": 27,
+        "hepnos_num_rpc_threads": 59,
+        "hepnos_pes_per_node": "8",
+        "hepnos_pool_type": "fifo",
+        "hepnos_progress_thread": "False",
+        "loader_batch_size": 448,
+        "loader_pes_per_node": "16",
+        "loader_progress_thread": "True",
+        "loader_async": "False",
+        "loader_async_threads": 33,
+        "pep_progress_thread": "True",
+        "pep_num_threads": 29,
+        "pep_ibatch_size": 846,
+        "pep_obatch_size": 782,
+        "pep_pes_per_node": "1",
+        "pep_no_preloading": "False",
+        "pep_no_rdma": "True"
+      },
+      "constants": {},
+      "machine_configuration": {
+        "machine_name": "swing",
+        "amd": {
+          "nodes": 1,
+          "cores": 128
+        }
+      },
+      "software_configuration": {},
+      "evaluation_result": {
+        "y": 3.415136
+      },
+      "evaluation_detail": {
+        "y": {
+          "evaluations": 3.4151357278998775,
+          "objective_scheme": "average"
+        }
+      },
+      "additional_output": {},
+      "source": "measure",
+      "time": {
+        "tm_year": 2022,
+        "tm_mon": 5,
+        "tm_mday": 8,
+        "tm_hour": 0,
+        "tm_min": 22,
+        "tm_sec": 16,
+        "tm_wday": 6,
+        "tm_yday": 128,
+        "tm_isdst": 1
+      },
+      "uid": "d2e3a242-ce8e-11ec-944a-5cff35e3510b"
+    },
+    {
+      "task_parameter": {
+        "scale": 8,
+        "enable_pep": "True",
+        "more_params": "True"
+      },
+      "tuning_parameter": {
+        "busy_spin": "False",
+        "hepnos_num_event_databases": 8,
+        "hepnos_num_product_databases": 2,
+        "hepnos_num_providers": 2,
+        "hepnos_num_rpc_threads": 59,
+        "hepnos_pes_per_node": "1",
+        "hepnos_pool_type": "fifo_wait",
+        "hepnos_progress_thread": "True",
+        "loader_batch_size": 239,
+        "loader_pes_per_node": "16",
+        "loader_progress_thread": "False",
+        "loader_async": "False",
+        "loader_async_threads": 17,
+        "pep_progress_thread": "True",
+        "pep_num_threads": 30,
+        "pep_ibatch_size": 167,
+        "pep_obatch_size": 728,
+        "pep_pes_per_node": "2",
+        "pep_no_preloading": "True",
+        "pep_no_rdma": "False"
+      },
+      "constants": {},
+      "machine_configuration": {
+        "machine_name": "swing",
+        "amd": {
+          "nodes": 1,
+          "cores": 128
+        }
+      },
+      "software_configuration": {},
+      "evaluation_result": {
+        "y": 4.792968
+      },
+      "evaluation_detail": {
+        "y": {
+          "evaluations": 4.79296787086911,
+          "objective_scheme": "average"
+        }
+      },
+      "additional_output": {},
+      "source": "measure",
+      "time": {
+        "tm_year": 2022,
+        "tm_mon": 5,
+        "tm_mday": 8,
+        "tm_hour": 0,
+        "tm_min": 24,
+        "tm_sec": 29,
+        "tm_wday": 6,
+        "tm_yday": 128,
+        "tm_isdst": 1
+      },
+      "uid": "22a6a504-ce8f-11ec-944a-5cff35e3510b"
+    },
+    {
+      "task_parameter": {
+        "scale": 4,
+        "enable_pep": "True",
+        "more_params": "True"
+      },
+      "tuning_parameter": {
+        "busy_spin": "True",
+        "hepnos_num_event_databases": 2,
+        "hepnos_num_product_databases": 1,
+        "hepnos_num_providers": 8,
+        "hepnos_num_rpc_threads": 59,
+        "hepnos_pes_per_node": "2",
+        "hepnos_pool_type": "fifo_wait",
+        "hepnos_progress_thread": "True",
+        "loader_batch_size": 1313,
+        "loader_pes_per_node": "8",
+        "loader_progress_thread": "False",
+        "loader_async": "True",
+        "loader_async_threads": 20,
+        "pep_progress_thread": "True",
+        "pep_num_threads": 6,
+        "pep_ibatch_size": 926,
+        "pep_obatch_size": 965,
+        "pep_pes_per_node": "1",
+        "pep_no_preloading": "False",
+        "pep_no_rdma": "False"
+      },
+      "constants": {},
+      "machine_configuration": {
+        "machine_name": "swing",
+        "amd": {
+          "nodes": 1,
+          "cores": 128
+        }
+      },
+      "software_configuration": {},
+      "evaluation_result": {
+        "y": 5.052385
+      },
+      "evaluation_detail": {
+        "y": {
+          "evaluations": 5.052384668760729,
+          "objective_scheme": "average"
+        }
+      },
+      "additional_output": {},
+      "source": "measure",
+      "time": {
+        "tm_year": 2022,
+        "tm_mon": 5,
+        "tm_mday": 8,
+        "tm_hour": 0,
+        "tm_min": 24,
+        "tm_sec": 29,
+        "tm_wday": 6,
+        "tm_yday": 128,
+        "tm_isdst": 1
+      },
+      "uid": "22a94ade-ce8f-11ec-944a-5cff35e3510b"
+    },
+    {
+      "task_parameter": {
+        "scale": 8,
+        "enable_pep": "True",
+        "more_params": "True"
+      },
+      "tuning_parameter": {
+        "busy_spin": "True",
+        "hepnos_num_event_databases": 14,
+        "hepnos_num_product_databases": 4,
+        "hepnos_num_providers": 22,
+        "hepnos_num_rpc_threads": 61,
+        "hepnos_pes_per_node": "4",
+        "hepnos_pool_type": "fifo",
+        "hepnos_progress_thread": "False",
+        "loader_batch_size": 192,
         "loader_pes_per_node": "1",
         "loader_progress_thread": "True",
         "loader_async": "True",
-        "loader_async_threads": 12,
+        "loader_async_threads": 62,
         "pep_progress_thread": "True",
         "pep_num_threads": 23,
-        "pep_ibatch_size": 929,
+        "pep_ibatch_size": 589,
+        "pep_obatch_size": 898,
+        "pep_pes_per_node": "32",
+        "pep_no_preloading": "True",
+        "pep_no_rdma": "False"
+      },
+      "constants": {},
+      "machine_configuration": {
+        "machine_name": "swing",
+        "amd": {
+          "nodes": 1,
+          "cores": 128
+        }
+      },
+      "software_configuration": {},
+      "evaluation_result": {
+        "y": 5.172543
+      },
+      "evaluation_detail": {
+        "y": {
+          "evaluations": 5.172543088365198,
+          "objective_scheme": "average"
+        }
+      },
+      "additional_output": {},
+      "source": "measure",
+      "time": {
+        "tm_year": 2022,
+        "tm_mon": 5,
+        "tm_mday": 8,
+        "tm_hour": 0,
+        "tm_min": 27,
+        "tm_sec": 38,
+        "tm_wday": 6,
+        "tm_yday": 128,
+        "tm_isdst": 1
+      },
+      "uid": "932be4f6-ce8f-11ec-944a-5cff35e3510b"
+    },
+    {
+      "task_parameter": {
+        "scale": 4,
+        "enable_pep": "True",
+        "more_params": "True"
+      },
+      "tuning_parameter": {
+        "busy_spin": "True",
+        "hepnos_num_event_databases": 15,
+        "hepnos_num_product_databases": 11,
+        "hepnos_num_providers": 1,
+        "hepnos_num_rpc_threads": 61,
+        "hepnos_pes_per_node": "16",
+        "hepnos_pool_type": "fifo_wait",
+        "hepnos_progress_thread": "False",
+        "loader_batch_size": 824,
+        "loader_pes_per_node": "16",
+        "loader_progress_thread": "True",
+        "loader_async": "False",
+        "loader_async_threads": 60,
+        "pep_progress_thread": "True",
+        "pep_num_threads": 28,
+        "pep_ibatch_size": 875,
+        "pep_obatch_size": 642,
+        "pep_pes_per_node": "2",
+        "pep_no_preloading": "False",
+        "pep_no_rdma": "True"
+      },
+      "constants": {},
+      "machine_configuration": {
+        "machine_name": "swing",
+        "amd": {
+          "nodes": 1,
+          "cores": 128
+        }
+      },
+      "software_configuration": {},
+      "evaluation_result": {
+        "y": 3.09816
+      },
+      "evaluation_detail": {
+        "y": {
+          "evaluations": 3.0981604698094873,
+          "objective_scheme": "average"
+        }
+      },
+      "additional_output": {},
+      "source": "measure",
+      "time": {
+        "tm_year": 2022,
+        "tm_mon": 5,
+        "tm_mday": 8,
+        "tm_hour": 0,
+        "tm_min": 27,
+        "tm_sec": 38,
+        "tm_wday": 6,
+        "tm_yday": 128,
+        "tm_isdst": 1
+      },
+      "uid": "932eab1e-ce8f-11ec-944a-5cff35e3510b"
+    },
+    {
+      "task_parameter": {
+        "scale": 8,
+        "enable_pep": "True",
+        "more_params": "True"
+      },
+      "tuning_parameter": {
+        "busy_spin": "True",
+        "hepnos_num_event_databases": 9,
+        "hepnos_num_product_databases": 1,
+        "hepnos_num_providers": 12,
+        "hepnos_num_rpc_threads": 60,
+        "hepnos_pes_per_node": "1",
+        "hepnos_pool_type": "fifo_wait",
+        "hepnos_progress_thread": "False",
+        "loader_batch_size": 861,
+        "loader_pes_per_node": "16",
+        "loader_progress_thread": "True",
+        "loader_async": "True",
+        "loader_async_threads": 61,
+        "pep_progress_thread": "True",
+        "pep_num_threads": 1,
+        "pep_ibatch_size": 827,
+        "pep_obatch_size": 759,
+        "pep_pes_per_node": "2",
+        "pep_no_preloading": "False",
+        "pep_no_rdma": "True"
+      },
+      "constants": {},
+      "machine_configuration": {
+        "machine_name": "swing",
+        "amd": {
+          "nodes": 1,
+          "cores": 128
+        }
+      },
+      "software_configuration": {},
+      "evaluation_result": {
+        "y": 3.836633
+      },
+      "evaluation_detail": {
+        "y": {
+          "evaluations": 3.836632788976094,
+          "objective_scheme": "average"
+        }
+      },
+      "additional_output": {},
+      "source": "measure",
+      "time": {
+        "tm_year": 2022,
+        "tm_mon": 5,
+        "tm_mday": 8,
+        "tm_hour": 0,
+        "tm_min": 28,
+        "tm_sec": 38,
+        "tm_wday": 6,
+        "tm_yday": 128,
+        "tm_isdst": 1
+      },
+      "uid": "b6f91de0-ce8f-11ec-944a-5cff35e3510b"
+    },
+    {
+      "task_parameter": {
+        "scale": 4,
+        "enable_pep": "True",
+        "more_params": "True"
+      },
+      "tuning_parameter": {
+        "busy_spin": "False",
+        "hepnos_num_event_databases": 3,
+        "hepnos_num_product_databases": 10,
+        "hepnos_num_providers": 19,
+        "hepnos_num_rpc_threads": 42,
+        "hepnos_pes_per_node": "16",
+        "hepnos_pool_type": "fifo_wait",
+        "hepnos_progress_thread": "True",
+        "loader_batch_size": 895,
+        "loader_pes_per_node": "16",
+        "loader_progress_thread": "False",
+        "loader_async": "True",
+        "loader_async_threads": 54,
+        "pep_progress_thread": "False",
+        "pep_num_threads": 28,
+        "pep_ibatch_size": 190,
+        "pep_obatch_size": 397,
+        "pep_pes_per_node": "16",
+        "pep_no_preloading": "True",
+        "pep_no_rdma": "True"
+      },
+      "constants": {},
+      "machine_configuration": {
+        "machine_name": "swing",
+        "amd": {
+          "nodes": 1,
+          "cores": 128
+        }
+      },
+      "software_configuration": {},
+      "evaluation_result": {
+        "y": 3.438323
+      },
+      "evaluation_detail": {
+        "y": {
+          "evaluations": 3.438322902553242,
+          "objective_scheme": "average"
+        }
+      },
+      "additional_output": {},
+      "source": "measure",
+      "time": {
+        "tm_year": 2022,
+        "tm_mon": 5,
+        "tm_mday": 8,
+        "tm_hour": 0,
+        "tm_min": 28,
+        "tm_sec": 38,
+        "tm_wday": 6,
+        "tm_yday": 128,
+        "tm_isdst": 1
+      },
+      "uid": "b6fbd440-ce8f-11ec-944a-5cff35e3510b"
+    },
+    {
+      "task_parameter": {
+        "scale": 8,
+        "enable_pep": "True",
+        "more_params": "True"
+      },
+      "tuning_parameter": {
+        "busy_spin": "False",
+        "hepnos_num_event_databases": 3,
+        "hepnos_num_product_databases": 5,
+        "hepnos_num_providers": 28,
+        "hepnos_num_rpc_threads": 44,
+        "hepnos_pes_per_node": "1",
+        "hepnos_pool_type": "fifo_wait",
+        "hepnos_progress_thread": "True",
+        "loader_batch_size": 51,
+        "loader_pes_per_node": "16",
+        "loader_progress_thread": "True",
+        "loader_async": "True",
+        "loader_async_threads": 3,
+        "pep_progress_thread": "True",
+        "pep_num_threads": 2,
+        "pep_ibatch_size": 660,
+        "pep_obatch_size": 544,
+        "pep_pes_per_node": "32",
+        "pep_no_preloading": "False",
+        "pep_no_rdma": "True"
+      },
+      "constants": {},
+      "machine_configuration": {
+        "machine_name": "swing",
+        "amd": {
+          "nodes": 1,
+          "cores": 128
+        }
+      },
+      "software_configuration": {},
+      "evaluation_result": {
+        "y": 4.721834
+      },
+      "evaluation_detail": {
+        "y": {
+          "evaluations": 4.721834423405416,
+          "objective_scheme": "average"
+        }
+      },
+      "additional_output": {},
+      "source": "measure",
+      "time": {
+        "tm_year": 2022,
+        "tm_mon": 5,
+        "tm_mday": 8,
+        "tm_hour": 0,
+        "tm_min": 30,
+        "tm_sec": 50,
+        "tm_wday": 6,
+        "tm_yday": 128,
+        "tm_isdst": 1
+      },
+      "uid": "05c78844-ce90-11ec-944a-5cff35e3510b"
+    },
+    {
+      "task_parameter": {
+        "scale": 4,
+        "enable_pep": "True",
+        "more_params": "True"
+      },
+      "tuning_parameter": {
+        "busy_spin": "True",
+        "hepnos_num_event_databases": 15,
+        "hepnos_num_product_databases": 9,
+        "hepnos_num_providers": 16,
+        "hepnos_num_rpc_threads": 44,
+        "hepnos_pes_per_node": "1",
+        "hepnos_pool_type": "fifo",
+        "hepnos_progress_thread": "True",
+        "loader_batch_size": 999,
+        "loader_pes_per_node": "16",
+        "loader_progress_thread": "True",
+        "loader_async": "False",
+        "loader_async_threads": 41,
+        "pep_progress_thread": "True",
+        "pep_num_threads": 24,
+        "pep_ibatch_size": 1002,
+        "pep_obatch_size": 774,
+        "pep_pes_per_node": "32",
+        "pep_no_preloading": "True",
+        "pep_no_rdma": "False"
+      },
+      "constants": {},
+      "machine_configuration": {
+        "machine_name": "swing",
+        "amd": {
+          "nodes": 1,
+          "cores": 128
+        }
+      },
+      "software_configuration": {},
+      "evaluation_result": {
+        "y": 5.545022
+      },
+      "evaluation_detail": {
+        "y": {
+          "evaluations": 5.545021859069708,
+          "objective_scheme": "average"
+        }
+      },
+      "additional_output": {},
+      "source": "measure",
+      "time": {
+        "tm_year": 2022,
+        "tm_mon": 5,
+        "tm_mday": 8,
+        "tm_hour": 0,
+        "tm_min": 30,
+        "tm_sec": 50,
+        "tm_wday": 6,
+        "tm_yday": 128,
+        "tm_isdst": 1
+      },
+      "uid": "05ca47f0-ce90-11ec-944a-5cff35e3510b"
+    },
+    {
+      "task_parameter": {
+        "scale": 8,
+        "enable_pep": "True",
+        "more_params": "True"
+      },
+      "tuning_parameter": {
+        "busy_spin": "True",
+        "hepnos_num_event_databases": 8,
+        "hepnos_num_product_databases": 1,
+        "hepnos_num_providers": 24,
+        "hepnos_num_rpc_threads": 3,
+        "hepnos_pes_per_node": "2",
+        "hepnos_pool_type": "fifo_wait",
+        "hepnos_progress_thread": "True",
+        "loader_batch_size": 1330,
+        "loader_pes_per_node": "16",
+        "loader_progress_thread": "False",
+        "loader_async": "True",
+        "loader_async_threads": 25,
+        "pep_progress_thread": "True",
+        "pep_num_threads": 25,
+        "pep_ibatch_size": 659,
+        "pep_obatch_size": 568,
+        "pep_pes_per_node": "32",
+        "pep_no_preloading": "False",
+        "pep_no_rdma": "False"
+      },
+      "constants": {},
+      "machine_configuration": {
+        "machine_name": "swing",
+        "amd": {
+          "nodes": 1,
+          "cores": 128
+        }
+      },
+      "software_configuration": {},
+      "evaluation_result": {
+        "y": 4.552452
+      },
+      "evaluation_detail": {
+        "y": {
+          "evaluations": 4.552451666319257,
+          "objective_scheme": "average"
+        }
+      },
+      "additional_output": {},
+      "source": "measure",
+      "time": {
+        "tm_year": 2022,
+        "tm_mon": 5,
+        "tm_mday": 8,
+        "tm_hour": 0,
+        "tm_min": 32,
+        "tm_sec": 55,
+        "tm_wday": 6,
+        "tm_yday": 128,
+        "tm_isdst": 1
+      },
+      "uid": "4ff8784c-ce90-11ec-944a-5cff35e3510b"
+    },
+    {
+      "task_parameter": {
+        "scale": 4,
+        "enable_pep": "True",
+        "more_params": "True"
+      },
+      "tuning_parameter": {
+        "busy_spin": "False",
+        "hepnos_num_event_databases": 7,
+        "hepnos_num_product_databases": 8,
+        "hepnos_num_providers": 3,
+        "hepnos_num_rpc_threads": 13,
+        "hepnos_pes_per_node": "32",
+        "hepnos_pool_type": "fifo_wait",
+        "hepnos_progress_thread": "True",
+        "loader_batch_size": 1777,
+        "loader_pes_per_node": "16",
+        "loader_progress_thread": "True",
+        "loader_async": "True",
+        "loader_async_threads": 61,
+        "pep_progress_thread": "False",
+        "pep_num_threads": 13,
+        "pep_ibatch_size": 701,
+        "pep_obatch_size": 668,
+        "pep_pes_per_node": "2",
+        "pep_no_preloading": "False",
+        "pep_no_rdma": "True"
+      },
+      "constants": {},
+      "machine_configuration": {
+        "machine_name": "swing",
+        "amd": {
+          "nodes": 1,
+          "cores": 128
+        }
+      },
+      "software_configuration": {},
+      "evaluation_result": {
+        "y": 2.768759
+      },
+      "evaluation_detail": {
+        "y": {
+          "evaluations": 2.7687589039670204,
+          "objective_scheme": "average"
+        }
+      },
+      "additional_output": {},
+      "source": "measure",
+      "time": {
+        "tm_year": 2022,
+        "tm_mon": 5,
+        "tm_mday": 8,
+        "tm_hour": 0,
+        "tm_min": 32,
+        "tm_sec": 55,
+        "tm_wday": 6,
+        "tm_yday": 128,
+        "tm_isdst": 1
+      },
+      "uid": "4ffb4df6-ce90-11ec-944a-5cff35e3510b"
+    },
+    {
+      "task_parameter": {
+        "scale": 8,
+        "enable_pep": "True",
+        "more_params": "True"
+      },
+      "tuning_parameter": {
+        "busy_spin": "False",
+        "hepnos_num_event_databases": 13,
+        "hepnos_num_product_databases": 3,
+        "hepnos_num_providers": 26,
+        "hepnos_num_rpc_threads": 37,
+        "hepnos_pes_per_node": "1",
+        "hepnos_pool_type": "fifo_wait",
+        "hepnos_progress_thread": "False",
+        "loader_batch_size": 1723,
+        "loader_pes_per_node": "4",
+        "loader_progress_thread": "True",
+        "loader_async": "True",
+        "loader_async_threads": 62,
+        "pep_progress_thread": "True",
+        "pep_num_threads": 30,
+        "pep_ibatch_size": 527,
+        "pep_obatch_size": 309,
+        "pep_pes_per_node": "1",
+        "pep_no_preloading": "False",
+        "pep_no_rdma": "False"
+      },
+      "constants": {},
+      "machine_configuration": {
+        "machine_name": "swing",
+        "amd": {
+          "nodes": 1,
+          "cores": 128
+        }
+      },
+      "software_configuration": {},
+      "evaluation_result": {
+        "y": 5.048561
+      },
+      "evaluation_detail": {
+        "y": {
+          "evaluations": 5.048561320634184,
+          "objective_scheme": "average"
+        }
+      },
+      "additional_output": {},
+      "source": "measure",
+      "time": {
+        "tm_year": 2022,
+        "tm_mon": 5,
+        "tm_mday": 8,
+        "tm_hour": 0,
+        "tm_min": 36,
+        "tm_sec": 18,
+        "tm_wday": 6,
+        "tm_yday": 128,
+        "tm_isdst": 1
+      },
+      "uid": "c9023156-ce90-11ec-944a-5cff35e3510b"
+    },
+    {
+      "task_parameter": {
+        "scale": 4,
+        "enable_pep": "True",
+        "more_params": "True"
+      },
+      "tuning_parameter": {
+        "busy_spin": "False",
+        "hepnos_num_event_databases": 10,
+        "hepnos_num_product_databases": 5,
+        "hepnos_num_providers": 11,
+        "hepnos_num_rpc_threads": 23,
+        "hepnos_pes_per_node": "1",
+        "hepnos_pool_type": "fifo_wait",
+        "hepnos_progress_thread": "False",
+        "loader_batch_size": 125,
+        "loader_pes_per_node": "8",
+        "loader_progress_thread": "True",
+        "loader_async": "True",
+        "loader_async_threads": 59,
+        "pep_progress_thread": "False",
+        "pep_num_threads": 24,
+        "pep_ibatch_size": 21,
+        "pep_obatch_size": 572,
+        "pep_pes_per_node": "2",
+        "pep_no_preloading": "False",
+        "pep_no_rdma": "False"
+      },
+      "constants": {},
+      "machine_configuration": {
+        "machine_name": "swing",
+        "amd": {
+          "nodes": 1,
+          "cores": 128
+        }
+      },
+      "software_configuration": {},
+      "evaluation_result": {
+        "y": 3.888405
+      },
+      "evaluation_detail": {
+        "y": {
+          "evaluations": 3.888404781643731,
+          "objective_scheme": "average"
+        }
+      },
+      "additional_output": {},
+      "source": "measure",
+      "time": {
+        "tm_year": 2022,
+        "tm_mon": 5,
+        "tm_mday": 8,
+        "tm_hour": 0,
+        "tm_min": 36,
+        "tm_sec": 18,
+        "tm_wday": 6,
+        "tm_yday": 128,
+        "tm_isdst": 1
+      },
+      "uid": "c905084a-ce90-11ec-944a-5cff35e3510b"
+    },
+    {
+      "task_parameter": {
+        "scale": 8,
+        "enable_pep": "True",
+        "more_params": "True"
+      },
+      "tuning_parameter": {
+        "busy_spin": "False",
+        "hepnos_num_event_databases": 11,
+        "hepnos_num_product_databases": 11,
+        "hepnos_num_providers": 31,
+        "hepnos_num_rpc_threads": 57,
+        "hepnos_pes_per_node": "32",
+        "hepnos_pool_type": "fifo_wait",
+        "hepnos_progress_thread": "False",
+        "loader_batch_size": 475,
+        "loader_pes_per_node": "16",
+        "loader_progress_thread": "True",
+        "loader_async": "True",
+        "loader_async_threads": 56,
+        "pep_progress_thread": "True",
+        "pep_num_threads": 29,
+        "pep_ibatch_size": 669,
+        "pep_obatch_size": 143,
+        "pep_pes_per_node": "16",
+        "pep_no_preloading": "True",
+        "pep_no_rdma": "True"
+      },
+      "constants": {},
+      "machine_configuration": {
+        "machine_name": "swing",
+        "amd": {
+          "nodes": 1,
+          "cores": 128
+        }
+      },
+      "software_configuration": {},
+      "evaluation_result": {
+        "y": 4.857686
+      },
+      "evaluation_detail": {
+        "y": {
+          "evaluations": 4.857686278050255,
+          "objective_scheme": "average"
+        }
+      },
+      "additional_output": {},
+      "source": "measure",
+      "time": {
+        "tm_year": 2022,
+        "tm_mon": 5,
+        "tm_mday": 8,
+        "tm_hour": 0,
+        "tm_min": 38,
+        "tm_sec": 40,
+        "tm_wday": 6,
+        "tm_yday": 128,
+        "tm_isdst": 1
+      },
+      "uid": "1d9d7c2a-ce91-11ec-944a-5cff35e3510b"
+    },
+    {
+      "task_parameter": {
+        "scale": 4,
+        "enable_pep": "True",
+        "more_params": "True"
+      },
+      "tuning_parameter": {
+        "busy_spin": "True",
+        "hepnos_num_event_databases": 6,
+        "hepnos_num_product_databases": 1,
+        "hepnos_num_providers": 12,
+        "hepnos_num_rpc_threads": 56,
+        "hepnos_pes_per_node": "32",
+        "hepnos_pool_type": "fifo_wait",
+        "hepnos_progress_thread": "True",
+        "loader_batch_size": 125,
+        "loader_pes_per_node": "16",
+        "loader_progress_thread": "True",
+        "loader_async": "True",
+        "loader_async_threads": 32,
+        "pep_progress_thread": "False",
+        "pep_num_threads": 1,
+        "pep_ibatch_size": 161,
+        "pep_obatch_size": 783,
+        "pep_pes_per_node": "8",
+        "pep_no_preloading": "False",
+        "pep_no_rdma": "False"
+      },
+      "constants": {},
+      "machine_configuration": {
+        "machine_name": "swing",
+        "amd": {
+          "nodes": 1,
+          "cores": 128
+        }
+      },
+      "software_configuration": {},
+      "evaluation_result": {
+        "y": 5.27644
+      },
+      "evaluation_detail": {
+        "y": {
+          "evaluations": 5.2764399691726815,
+          "objective_scheme": "average"
+        }
+      },
+      "additional_output": {},
+      "source": "measure",
+      "time": {
+        "tm_year": 2022,
+        "tm_mon": 5,
+        "tm_mday": 8,
+        "tm_hour": 0,
+        "tm_min": 38,
+        "tm_sec": 40,
+        "tm_wday": 6,
+        "tm_yday": 128,
+        "tm_isdst": 1
+      },
+      "uid": "1da0696c-ce91-11ec-944a-5cff35e3510b"
+    },
+    {
+      "task_parameter": {
+        "scale": 8,
+        "enable_pep": "True",
+        "more_params": "True"
+      },
+      "tuning_parameter": {
+        "busy_spin": "False",
+        "hepnos_num_event_databases": 2,
+        "hepnos_num_product_databases": 9,
+        "hepnos_num_providers": 11,
+        "hepnos_num_rpc_threads": 15,
+        "hepnos_pes_per_node": "32",
+        "hepnos_pool_type": "fifo_wait",
+        "hepnos_progress_thread": "True",
+        "loader_batch_size": 595,
+        "loader_pes_per_node": "8",
+        "loader_progress_thread": "False",
+        "loader_async": "False",
+        "loader_async_threads": 61,
+        "pep_progress_thread": "False",
+        "pep_num_threads": 16,
+        "pep_ibatch_size": 786,
+        "pep_obatch_size": 885,
+        "pep_pes_per_node": "16",
+        "pep_no_preloading": "True",
+        "pep_no_rdma": "True"
+      },
+      "constants": {},
+      "machine_configuration": {
+        "machine_name": "swing",
+        "amd": {
+          "nodes": 1,
+          "cores": 128
+        }
+      },
+      "software_configuration": {},
+      "evaluation_result": {
+        "y": 4.799341
+      },
+      "evaluation_detail": {
+        "y": {
+          "evaluations": 4.799340630413864,
+          "objective_scheme": "average"
+        }
+      },
+      "additional_output": {},
+      "source": "measure",
+      "time": {
+        "tm_year": 2022,
+        "tm_mon": 5,
+        "tm_mday": 8,
+        "tm_hour": 0,
+        "tm_min": 41,
+        "tm_sec": 3,
+        "tm_wday": 6,
+        "tm_yday": 128,
+        "tm_isdst": 1
+      },
+      "uid": "731cb918-ce91-11ec-944a-5cff35e3510b"
+    },
+    {
+      "task_parameter": {
+        "scale": 4,
+        "enable_pep": "True",
+        "more_params": "True"
+      },
+      "tuning_parameter": {
+        "busy_spin": "True",
+        "hepnos_num_event_databases": 1,
+        "hepnos_num_product_databases": 9,
+        "hepnos_num_providers": 17,
+        "hepnos_num_rpc_threads": 60,
+        "hepnos_pes_per_node": "16",
+        "hepnos_pool_type": "fifo",
+        "hepnos_progress_thread": "False",
+        "loader_batch_size": 189,
+        "loader_pes_per_node": "16",
+        "loader_progress_thread": "False",
+        "loader_async": "False",
+        "loader_async_threads": 62,
+        "pep_progress_thread": "False",
+        "pep_num_threads": 16,
+        "pep_ibatch_size": 920,
+        "pep_obatch_size": 773,
+        "pep_pes_per_node": "8",
+        "pep_no_preloading": "True",
+        "pep_no_rdma": "True"
+      },
+      "constants": {},
+      "machine_configuration": {
+        "machine_name": "swing",
+        "amd": {
+          "nodes": 1,
+          "cores": 128
+        }
+      },
+      "software_configuration": {},
+      "evaluation_result": {
+        "y": 2.481213
+      },
+      "evaluation_detail": {
+        "y": {
+          "evaluations": 2.481213311794651,
+          "objective_scheme": "average"
+        }
+      },
+      "additional_output": {},
+      "source": "measure",
+      "time": {
+        "tm_year": 2022,
+        "tm_mon": 5,
+        "tm_mday": 8,
+        "tm_hour": 0,
+        "tm_min": 41,
+        "tm_sec": 3,
+        "tm_wday": 6,
+        "tm_yday": 128,
+        "tm_isdst": 1
+      },
+      "uid": "731fa574-ce91-11ec-944a-5cff35e3510b"
+    },
+    {
+      "task_parameter": {
+        "scale": 8,
+        "enable_pep": "True",
+        "more_params": "True"
+      },
+      "tuning_parameter": {
+        "busy_spin": "True",
+        "hepnos_num_event_databases": 14,
+        "hepnos_num_product_databases": 5,
+        "hepnos_num_providers": 7,
+        "hepnos_num_rpc_threads": 46,
+        "hepnos_pes_per_node": "4",
+        "hepnos_pool_type": "fifo_wait",
+        "hepnos_progress_thread": "False",
+        "loader_batch_size": 205,
+        "loader_pes_per_node": "4",
+        "loader_progress_thread": "False",
+        "loader_async": "True",
+        "loader_async_threads": 55,
+        "pep_progress_thread": "True",
+        "pep_num_threads": 25,
+        "pep_ibatch_size": 676,
+        "pep_obatch_size": 556,
+        "pep_pes_per_node": "4",
+        "pep_no_preloading": "True",
+        "pep_no_rdma": "True"
+      },
+      "constants": {},
+      "machine_configuration": {
+        "machine_name": "swing",
+        "amd": {
+          "nodes": 1,
+          "cores": 128
+        }
+      },
+      "software_configuration": {},
+      "evaluation_result": {
+        "y": 4.976435
+      },
+      "evaluation_detail": {
+        "y": {
+          "evaluations": 4.976435326589316,
+          "objective_scheme": "average"
+        }
+      },
+      "additional_output": {},
+      "source": "measure",
+      "time": {
+        "tm_year": 2022,
+        "tm_mon": 5,
+        "tm_mday": 8,
+        "tm_hour": 0,
+        "tm_min": 44,
+        "tm_sec": 2,
+        "tm_wday": 6,
+        "tm_yday": 128,
+        "tm_isdst": 1
+      },
+      "uid": "dd9453be-ce91-11ec-944a-5cff35e3510b"
+    },
+    {
+      "task_parameter": {
+        "scale": 4,
+        "enable_pep": "True",
+        "more_params": "True"
+      },
+      "tuning_parameter": {
+        "busy_spin": "False",
+        "hepnos_num_event_databases": 16,
+        "hepnos_num_product_databases": 14,
+        "hepnos_num_providers": 25,
+        "hepnos_num_rpc_threads": 15,
+        "hepnos_pes_per_node": "8",
+        "hepnos_pool_type": "fifo_wait",
+        "hepnos_progress_thread": "False",
+        "loader_batch_size": 615,
+        "loader_pes_per_node": "16",
+        "loader_progress_thread": "False",
+        "loader_async": "True",
+        "loader_async_threads": 62,
+        "pep_progress_thread": "True",
+        "pep_num_threads": 2,
+        "pep_ibatch_size": 79,
+        "pep_obatch_size": 345,
+        "pep_pes_per_node": "32",
+        "pep_no_preloading": "False",
+        "pep_no_rdma": "True"
+      },
+      "constants": {},
+      "machine_configuration": {
+        "machine_name": "swing",
+        "amd": {
+          "nodes": 1,
+          "cores": 128
+        }
+      },
+      "software_configuration": {},
+      "evaluation_result": {
+        "y": 3.422565
+      },
+      "evaluation_detail": {
+        "y": {
+          "evaluations": 3.4225649985941433,
+          "objective_scheme": "average"
+        }
+      },
+      "additional_output": {},
+      "source": "measure",
+      "time": {
+        "tm_year": 2022,
+        "tm_mon": 5,
+        "tm_mday": 8,
+        "tm_hour": 0,
+        "tm_min": 44,
+        "tm_sec": 2,
+        "tm_wday": 6,
+        "tm_yday": 128,
+        "tm_isdst": 1
+      },
+      "uid": "dd974fba-ce91-11ec-944a-5cff35e3510b"
+    },
+    {
+      "task_parameter": {
+        "scale": 8,
+        "enable_pep": "True",
+        "more_params": "True"
+      },
+      "tuning_parameter": {
+        "busy_spin": "True",
+        "hepnos_num_event_databases": 6,
+        "hepnos_num_product_databases": 13,
+        "hepnos_num_providers": 22,
+        "hepnos_num_rpc_threads": 24,
+        "hepnos_pes_per_node": "32",
+        "hepnos_pool_type": "fifo_wait",
+        "hepnos_progress_thread": "True",
+        "loader_batch_size": 1878,
+        "loader_pes_per_node": "4",
+        "loader_progress_thread": "True",
+        "loader_async": "True",
+        "loader_async_threads": 3,
+        "pep_progress_thread": "True",
+        "pep_num_threads": 27,
+        "pep_ibatch_size": 194,
+        "pep_obatch_size": 490,
+        "pep_pes_per_node": "1",
+        "pep_no_preloading": "True",
+        "pep_no_rdma": "True"
+      },
+      "constants": {},
+      "machine_configuration": {
+        "machine_name": "swing",
+        "amd": {
+          "nodes": 1,
+          "cores": 128
+        }
+      },
+      "software_configuration": {},
+      "evaluation_result": {
+        "y": 5.088529
+      },
+      "evaluation_detail": {
+        "y": {
+          "evaluations": 5.088528652344324,
+          "objective_scheme": "average"
+        }
+      },
+      "additional_output": {},
+      "source": "measure",
+      "time": {
+        "tm_year": 2022,
+        "tm_mon": 5,
+        "tm_mday": 8,
+        "tm_hour": 0,
+        "tm_min": 47,
+        "tm_sec": 4,
+        "tm_wday": 6,
+        "tm_yday": 128,
+        "tm_isdst": 1
+      },
+      "uid": "4a2f8192-ce92-11ec-944a-5cff35e3510b"
+    },
+    {
+      "task_parameter": {
+        "scale": 4,
+        "enable_pep": "True",
+        "more_params": "True"
+      },
+      "tuning_parameter": {
+        "busy_spin": "False",
+        "hepnos_num_event_databases": 1,
+        "hepnos_num_product_databases": 16,
+        "hepnos_num_providers": 9,
+        "hepnos_num_rpc_threads": 57,
+        "hepnos_pes_per_node": "4",
+        "hepnos_pool_type": "fifo_wait",
+        "hepnos_progress_thread": "False",
+        "loader_batch_size": 715,
+        "loader_pes_per_node": "1",
+        "loader_progress_thread": "True",
+        "loader_async": "False",
+        "loader_async_threads": 61,
+        "pep_progress_thread": "True",
+        "pep_num_threads": 13,
+        "pep_ibatch_size": 575,
+        "pep_obatch_size": 767,
+        "pep_pes_per_node": "2",
+        "pep_no_preloading": "False",
+        "pep_no_rdma": "True"
+      },
+      "constants": {},
+      "machine_configuration": {
+        "machine_name": "swing",
+        "amd": {
+          "nodes": 1,
+          "cores": 128
+        }
+      },
+      "software_configuration": {},
+      "evaluation_result": {
+        "y": 2.710213
+      },
+      "evaluation_detail": {
+        "y": {
+          "evaluations": 2.7102126854701005,
+          "objective_scheme": "average"
+        }
+      },
+      "additional_output": {},
+      "source": "measure",
+      "time": {
+        "tm_year": 2022,
+        "tm_mon": 5,
+        "tm_mday": 8,
+        "tm_hour": 0,
+        "tm_min": 47,
+        "tm_sec": 4,
+        "tm_wday": 6,
+        "tm_yday": 128,
+        "tm_isdst": 1
+      },
+      "uid": "4a328478-ce92-11ec-944a-5cff35e3510b"
+    },
+    {
+      "task_parameter": {
+        "scale": 8,
+        "enable_pep": "True",
+        "more_params": "True"
+      },
+      "tuning_parameter": {
+        "busy_spin": "False",
+        "hepnos_num_event_databases": 2,
+        "hepnos_num_product_databases": 1,
+        "hepnos_num_providers": 11,
+        "hepnos_num_rpc_threads": 2,
+        "hepnos_pes_per_node": "1",
+        "hepnos_pool_type": "fifo_wait",
+        "hepnos_progress_thread": "True",
+        "loader_batch_size": 931,
+        "loader_pes_per_node": "16",
+        "loader_progress_thread": "True",
+        "loader_async": "True",
+        "loader_async_threads": 41,
+        "pep_progress_thread": "False",
+        "pep_num_threads": 31,
+        "pep_ibatch_size": 566,
+        "pep_obatch_size": 28,
+        "pep_pes_per_node": "1",
+        "pep_no_preloading": "False",
+        "pep_no_rdma": "True"
+      },
+      "constants": {},
+      "machine_configuration": {
+        "machine_name": "swing",
+        "amd": {
+          "nodes": 1,
+          "cores": 128
+        }
+      },
+      "software_configuration": {},
+      "evaluation_result": {
+        "y": 4.586449
+      },
+      "evaluation_detail": {
+        "y": {
+          "evaluations": 4.586448721810652,
+          "objective_scheme": "average"
+        }
+      },
+      "additional_output": {},
+      "source": "measure",
+      "time": {
+        "tm_year": 2022,
+        "tm_mon": 5,
+        "tm_mday": 8,
+        "tm_hour": 0,
+        "tm_min": 49,
+        "tm_sec": 24,
+        "tm_wday": 6,
+        "tm_yday": 128,
+        "tm_isdst": 1
+      },
+      "uid": "9d4320a0-ce92-11ec-944a-5cff35e3510b"
+    },
+    {
+      "task_parameter": {
+        "scale": 4,
+        "enable_pep": "True",
+        "more_params": "True"
+      },
+      "tuning_parameter": {
+        "busy_spin": "True",
+        "hepnos_num_event_databases": 2,
+        "hepnos_num_product_databases": 6,
+        "hepnos_num_providers": 9,
+        "hepnos_num_rpc_threads": 50,
+        "hepnos_pes_per_node": "1",
+        "hepnos_pool_type": "fifo",
+        "hepnos_progress_thread": "False",
+        "loader_batch_size": 2014,
+        "loader_pes_per_node": "16",
+        "loader_progress_thread": "False",
+        "loader_async": "False",
+        "loader_async_threads": 57,
+        "pep_progress_thread": "True",
+        "pep_num_threads": 30,
+        "pep_ibatch_size": 598,
+        "pep_obatch_size": 734,
+        "pep_pes_per_node": "16",
+        "pep_no_preloading": "False",
+        "pep_no_rdma": "True"
+      },
+      "constants": {},
+      "machine_configuration": {
+        "machine_name": "swing",
+        "amd": {
+          "nodes": 1,
+          "cores": 128
+        }
+      },
+      "software_configuration": {},
+      "evaluation_result": {
+        "y": 2.733622
+      },
+      "evaluation_detail": {
+        "y": {
+          "evaluations": 2.733622180621921,
+          "objective_scheme": "average"
+        }
+      },
+      "additional_output": {},
+      "source": "measure",
+      "time": {
+        "tm_year": 2022,
+        "tm_mon": 5,
+        "tm_mday": 8,
+        "tm_hour": 0,
+        "tm_min": 49,
+        "tm_sec": 24,
+        "tm_wday": 6,
+        "tm_yday": 128,
+        "tm_isdst": 1
+      },
+      "uid": "9d462962-ce92-11ec-944a-5cff35e3510b"
+    },
+    {
+      "task_parameter": {
+        "scale": 8,
+        "enable_pep": "True",
+        "more_params": "True"
+      },
+      "tuning_parameter": {
+        "busy_spin": "False",
+        "hepnos_num_event_databases": 15,
+        "hepnos_num_product_databases": 7,
+        "hepnos_num_providers": 16,
+        "hepnos_num_rpc_threads": 55,
+        "hepnos_pes_per_node": "16",
+        "hepnos_pool_type": "fifo_wait",
+        "hepnos_progress_thread": "False",
+        "loader_batch_size": 1447,
+        "loader_pes_per_node": "8",
+        "loader_progress_thread": "False",
+        "loader_async": "True",
+        "loader_async_threads": 63,
+        "pep_progress_thread": "True",
+        "pep_num_threads": 1,
+        "pep_ibatch_size": 1008,
+        "pep_obatch_size": 997,
+        "pep_pes_per_node": "2",
+        "pep_no_preloading": "False",
+        "pep_no_rdma": "False"
+      },
+      "constants": {},
+      "machine_configuration": {
+        "machine_name": "swing",
+        "amd": {
+          "nodes": 1,
+          "cores": 128
+        }
+      },
+      "software_configuration": {},
+      "evaluation_result": {
+        "y": 3.976109
+      },
+      "evaluation_detail": {
+        "y": {
+          "evaluations": 3.976108705060823,
+          "objective_scheme": "average"
+        }
+      },
+      "additional_output": {},
+      "source": "measure",
+      "time": {
+        "tm_year": 2022,
+        "tm_mon": 5,
+        "tm_mday": 8,
+        "tm_hour": 0,
+        "tm_min": 50,
+        "tm_sec": 32,
+        "tm_wday": 6,
+        "tm_yday": 128,
+        "tm_isdst": 1
+      },
+      "uid": "c5e3b434-ce92-11ec-944a-5cff35e3510b"
+    },
+    {
+      "task_parameter": {
+        "scale": 4,
+        "enable_pep": "True",
+        "more_params": "True"
+      },
+      "tuning_parameter": {
+        "busy_spin": "False",
+        "hepnos_num_event_databases": 5,
+        "hepnos_num_product_databases": 1,
+        "hepnos_num_providers": 28,
+        "hepnos_num_rpc_threads": 48,
+        "hepnos_pes_per_node": "1",
+        "hepnos_pool_type": "fifo",
+        "hepnos_progress_thread": "False",
+        "loader_batch_size": 1959,
+        "loader_pes_per_node": "8",
+        "loader_progress_thread": "True",
+        "loader_async": "False",
+        "loader_async_threads": 61,
+        "pep_progress_thread": "True",
+        "pep_num_threads": 16,
+        "pep_ibatch_size": 534,
+        "pep_obatch_size": 766,
+        "pep_pes_per_node": "8",
+        "pep_no_preloading": "True",
+        "pep_no_rdma": "True"
+      },
+      "constants": {},
+      "machine_configuration": {
+        "machine_name": "swing",
+        "amd": {
+          "nodes": 1,
+          "cores": 128
+        }
+      },
+      "software_configuration": {},
+      "evaluation_result": {
+        "y": 2.994738
+      },
+      "evaluation_detail": {
+        "y": {
+          "evaluations": 2.9947381691980244,
+          "objective_scheme": "average"
+        }
+      },
+      "additional_output": {},
+      "source": "measure",
+      "time": {
+        "tm_year": 2022,
+        "tm_mon": 5,
+        "tm_mday": 8,
+        "tm_hour": 0,
+        "tm_min": 50,
+        "tm_sec": 32,
+        "tm_wday": 6,
+        "tm_yday": 128,
+        "tm_isdst": 1
+      },
+      "uid": "c5e70274-ce92-11ec-944a-5cff35e3510b"
+    },
+    {
+      "task_parameter": {
+        "scale": 8,
+        "enable_pep": "True",
+        "more_params": "True"
+      },
+      "tuning_parameter": {
+        "busy_spin": "True",
+        "hepnos_num_event_databases": 13,
+        "hepnos_num_product_databases": 3,
+        "hepnos_num_providers": 4,
+        "hepnos_num_rpc_threads": 2,
+        "hepnos_pes_per_node": "32",
+        "hepnos_pool_type": "fifo_wait",
+        "hepnos_progress_thread": "True",
+        "loader_batch_size": 505,
+        "loader_pes_per_node": "8",
+        "loader_progress_thread": "False",
+        "loader_async": "True",
+        "loader_async_threads": 45,
+        "pep_progress_thread": "True",
+        "pep_num_threads": 9,
+        "pep_ibatch_size": 604,
+        "pep_obatch_size": 989,
+        "pep_pes_per_node": "16",
+        "pep_no_preloading": "False",
+        "pep_no_rdma": "False"
+      },
+      "constants": {},
+      "machine_configuration": {
+        "machine_name": "swing",
+        "amd": {
+          "nodes": 1,
+          "cores": 128
+        }
+      },
+      "software_configuration": {},
+      "evaluation_result": {
+        "y": 4.695895
+      },
+      "evaluation_detail": {
+        "y": {
+          "evaluations": 4.695895075966187,
+          "objective_scheme": "average"
+        }
+      },
+      "additional_output": {},
+      "source": "measure",
+      "time": {
+        "tm_year": 2022,
+        "tm_mon": 5,
+        "tm_mday": 8,
+        "tm_hour": 0,
+        "tm_min": 52,
+        "tm_sec": 54,
+        "tm_wday": 6,
+        "tm_yday": 128,
+        "tm_isdst": 1
+      },
+      "uid": "1af20b38-ce93-11ec-944a-5cff35e3510b"
+    },
+    {
+      "task_parameter": {
+        "scale": 4,
+        "enable_pep": "True",
+        "more_params": "True"
+      },
+      "tuning_parameter": {
+        "busy_spin": "False",
+        "hepnos_num_event_databases": 2,
+        "hepnos_num_product_databases": 4,
+        "hepnos_num_providers": 15,
+        "hepnos_num_rpc_threads": 11,
+        "hepnos_pes_per_node": "4",
+        "hepnos_pool_type": "fifo_wait",
+        "hepnos_progress_thread": "False",
+        "loader_batch_size": 1610,
+        "loader_pes_per_node": "2",
+        "loader_progress_thread": "True",
+        "loader_async": "True",
+        "loader_async_threads": 60,
+        "pep_progress_thread": "False",
+        "pep_num_threads": 2,
+        "pep_ibatch_size": 703,
+        "pep_obatch_size": 208,
+        "pep_pes_per_node": "2",
+        "pep_no_preloading": "True",
+        "pep_no_rdma": "False"
+      },
+      "constants": {},
+      "machine_configuration": {
+        "machine_name": "swing",
+        "amd": {
+          "nodes": 1,
+          "cores": 128
+        }
+      },
+      "software_configuration": {},
+      "evaluation_result": {
+        "y": 3.320353
+      },
+      "evaluation_detail": {
+        "y": {
+          "evaluations": 3.320353184700582,
+          "objective_scheme": "average"
+        }
+      },
+      "additional_output": {},
+      "source": "measure",
+      "time": {
+        "tm_year": 2022,
+        "tm_mon": 5,
+        "tm_mday": 8,
+        "tm_hour": 0,
+        "tm_min": 52,
+        "tm_sec": 54,
+        "tm_wday": 6,
+        "tm_yday": 128,
+        "tm_isdst": 1
+      },
+      "uid": "1af55edc-ce93-11ec-944a-5cff35e3510b"
+    },
+    {
+      "task_parameter": {
+        "scale": 8,
+        "enable_pep": "True",
+        "more_params": "True"
+      },
+      "tuning_parameter": {
+        "busy_spin": "True",
+        "hepnos_num_event_databases": 16,
+        "hepnos_num_product_databases": 14,
+        "hepnos_num_providers": 31,
+        "hepnos_num_rpc_threads": 12,
+        "hepnos_pes_per_node": "4",
+        "hepnos_pool_type": "fifo_wait",
+        "hepnos_progress_thread": "True",
+        "loader_batch_size": 867,
+        "loader_pes_per_node": "16",
+        "loader_progress_thread": "True",
+        "loader_async": "True",
+        "loader_async_threads": 2,
+        "pep_progress_thread": "True",
+        "pep_num_threads": 22,
+        "pep_ibatch_size": 792,
+        "pep_obatch_size": 449,
+        "pep_pes_per_node": "32",
+        "pep_no_preloading": "False",
+        "pep_no_rdma": "True"
+      },
+      "constants": {},
+      "machine_configuration": {
+        "machine_name": "swing",
+        "amd": {
+          "nodes": 1,
+          "cores": 128
+        }
+      },
+      "software_configuration": {},
+      "evaluation_result": {
+        "y": 4.406125
+      },
+      "evaluation_detail": {
+        "y": {
+          "evaluations": 4.406124949535738,
+          "objective_scheme": "average"
+        }
+      },
+      "additional_output": {},
+      "source": "measure",
+      "time": {
+        "tm_year": 2022,
+        "tm_mon": 5,
+        "tm_mday": 8,
+        "tm_hour": 0,
+        "tm_min": 54,
+        "tm_sec": 40,
+        "tm_wday": 6,
+        "tm_yday": 128,
+        "tm_isdst": 1
+      },
+      "uid": "59d4a5f4-ce93-11ec-944a-5cff35e3510b"
+    },
+    {
+      "task_parameter": {
+        "scale": 4,
+        "enable_pep": "True",
+        "more_params": "True"
+      },
+      "tuning_parameter": {
+        "busy_spin": "False",
+        "hepnos_num_event_databases": 3,
+        "hepnos_num_product_databases": 12,
+        "hepnos_num_providers": 18,
+        "hepnos_num_rpc_threads": 33,
+        "hepnos_pes_per_node": "16",
+        "hepnos_pool_type": "fifo",
+        "hepnos_progress_thread": "False",
+        "loader_batch_size": 179,
+        "loader_pes_per_node": "16",
+        "loader_progress_thread": "False",
+        "loader_async": "False",
+        "loader_async_threads": 62,
+        "pep_progress_thread": "True",
+        "pep_num_threads": 17,
+        "pep_ibatch_size": 375,
+        "pep_obatch_size": 404,
+        "pep_pes_per_node": "32",
+        "pep_no_preloading": "False",
+        "pep_no_rdma": "False"
+      },
+      "constants": {},
+      "machine_configuration": {
+        "machine_name": "swing",
+        "amd": {
+          "nodes": 1,
+          "cores": 128
+        }
+      },
+      "software_configuration": {},
+      "evaluation_result": {
+        "y": 3.954498
+      },
+      "evaluation_detail": {
+        "y": {
+          "evaluations": 3.9544978039883114,
+          "objective_scheme": "average"
+        }
+      },
+      "additional_output": {},
+      "source": "measure",
+      "time": {
+        "tm_year": 2022,
+        "tm_mon": 5,
+        "tm_mday": 8,
+        "tm_hour": 0,
+        "tm_min": 54,
+        "tm_sec": 40,
+        "tm_wday": 6,
+        "tm_yday": 128,
+        "tm_isdst": 1
+      },
+      "uid": "59d7e67e-ce93-11ec-944a-5cff35e3510b"
+    },
+    {
+      "task_parameter": {
+        "scale": 8,
+        "enable_pep": "True",
+        "more_params": "True"
+      },
+      "tuning_parameter": {
+        "busy_spin": "True",
+        "hepnos_num_event_databases": 5,
+        "hepnos_num_product_databases": 7,
+        "hepnos_num_providers": 6,
+        "hepnos_num_rpc_threads": 23,
+        "hepnos_pes_per_node": "16",
+        "hepnos_pool_type": "fifo_wait",
+        "hepnos_progress_thread": "True",
+        "loader_batch_size": 1268,
+        "loader_pes_per_node": "8",
+        "loader_progress_thread": "False",
+        "loader_async": "False",
+        "loader_async_threads": 59,
+        "pep_progress_thread": "True",
+        "pep_num_threads": 5,
+        "pep_ibatch_size": 689,
+        "pep_obatch_size": 70,
+        "pep_pes_per_node": "32",
+        "pep_no_preloading": "False",
+        "pep_no_rdma": "False"
+      },
+      "constants": {},
+      "machine_configuration": {
+        "machine_name": "swing",
+        "amd": {
+          "nodes": 1,
+          "cores": 128
+        }
+      },
+      "software_configuration": {},
+      "evaluation_result": {
+        "y": 3.860755
+      },
+      "evaluation_detail": {
+        "y": {
+          "evaluations": 3.86075528406609,
+          "objective_scheme": "average"
+        }
+      },
+      "additional_output": {},
+      "source": "measure",
+      "time": {
+        "tm_year": 2022,
+        "tm_mon": 5,
+        "tm_mday": 8,
+        "tm_hour": 0,
+        "tm_min": 55,
+        "tm_sec": 45,
+        "tm_wday": 6,
+        "tm_yday": 128,
+        "tm_isdst": 1
+      },
+      "uid": "80d08cfe-ce93-11ec-944a-5cff35e3510b"
+    },
+    {
+      "task_parameter": {
+        "scale": 4,
+        "enable_pep": "True",
+        "more_params": "True"
+      },
+      "tuning_parameter": {
+        "busy_spin": "True",
+        "hepnos_num_event_databases": 6,
+        "hepnos_num_product_databases": 5,
+        "hepnos_num_providers": 5,
+        "hepnos_num_rpc_threads": 34,
+        "hepnos_pes_per_node": "2",
+        "hepnos_pool_type": "fifo",
+        "hepnos_progress_thread": "True",
+        "loader_batch_size": 871,
+        "loader_pes_per_node": "8",
+        "loader_progress_thread": "True",
+        "loader_async": "False",
+        "loader_async_threads": 59,
+        "pep_progress_thread": "False",
+        "pep_num_threads": 18,
+        "pep_ibatch_size": 656,
+        "pep_obatch_size": 809,
+        "pep_pes_per_node": "2",
+        "pep_no_preloading": "True",
+        "pep_no_rdma": "True"
+      },
+      "constants": {},
+      "machine_configuration": {
+        "machine_name": "swing",
+        "amd": {
+          "nodes": 1,
+          "cores": 128
+        }
+      },
+      "software_configuration": {},
+      "evaluation_result": {
+        "y": 2.498063
+      },
+      "evaluation_detail": {
+        "y": {
+          "evaluations": 2.498062521363795,
+          "objective_scheme": "average"
+        }
+      },
+      "additional_output": {},
+      "source": "measure",
+      "time": {
+        "tm_year": 2022,
+        "tm_mon": 5,
+        "tm_mday": 8,
+        "tm_hour": 0,
+        "tm_min": 55,
+        "tm_sec": 45,
+        "tm_wday": 6,
+        "tm_yday": 128,
+        "tm_isdst": 1
+      },
+      "uid": "80d3d2b0-ce93-11ec-944a-5cff35e3510b"
+    },
+    {
+      "task_parameter": {
+        "scale": 8,
+        "enable_pep": "True",
+        "more_params": "True"
+      },
+      "tuning_parameter": {
+        "busy_spin": "False",
+        "hepnos_num_event_databases": 3,
+        "hepnos_num_product_databases": 2,
+        "hepnos_num_providers": 12,
+        "hepnos_num_rpc_threads": 47,
+        "hepnos_pes_per_node": "1",
+        "hepnos_pool_type": "fifo_wait",
+        "hepnos_progress_thread": "False",
+        "loader_batch_size": 1748,
+        "loader_pes_per_node": "16",
+        "loader_progress_thread": "True",
+        "loader_async": "True",
+        "loader_async_threads": 38,
+        "pep_progress_thread": "False",
+        "pep_num_threads": 5,
+        "pep_ibatch_size": 928,
+        "pep_obatch_size": 91,
+        "pep_pes_per_node": "32",
+        "pep_no_preloading": "False",
+        "pep_no_rdma": "True"
+      },
+      "constants": {},
+      "machine_configuration": {
+        "machine_name": "swing",
+        "amd": {
+          "nodes": 1,
+          "cores": 128
+        }
+      },
+      "software_configuration": {},
+      "evaluation_result": {
+        "y": 3.832777
+      },
+      "evaluation_detail": {
+        "y": {
+          "evaluations": 3.8327770668597587,
+          "objective_scheme": "average"
+        }
+      },
+      "additional_output": {},
+      "source": "measure",
+      "time": {
+        "tm_year": 2022,
+        "tm_mon": 5,
+        "tm_mday": 8,
+        "tm_hour": 0,
+        "tm_min": 57,
+        "tm_sec": 7,
+        "tm_wday": 6,
+        "tm_yday": 128,
+        "tm_isdst": 1
+      },
+      "uid": "b1b0a3b8-ce93-11ec-944a-5cff35e3510b"
+    },
+    {
+      "task_parameter": {
+        "scale": 4,
+        "enable_pep": "True",
+        "more_params": "True"
+      },
+      "tuning_parameter": {
+        "busy_spin": "True",
+        "hepnos_num_event_databases": 2,
+        "hepnos_num_product_databases": 16,
+        "hepnos_num_providers": 32,
+        "hepnos_num_rpc_threads": 50,
+        "hepnos_pes_per_node": "1",
+        "hepnos_pool_type": "fifo_wait",
+        "hepnos_progress_thread": "False",
+        "loader_batch_size": 1225,
+        "loader_pes_per_node": "2",
+        "loader_progress_thread": "True",
+        "loader_async": "True",
+        "loader_async_threads": 59,
+        "pep_progress_thread": "True",
+        "pep_num_threads": 4,
+        "pep_ibatch_size": 713,
+        "pep_obatch_size": 773,
+        "pep_pes_per_node": "2",
+        "pep_no_preloading": "False",
+        "pep_no_rdma": "True"
+      },
+      "constants": {},
+      "machine_configuration": {
+        "machine_name": "swing",
+        "amd": {
+          "nodes": 1,
+          "cores": 128
+        }
+      },
+      "software_configuration": {},
+      "evaluation_result": {
+        "y": 3.297695
+      },
+      "evaluation_detail": {
+        "y": {
+          "evaluations": 3.2976950648724106,
+          "objective_scheme": "average"
+        }
+      },
+      "additional_output": {},
+      "source": "measure",
+      "time": {
+        "tm_year": 2022,
+        "tm_mon": 5,
+        "tm_mday": 8,
+        "tm_hour": 0,
+        "tm_min": 57,
+        "tm_sec": 7,
+        "tm_wday": 6,
+        "tm_yday": 128,
+        "tm_isdst": 1
+      },
+      "uid": "b1b426e6-ce93-11ec-944a-5cff35e3510b"
+    },
+    {
+      "task_parameter": {
+        "scale": 8,
+        "enable_pep": "True",
+        "more_params": "True"
+      },
+      "tuning_parameter": {
+        "busy_spin": "True",
+        "hepnos_num_event_databases": 6,
+        "hepnos_num_product_databases": 15,
+        "hepnos_num_providers": 1,
+        "hepnos_num_rpc_threads": 56,
+        "hepnos_pes_per_node": "4",
+        "hepnos_pool_type": "fifo_wait",
+        "hepnos_progress_thread": "False",
+        "loader_batch_size": 1552,
+        "loader_pes_per_node": "8",
+        "loader_progress_thread": "True",
+        "loader_async": "True",
+        "loader_async_threads": 48,
+        "pep_progress_thread": "True",
+        "pep_num_threads": 28,
+        "pep_ibatch_size": 690,
+        "pep_obatch_size": 965,
+        "pep_pes_per_node": "32",
+        "pep_no_preloading": "False",
+        "pep_no_rdma": "True"
+      },
+      "constants": {},
+      "machine_configuration": {
+        "machine_name": "swing",
+        "amd": {
+          "nodes": 1,
+          "cores": 128
+        }
+      },
+      "software_configuration": {},
+      "evaluation_result": {
+        "y": 4.288782
+      },
+      "evaluation_detail": {
+        "y": {
+          "evaluations": 4.288782495295148,
+          "objective_scheme": "average"
+        }
+      },
+      "additional_output": {},
+      "source": "measure",
+      "time": {
+        "tm_year": 2022,
+        "tm_mon": 5,
+        "tm_mday": 8,
+        "tm_hour": 0,
+        "tm_min": 58,
+        "tm_sec": 38,
+        "tm_wday": 6,
+        "tm_yday": 128,
+        "tm_isdst": 1
+      },
+      "uid": "e7ade44e-ce93-11ec-944a-5cff35e3510b"
+    },
+    {
+      "task_parameter": {
+        "scale": 4,
+        "enable_pep": "True",
+        "more_params": "True"
+      },
+      "tuning_parameter": {
+        "busy_spin": "True",
+        "hepnos_num_event_databases": 6,
+        "hepnos_num_product_databases": 10,
+        "hepnos_num_providers": 6,
+        "hepnos_num_rpc_threads": 30,
+        "hepnos_pes_per_node": "1",
+        "hepnos_pool_type": "fifo",
+        "hepnos_progress_thread": "True",
+        "loader_batch_size": 1794,
+        "loader_pes_per_node": "16",
+        "loader_progress_thread": "False",
+        "loader_async": "True",
+        "loader_async_threads": 42,
+        "pep_progress_thread": "True",
+        "pep_num_threads": 27,
+        "pep_ibatch_size": 715,
         "pep_obatch_size": 689,
         "pep_pes_per_node": "32",
         "pep_no_preloading": "False",
@@ -1566,11 +4006,11 @@
       },
       "software_configuration": {},
       "evaluation_result": {
-        "y": 5.666288
+        "y": 3.590792
       },
       "evaluation_detail": {
         "y": {
-          "evaluations": 5.666288118634737,
+          "evaluations": 3.590791974199436,
           "objective_scheme": "average"
         }
       },
@@ -1579,15 +4019,15 @@
       "time": {
         "tm_year": 2022,
         "tm_mon": 5,
-        "tm_mday": 7,
+        "tm_mday": 8,
         "tm_hour": 0,
-        "tm_min": 7,
-        "tm_sec": 43,
-        "tm_wday": 5,
-        "tm_yday": 127,
+        "tm_min": 58,
+        "tm_sec": 38,
+        "tm_wday": 6,
+        "tm_yday": 128,
         "tm_isdst": 1
       },
-      "uid": "a0577a18-cdc3-11ec-b8e6-5cff35e2561e"
+      "uid": "e7b13df6-ce93-11ec-944a-5cff35e3510b"
     },
     {
       "task_parameter": {
@@ -1596,26 +4036,26 @@
         "more_params": "True"
       },
       "tuning_parameter": {
-        "busy_spin": "False",
-        "hepnos_num_event_databases": 8,
+        "busy_spin": "True",
+        "hepnos_num_event_databases": 1,
         "hepnos_num_product_databases": 7,
-        "hepnos_num_providers": 16,
-        "hepnos_num_rpc_threads": 24,
-        "hepnos_pes_per_node": "16",
+        "hepnos_num_providers": 2,
+        "hepnos_num_rpc_threads": 60,
+        "hepnos_pes_per_node": "2",
         "hepnos_pool_type": "fifo_wait",
         "hepnos_progress_thread": "False",
-        "loader_batch_size": 720,
-        "loader_pes_per_node": "16",
+        "loader_batch_size": 1845,
+        "loader_pes_per_node": "2",
         "loader_progress_thread": "True",
         "loader_async": "True",
-        "loader_async_threads": 9,
+        "loader_async_threads": 3,
         "pep_progress_thread": "True",
-        "pep_num_threads": 21,
-        "pep_ibatch_size": 866,
-        "pep_obatch_size": 681,
-        "pep_pes_per_node": "32",
+        "pep_num_threads": 15,
+        "pep_ibatch_size": 171,
+        "pep_obatch_size": 300,
+        "pep_pes_per_node": "16",
         "pep_no_preloading": "False",
-        "pep_no_rdma": "False"
+        "pep_no_rdma": "True"
       },
       "constants": {},
       "machine_configuration": {
@@ -1627,11 +4067,11 @@
       },
       "software_configuration": {},
       "evaluation_result": {
-        "y": 4.752703
+        "y": 4.492374
       },
       "evaluation_detail": {
         "y": {
-          "evaluations": 4.7527032386875545,
+          "evaluations": 4.492373811427893,
           "objective_scheme": "average"
         }
       },
@@ -1640,15 +4080,15 @@
       "time": {
         "tm_year": 2022,
         "tm_mon": 5,
-        "tm_mday": 7,
-        "tm_hour": 0,
-        "tm_min": 10,
-        "tm_sec": 3,
-        "tm_wday": 5,
-        "tm_yday": 127,
+        "tm_mday": 8,
+        "tm_hour": 1,
+        "tm_min": 0,
+        "tm_sec": 37,
+        "tm_wday": 6,
+        "tm_yday": 128,
         "tm_isdst": 1
       },
-      "uid": "f4000ba8-cdc3-11ec-b8e6-5cff35e2561e"
+      "uid": "2e6adf04-ce94-11ec-944a-5cff35e3510b"
     },
     {
       "task_parameter": {
@@ -1658,25 +4098,25 @@
       },
       "tuning_parameter": {
         "busy_spin": "True",
-        "hepnos_num_event_databases": 11,
-        "hepnos_num_product_databases": 10,
-        "hepnos_num_providers": 30,
-        "hepnos_num_rpc_threads": 54,
-        "hepnos_pes_per_node": "16",
+        "hepnos_num_event_databases": 15,
+        "hepnos_num_product_databases": 15,
+        "hepnos_num_providers": 8,
+        "hepnos_num_rpc_threads": 39,
+        "hepnos_pes_per_node": "32",
         "hepnos_pool_type": "fifo_wait",
-        "hepnos_progress_thread": "True",
-        "loader_batch_size": 389,
-        "loader_pes_per_node": "16",
+        "hepnos_progress_thread": "False",
+        "loader_batch_size": 1998,
+        "loader_pes_per_node": "2",
         "loader_progress_thread": "True",
         "loader_async": "True",
-        "loader_async_threads": 25,
-        "pep_progress_thread": "True",
-        "pep_num_threads": 20,
-        "pep_ibatch_size": 220,
-        "pep_obatch_size": 103,
-        "pep_pes_per_node": "16",
+        "loader_async_threads": 63,
+        "pep_progress_thread": "False",
+        "pep_num_threads": 22,
+        "pep_ibatch_size": 675,
+        "pep_obatch_size": 565,
+        "pep_pes_per_node": "2",
         "pep_no_preloading": "False",
-        "pep_no_rdma": "False"
+        "pep_no_rdma": "True"
       },
       "constants": {},
       "machine_configuration": {
@@ -1688,11 +4128,11 @@
       },
       "software_configuration": {},
       "evaluation_result": {
-        "y": 5.189654
+        "y": 2.153068
       },
       "evaluation_detail": {
         "y": {
-          "evaluations": 5.189653747394093,
+          "evaluations": 2.15306810684534,
           "objective_scheme": "average"
         }
       },
@@ -1701,15 +4141,15 @@
       "time": {
         "tm_year": 2022,
         "tm_mon": 5,
-        "tm_mday": 7,
-        "tm_hour": 0,
-        "tm_min": 10,
-        "tm_sec": 3,
-        "tm_wday": 5,
-        "tm_yday": 127,
+        "tm_mday": 8,
+        "tm_hour": 1,
+        "tm_min": 0,
+        "tm_sec": 37,
+        "tm_wday": 6,
+        "tm_yday": 128,
         "tm_isdst": 1
       },
-      "uid": "f402a3ea-cdc3-11ec-b8e6-5cff35e2561e"
+      "uid": "2e6e4356-ce94-11ec-944a-5cff35e3510b"
     },
     {
       "task_parameter": {
@@ -1720,23 +4160,23 @@
       "tuning_parameter": {
         "busy_spin": "False",
         "hepnos_num_event_databases": 4,
-        "hepnos_num_product_databases": 15,
-        "hepnos_num_providers": 2,
-        "hepnos_num_rpc_threads": 62,
-        "hepnos_pes_per_node": "2",
+        "hepnos_num_product_databases": 14,
+        "hepnos_num_providers": 3,
+        "hepnos_num_rpc_threads": 29,
+        "hepnos_pes_per_node": "16",
         "hepnos_pool_type": "fifo_wait",
         "hepnos_progress_thread": "True",
-        "loader_batch_size": 1968,
-        "loader_pes_per_node": "16",
+        "loader_batch_size": 1768,
+        "loader_pes_per_node": "8",
         "loader_progress_thread": "True",
         "loader_async": "True",
-        "loader_async_threads": 59,
+        "loader_async_threads": 2,
         "pep_progress_thread": "True",
-        "pep_num_threads": 10,
-        "pep_ibatch_size": 634,
-        "pep_obatch_size": 71,
-        "pep_pes_per_node": "32",
-        "pep_no_preloading": "True",
+        "pep_num_threads": 28,
+        "pep_ibatch_size": 641,
+        "pep_obatch_size": 50,
+        "pep_pes_per_node": "4",
+        "pep_no_preloading": "False",
         "pep_no_rdma": "False"
       },
       "constants": {},
@@ -1749,11 +4189,11 @@
       },
       "software_configuration": {},
       "evaluation_result": {
-        "y": 4.432766
+        "y": 4.300762
       },
       "evaluation_detail": {
         "y": {
-          "evaluations": 4.432765875180398,
+          "evaluations": 4.30076177261192,
           "objective_scheme": "average"
         }
       },
@@ -1762,15 +4202,15 @@
       "time": {
         "tm_year": 2022,
         "tm_mon": 5,
-        "tm_mday": 7,
-        "tm_hour": 0,
-        "tm_min": 12,
-        "tm_sec": 4,
-        "tm_wday": 5,
-        "tm_yday": 127,
+        "tm_mday": 8,
+        "tm_hour": 1,
+        "tm_min": 2,
+        "tm_sec": 21,
+        "tm_wday": 6,
+        "tm_yday": 128,
         "tm_isdst": 1
       },
-      "uid": "3bd9863e-cdc4-11ec-b8e6-5cff35e2561e"
+      "uid": "6c8f8e74-ce94-11ec-944a-5cff35e3510b"
     },
     {
       "task_parameter": {
@@ -1780,24 +4220,207 @@
       },
       "tuning_parameter": {
         "busy_spin": "False",
-        "hepnos_num_event_databases": 5,
-        "hepnos_num_product_databases": 9,
-        "hepnos_num_providers": 21,
-        "hepnos_num_rpc_threads": 60,
+        "hepnos_num_event_databases": 2,
+        "hepnos_num_product_databases": 8,
+        "hepnos_num_providers": 4,
+        "hepnos_num_rpc_threads": 50,
         "hepnos_pes_per_node": "8",
         "hepnos_pool_type": "fifo_wait",
         "hepnos_progress_thread": "False",
-        "loader_batch_size": 1599,
+        "loader_batch_size": 691,
         "loader_pes_per_node": "16",
         "loader_progress_thread": "False",
         "loader_async": "True",
-        "loader_async_threads": 43,
+        "loader_async_threads": 31,
         "pep_progress_thread": "True",
-        "pep_num_threads": 30,
-        "pep_ibatch_size": 216,
-        "pep_obatch_size": 879,
-        "pep_pes_per_node": "16",
+        "pep_num_threads": 31,
+        "pep_ibatch_size": 290,
+        "pep_obatch_size": 204,
+        "pep_pes_per_node": "2",
         "pep_no_preloading": "True",
+        "pep_no_rdma": "True"
+      },
+      "constants": {},
+      "machine_configuration": {
+        "machine_name": "swing",
+        "amd": {
+          "nodes": 1,
+          "cores": 128
+        }
+      },
+      "software_configuration": {},
+      "evaluation_result": {
+        "y": 4.901209
+      },
+      "evaluation_detail": {
+        "y": {
+          "evaluations": 4.901208600414285,
+          "objective_scheme": "average"
+        }
+      },
+      "additional_output": {},
+      "source": "measure",
+      "time": {
+        "tm_year": 2022,
+        "tm_mon": 5,
+        "tm_mday": 8,
+        "tm_hour": 1,
+        "tm_min": 2,
+        "tm_sec": 21,
+        "tm_wday": 6,
+        "tm_yday": 128,
+        "tm_isdst": 1
+      },
+      "uid": "6c930860-ce94-11ec-944a-5cff35e3510b"
+    },
+    {
+      "task_parameter": {
+        "scale": 8,
+        "enable_pep": "True",
+        "more_params": "True"
+      },
+      "tuning_parameter": {
+        "busy_spin": "True",
+        "hepnos_num_event_databases": 6,
+        "hepnos_num_product_databases": 1,
+        "hepnos_num_providers": 3,
+        "hepnos_num_rpc_threads": 33,
+        "hepnos_pes_per_node": "2",
+        "hepnos_pool_type": "fifo_wait",
+        "hepnos_progress_thread": "True",
+        "loader_batch_size": 1190,
+        "loader_pes_per_node": "4",
+        "loader_progress_thread": "False",
+        "loader_async": "False",
+        "loader_async_threads": 57,
+        "pep_progress_thread": "True",
+        "pep_num_threads": 5,
+        "pep_ibatch_size": 1024,
+        "pep_obatch_size": 64,
+        "pep_pes_per_node": "4",
+        "pep_no_preloading": "False",
+        "pep_no_rdma": "True"
+      },
+      "constants": {},
+      "machine_configuration": {
+        "machine_name": "swing",
+        "amd": {
+          "nodes": 1,
+          "cores": 128
+        }
+      },
+      "software_configuration": {},
+      "evaluation_result": {
+        "y": 4.465212
+      },
+      "evaluation_detail": {
+        "y": {
+          "evaluations": 4.46521236640547,
+          "objective_scheme": "average"
+        }
+      },
+      "additional_output": {},
+      "source": "measure",
+      "time": {
+        "tm_year": 2022,
+        "tm_mon": 5,
+        "tm_mday": 8,
+        "tm_hour": 1,
+        "tm_min": 4,
+        "tm_sec": 13,
+        "tm_wday": 6,
+        "tm_yday": 128,
+        "tm_isdst": 1
+      },
+      "uid": "af4ee4f8-ce94-11ec-944a-5cff35e3510b"
+    },
+    {
+      "task_parameter": {
+        "scale": 4,
+        "enable_pep": "True",
+        "more_params": "True"
+      },
+      "tuning_parameter": {
+        "busy_spin": "True",
+        "hepnos_num_event_databases": 3,
+        "hepnos_num_product_databases": 2,
+        "hepnos_num_providers": 21,
+        "hepnos_num_rpc_threads": 53,
+        "hepnos_pes_per_node": "16",
+        "hepnos_pool_type": "fifo_wait",
+        "hepnos_progress_thread": "True",
+        "loader_batch_size": 1167,
+        "loader_pes_per_node": "4",
+        "loader_progress_thread": "True",
+        "loader_async": "False",
+        "loader_async_threads": 40,
+        "pep_progress_thread": "False",
+        "pep_num_threads": 26,
+        "pep_ibatch_size": 499,
+        "pep_obatch_size": 770,
+        "pep_pes_per_node": "32",
+        "pep_no_preloading": "False",
+        "pep_no_rdma": "True"
+      },
+      "constants": {},
+      "machine_configuration": {
+        "machine_name": "swing",
+        "amd": {
+          "nodes": 1,
+          "cores": 128
+        }
+      },
+      "software_configuration": {},
+      "evaluation_result": {
+        "y": 3.751607
+      },
+      "evaluation_detail": {
+        "y": {
+          "evaluations": 3.751606606152573,
+          "objective_scheme": "average"
+        }
+      },
+      "additional_output": {},
+      "source": "measure",
+      "time": {
+        "tm_year": 2022,
+        "tm_mon": 5,
+        "tm_mday": 8,
+        "tm_hour": 1,
+        "tm_min": 4,
+        "tm_sec": 13,
+        "tm_wday": 6,
+        "tm_yday": 128,
+        "tm_isdst": 1
+      },
+      "uid": "af525ee4-ce94-11ec-944a-5cff35e3510b"
+    },
+    {
+      "task_parameter": {
+        "scale": 8,
+        "enable_pep": "True",
+        "more_params": "True"
+      },
+      "tuning_parameter": {
+        "busy_spin": "False",
+        "hepnos_num_event_databases": 12,
+        "hepnos_num_product_databases": 15,
+        "hepnos_num_providers": 18,
+        "hepnos_num_rpc_threads": 2,
+        "hepnos_pes_per_node": "32",
+        "hepnos_pool_type": "fifo_wait",
+        "hepnos_progress_thread": "True",
+        "loader_batch_size": 1635,
+        "loader_pes_per_node": "16",
+        "loader_progress_thread": "False",
+        "loader_async": "True",
+        "loader_async_threads": 17,
+        "pep_progress_thread": "True",
+        "pep_num_threads": 6,
+        "pep_ibatch_size": 905,
+        "pep_obatch_size": 625,
+        "pep_pes_per_node": "32",
+        "pep_no_preloading": "False",
         "pep_no_rdma": "False"
       },
       "constants": {},
@@ -1810,11 +4433,11 @@
       },
       "software_configuration": {},
       "evaluation_result": {
-        "y": 5.994983
+        "y": 4.48465
       },
       "evaluation_detail": {
         "y": {
-          "evaluations": 5.994982587180016,
+          "evaluations": 4.484650379386797,
           "objective_scheme": "average"
         }
       },
@@ -1823,15 +4446,76 @@
       "time": {
         "tm_year": 2022,
         "tm_mon": 5,
-        "tm_mday": 7,
-        "tm_hour": 0,
-        "tm_min": 12,
-        "tm_sec": 4,
-        "tm_wday": 5,
-        "tm_yday": 127,
+        "tm_mday": 8,
+        "tm_hour": 1,
+        "tm_min": 6,
+        "tm_sec": 10,
+        "tm_wday": 6,
+        "tm_yday": 128,
         "tm_isdst": 1
       },
-      "uid": "3bdc1ee4-cdc4-11ec-b8e6-5cff35e2561e"
+      "uid": "f54cd97e-ce94-11ec-944a-5cff35e3510b"
+    },
+    {
+      "task_parameter": {
+        "scale": 4,
+        "enable_pep": "True",
+        "more_params": "True"
+      },
+      "tuning_parameter": {
+        "busy_spin": "False",
+        "hepnos_num_event_databases": 4,
+        "hepnos_num_product_databases": 12,
+        "hepnos_num_providers": 28,
+        "hepnos_num_rpc_threads": 63,
+        "hepnos_pes_per_node": "1",
+        "hepnos_pool_type": "fifo_wait",
+        "hepnos_progress_thread": "False",
+        "loader_batch_size": 1206,
+        "loader_pes_per_node": "4",
+        "loader_progress_thread": "True",
+        "loader_async": "True",
+        "loader_async_threads": 62,
+        "pep_progress_thread": "False",
+        "pep_num_threads": 9,
+        "pep_ibatch_size": 350,
+        "pep_obatch_size": 408,
+        "pep_pes_per_node": "16",
+        "pep_no_preloading": "False",
+        "pep_no_rdma": "False"
+      },
+      "constants": {},
+      "machine_configuration": {
+        "machine_name": "swing",
+        "amd": {
+          "nodes": 1,
+          "cores": 128
+        }
+      },
+      "software_configuration": {},
+      "evaluation_result": {
+        "y": 3.666041
+      },
+      "evaluation_detail": {
+        "y": {
+          "evaluations": 3.666040888023793,
+          "objective_scheme": "average"
+        }
+      },
+      "additional_output": {},
+      "source": "measure",
+      "time": {
+        "tm_year": 2022,
+        "tm_mon": 5,
+        "tm_mday": 8,
+        "tm_hour": 1,
+        "tm_min": 6,
+        "tm_sec": 10,
+        "tm_wday": 6,
+        "tm_yday": 128,
+        "tm_isdst": 1
+      },
+      "uid": "f5505aa4-ce94-11ec-944a-5cff35e3510b"
     },
     {
       "task_parameter": {
@@ -1842,754 +4526,22 @@
       "tuning_parameter": {
         "busy_spin": "True",
         "hepnos_num_event_databases": 8,
-        "hepnos_num_product_databases": 8,
-        "hepnos_num_providers": 27,
-        "hepnos_num_rpc_threads": 0,
-        "hepnos_pes_per_node": "1",
-        "hepnos_pool_type": "fifo_wait",
-        "hepnos_progress_thread": "True",
-        "loader_batch_size": 1371,
-        "loader_pes_per_node": "16",
-        "loader_progress_thread": "True",
-        "loader_async": "True",
-        "loader_async_threads": 37,
-        "pep_progress_thread": "False",
-        "pep_num_threads": 2,
-        "pep_ibatch_size": 848,
-        "pep_obatch_size": 949,
-        "pep_pes_per_node": "2",
-        "pep_no_preloading": "True",
-        "pep_no_rdma": "True"
-      },
-      "constants": {},
-      "machine_configuration": {
-        "machine_name": "swing",
-        "amd": {
-          "nodes": 1,
-          "cores": 128
-        }
-      },
-      "software_configuration": {},
-      "evaluation_result": {
-        "y": 4.82033
-      },
-      "evaluation_detail": {
-        "y": {
-          "evaluations": 4.820329522424551,
-          "objective_scheme": "average"
-        }
-      },
-      "additional_output": {},
-      "source": "measure",
-      "time": {
-        "tm_year": 2022,
-        "tm_mon": 5,
-        "tm_mday": 7,
-        "tm_hour": 0,
-        "tm_min": 15,
-        "tm_sec": 10,
-        "tm_wday": 5,
-        "tm_yday": 127,
-        "tm_isdst": 1
-      },
-      "uid": "aaaf0c82-cdc4-11ec-b8e6-5cff35e2561e"
-    },
-    {
-      "task_parameter": {
-        "scale": 4,
-        "enable_pep": "True",
-        "more_params": "True"
-      },
-      "tuning_parameter": {
-        "busy_spin": "False",
-        "hepnos_num_event_databases": 12,
-        "hepnos_num_product_databases": 5,
-        "hepnos_num_providers": 23,
-        "hepnos_num_rpc_threads": 1,
-        "hepnos_pes_per_node": "32",
-        "hepnos_pool_type": "fifo_wait",
-        "hepnos_progress_thread": "True",
-        "loader_batch_size": 1927,
-        "loader_pes_per_node": "8",
-        "loader_progress_thread": "False",
-        "loader_async": "True",
-        "loader_async_threads": 62,
-        "pep_progress_thread": "False",
-        "pep_num_threads": 12,
-        "pep_ibatch_size": 773,
-        "pep_obatch_size": 41,
-        "pep_pes_per_node": "2",
-        "pep_no_preloading": "False",
-        "pep_no_rdma": "True"
-      },
-      "constants": {},
-      "machine_configuration": {
-        "machine_name": "swing",
-        "amd": {
-          "nodes": 1,
-          "cores": 128
-        }
-      },
-      "software_configuration": {},
-      "evaluation_result": {
-        "y": 2.510854
-      },
-      "evaluation_detail": {
-        "y": {
-          "evaluations": 2.5108544740276666,
-          "objective_scheme": "average"
-        }
-      },
-      "additional_output": {},
-      "source": "measure",
-      "time": {
-        "tm_year": 2022,
-        "tm_mon": 5,
-        "tm_mday": 7,
-        "tm_hour": 0,
-        "tm_min": 15,
-        "tm_sec": 10,
-        "tm_wday": 5,
-        "tm_yday": 127,
-        "tm_isdst": 1
-      },
-      "uid": "aab1b824-cdc4-11ec-b8e6-5cff35e2561e"
-    },
-    {
-      "task_parameter": {
-        "scale": 8,
-        "enable_pep": "True",
-        "more_params": "True"
-      },
-      "tuning_parameter": {
-        "busy_spin": "True",
-        "hepnos_num_event_databases": 3,
-        "hepnos_num_product_databases": 8,
-        "hepnos_num_providers": 10,
-        "hepnos_num_rpc_threads": 31,
-        "hepnos_pes_per_node": "32",
-        "hepnos_pool_type": "fifo_wait",
-        "hepnos_progress_thread": "True",
-        "loader_batch_size": 1311,
-        "loader_pes_per_node": "16",
-        "loader_progress_thread": "True",
-        "loader_async": "True",
-        "loader_async_threads": 16,
-        "pep_progress_thread": "True",
-        "pep_num_threads": 7,
-        "pep_ibatch_size": 234,
-        "pep_obatch_size": 282,
-        "pep_pes_per_node": "32",
-        "pep_no_preloading": "False",
-        "pep_no_rdma": "True"
-      },
-      "constants": {},
-      "machine_configuration": {
-        "machine_name": "swing",
-        "amd": {
-          "nodes": 1,
-          "cores": 128
-        }
-      },
-      "software_configuration": {},
-      "evaluation_result": {
-        "y": 4.609391
-      },
-      "evaluation_detail": {
-        "y": {
-          "evaluations": 4.609391343264028,
-          "objective_scheme": "average"
-        }
-      },
-      "additional_output": {},
-      "source": "measure",
-      "time": {
-        "tm_year": 2022,
-        "tm_mon": 5,
-        "tm_mday": 7,
-        "tm_hour": 0,
-        "tm_min": 17,
-        "tm_sec": 14,
-        "tm_wday": 5,
-        "tm_yday": 127,
-        "tm_isdst": 1
-      },
-      "uid": "f4e13ea6-cdc4-11ec-b8e6-5cff35e2561e"
-    },
-    {
-      "task_parameter": {
-        "scale": 4,
-        "enable_pep": "True",
-        "more_params": "True"
-      },
-      "tuning_parameter": {
-        "busy_spin": "True",
-        "hepnos_num_event_databases": 13,
         "hepnos_num_product_databases": 7,
-        "hepnos_num_providers": 7,
-        "hepnos_num_rpc_threads": 12,
-        "hepnos_pes_per_node": "16",
-        "hepnos_pool_type": "fifo_wait",
-        "hepnos_progress_thread": "True",
-        "loader_batch_size": 1265,
-        "loader_pes_per_node": "2",
-        "loader_progress_thread": "True",
-        "loader_async": "True",
-        "loader_async_threads": 8,
-        "pep_progress_thread": "False",
-        "pep_num_threads": 14,
-        "pep_ibatch_size": 1023,
-        "pep_obatch_size": 37,
-        "pep_pes_per_node": "4",
-        "pep_no_preloading": "True",
-        "pep_no_rdma": "False"
-      },
-      "constants": {},
-      "machine_configuration": {
-        "machine_name": "swing",
-        "amd": {
-          "nodes": 1,
-          "cores": 128
-        }
-      },
-      "software_configuration": {},
-      "evaluation_result": {
-        "y": 5.763692
-      },
-      "evaluation_detail": {
-        "y": {
-          "evaluations": 5.763691830832408,
-          "objective_scheme": "average"
-        }
-      },
-      "additional_output": {},
-      "source": "measure",
-      "time": {
-        "tm_year": 2022,
-        "tm_mon": 5,
-        "tm_mday": 7,
-        "tm_hour": 0,
-        "tm_min": 17,
-        "tm_sec": 14,
-        "tm_wday": 5,
-        "tm_yday": 127,
-        "tm_isdst": 1
-      },
-      "uid": "f4e3efb6-cdc4-11ec-b8e6-5cff35e2561e"
-    },
-    {
-      "task_parameter": {
-        "scale": 8,
-        "enable_pep": "True",
-        "more_params": "True"
-      },
-      "tuning_parameter": {
-        "busy_spin": "True",
-        "hepnos_num_event_databases": 12,
-        "hepnos_num_product_databases": 5,
-        "hepnos_num_providers": 21,
-        "hepnos_num_rpc_threads": 62,
-        "hepnos_pes_per_node": "32",
-        "hepnos_pool_type": "fifo_wait",
-        "hepnos_progress_thread": "True",
-        "loader_batch_size": 53,
-        "loader_pes_per_node": "4",
-        "loader_progress_thread": "True",
-        "loader_async": "True",
-        "loader_async_threads": 58,
-        "pep_progress_thread": "True",
-        "pep_num_threads": 7,
-        "pep_ibatch_size": 877,
-        "pep_obatch_size": 599,
-        "pep_pes_per_node": "32",
-        "pep_no_preloading": "False",
-        "pep_no_rdma": "False"
-      },
-      "constants": {},
-      "machine_configuration": {
-        "machine_name": "swing",
-        "amd": {
-          "nodes": 1,
-          "cores": 128
-        }
-      },
-      "software_configuration": {},
-      "evaluation_result": {
-        "y": 4.626704
-      },
-      "evaluation_detail": {
-        "y": {
-          "evaluations": 4.626704385536501,
-          "objective_scheme": "average"
-        }
-      },
-      "additional_output": {},
-      "source": "measure",
-      "time": {
-        "tm_year": 2022,
-        "tm_mon": 5,
-        "tm_mday": 7,
-        "tm_hour": 0,
-        "tm_min": 19,
-        "tm_sec": 19,
-        "tm_wday": 5,
-        "tm_yday": 127,
-        "tm_isdst": 1
-      },
-      "uid": "3f101344-cdc5-11ec-b8e6-5cff35e2561e"
-    },
-    {
-      "task_parameter": {
-        "scale": 4,
-        "enable_pep": "True",
-        "more_params": "True"
-      },
-      "tuning_parameter": {
-        "busy_spin": "True",
-        "hepnos_num_event_databases": 10,
-        "hepnos_num_product_databases": 11,
-        "hepnos_num_providers": 3,
-        "hepnos_num_rpc_threads": 0,
+        "hepnos_num_providers": 6,
+        "hepnos_num_rpc_threads": 59,
         "hepnos_pes_per_node": "8",
-        "hepnos_pool_type": "fifo",
-        "hepnos_progress_thread": "False",
-        "loader_batch_size": 2021,
+        "hepnos_pool_type": "fifo_wait",
+        "hepnos_progress_thread": "True",
+        "loader_batch_size": 1857,
         "loader_pes_per_node": "16",
         "loader_progress_thread": "True",
-        "loader_async": "False",
-        "loader_async_threads": 56,
-        "pep_progress_thread": "False",
-        "pep_num_threads": 23,
-        "pep_ibatch_size": 212,
-        "pep_obatch_size": 437,
-        "pep_pes_per_node": "32",
-        "pep_no_preloading": "False",
-        "pep_no_rdma": "True"
-      },
-      "constants": {},
-      "machine_configuration": {
-        "machine_name": "swing",
-        "amd": {
-          "nodes": 1,
-          "cores": 128
-        }
-      },
-      "software_configuration": {},
-      "evaluation_result": {
-        "y": 2.279382
-      },
-      "evaluation_detail": {
-        "y": {
-          "evaluations": 2.27938242178465,
-          "objective_scheme": "average"
-        }
-      },
-      "additional_output": {},
-      "source": "measure",
-      "time": {
-        "tm_year": 2022,
-        "tm_mon": 5,
-        "tm_mday": 7,
-        "tm_hour": 0,
-        "tm_min": 19,
-        "tm_sec": 19,
-        "tm_wday": 5,
-        "tm_yday": 127,
-        "tm_isdst": 1
-      },
-      "uid": "3f12c80a-cdc5-11ec-b8e6-5cff35e2561e"
-    },
-    {
-      "task_parameter": {
-        "scale": 8,
-        "enable_pep": "True",
-        "more_params": "True"
-      },
-      "tuning_parameter": {
-        "busy_spin": "True",
-        "hepnos_num_event_databases": 14,
-        "hepnos_num_product_databases": 2,
-        "hepnos_num_providers": 4,
-        "hepnos_num_rpc_threads": 62,
-        "hepnos_pes_per_node": "1",
-        "hepnos_pool_type": "fifo_wait",
-        "hepnos_progress_thread": "True",
-        "loader_batch_size": 1194,
-        "loader_pes_per_node": "2",
-        "loader_progress_thread": "True",
-        "loader_async": "False",
-        "loader_async_threads": 62,
-        "pep_progress_thread": "True",
-        "pep_num_threads": 5,
-        "pep_ibatch_size": 60,
-        "pep_obatch_size": 925,
-        "pep_pes_per_node": "1",
-        "pep_no_preloading": "False",
-        "pep_no_rdma": "False"
-      },
-      "constants": {},
-      "machine_configuration": {
-        "machine_name": "swing",
-        "amd": {
-          "nodes": 1,
-          "cores": 128
-        }
-      },
-      "software_configuration": {},
-      "evaluation_result": {
-        "y": 4.98319
-      },
-      "evaluation_detail": {
-        "y": {
-          "evaluations": 4.983190153357369,
-          "objective_scheme": "average"
-        }
-      },
-      "additional_output": {},
-      "source": "measure",
-      "time": {
-        "tm_year": 2022,
-        "tm_mon": 5,
-        "tm_mday": 7,
-        "tm_hour": 0,
-        "tm_min": 22,
-        "tm_sec": 8,
-        "tm_wday": 5,
-        "tm_yday": 127,
-        "tm_isdst": 1
-      },
-      "uid": "a418d28a-cdc5-11ec-b8e6-5cff35e2561e"
-    },
-    {
-      "task_parameter": {
-        "scale": 4,
-        "enable_pep": "True",
-        "more_params": "True"
-      },
-      "tuning_parameter": {
-        "busy_spin": "False",
-        "hepnos_num_event_databases": 10,
-        "hepnos_num_product_databases": 12,
-        "hepnos_num_providers": 5,
-        "hepnos_num_rpc_threads": 8,
-        "hepnos_pes_per_node": "2",
-        "hepnos_pool_type": "fifo",
-        "hepnos_progress_thread": "False",
-        "loader_batch_size": 1640,
-        "loader_pes_per_node": "4",
-        "loader_progress_thread": "False",
-        "loader_async": "False",
-        "loader_async_threads": 62,
+        "loader_async": "True",
+        "loader_async_threads": 33,
         "pep_progress_thread": "True",
         "pep_num_threads": 8,
-        "pep_ibatch_size": 952,
-        "pep_obatch_size": 949,
-        "pep_pes_per_node": "32",
-        "pep_no_preloading": "False",
-        "pep_no_rdma": "True"
-      },
-      "constants": {},
-      "machine_configuration": {
-        "machine_name": "swing",
-        "amd": {
-          "nodes": 1,
-          "cores": 128
-        }
-      },
-      "software_configuration": {},
-      "evaluation_result": {
-        "y": 2.579153
-      },
-      "evaluation_detail": {
-        "y": {
-          "evaluations": 2.5791526487679857,
-          "objective_scheme": "average"
-        }
-      },
-      "additional_output": {},
-      "source": "measure",
-      "time": {
-        "tm_year": 2022,
-        "tm_mon": 5,
-        "tm_mday": 7,
-        "tm_hour": 0,
-        "tm_min": 22,
-        "tm_sec": 8,
-        "tm_wday": 5,
-        "tm_yday": 127,
-        "tm_isdst": 1
-      },
-      "uid": "a41b93da-cdc5-11ec-b8e6-5cff35e2561e"
-    },
-    {
-      "task_parameter": {
-        "scale": 8,
-        "enable_pep": "True",
-        "more_params": "True"
-      },
-      "tuning_parameter": {
-        "busy_spin": "True",
-        "hepnos_num_event_databases": 12,
-        "hepnos_num_product_databases": 15,
-        "hepnos_num_providers": 29,
-        "hepnos_num_rpc_threads": 2,
-        "hepnos_pes_per_node": "2",
-        "hepnos_pool_type": "fifo_wait",
-        "hepnos_progress_thread": "True",
-        "loader_batch_size": 1364,
-        "loader_pes_per_node": "8",
-        "loader_progress_thread": "True",
-        "loader_async": "True",
-        "loader_async_threads": 45,
-        "pep_progress_thread": "True",
-        "pep_num_threads": 18,
-        "pep_ibatch_size": 737,
-        "pep_obatch_size": 494,
-        "pep_pes_per_node": "32",
-        "pep_no_preloading": "True",
-        "pep_no_rdma": "True"
-      },
-      "constants": {},
-      "machine_configuration": {
-        "machine_name": "swing",
-        "amd": {
-          "nodes": 1,
-          "cores": 128
-        }
-      },
-      "software_configuration": {},
-      "evaluation_result": {
-        "y": 5.011164
-      },
-      "evaluation_detail": {
-        "y": {
-          "evaluations": 5.011164455683596,
-          "objective_scheme": "average"
-        }
-      },
-      "additional_output": {},
-      "source": "measure",
-      "time": {
-        "tm_year": 2022,
-        "tm_mon": 5,
-        "tm_mday": 7,
-        "tm_hour": 0,
-        "tm_min": 25,
-        "tm_sec": 3,
-        "tm_wday": 5,
-        "tm_yday": 127,
-        "tm_isdst": 1
-      },
-      "uid": "0c323b0e-cdc6-11ec-b8e6-5cff35e2561e"
-    },
-    {
-      "task_parameter": {
-        "scale": 4,
-        "enable_pep": "True",
-        "more_params": "True"
-      },
-      "tuning_parameter": {
-        "busy_spin": "True",
-        "hepnos_num_event_databases": 16,
-        "hepnos_num_product_databases": 10,
-        "hepnos_num_providers": 18,
-        "hepnos_num_rpc_threads": 5,
-        "hepnos_pes_per_node": "8",
-        "hepnos_pool_type": "fifo",
-        "hepnos_progress_thread": "True",
-        "loader_batch_size": 819,
-        "loader_pes_per_node": "2",
-        "loader_progress_thread": "True",
-        "loader_async": "False",
-        "loader_async_threads": 61,
-        "pep_progress_thread": "True",
-        "pep_num_threads": 2,
-        "pep_ibatch_size": 834,
-        "pep_obatch_size": 211,
-        "pep_pes_per_node": "16",
-        "pep_no_preloading": "True",
-        "pep_no_rdma": "True"
-      },
-      "constants": {},
-      "machine_configuration": {
-        "machine_name": "swing",
-        "amd": {
-          "nodes": 1,
-          "cores": 128
-        }
-      },
-      "software_configuration": {},
-      "evaluation_result": {
-        "y": 3.413154
-      },
-      "evaluation_detail": {
-        "y": {
-          "evaluations": 3.413153717757247,
-          "objective_scheme": "average"
-        }
-      },
-      "additional_output": {},
-      "source": "measure",
-      "time": {
-        "tm_year": 2022,
-        "tm_mon": 5,
-        "tm_mday": 7,
-        "tm_hour": 0,
-        "tm_min": 25,
-        "tm_sec": 3,
-        "tm_wday": 5,
-        "tm_yday": 127,
-        "tm_isdst": 1
-      },
-      "uid": "0c34ff6a-cdc6-11ec-b8e6-5cff35e2561e"
-    },
-    {
-      "task_parameter": {
-        "scale": 8,
-        "enable_pep": "True",
-        "more_params": "True"
-      },
-      "tuning_parameter": {
-        "busy_spin": "True",
-        "hepnos_num_event_databases": 5,
-        "hepnos_num_product_databases": 6,
-        "hepnos_num_providers": 10,
-        "hepnos_num_rpc_threads": 60,
-        "hepnos_pes_per_node": "32",
-        "hepnos_pool_type": "fifo_wait",
-        "hepnos_progress_thread": "False",
-        "loader_batch_size": 1334,
-        "loader_pes_per_node": "1",
-        "loader_progress_thread": "True",
-        "loader_async": "True",
-        "loader_async_threads": 1,
-        "pep_progress_thread": "True",
-        "pep_num_threads": 3,
-        "pep_ibatch_size": 694,
-        "pep_obatch_size": 494,
-        "pep_pes_per_node": "16",
-        "pep_no_preloading": "True",
-        "pep_no_rdma": "True"
-      },
-      "constants": {},
-      "machine_configuration": {
-        "machine_name": "swing",
-        "amd": {
-          "nodes": 1,
-          "cores": 128
-        }
-      },
-      "software_configuration": {},
-      "evaluation_result": {
-        "y": 5.214439
-      },
-      "evaluation_detail": {
-        "y": {
-          "evaluations": 5.214438690590446,
-          "objective_scheme": "average"
-        }
-      },
-      "additional_output": {},
-      "source": "measure",
-      "time": {
-        "tm_year": 2022,
-        "tm_mon": 5,
-        "tm_mday": 7,
-        "tm_hour": 0,
-        "tm_min": 28,
-        "tm_sec": 53,
-        "tm_wday": 5,
-        "tm_yday": 127,
-        "tm_isdst": 1
-      },
-      "uid": "9551b662-cdc6-11ec-b8e6-5cff35e2561e"
-    },
-    {
-      "task_parameter": {
-        "scale": 4,
-        "enable_pep": "True",
-        "more_params": "True"
-      },
-      "tuning_parameter": {
-        "busy_spin": "False",
-        "hepnos_num_event_databases": 3,
-        "hepnos_num_product_databases": 14,
-        "hepnos_num_providers": 26,
-        "hepnos_num_rpc_threads": 1,
-        "hepnos_pes_per_node": "32",
-        "hepnos_pool_type": "fifo_wait",
-        "hepnos_progress_thread": "True",
-        "loader_batch_size": 847,
-        "loader_pes_per_node": "8",
-        "loader_progress_thread": "True",
-        "loader_async": "True",
-        "loader_async_threads": 58,
-        "pep_progress_thread": "True",
-        "pep_num_threads": 6,
-        "pep_ibatch_size": 422,
-        "pep_obatch_size": 227,
-        "pep_pes_per_node": "16",
-        "pep_no_preloading": "False",
-        "pep_no_rdma": "True"
-      },
-      "constants": {},
-      "machine_configuration": {
-        "machine_name": "swing",
-        "amd": {
-          "nodes": 1,
-          "cores": 128
-        }
-      },
-      "software_configuration": {},
-      "evaluation_result": {
-        "y": 3.667594
-      },
-      "evaluation_detail": {
-        "y": {
-          "evaluations": 3.667594097248812,
-          "objective_scheme": "average"
-        }
-      },
-      "additional_output": {},
-      "source": "measure",
-      "time": {
-        "tm_year": 2022,
-        "tm_mon": 5,
-        "tm_mday": 7,
-        "tm_hour": 0,
-        "tm_min": 28,
-        "tm_sec": 53,
-        "tm_wday": 5,
-        "tm_yday": 127,
-        "tm_isdst": 1
-      },
-      "uid": "95548f36-cdc6-11ec-b8e6-5cff35e2561e"
-    },
-    {
-      "task_parameter": {
-        "scale": 8,
-        "enable_pep": "True",
-        "more_params": "True"
-      },
-      "tuning_parameter": {
-        "busy_spin": "False",
-        "hepnos_num_event_databases": 3,
-        "hepnos_num_product_databases": 13,
-        "hepnos_num_providers": 5,
-        "hepnos_num_rpc_threads": 50,
-        "hepnos_pes_per_node": "16",
-        "hepnos_pool_type": "fifo_wait",
-        "hepnos_progress_thread": "False",
-        "loader_batch_size": 50,
-        "loader_pes_per_node": "8",
-        "loader_progress_thread": "False",
-        "loader_async": "True",
-        "loader_async_threads": 29,
-        "pep_progress_thread": "True",
-        "pep_num_threads": 3,
-        "pep_ibatch_size": 864,
-        "pep_obatch_size": 800,
-        "pep_pes_per_node": "4",
+        "pep_ibatch_size": 311,
+        "pep_obatch_size": 369,
+        "pep_pes_per_node": "8",
         "pep_no_preloading": "False",
         "pep_no_rdma": "False"
       },
@@ -2603,11 +4555,11 @@
       },
       "software_configuration": {},
       "evaluation_result": {
-        "y": 4.737087
+        "y": 3.938765
       },
       "evaluation_detail": {
         "y": {
-          "evaluations": 4.737086746453129,
+          "evaluations": 3.9387647115683793,
           "objective_scheme": "average"
         }
       },
@@ -2616,259 +4568,15 @@
       "time": {
         "tm_year": 2022,
         "tm_mon": 5,
-        "tm_mday": 7,
-        "tm_hour": 0,
-        "tm_min": 31,
-        "tm_sec": 24,
-        "tm_wday": 5,
-        "tm_yday": 127,
+        "tm_mday": 8,
+        "tm_hour": 1,
+        "tm_min": 7,
+        "tm_sec": 35,
+        "tm_wday": 6,
+        "tm_yday": 128,
         "tm_isdst": 1
       },
-      "uid": "ef276b32-cdc6-11ec-b8e6-5cff35e2561e"
-    },
-    {
-      "task_parameter": {
-        "scale": 4,
-        "enable_pep": "True",
-        "more_params": "True"
-      },
-      "tuning_parameter": {
-        "busy_spin": "False",
-        "hepnos_num_event_databases": 13,
-        "hepnos_num_product_databases": 1,
-        "hepnos_num_providers": 29,
-        "hepnos_num_rpc_threads": 62,
-        "hepnos_pes_per_node": "32",
-        "hepnos_pool_type": "fifo_wait",
-        "hepnos_progress_thread": "True",
-        "loader_batch_size": 1674,
-        "loader_pes_per_node": "4",
-        "loader_progress_thread": "False",
-        "loader_async": "False",
-        "loader_async_threads": 61,
-        "pep_progress_thread": "False",
-        "pep_num_threads": 8,
-        "pep_ibatch_size": 889,
-        "pep_obatch_size": 540,
-        "pep_pes_per_node": "16",
-        "pep_no_preloading": "False",
-        "pep_no_rdma": "True"
-      },
-      "constants": {},
-      "machine_configuration": {
-        "machine_name": "swing",
-        "amd": {
-          "nodes": 1,
-          "cores": 128
-        }
-      },
-      "software_configuration": {},
-      "evaluation_result": {
-        "y": 2.332259
-      },
-      "evaluation_detail": {
-        "y": {
-          "evaluations": 2.3322593688874993,
-          "objective_scheme": "average"
-        }
-      },
-      "additional_output": {},
-      "source": "measure",
-      "time": {
-        "tm_year": 2022,
-        "tm_mon": 5,
-        "tm_mday": 7,
-        "tm_hour": 0,
-        "tm_min": 31,
-        "tm_sec": 24,
-        "tm_wday": 5,
-        "tm_yday": 127,
-        "tm_isdst": 1
-      },
-      "uid": "ef2a66ca-cdc6-11ec-b8e6-5cff35e2561e"
-    },
-    {
-      "task_parameter": {
-        "scale": 8,
-        "enable_pep": "True",
-        "more_params": "True"
-      },
-      "tuning_parameter": {
-        "busy_spin": "False",
-        "hepnos_num_event_databases": 16,
-        "hepnos_num_product_databases": 10,
-        "hepnos_num_providers": 4,
-        "hepnos_num_rpc_threads": 6,
-        "hepnos_pes_per_node": "8",
-        "hepnos_pool_type": "fifo_wait",
-        "hepnos_progress_thread": "True",
-        "loader_batch_size": 465,
-        "loader_pes_per_node": "16",
-        "loader_progress_thread": "True",
-        "loader_async": "True",
-        "loader_async_threads": 61,
-        "pep_progress_thread": "False",
-        "pep_num_threads": 2,
-        "pep_ibatch_size": 152,
-        "pep_obatch_size": 807,
-        "pep_pes_per_node": "32",
-        "pep_no_preloading": "False",
-        "pep_no_rdma": "True"
-      },
-      "constants": {},
-      "machine_configuration": {
-        "machine_name": "swing",
-        "amd": {
-          "nodes": 1,
-          "cores": 128
-        }
-      },
-      "software_configuration": {},
-      "evaluation_result": {
-        "y": 4.961966
-      },
-      "evaluation_detail": {
-        "y": {
-          "evaluations": 4.96196616096719,
-          "objective_scheme": "average"
-        }
-      },
-      "additional_output": {},
-      "source": "measure",
-      "time": {
-        "tm_year": 2022,
-        "tm_mon": 5,
-        "tm_mday": 7,
-        "tm_hour": 0,
-        "tm_min": 34,
-        "tm_sec": 50,
-        "tm_wday": 5,
-        "tm_yday": 127,
-        "tm_isdst": 1
-      },
-      "uid": "6a6cfea6-cdc7-11ec-b8e6-5cff35e2561e"
-    },
-    {
-      "task_parameter": {
-        "scale": 4,
-        "enable_pep": "True",
-        "more_params": "True"
-      },
-      "tuning_parameter": {
-        "busy_spin": "False",
-        "hepnos_num_event_databases": 6,
-        "hepnos_num_product_databases": 7,
-        "hepnos_num_providers": 26,
-        "hepnos_num_rpc_threads": 51,
-        "hepnos_pes_per_node": "8",
-        "hepnos_pool_type": "fifo",
-        "hepnos_progress_thread": "False",
-        "loader_batch_size": 65,
-        "loader_pes_per_node": "16",
-        "loader_progress_thread": "True",
-        "loader_async": "True",
-        "loader_async_threads": 62,
-        "pep_progress_thread": "False",
-        "pep_num_threads": 28,
-        "pep_ibatch_size": 369,
-        "pep_obatch_size": 349,
-        "pep_pes_per_node": "4",
-        "pep_no_preloading": "False",
-        "pep_no_rdma": "True"
-      },
-      "constants": {},
-      "machine_configuration": {
-        "machine_name": "swing",
-        "amd": {
-          "nodes": 1,
-          "cores": 128
-        }
-      },
-      "software_configuration": {},
-      "evaluation_result": {
-        "y": 2.363872
-      },
-      "evaluation_detail": {
-        "y": {
-          "evaluations": 2.363872085679306,
-          "objective_scheme": "average"
-        }
-      },
-      "additional_output": {},
-      "source": "measure",
-      "time": {
-        "tm_year": 2022,
-        "tm_mon": 5,
-        "tm_mday": 7,
-        "tm_hour": 0,
-        "tm_min": 34,
-        "tm_sec": 50,
-        "tm_wday": 5,
-        "tm_yday": 127,
-        "tm_isdst": 1
-      },
-      "uid": "6a6fef1c-cdc7-11ec-b8e6-5cff35e2561e"
-    },
-    {
-      "task_parameter": {
-        "scale": 8,
-        "enable_pep": "True",
-        "more_params": "True"
-      },
-      "tuning_parameter": {
-        "busy_spin": "True",
-        "hepnos_num_event_databases": 13,
-        "hepnos_num_product_databases": 11,
-        "hepnos_num_providers": 4,
-        "hepnos_num_rpc_threads": 39,
-        "hepnos_pes_per_node": "16",
-        "hepnos_pool_type": "fifo_wait",
-        "hepnos_progress_thread": "False",
-        "loader_batch_size": 157,
-        "loader_pes_per_node": "2",
-        "loader_progress_thread": "False",
-        "loader_async": "True",
-        "loader_async_threads": 58,
-        "pep_progress_thread": "True",
-        "pep_num_threads": 23,
-        "pep_ibatch_size": 742,
-        "pep_obatch_size": 972,
-        "pep_pes_per_node": "32",
-        "pep_no_preloading": "False",
-        "pep_no_rdma": "True"
-      },
-      "constants": {},
-      "machine_configuration": {
-        "machine_name": "swing",
-        "amd": {
-          "nodes": 1,
-          "cores": 128
-        }
-      },
-      "software_configuration": {},
-      "evaluation_result": {
-        "y": 4.944559
-      },
-      "evaluation_detail": {
-        "y": {
-          "evaluations": 4.944559356996606,
-          "objective_scheme": "average"
-        }
-      },
-      "additional_output": {},
-      "source": "measure",
-      "time": {
-        "tm_year": 2022,
-        "tm_mon": 5,
-        "tm_mday": 7,
-        "tm_hour": 0,
-        "tm_min": 37,
-        "tm_sec": 54,
-        "tm_wday": 5,
-        "tm_yday": 127,
-        "tm_isdst": 1
-      },
-      "uid": "d7c961c4-cdc7-11ec-b8e6-5cff35e2561e"
+      "uid": "27d6bde2-ce95-11ec-944a-5cff35e3510b"
     },
     {
       "task_parameter": {
@@ -2879,632 +4587,22 @@
       "tuning_parameter": {
         "busy_spin": "True",
         "hepnos_num_event_databases": 9,
-        "hepnos_num_product_databases": 11,
-        "hepnos_num_providers": 7,
-        "hepnos_num_rpc_threads": 53,
+        "hepnos_num_product_databases": 4,
+        "hepnos_num_providers": 22,
+        "hepnos_num_rpc_threads": 0,
         "hepnos_pes_per_node": "8",
         "hepnos_pool_type": "fifo_wait",
-        "hepnos_progress_thread": "False",
-        "loader_batch_size": 867,
-        "loader_pes_per_node": "1",
-        "loader_progress_thread": "False",
-        "loader_async": "True",
-        "loader_async_threads": 60,
-        "pep_progress_thread": "True",
-        "pep_num_threads": 2,
-        "pep_ibatch_size": 834,
-        "pep_obatch_size": 886,
-        "pep_pes_per_node": "32",
-        "pep_no_preloading": "True",
-        "pep_no_rdma": "True"
-      },
-      "constants": {},
-      "machine_configuration": {
-        "machine_name": "swing",
-        "amd": {
-          "nodes": 1,
-          "cores": 128
-        }
-      },
-      "software_configuration": {},
-      "evaluation_result": {
-        "y": 4.095175
-      },
-      "evaluation_detail": {
-        "y": {
-          "evaluations": 4.09517507173763,
-          "objective_scheme": "average"
-        }
-      },
-      "additional_output": {},
-      "source": "measure",
-      "time": {
-        "tm_year": 2022,
-        "tm_mon": 5,
-        "tm_mday": 7,
-        "tm_hour": 0,
-        "tm_min": 37,
-        "tm_sec": 54,
-        "tm_wday": 5,
-        "tm_yday": 127,
-        "tm_isdst": 1
-      },
-      "uid": "d7cc5424-cdc7-11ec-b8e6-5cff35e2561e"
-    },
-    {
-      "task_parameter": {
-        "scale": 8,
-        "enable_pep": "True",
-        "more_params": "True"
-      },
-      "tuning_parameter": {
-        "busy_spin": "False",
-        "hepnos_num_event_databases": 15,
-        "hepnos_num_product_databases": 1,
-        "hepnos_num_providers": 24,
-        "hepnos_num_rpc_threads": 57,
-        "hepnos_pes_per_node": "16",
-        "hepnos_pool_type": "fifo_wait",
-        "hepnos_progress_thread": "False",
-        "loader_batch_size": 566,
-        "loader_pes_per_node": "16",
-        "loader_progress_thread": "False",
-        "loader_async": "True",
-        "loader_async_threads": 42,
-        "pep_progress_thread": "False",
-        "pep_num_threads": 3,
-        "pep_ibatch_size": 723,
-        "pep_obatch_size": 943,
-        "pep_pes_per_node": "8",
-        "pep_no_preloading": "False",
-        "pep_no_rdma": "True"
-      },
-      "constants": {},
-      "machine_configuration": {
-        "machine_name": "swing",
-        "amd": {
-          "nodes": 1,
-          "cores": 128
-        }
-      },
-      "software_configuration": {},
-      "evaluation_result": {
-        "y": 4.587438
-      },
-      "evaluation_detail": {
-        "y": {
-          "evaluations": 4.587438087117369,
-          "objective_scheme": "average"
-        }
-      },
-      "additional_output": {},
-      "source": "measure",
-      "time": {
-        "tm_year": 2022,
-        "tm_mon": 5,
-        "tm_mday": 7,
-        "tm_hour": 0,
-        "tm_min": 39,
-        "tm_sec": 46,
-        "tm_wday": 5,
-        "tm_yday": 127,
-        "tm_isdst": 1
-      },
-      "uid": "1a8308d0-cdc8-11ec-b8e6-5cff35e2561e"
-    },
-    {
-      "task_parameter": {
-        "scale": 4,
-        "enable_pep": "True",
-        "more_params": "True"
-      },
-      "tuning_parameter": {
-        "busy_spin": "True",
-        "hepnos_num_event_databases": 8,
-        "hepnos_num_product_databases": 8,
-        "hepnos_num_providers": 13,
-        "hepnos_num_rpc_threads": 13,
-        "hepnos_pes_per_node": "32",
-        "hepnos_pool_type": "fifo",
-        "hepnos_progress_thread": "False",
-        "loader_batch_size": 1150,
-        "loader_pes_per_node": "16",
-        "loader_progress_thread": "True",
-        "loader_async": "True",
-        "loader_async_threads": 61,
-        "pep_progress_thread": "False",
-        "pep_num_threads": 11,
-        "pep_ibatch_size": 43,
-        "pep_obatch_size": 748,
-        "pep_pes_per_node": "1",
-        "pep_no_preloading": "False",
-        "pep_no_rdma": "False"
-      },
-      "constants": {},
-      "machine_configuration": {
-        "machine_name": "swing",
-        "amd": {
-          "nodes": 1,
-          "cores": 128
-        }
-      },
-      "software_configuration": {},
-      "evaluation_result": {
-        "y": 3.339872
-      },
-      "evaluation_detail": {
-        "y": {
-          "evaluations": 3.3398720928567935,
-          "objective_scheme": "average"
-        }
-      },
-      "additional_output": {},
-      "source": "measure",
-      "time": {
-        "tm_year": 2022,
-        "tm_mon": 5,
-        "tm_mday": 7,
-        "tm_hour": 0,
-        "tm_min": 39,
-        "tm_sec": 46,
-        "tm_wday": 5,
-        "tm_yday": 127,
-        "tm_isdst": 1
-      },
-      "uid": "1a85ff0e-cdc8-11ec-b8e6-5cff35e2561e"
-    },
-    {
-      "task_parameter": {
-        "scale": 8,
-        "enable_pep": "True",
-        "more_params": "True"
-      },
-      "tuning_parameter": {
-        "busy_spin": "True",
-        "hepnos_num_event_databases": 12,
-        "hepnos_num_product_databases": 13,
-        "hepnos_num_providers": 26,
-        "hepnos_num_rpc_threads": 58,
-        "hepnos_pes_per_node": "2",
-        "hepnos_pool_type": "fifo",
         "hepnos_progress_thread": "True",
-        "loader_batch_size": 409,
-        "loader_pes_per_node": "1",
-        "loader_progress_thread": "False",
-        "loader_async": "False",
-        "loader_async_threads": 51,
-        "pep_progress_thread": "True",
-        "pep_num_threads": 31,
-        "pep_ibatch_size": 712,
-        "pep_obatch_size": 199,
-        "pep_pes_per_node": "4",
-        "pep_no_preloading": "True",
-        "pep_no_rdma": "False"
-      },
-      "constants": {},
-      "machine_configuration": {
-        "machine_name": "swing",
-        "amd": {
-          "nodes": 1,
-          "cores": 128
-        }
-      },
-      "software_configuration": {},
-      "evaluation_result": {
-        "y": 5.284847
-      },
-      "evaluation_detail": {
-        "y": {
-          "evaluations": 5.284847490077624,
-          "objective_scheme": "average"
-        }
-      },
-      "additional_output": {},
-      "source": "measure",
-      "time": {
-        "tm_year": 2022,
-        "tm_mon": 5,
-        "tm_mday": 7,
-        "tm_hour": 0,
-        "tm_min": 43,
-        "tm_sec": 40,
-        "tm_wday": 5,
-        "tm_yday": 127,
-        "tm_isdst": 1
-      },
-      "uid": "a625cfd0-cdc8-11ec-b8e6-5cff35e2561e"
-    },
-    {
-      "task_parameter": {
-        "scale": 4,
-        "enable_pep": "True",
-        "more_params": "True"
-      },
-      "tuning_parameter": {
-        "busy_spin": "True",
-        "hepnos_num_event_databases": 15,
-        "hepnos_num_product_databases": 6,
-        "hepnos_num_providers": 20,
-        "hepnos_num_rpc_threads": 41,
-        "hepnos_pes_per_node": "16",
-        "hepnos_pool_type": "fifo",
-        "hepnos_progress_thread": "True",
-        "loader_batch_size": 1887,
-        "loader_pes_per_node": "4",
-        "loader_progress_thread": "False",
-        "loader_async": "True",
-        "loader_async_threads": 56,
-        "pep_progress_thread": "True",
-        "pep_num_threads": 29,
-        "pep_ibatch_size": 52,
-        "pep_obatch_size": 693,
-        "pep_pes_per_node": "2",
-        "pep_no_preloading": "False",
-        "pep_no_rdma": "True"
-      },
-      "constants": {},
-      "machine_configuration": {
-        "machine_name": "swing",
-        "amd": {
-          "nodes": 1,
-          "cores": 128
-        }
-      },
-      "software_configuration": {},
-      "evaluation_result": {
-        "y": 3.123841
-      },
-      "evaluation_detail": {
-        "y": {
-          "evaluations": 3.1238413826958547,
-          "objective_scheme": "average"
-        }
-      },
-      "additional_output": {},
-      "source": "measure",
-      "time": {
-        "tm_year": 2022,
-        "tm_mon": 5,
-        "tm_mday": 7,
-        "tm_hour": 0,
-        "tm_min": 43,
-        "tm_sec": 40,
-        "tm_wday": 5,
-        "tm_yday": 127,
-        "tm_isdst": 1
-      },
-      "uid": "a628d9fa-cdc8-11ec-b8e6-5cff35e2561e"
-    },
-    {
-      "task_parameter": {
-        "scale": 8,
-        "enable_pep": "True",
-        "more_params": "True"
-      },
-      "tuning_parameter": {
-        "busy_spin": "True",
-        "hepnos_num_event_databases": 6,
-        "hepnos_num_product_databases": 3,
-        "hepnos_num_providers": 11,
-        "hepnos_num_rpc_threads": 12,
-        "hepnos_pes_per_node": "16",
-        "hepnos_pool_type": "fifo_wait",
-        "hepnos_progress_thread": "False",
-        "loader_batch_size": 839,
-        "loader_pes_per_node": "4",
-        "loader_progress_thread": "False",
-        "loader_async": "True",
-        "loader_async_threads": 62,
-        "pep_progress_thread": "True",
-        "pep_num_threads": 23,
-        "pep_ibatch_size": 437,
-        "pep_obatch_size": 192,
-        "pep_pes_per_node": "1",
-        "pep_no_preloading": "True",
-        "pep_no_rdma": "True"
-      },
-      "constants": {},
-      "machine_configuration": {
-        "machine_name": "swing",
-        "amd": {
-          "nodes": 1,
-          "cores": 128
-        }
-      },
-      "software_configuration": {},
-      "evaluation_result": {
-        "y": 5.198282
-      },
-      "evaluation_detail": {
-        "y": {
-          "evaluations": 5.198281777739013,
-          "objective_scheme": "average"
-        }
-      },
-      "additional_output": {},
-      "source": "measure",
-      "time": {
-        "tm_year": 2022,
-        "tm_mon": 5,
-        "tm_mday": 7,
-        "tm_hour": 0,
-        "tm_min": 47,
-        "tm_sec": 12,
-        "tm_wday": 5,
-        "tm_yday": 127,
-        "tm_isdst": 1
-      },
-      "uid": "2460e132-cdc9-11ec-b8e6-5cff35e2561e"
-    },
-    {
-      "task_parameter": {
-        "scale": 4,
-        "enable_pep": "True",
-        "more_params": "True"
-      },
-      "tuning_parameter": {
-        "busy_spin": "False",
-        "hepnos_num_event_databases": 7,
-        "hepnos_num_product_databases": 5,
-        "hepnos_num_providers": 9,
-        "hepnos_num_rpc_threads": 41,
-        "hepnos_pes_per_node": "16",
-        "hepnos_pool_type": "fifo",
-        "hepnos_progress_thread": "False",
-        "loader_batch_size": 382,
-        "loader_pes_per_node": "4",
-        "loader_progress_thread": "False",
-        "loader_async": "False",
-        "loader_async_threads": 61,
-        "pep_progress_thread": "False",
-        "pep_num_threads": 4,
-        "pep_ibatch_size": 272,
-        "pep_obatch_size": 82,
-        "pep_pes_per_node": "16",
-        "pep_no_preloading": "True",
-        "pep_no_rdma": "True"
-      },
-      "constants": {},
-      "machine_configuration": {
-        "machine_name": "swing",
-        "amd": {
-          "nodes": 1,
-          "cores": 128
-        }
-      },
-      "software_configuration": {},
-      "evaluation_result": {
-        "y": 1.800984
-      },
-      "evaluation_detail": {
-        "y": {
-          "evaluations": 1.8009840554116483,
-          "objective_scheme": "average"
-        }
-      },
-      "additional_output": {},
-      "source": "measure",
-      "time": {
-        "tm_year": 2022,
-        "tm_mon": 5,
-        "tm_mday": 7,
-        "tm_hour": 0,
-        "tm_min": 47,
-        "tm_sec": 12,
-        "tm_wday": 5,
-        "tm_yday": 127,
-        "tm_isdst": 1
-      },
-      "uid": "2463f2e6-cdc9-11ec-b8e6-5cff35e2561e"
-    },
-    {
-      "task_parameter": {
-        "scale": 8,
-        "enable_pep": "True",
-        "more_params": "True"
-      },
-      "tuning_parameter": {
-        "busy_spin": "False",
-        "hepnos_num_event_databases": 6,
-        "hepnos_num_product_databases": 4,
-        "hepnos_num_providers": 15,
-        "hepnos_num_rpc_threads": 2,
-        "hepnos_pes_per_node": "32",
-        "hepnos_pool_type": "fifo",
-        "hepnos_progress_thread": "True",
-        "loader_batch_size": 1239,
+        "loader_batch_size": 1741,
         "loader_pes_per_node": "8",
         "loader_progress_thread": "True",
         "loader_async": "False",
-        "loader_async_threads": 62,
+        "loader_async_threads": 49,
         "pep_progress_thread": "False",
-        "pep_num_threads": 20,
-        "pep_ibatch_size": 1006,
-        "pep_obatch_size": 398,
-        "pep_pes_per_node": "32",
-        "pep_no_preloading": "False",
-        "pep_no_rdma": "False"
-      },
-      "constants": {},
-      "machine_configuration": {
-        "machine_name": "swing",
-        "amd": {
-          "nodes": 1,
-          "cores": 128
-        }
-      },
-      "software_configuration": {},
-      "evaluation_result": {
-        "y": 4.968571
-      },
-      "evaluation_detail": {
-        "y": {
-          "evaluations": 4.968570519043671,
-          "objective_scheme": "average"
-        }
-      },
-      "additional_output": {},
-      "source": "measure",
-      "time": {
-        "tm_year": 2022,
-        "tm_mon": 5,
-        "tm_mday": 7,
-        "tm_hour": 0,
-        "tm_min": 50,
-        "tm_sec": 14,
-        "tm_wday": 5,
-        "tm_yday": 127,
-        "tm_isdst": 1
-      },
-      "uid": "91350068-cdc9-11ec-b8e6-5cff35e2561e"
-    },
-    {
-      "task_parameter": {
-        "scale": 4,
-        "enable_pep": "True",
-        "more_params": "True"
-      },
-      "tuning_parameter": {
-        "busy_spin": "False",
-        "hepnos_num_event_databases": 7,
-        "hepnos_num_product_databases": 2,
-        "hepnos_num_providers": 19,
-        "hepnos_num_rpc_threads": 12,
-        "hepnos_pes_per_node": "16",
-        "hepnos_pool_type": "fifo",
-        "hepnos_progress_thread": "False",
-        "loader_batch_size": 962,
-        "loader_pes_per_node": "2",
-        "loader_progress_thread": "True",
-        "loader_async": "False",
-        "loader_async_threads": 62,
-        "pep_progress_thread": "True",
-        "pep_num_threads": 4,
-        "pep_ibatch_size": 701,
-        "pep_obatch_size": 353,
-        "pep_pes_per_node": "32",
-        "pep_no_preloading": "True",
-        "pep_no_rdma": "False"
-      },
-      "constants": {},
-      "machine_configuration": {
-        "machine_name": "swing",
-        "amd": {
-          "nodes": 1,
-          "cores": 128
-        }
-      },
-      "software_configuration": {},
-      "evaluation_result": {
-        "y": 4.601254
-      },
-      "evaluation_detail": {
-        "y": {
-          "evaluations": 4.601253926315653,
-          "objective_scheme": "average"
-        }
-      },
-      "additional_output": {},
-      "source": "measure",
-      "time": {
-        "tm_year": 2022,
-        "tm_mon": 5,
-        "tm_mday": 7,
-        "tm_hour": 0,
-        "tm_min": 50,
-        "tm_sec": 15,
-        "tm_wday": 5,
-        "tm_yday": 127,
-        "tm_isdst": 1
-      },
-      "uid": "91380fec-cdc9-11ec-b8e6-5cff35e2561e"
-    },
-    {
-      "task_parameter": {
-        "scale": 8,
-        "enable_pep": "True",
-        "more_params": "True"
-      },
-      "tuning_parameter": {
-        "busy_spin": "True",
-        "hepnos_num_event_databases": 11,
-        "hepnos_num_product_databases": 12,
-        "hepnos_num_providers": 22,
-        "hepnos_num_rpc_threads": 62,
-        "hepnos_pes_per_node": "1",
-        "hepnos_pool_type": "fifo",
-        "hepnos_progress_thread": "False",
-        "loader_batch_size": 2032,
-        "loader_pes_per_node": "16",
-        "loader_progress_thread": "False",
-        "loader_async": "False",
-        "loader_async_threads": 55,
-        "pep_progress_thread": "False",
-        "pep_num_threads": 5,
-        "pep_ibatch_size": 56,
-        "pep_obatch_size": 296,
+        "pep_num_threads": 31,
+        "pep_ibatch_size": 454,
+        "pep_obatch_size": 357,
         "pep_pes_per_node": "1",
-        "pep_no_preloading": "True",
-        "pep_no_rdma": "False"
-      },
-      "constants": {},
-      "machine_configuration": {
-        "machine_name": "swing",
-        "amd": {
-          "nodes": 1,
-          "cores": 128
-        }
-      },
-      "software_configuration": {},
-      "evaluation_result": {
-        "y": 4.57404
-      },
-      "evaluation_detail": {
-        "y": {
-          "evaluations": 4.574040474593054,
-          "objective_scheme": "average"
-        }
-      },
-      "additional_output": {},
-      "source": "measure",
-      "time": {
-        "tm_year": 2022,
-        "tm_mon": 5,
-        "tm_mday": 7,
-        "tm_hour": 0,
-        "tm_min": 52,
-        "tm_sec": 7,
-        "tm_wday": 5,
-        "tm_yday": 127,
-        "tm_isdst": 1
-      },
-      "uid": "d3fa8724-cdc9-11ec-b8e6-5cff35e2561e"
-    },
-    {
-      "task_parameter": {
-        "scale": 4,
-        "enable_pep": "True",
-        "more_params": "True"
-      },
-      "tuning_parameter": {
-        "busy_spin": "True",
-        "hepnos_num_event_databases": 15,
-        "hepnos_num_product_databases": 1,
-        "hepnos_num_providers": 9,
-        "hepnos_num_rpc_threads": 60,
-        "hepnos_pes_per_node": "8",
-        "hepnos_pool_type": "fifo_wait",
-        "hepnos_progress_thread": "True",
-        "loader_batch_size": 1777,
-        "loader_pes_per_node": "16",
-        "loader_progress_thread": "False",
-        "loader_async": "False",
-        "loader_async_threads": 55,
-        "pep_progress_thread": "False",
-        "pep_num_threads": 12,
-        "pep_ibatch_size": 565,
-        "pep_obatch_size": 267,
-        "pep_pes_per_node": "4",
         "pep_no_preloading": "False",
         "pep_no_rdma": "True"
       },
@@ -3518,11 +4616,11 @@
       },
       "software_configuration": {},
       "evaluation_result": {
-        "y": 3.138344
+        "y": 3.373791
       },
       "evaluation_detail": {
         "y": {
-          "evaluations": 3.138343581590454,
+          "evaluations": 3.3737911392991373,
           "objective_scheme": "average"
         }
       },
@@ -3531,15 +4629,15 @@
       "time": {
         "tm_year": 2022,
         "tm_mon": 5,
-        "tm_mday": 7,
-        "tm_hour": 0,
-        "tm_min": 52,
-        "tm_sec": 7,
-        "tm_wday": 5,
-        "tm_yday": 127,
+        "tm_mday": 8,
+        "tm_hour": 1,
+        "tm_min": 7,
+        "tm_sec": 35,
+        "tm_wday": 6,
+        "tm_yday": 128,
         "tm_isdst": 1
       },
-      "uid": "d3fdde9c-cdc9-11ec-b8e6-5cff35e2561e"
+      "uid": "27da9eb2-ce95-11ec-944a-5cff35e3510b"
     },
     {
       "task_parameter": {
@@ -3548,25 +4646,25 @@
         "more_params": "True"
       },
       "tuning_parameter": {
-        "busy_spin": "True",
-        "hepnos_num_event_databases": 15,
-        "hepnos_num_product_databases": 6,
-        "hepnos_num_providers": 32,
-        "hepnos_num_rpc_threads": 61,
+        "busy_spin": "False",
+        "hepnos_num_event_databases": 13,
+        "hepnos_num_product_databases": 13,
+        "hepnos_num_providers": 13,
+        "hepnos_num_rpc_threads": 30,
         "hepnos_pes_per_node": "16",
         "hepnos_pool_type": "fifo_wait",
         "hepnos_progress_thread": "True",
-        "loader_batch_size": 1480,
-        "loader_pes_per_node": "16",
-        "loader_progress_thread": "False",
+        "loader_batch_size": 1802,
+        "loader_pes_per_node": "8",
+        "loader_progress_thread": "True",
         "loader_async": "True",
-        "loader_async_threads": 38,
+        "loader_async_threads": 5,
         "pep_progress_thread": "True",
-        "pep_num_threads": 19,
-        "pep_ibatch_size": 769,
-        "pep_obatch_size": 546,
-        "pep_pes_per_node": "16",
-        "pep_no_preloading": "True",
+        "pep_num_threads": 3,
+        "pep_ibatch_size": 551,
+        "pep_obatch_size": 443,
+        "pep_pes_per_node": "8",
+        "pep_no_preloading": "False",
         "pep_no_rdma": "False"
       },
       "constants": {},
@@ -3579,11 +4677,11 @@
       },
       "software_configuration": {},
       "evaluation_result": {
-        "y": 4.625813
+        "y": 3.8342
       },
       "evaluation_detail": {
         "y": {
-          "evaluations": 4.62581349988357,
+          "evaluations": 3.834199671900963,
           "objective_scheme": "average"
         }
       },
@@ -3592,15 +4690,15 @@
       "time": {
         "tm_year": 2022,
         "tm_mon": 5,
-        "tm_mday": 7,
-        "tm_hour": 0,
-        "tm_min": 54,
-        "tm_sec": 22,
-        "tm_wday": 5,
-        "tm_yday": 127,
+        "tm_mday": 8,
+        "tm_hour": 1,
+        "tm_min": 8,
+        "tm_sec": 53,
+        "tm_wday": 6,
+        "tm_yday": 128,
         "tm_isdst": 1
       },
-      "uid": "24b625b0-cdca-11ec-b8e6-5cff35e2561e"
+      "uid": "56859622-ce95-11ec-944a-5cff35e3510b"
     },
     {
       "task_parameter": {
@@ -3610,391 +4708,25 @@
       },
       "tuning_parameter": {
         "busy_spin": "True",
-        "hepnos_num_event_databases": 6,
-        "hepnos_num_product_databases": 3,
-        "hepnos_num_providers": 22,
+        "hepnos_num_event_databases": 3,
+        "hepnos_num_product_databases": 13,
+        "hepnos_num_providers": 25,
         "hepnos_num_rpc_threads": 16,
         "hepnos_pes_per_node": "4",
         "hepnos_pool_type": "fifo_wait",
         "hepnos_progress_thread": "True",
-        "loader_batch_size": 1230,
-        "loader_pes_per_node": "2",
-        "loader_progress_thread": "False",
-        "loader_async": "True",
-        "loader_async_threads": 60,
-        "pep_progress_thread": "False",
-        "pep_num_threads": 15,
-        "pep_ibatch_size": 921,
-        "pep_obatch_size": 766,
-        "pep_pes_per_node": "32",
-        "pep_no_preloading": "True",
-        "pep_no_rdma": "True"
-      },
-      "constants": {},
-      "machine_configuration": {
-        "machine_name": "swing",
-        "amd": {
-          "nodes": 1,
-          "cores": 128
-        }
-      },
-      "software_configuration": {},
-      "evaluation_result": {
-        "y": 2.652856
-      },
-      "evaluation_detail": {
-        "y": {
-          "evaluations": 2.6528561641867787,
-          "objective_scheme": "average"
-        }
-      },
-      "additional_output": {},
-      "source": "measure",
-      "time": {
-        "tm_year": 2022,
-        "tm_mon": 5,
-        "tm_mday": 7,
-        "tm_hour": 0,
-        "tm_min": 54,
-        "tm_sec": 22,
-        "tm_wday": 5,
-        "tm_yday": 127,
-        "tm_isdst": 1
-      },
-      "uid": "24b9579e-cdca-11ec-b8e6-5cff35e2561e"
-    },
-    {
-      "task_parameter": {
-        "scale": 8,
-        "enable_pep": "True",
-        "more_params": "True"
-      },
-      "tuning_parameter": {
-        "busy_spin": "True",
-        "hepnos_num_event_databases": 2,
-        "hepnos_num_product_databases": 11,
-        "hepnos_num_providers": 7,
-        "hepnos_num_rpc_threads": 58,
-        "hepnos_pes_per_node": "16",
-        "hepnos_pool_type": "fifo_wait",
-        "hepnos_progress_thread": "False",
-        "loader_batch_size": 2045,
-        "loader_pes_per_node": "16",
-        "loader_progress_thread": "False",
-        "loader_async": "False",
-        "loader_async_threads": 8,
-        "pep_progress_thread": "False",
-        "pep_num_threads": 2,
-        "pep_ibatch_size": 859,
-        "pep_obatch_size": 184,
-        "pep_pes_per_node": "4",
-        "pep_no_preloading": "False",
-        "pep_no_rdma": "True"
-      },
-      "constants": {},
-      "machine_configuration": {
-        "machine_name": "swing",
-        "amd": {
-          "nodes": 1,
-          "cores": 128
-        }
-      },
-      "software_configuration": {},
-      "evaluation_result": {
-        "y": 4.181195
-      },
-      "evaluation_detail": {
-        "y": {
-          "evaluations": 4.181194519002003,
-          "objective_scheme": "average"
-        }
-      },
-      "additional_output": {},
-      "source": "measure",
-      "time": {
-        "tm_year": 2022,
-        "tm_mon": 5,
-        "tm_mday": 7,
-        "tm_hour": 0,
-        "tm_min": 56,
-        "tm_sec": 22,
-        "tm_wday": 5,
-        "tm_yday": 127,
-        "tm_isdst": 1
-      },
-      "uid": "6bf81cd0-cdca-11ec-b8e6-5cff35e2561e"
-    },
-    {
-      "task_parameter": {
-        "scale": 4,
-        "enable_pep": "True",
-        "more_params": "True"
-      },
-      "tuning_parameter": {
-        "busy_spin": "False",
-        "hepnos_num_event_databases": 12,
-        "hepnos_num_product_databases": 10,
-        "hepnos_num_providers": 4,
-        "hepnos_num_rpc_threads": 19,
-        "hepnos_pes_per_node": "4",
-        "hepnos_pool_type": "fifo",
-        "hepnos_progress_thread": "False",
-        "loader_batch_size": 2040,
-        "loader_pes_per_node": "8",
-        "loader_progress_thread": "False",
-        "loader_async": "True",
-        "loader_async_threads": 57,
-        "pep_progress_thread": "False",
-        "pep_num_threads": 13,
-        "pep_ibatch_size": 909,
-        "pep_obatch_size": 921,
-        "pep_pes_per_node": "4",
-        "pep_no_preloading": "False",
-        "pep_no_rdma": "True"
-      },
-      "constants": {},
-      "machine_configuration": {
-        "machine_name": "swing",
-        "amd": {
-          "nodes": 1,
-          "cores": 128
-        }
-      },
-      "software_configuration": {},
-      "evaluation_result": {
-        "y": 2.369253
-      },
-      "evaluation_detail": {
-        "y": {
-          "evaluations": 2.369252609600557,
-          "objective_scheme": "average"
-        }
-      },
-      "additional_output": {},
-      "source": "measure",
-      "time": {
-        "tm_year": 2022,
-        "tm_mon": 5,
-        "tm_mday": 7,
-        "tm_hour": 0,
-        "tm_min": 56,
-        "tm_sec": 22,
-        "tm_wday": 5,
-        "tm_yday": 127,
-        "tm_isdst": 1
-      },
-      "uid": "6bfb7d08-cdca-11ec-b8e6-5cff35e2561e"
-    },
-    {
-      "task_parameter": {
-        "scale": 8,
-        "enable_pep": "True",
-        "more_params": "True"
-      },
-      "tuning_parameter": {
-        "busy_spin": "False",
-        "hepnos_num_event_databases": 5,
-        "hepnos_num_product_databases": 5,
-        "hepnos_num_providers": 31,
-        "hepnos_num_rpc_threads": 36,
-        "hepnos_pes_per_node": "8",
-        "hepnos_pool_type": "fifo_wait",
-        "hepnos_progress_thread": "False",
-        "loader_batch_size": 1900,
-        "loader_pes_per_node": "16",
-        "loader_progress_thread": "True",
-        "loader_async": "True",
-        "loader_async_threads": 35,
-        "pep_progress_thread": "True",
-        "pep_num_threads": 5,
-        "pep_ibatch_size": 614,
-        "pep_obatch_size": 381,
-        "pep_pes_per_node": "8",
-        "pep_no_preloading": "False",
-        "pep_no_rdma": "True"
-      },
-      "constants": {},
-      "machine_configuration": {
-        "machine_name": "swing",
-        "amd": {
-          "nodes": 1,
-          "cores": 128
-        }
-      },
-      "software_configuration": {},
-      "evaluation_result": {
-        "y": 4.454704
-      },
-      "evaluation_detail": {
-        "y": {
-          "evaluations": 4.454703934853851,
-          "objective_scheme": "average"
-        }
-      },
-      "additional_output": {},
-      "source": "measure",
-      "time": {
-        "tm_year": 2022,
-        "tm_mon": 5,
-        "tm_mday": 7,
-        "tm_hour": 0,
-        "tm_min": 58,
-        "tm_sec": 59,
-        "tm_wday": 5,
-        "tm_yday": 127,
-        "tm_isdst": 1
-      },
-      "uid": "c98ee6bc-cdca-11ec-b8e6-5cff35e2561e"
-    },
-    {
-      "task_parameter": {
-        "scale": 4,
-        "enable_pep": "True",
-        "more_params": "True"
-      },
-      "tuning_parameter": {
-        "busy_spin": "False",
-        "hepnos_num_event_databases": 6,
-        "hepnos_num_product_databases": 3,
-        "hepnos_num_providers": 2,
-        "hepnos_num_rpc_threads": 62,
-        "hepnos_pes_per_node": "1",
-        "hepnos_pool_type": "fifo_wait",
-        "hepnos_progress_thread": "False",
-        "loader_batch_size": 446,
-        "loader_pes_per_node": "16",
-        "loader_progress_thread": "False",
-        "loader_async": "False",
-        "loader_async_threads": 56,
-        "pep_progress_thread": "False",
-        "pep_num_threads": 7,
-        "pep_ibatch_size": 304,
-        "pep_obatch_size": 33,
-        "pep_pes_per_node": "4",
-        "pep_no_preloading": "True",
-        "pep_no_rdma": "True"
-      },
-      "constants": {},
-      "machine_configuration": {
-        "machine_name": "swing",
-        "amd": {
-          "nodes": 1,
-          "cores": 128
-        }
-      },
-      "software_configuration": {},
-      "evaluation_result": {
-        "y": 3.046838
-      },
-      "evaluation_detail": {
-        "y": {
-          "evaluations": 3.046837831689955,
-          "objective_scheme": "average"
-        }
-      },
-      "additional_output": {},
-      "source": "measure",
-      "time": {
-        "tm_year": 2022,
-        "tm_mon": 5,
-        "tm_mday": 7,
-        "tm_hour": 0,
-        "tm_min": 58,
-        "tm_sec": 59,
-        "tm_wday": 5,
-        "tm_yday": 127,
-        "tm_isdst": 1
-      },
-      "uid": "c99229c6-cdca-11ec-b8e6-5cff35e2561e"
-    },
-    {
-      "task_parameter": {
-        "scale": 8,
-        "enable_pep": "True",
-        "more_params": "True"
-      },
-      "tuning_parameter": {
-        "busy_spin": "False",
-        "hepnos_num_event_databases": 2,
-        "hepnos_num_product_databases": 12,
-        "hepnos_num_providers": 31,
-        "hepnos_num_rpc_threads": 62,
-        "hepnos_pes_per_node": "32",
-        "hepnos_pool_type": "fifo_wait",
-        "hepnos_progress_thread": "False",
-        "loader_batch_size": 1237,
-        "loader_pes_per_node": "16",
-        "loader_progress_thread": "False",
-        "loader_async": "False",
-        "loader_async_threads": 34,
-        "pep_progress_thread": "True",
-        "pep_num_threads": 1,
-        "pep_ibatch_size": 491,
-        "pep_obatch_size": 877,
-        "pep_pes_per_node": "16",
-        "pep_no_preloading": "True",
-        "pep_no_rdma": "True"
-      },
-      "constants": {},
-      "machine_configuration": {
-        "machine_name": "swing",
-        "amd": {
-          "nodes": 1,
-          "cores": 128
-        }
-      },
-      "software_configuration": {},
-      "evaluation_result": {
-        "y": 4.462625
-      },
-      "evaluation_detail": {
-        "y": {
-          "evaluations": 4.462625155408567,
-          "objective_scheme": "average"
-        }
-      },
-      "additional_output": {},
-      "source": "measure",
-      "time": {
-        "tm_year": 2022,
-        "tm_mon": 5,
-        "tm_mday": 7,
-        "tm_hour": 1,
-        "tm_min": 0,
-        "tm_sec": 40,
-        "tm_wday": 5,
-        "tm_yday": 127,
-        "tm_isdst": 1
-      },
-      "uid": "06207af0-cdcb-11ec-b8e6-5cff35e2561e"
-    },
-    {
-      "task_parameter": {
-        "scale": 4,
-        "enable_pep": "True",
-        "more_params": "True"
-      },
-      "tuning_parameter": {
-        "busy_spin": "False",
-        "hepnos_num_event_databases": 15,
-        "hepnos_num_product_databases": 16,
-        "hepnos_num_providers": 8,
-        "hepnos_num_rpc_threads": 27,
-        "hepnos_pes_per_node": "2",
-        "hepnos_pool_type": "fifo",
-        "hepnos_progress_thread": "False",
-        "loader_batch_size": 1295,
-        "loader_pes_per_node": "2",
+        "loader_batch_size": 1562,
+        "loader_pes_per_node": "4",
         "loader_progress_thread": "False",
         "loader_async": "False",
         "loader_async_threads": 63,
-        "pep_progress_thread": "False",
-        "pep_num_threads": 28,
-        "pep_ibatch_size": 506,
-        "pep_obatch_size": 951,
-        "pep_pes_per_node": "1",
-        "pep_no_preloading": "True",
-        "pep_no_rdma": "True"
+        "pep_progress_thread": "True",
+        "pep_num_threads": 7,
+        "pep_ibatch_size": 836,
+        "pep_obatch_size": 452,
+        "pep_pes_per_node": "32",
+        "pep_no_preloading": "False",
+        "pep_no_rdma": "False"
       },
       "constants": {},
       "machine_configuration": {
@@ -4006,11 +4738,11 @@
       },
       "software_configuration": {},
       "evaluation_result": {
-        "y": 1.385147
+        "y": 5.167757
       },
       "evaluation_detail": {
         "y": {
-          "evaluations": 1.3851466456993538,
+          "evaluations": 5.16775707609947,
           "objective_scheme": "average"
         }
       },
@@ -4019,15 +4751,15 @@
       "time": {
         "tm_year": 2022,
         "tm_mon": 5,
-        "tm_mday": 7,
+        "tm_mday": 8,
         "tm_hour": 1,
-        "tm_min": 0,
-        "tm_sec": 40,
-        "tm_wday": 5,
-        "tm_yday": 127,
+        "tm_min": 8,
+        "tm_sec": 53,
+        "tm_wday": 6,
+        "tm_yday": 128,
         "tm_isdst": 1
       },
-      "uid": "0623c6d8-cdcb-11ec-b8e6-5cff35e2561e"
+      "uid": "56893304-ce95-11ec-944a-5cff35e3510b"
     },
     {
       "task_parameter": {
@@ -4036,26 +4768,26 @@
         "more_params": "True"
       },
       "tuning_parameter": {
-        "busy_spin": "False",
-        "hepnos_num_event_databases": 2,
-        "hepnos_num_product_databases": 9,
-        "hepnos_num_providers": 30,
-        "hepnos_num_rpc_threads": 61,
-        "hepnos_pes_per_node": "16",
+        "busy_spin": "True",
+        "hepnos_num_event_databases": 9,
+        "hepnos_num_product_databases": 5,
+        "hepnos_num_providers": 4,
+        "hepnos_num_rpc_threads": 55,
+        "hepnos_pes_per_node": "2",
         "hepnos_pool_type": "fifo_wait",
-        "hepnos_progress_thread": "False",
-        "loader_batch_size": 1870,
+        "hepnos_progress_thread": "True",
+        "loader_batch_size": 1792,
         "loader_pes_per_node": "16",
-        "loader_progress_thread": "False",
-        "loader_async": "False",
-        "loader_async_threads": 7,
+        "loader_progress_thread": "True",
+        "loader_async": "True",
+        "loader_async_threads": 45,
         "pep_progress_thread": "True",
-        "pep_num_threads": 20,
-        "pep_ibatch_size": 675,
-        "pep_obatch_size": 883,
-        "pep_pes_per_node": "4",
-        "pep_no_preloading": "True",
-        "pep_no_rdma": "True"
+        "pep_num_threads": 3,
+        "pep_ibatch_size": 62,
+        "pep_obatch_size": 153,
+        "pep_pes_per_node": "32",
+        "pep_no_preloading": "False",
+        "pep_no_rdma": "False"
       },
       "constants": {},
       "machine_configuration": {
@@ -4067,11 +4799,11 @@
       },
       "software_configuration": {},
       "evaluation_result": {
-        "y": 4.597906
+        "y": 3.603365
       },
       "evaluation_detail": {
         "y": {
-          "evaluations": 4.597906317582628,
+          "evaluations": 3.603364956396225,
           "objective_scheme": "average"
         }
       },
@@ -4080,15 +4812,15 @@
       "time": {
         "tm_year": 2022,
         "tm_mon": 5,
-        "tm_mday": 7,
+        "tm_mday": 8,
         "tm_hour": 1,
-        "tm_min": 2,
-        "tm_sec": 36,
-        "tm_wday": 5,
-        "tm_yday": 127,
+        "tm_min": 9,
+        "tm_sec": 45,
+        "tm_wday": 6,
+        "tm_yday": 128,
         "tm_isdst": 1
       },
-      "uid": "4b05b63a-cdcb-11ec-b8e6-5cff35e2561e"
+      "uid": "757700ac-ce95-11ec-944a-5cff35e3510b"
     },
     {
       "task_parameter": {
@@ -4098,83 +4830,22 @@
       },
       "tuning_parameter": {
         "busy_spin": "True",
-        "hepnos_num_event_databases": 14,
-        "hepnos_num_product_databases": 2,
-        "hepnos_num_providers": 23,
-        "hepnos_num_rpc_threads": 43,
-        "hepnos_pes_per_node": "1",
-        "hepnos_pool_type": "fifo",
+        "hepnos_num_event_databases": 15,
+        "hepnos_num_product_databases": 10,
+        "hepnos_num_providers": 18,
+        "hepnos_num_rpc_threads": 63,
+        "hepnos_pes_per_node": "32",
+        "hepnos_pool_type": "fifo_wait",
         "hepnos_progress_thread": "True",
-        "loader_batch_size": 2044,
-        "loader_pes_per_node": "2",
+        "loader_batch_size": 1096,
+        "loader_pes_per_node": "1",
         "loader_progress_thread": "True",
         "loader_async": "False",
         "loader_async_threads": 62,
         "pep_progress_thread": "False",
-        "pep_num_threads": 24,
-        "pep_ibatch_size": 348,
-        "pep_obatch_size": 1002,
-        "pep_pes_per_node": "1",
-        "pep_no_preloading": "True",
-        "pep_no_rdma": "True"
-      },
-      "constants": {},
-      "machine_configuration": {
-        "machine_name": "swing",
-        "amd": {
-          "nodes": 1,
-          "cores": 128
-        }
-      },
-      "software_configuration": {},
-      "evaluation_result": {
-        "y": 1.625399
-      },
-      "evaluation_detail": {
-        "y": {
-          "evaluations": 1.6253992229670668,
-          "objective_scheme": "average"
-        }
-      },
-      "additional_output": {},
-      "source": "measure",
-      "time": {
-        "tm_year": 2022,
-        "tm_mon": 5,
-        "tm_mday": 7,
-        "tm_hour": 1,
-        "tm_min": 2,
-        "tm_sec": 36,
-        "tm_wday": 5,
-        "tm_yday": 127,
-        "tm_isdst": 1
-      },
-      "uid": "4b090b1e-cdcb-11ec-b8e6-5cff35e2561e"
-    },
-    {
-      "task_parameter": {
-        "scale": 8,
-        "enable_pep": "True",
-        "more_params": "True"
-      },
-      "tuning_parameter": {
-        "busy_spin": "True",
-        "hepnos_num_event_databases": 10,
-        "hepnos_num_product_databases": 4,
-        "hepnos_num_providers": 18,
-        "hepnos_num_rpc_threads": 58,
-        "hepnos_pes_per_node": "8",
-        "hepnos_pool_type": "fifo_wait",
-        "hepnos_progress_thread": "False",
-        "loader_batch_size": 73,
-        "loader_pes_per_node": "16",
-        "loader_progress_thread": "True",
-        "loader_async": "True",
-        "loader_async_threads": 17,
-        "pep_progress_thread": "True",
-        "pep_num_threads": 22,
-        "pep_ibatch_size": 25,
-        "pep_obatch_size": 803,
+        "pep_num_threads": 8,
+        "pep_ibatch_size": 370,
+        "pep_obatch_size": 606,
         "pep_pes_per_node": "16",
         "pep_no_preloading": "False",
         "pep_no_rdma": "True"
@@ -4189,11 +4860,11 @@
       },
       "software_configuration": {},
       "evaluation_result": {
-        "y": 4.822661
+        "y": 2.107337
       },
       "evaluation_detail": {
         "y": {
-          "evaluations": 4.822661191288034,
+          "evaluations": 2.1073372502266836,
           "objective_scheme": "average"
         }
       },
@@ -4202,41 +4873,41 @@
       "time": {
         "tm_year": 2022,
         "tm_mon": 5,
-        "tm_mday": 7,
+        "tm_mday": 8,
         "tm_hour": 1,
-        "tm_min": 5,
-        "tm_sec": 31,
-        "tm_wday": 5,
-        "tm_yday": 127,
+        "tm_min": 9,
+        "tm_sec": 45,
+        "tm_wday": 6,
+        "tm_yday": 128,
         "tm_isdst": 1
       },
-      "uid": "b3387c7e-cdcb-11ec-b8e6-5cff35e2561e"
+      "uid": "757a97f8-ce95-11ec-944a-5cff35e3510b"
     },
     {
       "task_parameter": {
-        "scale": 4,
+        "scale": 8,
         "enable_pep": "True",
         "more_params": "True"
       },
       "tuning_parameter": {
         "busy_spin": "True",
-        "hepnos_num_event_databases": 15,
+        "hepnos_num_event_databases": 16,
         "hepnos_num_product_databases": 15,
-        "hepnos_num_providers": 27,
-        "hepnos_num_rpc_threads": 3,
-        "hepnos_pes_per_node": "8",
-        "hepnos_pool_type": "fifo",
+        "hepnos_num_providers": 24,
+        "hepnos_num_rpc_threads": 61,
+        "hepnos_pes_per_node": "16",
+        "hepnos_pool_type": "fifo_wait",
         "hepnos_progress_thread": "False",
-        "loader_batch_size": 1036,
-        "loader_pes_per_node": "16",
+        "loader_batch_size": 1491,
+        "loader_pes_per_node": "2",
         "loader_progress_thread": "True",
-        "loader_async": "False",
-        "loader_async_threads": 63,
-        "pep_progress_thread": "False",
-        "pep_num_threads": 18,
-        "pep_ibatch_size": 1005,
-        "pep_obatch_size": 691,
-        "pep_pes_per_node": "32",
+        "loader_async": "True",
+        "loader_async_threads": 42,
+        "pep_progress_thread": "True",
+        "pep_num_threads": 2,
+        "pep_ibatch_size": 726,
+        "pep_obatch_size": 389,
+        "pep_pes_per_node": "16",
         "pep_no_preloading": "True",
         "pep_no_rdma": "True"
       },
@@ -4250,11 +4921,11 @@
       },
       "software_configuration": {},
       "evaluation_result": {
-        "y": 2.242205
+        "y": 4.90495
       },
       "evaluation_detail": {
         "y": {
-          "evaluations": 2.2422054088894243,
+          "evaluations": 4.904950428643916,
           "objective_scheme": "average"
         }
       },
@@ -4263,15 +4934,442 @@
       "time": {
         "tm_year": 2022,
         "tm_mon": 5,
-        "tm_mday": 7,
+        "tm_mday": 8,
         "tm_hour": 1,
-        "tm_min": 5,
-        "tm_sec": 31,
-        "tm_wday": 5,
-        "tm_yday": 127,
+        "tm_min": 12,
+        "tm_sec": 41,
+        "tm_wday": 6,
+        "tm_yday": 128,
         "tm_isdst": 1
       },
-      "uid": "b33be63e-cdcb-11ec-b8e6-5cff35e2561e"
+      "uid": "de41252c-ce95-11ec-944a-5cff35e3510b"
+    },
+    {
+      "task_parameter": {
+        "scale": 4,
+        "enable_pep": "True",
+        "more_params": "True"
+      },
+      "tuning_parameter": {
+        "busy_spin": "True",
+        "hepnos_num_event_databases": 7,
+        "hepnos_num_product_databases": 8,
+        "hepnos_num_providers": 16,
+        "hepnos_num_rpc_threads": 17,
+        "hepnos_pes_per_node": "32",
+        "hepnos_pool_type": "fifo_wait",
+        "hepnos_progress_thread": "True",
+        "loader_batch_size": 1736,
+        "loader_pes_per_node": "8",
+        "loader_progress_thread": "True",
+        "loader_async": "False",
+        "loader_async_threads": 57,
+        "pep_progress_thread": "False",
+        "pep_num_threads": 26,
+        "pep_ibatch_size": 533,
+        "pep_obatch_size": 670,
+        "pep_pes_per_node": "4",
+        "pep_no_preloading": "False",
+        "pep_no_rdma": "True"
+      },
+      "constants": {},
+      "machine_configuration": {
+        "machine_name": "swing",
+        "amd": {
+          "nodes": 1,
+          "cores": 128
+        }
+      },
+      "software_configuration": {},
+      "evaluation_result": {
+        "y": 2.913111
+      },
+      "evaluation_detail": {
+        "y": {
+          "evaluations": 2.9131109717848975,
+          "objective_scheme": "average"
+        }
+      },
+      "additional_output": {},
+      "source": "measure",
+      "time": {
+        "tm_year": 2022,
+        "tm_mon": 5,
+        "tm_mday": 8,
+        "tm_hour": 1,
+        "tm_min": 12,
+        "tm_sec": 41,
+        "tm_wday": 6,
+        "tm_yday": 128,
+        "tm_isdst": 1
+      },
+      "uid": "de44d2ee-ce95-11ec-944a-5cff35e3510b"
+    },
+    {
+      "task_parameter": {
+        "scale": 8,
+        "enable_pep": "True",
+        "more_params": "True"
+      },
+      "tuning_parameter": {
+        "busy_spin": "False",
+        "hepnos_num_event_databases": 15,
+        "hepnos_num_product_databases": 13,
+        "hepnos_num_providers": 7,
+        "hepnos_num_rpc_threads": 47,
+        "hepnos_pes_per_node": "1",
+        "hepnos_pool_type": "fifo",
+        "hepnos_progress_thread": "False",
+        "loader_batch_size": 1703,
+        "loader_pes_per_node": "16",
+        "loader_progress_thread": "True",
+        "loader_async": "True",
+        "loader_async_threads": 3,
+        "pep_progress_thread": "True",
+        "pep_num_threads": 5,
+        "pep_ibatch_size": 878,
+        "pep_obatch_size": 46,
+        "pep_pes_per_node": "4",
+        "pep_no_preloading": "False",
+        "pep_no_rdma": "False"
+      },
+      "constants": {},
+      "machine_configuration": {
+        "machine_name": "swing",
+        "amd": {
+          "nodes": 1,
+          "cores": 128
+        }
+      },
+      "software_configuration": {},
+      "evaluation_result": {
+        "y": 3.883594
+      },
+      "evaluation_detail": {
+        "y": {
+          "evaluations": 3.8835937683877098,
+          "objective_scheme": "average"
+        }
+      },
+      "additional_output": {},
+      "source": "measure",
+      "time": {
+        "tm_year": 2022,
+        "tm_mon": 5,
+        "tm_mday": 8,
+        "tm_hour": 1,
+        "tm_min": 13,
+        "tm_sec": 56,
+        "tm_wday": 6,
+        "tm_yday": 128,
+        "tm_isdst": 1
+      },
+      "uid": "0a9f92e8-ce96-11ec-944a-5cff35e3510b"
+    },
+    {
+      "task_parameter": {
+        "scale": 4,
+        "enable_pep": "True",
+        "more_params": "True"
+      },
+      "tuning_parameter": {
+        "busy_spin": "True",
+        "hepnos_num_event_databases": 6,
+        "hepnos_num_product_databases": 2,
+        "hepnos_num_providers": 9,
+        "hepnos_num_rpc_threads": 35,
+        "hepnos_pes_per_node": "32",
+        "hepnos_pool_type": "fifo_wait",
+        "hepnos_progress_thread": "True",
+        "loader_batch_size": 1098,
+        "loader_pes_per_node": "2",
+        "loader_progress_thread": "True",
+        "loader_async": "True",
+        "loader_async_threads": 57,
+        "pep_progress_thread": "False",
+        "pep_num_threads": 29,
+        "pep_ibatch_size": 995,
+        "pep_obatch_size": 959,
+        "pep_pes_per_node": "32",
+        "pep_no_preloading": "False",
+        "pep_no_rdma": "True"
+      },
+      "constants": {},
+      "machine_configuration": {
+        "machine_name": "swing",
+        "amd": {
+          "nodes": 1,
+          "cores": 128
+        }
+      },
+      "software_configuration": {},
+      "evaluation_result": {
+        "y": 2.992657
+      },
+      "evaluation_detail": {
+        "y": {
+          "evaluations": 2.992657012454055,
+          "objective_scheme": "average"
+        }
+      },
+      "additional_output": {},
+      "source": "measure",
+      "time": {
+        "tm_year": 2022,
+        "tm_mon": 5,
+        "tm_mday": 8,
+        "tm_hour": 1,
+        "tm_min": 13,
+        "tm_sec": 56,
+        "tm_wday": 6,
+        "tm_yday": 128,
+        "tm_isdst": 1
+      },
+      "uid": "0aa344ce-ce96-11ec-944a-5cff35e3510b"
+    },
+    {
+      "task_parameter": {
+        "scale": 8,
+        "enable_pep": "True",
+        "more_params": "True"
+      },
+      "tuning_parameter": {
+        "busy_spin": "False",
+        "hepnos_num_event_databases": 9,
+        "hepnos_num_product_databases": 9,
+        "hepnos_num_providers": 11,
+        "hepnos_num_rpc_threads": 60,
+        "hepnos_pes_per_node": "32",
+        "hepnos_pool_type": "fifo",
+        "hepnos_progress_thread": "True",
+        "loader_batch_size": 1425,
+        "loader_pes_per_node": "16",
+        "loader_progress_thread": "True",
+        "loader_async": "True",
+        "loader_async_threads": 36,
+        "pep_progress_thread": "False",
+        "pep_num_threads": 11,
+        "pep_ibatch_size": 590,
+        "pep_obatch_size": 475,
+        "pep_pes_per_node": "32",
+        "pep_no_preloading": "False",
+        "pep_no_rdma": "True"
+      },
+      "constants": {},
+      "machine_configuration": {
+        "machine_name": "swing",
+        "amd": {
+          "nodes": 1,
+          "cores": 128
+        }
+      },
+      "software_configuration": {},
+      "evaluation_result": {
+        "y": 4.165504
+      },
+      "evaluation_detail": {
+        "y": {
+          "evaluations": 4.165504201146246,
+          "objective_scheme": "average"
+        }
+      },
+      "additional_output": {},
+      "source": "measure",
+      "time": {
+        "tm_year": 2022,
+        "tm_mon": 5,
+        "tm_mday": 8,
+        "tm_hour": 1,
+        "tm_min": 15,
+        "tm_sec": 35,
+        "tm_wday": 6,
+        "tm_yday": 128,
+        "tm_isdst": 1
+      },
+      "uid": "462d4c7e-ce96-11ec-944a-5cff35e3510b"
+    },
+    {
+      "task_parameter": {
+        "scale": 4,
+        "enable_pep": "True",
+        "more_params": "True"
+      },
+      "tuning_parameter": {
+        "busy_spin": "True",
+        "hepnos_num_event_databases": 3,
+        "hepnos_num_product_databases": 2,
+        "hepnos_num_providers": 25,
+        "hepnos_num_rpc_threads": 53,
+        "hepnos_pes_per_node": "32",
+        "hepnos_pool_type": "fifo_wait",
+        "hepnos_progress_thread": "True",
+        "loader_batch_size": 794,
+        "loader_pes_per_node": "2",
+        "loader_progress_thread": "True",
+        "loader_async": "False",
+        "loader_async_threads": 61,
+        "pep_progress_thread": "False",
+        "pep_num_threads": 23,
+        "pep_ibatch_size": 89,
+        "pep_obatch_size": 245,
+        "pep_pes_per_node": "32",
+        "pep_no_preloading": "False",
+        "pep_no_rdma": "True"
+      },
+      "constants": {},
+      "machine_configuration": {
+        "machine_name": "swing",
+        "amd": {
+          "nodes": 1,
+          "cores": 128
+        }
+      },
+      "software_configuration": {},
+      "evaluation_result": {
+        "y": 2.442722
+      },
+      "evaluation_detail": {
+        "y": {
+          "evaluations": 2.4427219061514798,
+          "objective_scheme": "average"
+        }
+      },
+      "additional_output": {},
+      "source": "measure",
+      "time": {
+        "tm_year": 2022,
+        "tm_mon": 5,
+        "tm_mday": 8,
+        "tm_hour": 1,
+        "tm_min": 15,
+        "tm_sec": 35,
+        "tm_wday": 6,
+        "tm_yday": 128,
+        "tm_isdst": 1
+      },
+      "uid": "46310de6-ce96-11ec-944a-5cff35e3510b"
+    },
+    {
+      "task_parameter": {
+        "scale": 8,
+        "enable_pep": "True",
+        "more_params": "True"
+      },
+      "tuning_parameter": {
+        "busy_spin": "False",
+        "hepnos_num_event_databases": 4,
+        "hepnos_num_product_databases": 14,
+        "hepnos_num_providers": 17,
+        "hepnos_num_rpc_threads": 7,
+        "hepnos_pes_per_node": "1",
+        "hepnos_pool_type": "fifo",
+        "hepnos_progress_thread": "True",
+        "loader_batch_size": 1709,
+        "loader_pes_per_node": "16",
+        "loader_progress_thread": "False",
+        "loader_async": "True",
+        "loader_async_threads": 48,
+        "pep_progress_thread": "False",
+        "pep_num_threads": 26,
+        "pep_ibatch_size": 222,
+        "pep_obatch_size": 679,
+        "pep_pes_per_node": "16",
+        "pep_no_preloading": "False",
+        "pep_no_rdma": "False"
+      },
+      "constants": {},
+      "machine_configuration": {
+        "machine_name": "swing",
+        "amd": {
+          "nodes": 1,
+          "cores": 128
+        }
+      },
+      "software_configuration": {},
+      "evaluation_result": {
+        "y": 4.695301
+      },
+      "evaluation_detail": {
+        "y": {
+          "evaluations": 4.695300797904799,
+          "objective_scheme": "average"
+        }
+      },
+      "additional_output": {},
+      "source": "measure",
+      "time": {
+        "tm_year": 2022,
+        "tm_mon": 5,
+        "tm_mday": 8,
+        "tm_hour": 1,
+        "tm_min": 17,
+        "tm_sec": 48,
+        "tm_wday": 6,
+        "tm_yday": 128,
+        "tm_isdst": 1
+      },
+      "uid": "95532bca-ce96-11ec-944a-5cff35e3510b"
+    },
+    {
+      "task_parameter": {
+        "scale": 4,
+        "enable_pep": "True",
+        "more_params": "True"
+      },
+      "tuning_parameter": {
+        "busy_spin": "True",
+        "hepnos_num_event_databases": 6,
+        "hepnos_num_product_databases": 14,
+        "hepnos_num_providers": 23,
+        "hepnos_num_rpc_threads": 14,
+        "hepnos_pes_per_node": "32",
+        "hepnos_pool_type": "fifo_wait",
+        "hepnos_progress_thread": "True",
+        "loader_batch_size": 1768,
+        "loader_pes_per_node": "16",
+        "loader_progress_thread": "True",
+        "loader_async": "True",
+        "loader_async_threads": 63,
+        "pep_progress_thread": "False",
+        "pep_num_threads": 25,
+        "pep_ibatch_size": 47,
+        "pep_obatch_size": 343,
+        "pep_pes_per_node": "32",
+        "pep_no_preloading": "False",
+        "pep_no_rdma": "True"
+      },
+      "constants": {},
+      "machine_configuration": {
+        "machine_name": "swing",
+        "amd": {
+          "nodes": 1,
+          "cores": 128
+        }
+      },
+      "software_configuration": {},
+      "evaluation_result": {
+        "y": 2.929249
+      },
+      "evaluation_detail": {
+        "y": {
+          "evaluations": 2.9292488884485746,
+          "objective_scheme": "average"
+        }
+      },
+      "additional_output": {},
+      "source": "measure",
+      "time": {
+        "tm_year": 2022,
+        "tm_mon": 5,
+        "tm_mday": 8,
+        "tm_hour": 1,
+        "tm_min": 17,
+        "tm_sec": 48,
+        "tm_wday": 6,
+        "tm_yday": 128,
+        "tm_isdst": 1
+      },
+      "uid": "9556f96c-ce96-11ec-944a-5cff35e3510b"
     }
   ]
 }
