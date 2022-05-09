@@ -3,7 +3,9 @@ python exec_deephyper_rf.py -m models/model-4-true-true.pkl
 python exec_deephyper_rf.py -m models/model-8-true-true.pkl -tl exp/deephyper_rf/model-4-true-true-1/results.csv
 """
 import argparse
+import functools
 import os
+import black
 
 import pandas as pd
 
@@ -13,7 +15,9 @@ from deephyper.evaluator import Evaluator
 from deephyper.evaluator.callback import TqdmCallback
 from deephyper.search.hps import AMBS
 
-from black_box import run, build_deephyper_problem
+import ray
+
+import black_box
 
 
 def create_parser():
@@ -33,9 +37,13 @@ def create_parser():
         type=str,
         default=None,
         required=False,
-        help="Path to CSV file used for transfer-learning."
+        help="Path to CSV file used for transfer-learning.",
     )
     return parser
+
+
+def run(config, model_path):
+    return black_box.run(config, model_path=model_path, with_sleep=True)
 
 
 if __name__ == "__main__":
@@ -46,10 +54,12 @@ if __name__ == "__main__":
     enable_pep, more_params = model_file[:-4].split("-")[2:4]
     enable_pep, more_params = enable_pep == "true", more_params == "true"
 
-    problem = build_deephyper_problem(
+    problem = black_box.build_deephyper_problem(
         disable_pep=not (enable_pep), more_params=more_params
     )
     cols = problem.hyperparameter_names
+
+    ray.init(num_cpus=10)
 
     for i in range(1, 6):
         init_file = os.path.join(HERE, "data", f"exp-DUMMY-{model_file[6:-4]}-{i}.csv")
@@ -58,15 +68,20 @@ if __name__ == "__main__":
 
         initial_points = [row.to_dict() for idx, row in init_df.iterrows()]
 
-        max_evals = 100
+        timeout = 3600
+
         evaluator = Evaluator.create(
             run,
-            method="serial",
+            method="ray",
             method_kwargs={
+                "num_cpus": 10,
+                "num_cpus_per_task": 1,
                 "run_function_kwargs": {"model_path": args.model},
-                "callbacks": [TqdmCallback(max_evals)],
+                "callbacks": [TqdmCallback()],
             },
         )
+
+        print(f"Number of workers: {evaluator.num_workers}")
 
         if args.tl_learn:
             log_dir = f"exp/deephyper_rf/{model_file[:-4]}-tl-{i}"
@@ -88,4 +103,4 @@ if __name__ == "__main__":
             print(f"Applying Transfer Learning from {df_path}...")
             search.fit_generative_model(df_path)
 
-        results = search.search(max_evals=max_evals)
+        results = search.search(timeout=timeout)
