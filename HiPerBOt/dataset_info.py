@@ -50,6 +50,9 @@ class DatasetInfo:
     elif dName == 'DH_surrogate':
         self.test_size = 0.98
         self.nIter = 101 
+    elif dName == 'DH_surrogate2':
+        self.test_size = 0.98
+        self.nIter = 101 
     #self.nIter = 1 # Uncomment for sensitivity
 
   def initialize_dataset(self):
@@ -68,7 +71,23 @@ class DatasetInfo:
         data_bin_pd = util.data_norm(self.X_bin, self.y_bin, response_name=response, response_norm=False)
 
     elif self.dName == 'DH_surrogate':
-        #filename = "/gpfs/fs0/project/FastBayes/Sandeep/github_repos/HEPnOS-Autotuning/HiPerBOt/datasets/DH_expt/results_with_init.csv"
+        filename = "/projects/OptADDN/HEPnOS-Autotuning/HiPerBOt/datasets/DH_expt/results_with_init.csv"
+        #filename = "/projects/OptADDN/HEPnOS-Autotuning/HiPerBOt/datasets/DH_expt/results_8TT_with_init.csv"
+        response = "objective" # Dependent variable
+        self.X_bin_all, self.y_bin_all = util.load_data(filename, response)
+        self.X_bin_feat_sel = ['busy_spin','hepnos_num_event_databases','hepnos_num_product_databases','hepnos_num_providers',
+        'hepnos_num_rpc_threads','hepnos_pes_per_node','hepnos_pool_type','hepnos_progress_thread','loader_async',
+        'loader_async_threads','loader_batch_size','loader_pes_per_node','loader_progress_thread','pep_ibatch_size',
+        'pep_no_preloading','pep_no_rdma','pep_num_threads','pep_obatch_size','pep_pes_per_node','pep_progress_thread']
+
+        self.X_bin_all = self.X_bin_all[self.X_bin_feat_sel]
+        self.X_bin = self.X_bin_all.iloc[50:]
+        self.X_bin_init = self.X_bin_all.iloc[0:50]
+        self.y_bin = self.y_bin_all[50:]
+        self.y_bin_init = self.y_bin_all[0:50]
+        data_bin_pd = util.data_norm(self.X_bin, self.y_bin, response_name=response, response_norm=False)
+
+    elif self.dName == 'DH_surrogate2':
         filename = "/projects/OptADDN/HEPnOS-Autotuning/HiPerBOt/datasets/DH_expt/results_8TT_with_init.csv"
         response = "objective" # Dependent variable
         self.X_bin_all, self.y_bin_all = util.load_data(filename, response)
@@ -78,24 +97,12 @@ class DatasetInfo:
         'pep_no_preloading','pep_no_rdma','pep_num_threads','pep_obatch_size','pep_pes_per_node','pep_progress_thread']
 
         self.X_bin_all = self.X_bin_all[self.X_bin_feat_sel]
-
-
         self.X_bin = self.X_bin_all.iloc[50:]
         self.X_bin_init = self.X_bin_all.iloc[0:50]
-        # self.X_bin_init2 = self.X_bin_all.iloc[10:20]
-        # self.X_bin_init3 = self.X_bin_all.iloc[20:30]
-        # self.X_bin_init4 = self.X_bin_all.iloc[30:40]
-        # self.X_bin_init5 = self.X_bin_all.iloc[40:50]
-
         self.y_bin = self.y_bin_all[50:]
         self.y_bin_init = self.y_bin_all[0:50]
-        # self.y_bin_init2 = self.y_bin_all[10:20]
-        # self.y_bin_init3 = self.y_bin_all[20:30]
-        # self.y_bin_init4 = self.y_bin_all[30:40]
-        # self.y_bin_init5 = self.y_bin_all[40:50]
-
-
         data_bin_pd = util.data_norm(self.X_bin, self.y_bin, response_name=response, response_norm=False)
+
     elif self.dName == 'kripke':
         filename = "datasets/powerperf/binarized/kripke.16nodes.2000_input.l0.norm.binary.csv"
         response = "Energy"
@@ -344,6 +351,43 @@ class DatasetInfo:
     
         self.X_bin_u['Ranks'] = self.X_bin_u['Ranks']/64
         # print self.X_bin_u
+
+  def initialize_dataset_tl_DH(self):
+    util = utils()
+    
+    if self.dName == 'DH_surrogate':
+
+
+        # Source Dataset
+        filename = "/projects/OptADDN/HEPnOS-Autotuning/HiPerBOt/datasets/DH_expt/results_with_init.csv"
+        #filename = "/projects/OptADDN/HEPnOS-Autotuning/HiPerBOt/datasets/DH_expt/results_4TT_5seeds.csv"
+        response = "objective" # Dependent variable
+
+        self.X_bin_all, self.y_bin_all = util.load_data(filename, response)
+        self.X_bin_feat_sel = ['busy_spin','hepnos_num_event_databases','hepnos_num_product_databases','hepnos_num_providers',
+        'hepnos_num_rpc_threads','hepnos_pes_per_node','hepnos_pool_type','hepnos_progress_thread','loader_async',
+        'loader_async_threads','loader_batch_size','loader_pes_per_node','loader_progress_thread','pep_ibatch_size',
+        'pep_no_preloading','pep_no_rdma','pep_num_threads','pep_obatch_size','pep_pes_per_node','pep_progress_thread']
+
+        self.X_small_bin_u = self.X_bin_all[self.X_bin_feat_sel]
+        self.y_new_small_bin = self.y_bin_all
+
+        #data_bin_pd = util.data_norm(self.X_new_bin, self.y_new_bin, response_name=response, response_norm=False)
+
+        # Target Datset
+        filename = "/projects/OptADDN/HEPnOS-Autotuning/HiPerBOt/datasets/DH_expt/results_8TT_with_init.csv"
+        response = "objective" # Dependent variable
+
+        self.X_bin_all, self.y_bin_all = util.load_data(filename, response)
+        self.X_bin_feat_sel = ['busy_spin','hepnos_num_event_databases','hepnos_num_product_databases','hepnos_num_providers',
+        'hepnos_num_rpc_threads','hepnos_pes_per_node','hepnos_pool_type','hepnos_progress_thread','loader_async',
+        'loader_async_threads','loader_batch_size','loader_pes_per_node','loader_progress_thread','pep_ibatch_size',
+        'pep_no_preloading','pep_no_rdma','pep_num_threads','pep_obatch_size','pep_pes_per_node','pep_progress_thread']
+
+        self.X_bin_u = self.X_bin_all[self.X_bin_feat_sel]
+        self.y_new_bin = self.y_bin_all
+
+        #data_bin_pd = util.data_norm(self.X_new_bin, self.y_new_bin, response_name=response, response_norm=False)
 
   def initialize_dataset_tl(self):
     util = utils()

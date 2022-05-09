@@ -58,10 +58,14 @@ class ParamProbability:
         x_best = x_sorted[:n_best]
         y_best = y_sorted[:n_best]
 
+        #print ("x_obs",x_obs)
+        #print ("y_sorted_index",y_sorted_index)
+
         x_worst = x_sorted[n_best:]
         y_worst = y_sorted[n_best:]
          
         max_xk = max(xk)
+        #print ("x_best, max_xk",x_best, max_xk+1)
         counts = np.bincount(x_best, minlength=max_xk+1)
         if self.use_prior:
             counts = counts + _default_prior_prob_weight*(self.best_prior_counts / sum(self.best_prior_counts))

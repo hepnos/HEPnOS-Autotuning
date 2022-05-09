@@ -4,6 +4,7 @@ import sys
 from bayesian import ParamProbability as ParamProbability
 from sklearn.model_selection import train_test_split
 from dataset_info import DatasetInfo
+import pandas as pd
 
 def objective_fn(param, X_tgt, y_tgt):
   idx=list(zip(*np.where((X_tgt == param).all(axis=1))))
@@ -20,6 +21,8 @@ The selection algorithm selects the best candidate with the
 highest expected improvement metric.
 """
 def selection(X_src, X_tgt, y_tgt, x_obs, y_obs, param_prob, gamma):
+
+    #print (np.shape(X_src),np.shape(X_tgt),np.shape(y_tgt),np.shape(x_obs),np.shape(y_obs) )
     # Construct probability for each parameter
     for label_idx, datalabel in enumerate(X_src.columns):
         xk = np.unique(X_src[datalabel].values).astype(int)
@@ -70,11 +73,12 @@ def run_bayesian_selection(X_src, X_tgt, y_src, y_tgt, sample_size, thresholds, 
         xk = np.unique(X_src[datalabel].values).astype(int)
 
         prob = ParamProbability(use_prior=True)
-        prob.prior_probability(datalabel, xk, x_train[:, label_idx].astype(int), y_train, best_ratio=gamma)
+        #print (datalabel, np.shape(xk),np.shape(x_train[:, label_idx].astype(int)),np.shape(y_train[:,0]))
+        prob.prior_probability(datalabel, xk, x_train[:, label_idx].astype(int), y_train[:,0], best_ratio=gamma)
         param_prob.append(prob)
 
     # Choose the number of samples from the Tgt dataset
-    train_size = 20
+    train_size = 10 #20
     train_ids, test_ids = train_test_split(range(X_tgt.shape[0]), test_size=len(X_tgt)-train_size, random_state=seed)
     x_obs = X_tgt.iloc[train_ids].values
     y_obs = y_tgt[train_ids]
@@ -92,8 +96,10 @@ def run_bayesian_selection(X_src, X_tgt, y_src, y_tgt, sample_size, thresholds, 
     # Evaluate the true objective function of the selected candidate.
     # Add the candidate to the history of observation which will be used to
     # update the surrogate model.
+    print ("sample_size-train_size",sample_size-train_size)
     for it in range(sample_size-train_size):
-        trial=selection(X_src, X_tgt, y_tgt, trials, trials_loss, param_prob, gamma)
+        #print ("it",it)
+        trial=selection(X_src, X_tgt, y_tgt, trials, trials_loss.flatten(), param_prob, gamma)
         trials = np.vstack([trials, trial])
 
         loss=objective_fn(trial, X_tgt, y_tgt)
@@ -106,11 +112,14 @@ def run_bayesian_selection(X_src, X_tgt, y_src, y_tgt, sample_size, thresholds, 
     for threshold in thresholds:
         good_configs = trials_loss[np.where(trials_loss < threshold)]
         recall_val = np.count_nonzero(good_configs) / float(abs_count[c_idx])
-        recall_list[threshold] = recall_val
+        #print ("recall_list", recall_list)
+        #print ("threshold", threshold)
+        #print ("recall_val",recall_val)
+        recall_list[threshold[0]] = recall_val
         c_idx += 1
         print('threshold : ', threshold, ' configs: ', good_configs, ' recall_val: ', recall_val)
 
-    return best_loss, recall_list
+    return best_loss, recall_list, trials, trials_loss
 
 def main():
   args = sys.argv[1:]
@@ -121,10 +130,11 @@ def main():
   print('-------------------')
   print('Evaluating transfer learning ', dName)
   ds = DatasetInfo(dName)
-  ds.initialize_dataset_tl()
+  ds.initialize_dataset_tl_DH()
+  #ds.initialize_dataset_tl()
 
   # Each sample size is evaluated numSeeds times to get the mean and std
-  numSeeds = 10 #desired value for runs 10
+  numSeeds = 5 #10 #desired value for runs 10
   seedList = np.random.choice(100,numSeeds,replace=False)
   
   # Get the best application performance
@@ -137,6 +147,9 @@ def main():
   if dName == 'HYPRE':
       perc_optimal = [0.05, 0.1, 0.17644641442, 0.23691549007]
   elif dName == 'KRIPKE.L0':
+      perc_optimal = [0.05, 0.1, 0.15, 0.20]
+  # how do we set this?
+  elif dName == 'DH_surrogate':
       perc_optimal = [0.05, 0.1, 0.15, 0.20]
   
   thresholds = []
@@ -158,17 +171,25 @@ def main():
   dataset_len = len(ds.X_bin_u)
   # For the paper, we used the same sample size as used by PerfNet. Here we use
   # 1% of the total samples in D_tgt + 100
-  sample_size = [int(0.01*dataset_len)+100]
-  
+  sample_size = [100] #[int(0.01*dataset_len)+100]
+
+  print (sample_size)
+  feats = ds.X_bin_feat_sel
+  feats.append("objective")  
   for size in sample_size:
+      s_order = 0
       for seed in seedList:
-          best_loss, recall_list = run_bayesian_selection(
+          best_loss, recall_list,trials,trials_loss = run_bayesian_selection(
               ds.X_small_bin_u, ds.X_bin_u, ds.y_new_small_bin, ds.y_new_bin,
               size, thresholds, abs_counts, seed, gamma=0.01)
           best_loss_list = np.append(best_loss_list, best_loss)
           print('Sample size: {0} Best loss: {1}'.format(size, best_loss))
           print('Recall: {0} Recall: {1}'.format(size, recall_list))
-   
+          s_order = s_order+1
+          if (size == sample_size[-1]):
+                T1 = np.concatenate((trials,trials_loss.reshape(-1,1)), axis=1)
+                df = pd.DataFrame(data=T1, columns=feats)
+                df.to_csv('trials_{}.csv'.format(s_order),sep=',')   
   
 if __name__ == "__main__":
     main()
