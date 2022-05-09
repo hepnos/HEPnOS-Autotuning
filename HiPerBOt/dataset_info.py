@@ -68,7 +68,8 @@ class DatasetInfo:
         data_bin_pd = util.data_norm(self.X_bin, self.y_bin, response_name=response, response_norm=False)
 
     elif self.dName == 'DH_surrogate':
-        filename = "/gpfs/fs0/project/FastBayes/Sandeep/github_repos/HEPnOS-Autotuning/HiPerBOt/datasets/DH_expt/results_with_init.csv"
+        #filename = "/gpfs/fs0/project/FastBayes/Sandeep/github_repos/HEPnOS-Autotuning/HiPerBOt/datasets/DH_expt/results_with_init.csv"
+        filename = "/projects/OptADDN/HEPnOS-Autotuning/HiPerBOt/datasets/DH_expt/results_8TT_with_init.csv"
         response = "objective" # Dependent variable
         self.X_bin_all, self.y_bin_all = util.load_data(filename, response)
         self.X_bin_feat_sel = ['busy_spin','hepnos_num_event_databases','hepnos_num_product_databases','hepnos_num_providers',
