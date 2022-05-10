@@ -1,6 +1,6 @@
 """
 python exec_deephyper_rf.py -m models/model-4-true-true.pkl
-python exec_deephyper_rf.py -m models/model-8-true-true.pkl -tl exp/deephyper_rf/model-4-true-true-1/results.csv
+python exec_deephyper_rf.py -m models/model-8-true-true.pkl -tl exp/deephyper_rf/model-4-true-true-{i}/results.csv
 """
 import argparse
 import functools
@@ -59,7 +59,8 @@ if __name__ == "__main__":
     )
     cols = problem.hyperparameter_names
 
-    ray.init(num_cpus=10)
+    num_workers = 1
+    ray.init(num_cpus=num_workers)
 
     for i in range(1, 6):
         init_file = os.path.join(HERE, "data", f"exp-DUMMY-{model_file[6:-4]}-{i}.csv")
@@ -74,7 +75,7 @@ if __name__ == "__main__":
             run,
             method="ray",
             method_kwargs={
-                "num_cpus": 10,
+                "num_cpus": num_workers,
                 "num_cpus_per_task": 1,
                 "run_function_kwargs": {"model_path": args.model},
                 "callbacks": [TqdmCallback()],
