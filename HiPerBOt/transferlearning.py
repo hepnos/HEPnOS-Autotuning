@@ -186,11 +186,13 @@ def main():
   print (sample_size)
   feats = ds.X_bin_feat_sel
   feats.append("objective")  
+  X_small_bin_u_list = [ds.X_small_bin_u_1,ds.X_small_bin_u_2,ds.X_small_bin_u_3,ds.X_small_bin_u_4,ds.X_small_bin_u_5]
+  y_new_small_bin_list = [ds.y_new_small_bin_1,ds.y_new_small_bin_2,ds.y_new_small_bin_3,ds.y_new_small_bin_4,ds.y_new_small_bin_5]
   for size in sample_size:
       s_order = 0
       for seed in seedList:
           best_loss, recall_list,trials,trials_loss = run_bayesian_selection(
-              ds.X_small_bin_u, ds.X_bin_u, ds.y_new_small_bin, ds.y_new_bin,
+              X_small_bin_u_list[s_order], ds.X_bin_u, y_new_small_bin_list[s_order], ds.y_new_bin,
               size, thresholds, abs_counts, seed, gamma=0.01)
           best_loss_list = np.append(best_loss_list, best_loss)
           print('Sample size: {0} Best loss: {1}'.format(size, best_loss))

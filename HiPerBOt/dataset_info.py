@@ -373,6 +373,18 @@ class DatasetInfo:
         self.X_small_bin_u = self.X_bin_all[self.X_bin_feat_sel]
         self.y_new_small_bin = self.y_bin_all
 
+        self.X_small_bin_u_1 = self.X_small_bin_u.iloc[0:30,:]
+        self.X_small_bin_u_2 = self.X_small_bin_u.iloc[30:60,:]
+        self.X_small_bin_u_3 = self.X_small_bin_u.iloc[60:90,:]
+        self.X_small_bin_u_4 = self.X_small_bin_u.iloc[90:120,:]
+        self.X_small_bin_u_5 = self.X_small_bin_u.iloc[120:150,:]
+
+        self.y_new_small_bin_1 = self.y_new_small_bin[0:30]
+        self.y_new_small_bin_2 = self.y_new_small_bin[30:60]
+        self.y_new_small_bin_3 = self.y_new_small_bin[60:90]
+        self.y_new_small_bin_4 = self.y_new_small_bin[90:120]
+        self.y_new_small_bin_5 = self.y_new_small_bin[120:150]
+
         #data_bin_pd = util.data_norm(self.X_new_bin, self.y_new_bin, response_name=response, response_norm=False)
 
         # Target Datset
