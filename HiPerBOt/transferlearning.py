@@ -26,16 +26,25 @@ def selection(X_src, X_tgt, y_tgt, x_obs, y_obs, param_prob, gamma):
     # Construct probability for each parameter
     for label_idx, datalabel in enumerate(X_src.columns):
         xk = np.unique(X_src[datalabel].values).astype(int)
-        param_prob[label_idx].update_probability(datalabel, xk, x_obs[:, label_idx], y_obs, best_ratio=gamma)
+        xk_t = np.unique(X_tgt[datalabel].values).astype(int)
+        xk_U = np.union1d(xk, xk_t)
+        #print (xk_U)
+        param_prob[label_idx].update_probability(datalabel, xk_U, x_obs[:, label_idx], y_obs, best_ratio=gamma)
 
     max_EI = 0.0
     
+    #print ("len(X_tgt)",len(X_tgt))
     expected_improvement = np.empty(len(X_tgt))
     lx = np.ones(len(X_tgt))
     gx = np.ones(len(X_tgt))
 
     for label_idx, datalabel in enumerate(X_tgt.columns):
         a = X_tgt[datalabel].values
+        #print ("label_idx",label_idx)
+        #print ("a",a)
+        #print ("max(a)", max(a))
+        #print ("param_prob[label_idx].best_yk", np.shape(param_prob[label_idx].best_yk))
+        #print ("param_prob[label_idx].best_yk", param_prob[label_idx].best_yk)
         lx *= param_prob[label_idx].best_yk[a.astype(int)]#[a.astype(int)-1]
         gx *= param_prob[label_idx].worst_yk[a.astype(int)]
         
@@ -71,10 +80,11 @@ def run_bayesian_selection(X_src, X_tgt, y_src, y_tgt, sample_size, thresholds, 
     # Construct the p_good and p_bad using the Src dataset
     for label_idx, datalabel in enumerate(X_src.columns):
         xk = np.unique(X_src[datalabel].values).astype(int)
-
+        xk_t = np.unique(X_tgt[datalabel].values).astype(int)
+        xk_U = np.union1d(xk, xk_t)
         prob = ParamProbability(use_prior=True)
         #print (datalabel, np.shape(xk),np.shape(x_train[:, label_idx].astype(int)),np.shape(y_train[:,0]))
-        prob.prior_probability(datalabel, xk, x_train[:, label_idx].astype(int), y_train[:,0], best_ratio=gamma)
+        prob.prior_probability(datalabel, xk_U, x_train[:, label_idx].astype(int), y_train[:,0], best_ratio=gamma)
         param_prob.append(prob)
 
     # Choose the number of samples from the Tgt dataset

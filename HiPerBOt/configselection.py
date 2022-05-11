@@ -21,7 +21,7 @@ import matplotlib as matplotlib
 from bayesian import ParamProbability as ParamProbability
 from sklearn.model_selection import train_test_split
 from timeit import default_timer as timer
-
+import time
 
 
 
@@ -102,13 +102,18 @@ def run_bayesian_selection(X_bin_u, y_new_bin,X_bin_u_init, y_new_bin_init, samp
     if (sample_size-train_size) < 0:
         print('Sample size {0} less than train size {1}'.format(sample_size, train_size))
         assert(False)
-
+    #eval_time_avg = []
     for it in range(sample_size-train_size):
+        #before_sel = time.time()
         trial=selection(X_bin_u, y_new_bin, trials, trials_loss, param_prob, gamma)
+        #after_sel = time.time()
+        #eval_time = after_sel - before_sel
+        #eval_time_avg.append(eval_time)
         trials = np.vstack([trials, trial])
-
         loss=objective_fn(trial, X_bin_u, y_new_bin)
         trials_loss = np.append(trials_loss,loss)
+        
+    #print ("eval_time",np.mean(eval_time_avg))
     best_loss = np.amin(trials_loss)
     num_good = (trials_loss < threshold_good).sum()
     pc_score_g = stats.percentileofscore(trials_loss,threshold_good)
@@ -159,6 +164,7 @@ def main():
   threshold_good = np.percentile(ds.y_bin,ds.perc_optimal)
   feats = ds.X_bin_feat_sel
   feats.append("objective")
+  start = time.time()
   for size in sample_size:
       #print('Sample size: ', size)
       best_loss_list = []
@@ -166,6 +172,7 @@ def main():
       num_good_list = []
       s_order = 0
       for seed in seedList:
+          before_run = time.time()
           best_loss, pc_score_g, num_good, trials,trials_loss = run_bayesian_selection(ds.X_bin_u, ds.y_new_bin,ds.X_bin_u_init, ds.y_new_bin_init, size, ds.train_size, seed, s_order=s_order, gamma=ds.gamma_perc, threshold_good=threshold_good)
           best_loss_list = np.append(best_loss_list, best_loss)
           pc_g_list = np.append(pc_g_list, pc_score_g)

@@ -359,8 +359,9 @@ class DatasetInfo:
 
 
         # Source Dataset
-        filename = "/projects/OptADDN/HEPnOS-Autotuning/HiPerBOt/datasets/DH_expt/results_with_init.csv"
+        #filename = "/projects/OptADDN/HEPnOS-Autotuning/HiPerBOt/datasets/DH_expt/results_with_init.csv"
         #filename = "/projects/OptADDN/HEPnOS-Autotuning/HiPerBOt/datasets/DH_expt/results_4TT_5seeds.csv"
+        filename = "/projects/OptADDN/HEPnOS-Autotuning/HiPerBOt/datasets/DH_expt/results_4TT_5seeds_short.csv"
         response = "objective" # Dependent variable
 
         self.X_bin_all, self.y_bin_all = util.load_data(filename, response)
