@@ -70,11 +70,16 @@ def run_bayesian_selection(X_src, X_tgt, y_src, y_tgt, sample_size, thresholds, 
     recall_list = {}
 
     # Choose the number of samplels from the Src dataset
-    train_size = int(0.99*len(X_src))
-    print('Number of samples from the Src dataset: ', train_size)
-    train_ids, test_ids = train_test_split(range(X_src.shape[0]), test_size=len(X_src)-train_size, random_state=seed)
-    x_train = X_src.iloc[train_ids].values
-    y_train = y_src[train_ids]
+    #train_size = int(1.0*len(X_src))
+    #print('Number of samples from the Src dataset: ', train_size)
+    #train_ids, test_ids = train_test_split(range(X_src.shape[0]), test_size=len(X_src)-train_size, random_state=seed)
+    #x_train = X_src.iloc[train_ids].values
+    #y_train = y_src[train_ids]
+
+    x_train = X_src.values
+    y_train = y_src
+
+    print ("len(y_train)",len(y_train))
 
     param_prob = []
     # Construct the p_good and p_bad using the Src dataset
@@ -186,8 +191,12 @@ def main():
   print (sample_size)
   feats = ds.X_bin_feat_sel
   feats.append("objective")  
-  X_small_bin_u_list = [ds.X_small_bin_u_1,ds.X_small_bin_u_2,ds.X_small_bin_u_3,ds.X_small_bin_u_4,ds.X_small_bin_u_5]
-  y_new_small_bin_list = [ds.y_new_small_bin_1,ds.y_new_small_bin_2,ds.y_new_small_bin_3,ds.y_new_small_bin_4,ds.y_new_small_bin_5]
+  if (len(ds.y_new_small_bin)> 1000):
+    X_small_bin_u_list = [ds.X_small_bin_u,ds.X_small_bin_u,ds.X_small_bin_u,ds.X_small_bin_u,ds.X_small_bin_u]
+    y_new_small_bin_list = [ds.y_new_small_bin,ds.y_new_small_bin,ds.y_new_small_bin,ds.y_new_small_bin,ds.y_new_small_bin]
+  else:
+    X_small_bin_u_list = [ds.X_small_bin_u_1,ds.X_small_bin_u_2,ds.X_small_bin_u_3,ds.X_small_bin_u_4,ds.X_small_bin_u_5]
+    y_new_small_bin_list = [ds.y_new_small_bin_1,ds.y_new_small_bin_2,ds.y_new_small_bin_3,ds.y_new_small_bin_4,ds.y_new_small_bin_5]
   for size in sample_size:
       s_order = 0
       for seed in seedList:
