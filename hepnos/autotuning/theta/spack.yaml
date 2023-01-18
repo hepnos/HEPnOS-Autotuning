@@ -1,5 +1,4 @@
 spack:
-  concretization: together
   compilers::
   - compiler:
       spec: gcc@9.3.0
@@ -72,7 +71,7 @@ spack:
       compiler: []
       providers: {}
       externals:
-      - spec: boost@1.64.0 arch=cray-cnl7-mic_knl
+      - spec: boost@1.64.0
         modules:
         - boost/gnu/1.64.0
     bzip2:
@@ -110,7 +109,7 @@ spack:
       compiler: []
       providers: {}
       externals:
-      - spec: cray-mpich@7.7.14 arch=cray-cnl7-mic_knl
+      - spec: cray-mpich@7.7.14
         modules:
         - cray-mpich/7.7.14
     findutils:
@@ -244,7 +243,7 @@ spack:
       compiler: []
       providers: {}
       externals:
-      - spec: rdma-credentials@1.2.25 arch=cray-cnl7-mic_knl
+      - spec: rdma-credentials@1.2.25
         modules:
         - rdma-credentials/1.2.25-7.0.2.1_4.3__g67c8aa4.ari
     tar:

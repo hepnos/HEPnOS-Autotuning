@@ -8,6 +8,8 @@ then
     exit -1
 fi
 
+export SPACK_DISABLE_LOCAL_CONFIG=true
+
 WD=`pwd`
 HERE=`dirname "$(realpath $0)"`
 
