@@ -1,0 +1,6 @@
+spack:
+  git: https://github.com/spack/spack.git
+  ref: develop
+mochi:
+  git: https://github.com/mochi-hpc/mochi-spack-packages.git
+  ref: main

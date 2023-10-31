@@ -1,102 +1,96 @@
 
-root: /projects/radix-io/HEP-Autotuning/exp
+root: /Users/romainegele/Documents/Argonne/HEPnOS-Autotuning/plots/exp
+show: False
 experiments:
-  # 0:
-  #   title: "No Pep To Pep"
+  DUMMY-4-false-false:
+    title: "DUMMY-4-false-false"
+    t_max: 3600
+    data:
+      exp-DUMMY-4-false-false:
+        label: "DUMMY-4-false-false"
+        color: "cyan"
+        linestyle: "-"
+        rep: [1,2,3,4,5]
+  DUMMY-4-true-false:
+    title: "DUMMY-4-true-false"
+    t_max: 3600
+    data:
+      exp-DUMMY-4-true-false:
+        label: "DUMMY-4-true-false"
+        color: "cyan"
+        linestyle: "-"
+        rep: [1,2,3,4,5]
+  DUMMY-4-true-true:
+    title: "DUMMY-4-true-true"
+    t_max: 3600
+    data:
+      exp-DUMMY-4-true-true:
+        label: "DUMMY-4-true-true"
+        color: "cyan"
+        linestyle: "-"
+        rep: [1,2,3,4,5]
+  RF-4-to-8:
+    title: "RF 4 to 8 nodes"
+    t_max: 3600
+    data:
+      exp-RF-8-true-true:
+        label: "8-T-T"
+        color: "orange"
+        linestyle: "-"
+        rep: [1,2,3,4,5]
+      exp-tl-RF-8-true-true:
+        label: "8-T-T TL"
+        color: "cyan"
+        linestyle: "-"
+        rep: [1,2,3,4,5]
+  RF-8-to-16:
+    title: "RF 8 to 16 nodes"
+    t_max: 3600
+    data:
+      exp-RF-16-true-true:
+        label: "16-T-T"
+        color: "orange"
+        linestyle: "-"
+        rep: [1,2,3,4,5]
+      exp-tl-RF-16-true-true:
+        label: "16-T-T TL"
+        color: "cyan"
+        linestyle: "-"
+        rep: [1,2,3,4,5]
+  RF-16params-to-20params:
+    title: "RF 16 to 20 params"
+    t_max: 3600
+    data:
+      exp-RF-4-true-true:
+        label: "4-T-T"
+        color: "orange"
+        linestyle: "-"
+        rep: [1,2,3,4,5]
+      exp-tl-RF-4-true-true:
+        label: "4-T-T TL"
+        color: "cyan"
+        linestyle: "-"
+        rep: [1,2,3,4,5]
+  RF-nopep-to-pep:
+    title: "RF no PEP to PEP"
+    t_max: 3600
+    data:
+      exp-RF-4-true-false:
+        label: "4-T-F"
+        color: "orange"
+        linestyle: "-"
+        rep: [1,2,3,4,5]
+      exp-tl-RF-4-true-false:
+        label: "4-T-F TL"
+        color: "cyan"
+        linestyle: "-"
+        rep: [1,2,3,4,5]
+  # test:
+  #   title: "test"
+  #   t_max: 3600
   #   data:
-  #     exp-128-8-60-nopep-notl:
-  #       label: 128-8-60 (No Pep + No TL)
-  #       color: "k"
-  #       linestyle: "--"
-  #     exp-128-8-60-pep-notl:
-  #       label: 128-8-60 (Pep + No TL)
-  #       rep: [0, 1, 2]
+  #     exp-DUMMY-4-true-false:
+  #       label: "exp-DUMMY-4-true-false"
   #       color: "orange"
-  #     exp-128-8-60-nopep_to_pep-tl-v1:
-  #       label: 128-8-60 (Pep + TL v1)
-  #       rep: [0, 1, 2]
-  #       color: "blue"
-  #     exp-128-8-60-nopep_to_pep-tl-v2:
-  #       label: 128-8-60 (Pep + TL v2)
-  #       rep: [0, 1, 2]
-  #       color: "cyan"
-  # 1:
-  #   title: "4 To 8"
-  #   data:
-  #     exp-128-8-60-nopep-notl:
-  #       label: 128-8-60 (No Pep + No TL)
-  #       color: "orange"
-  #     exp-128-8-60-nopep-4_to_8-tl-v1:
-  #       label: 128-8-60 (No Pep + TL v1)
-  #       rep: [0]
-  #       color: "blue"
-  #     exp-128-8-60-nopep-4_to_8-tl-v2:
-  #       label: 128-8-60 (No Pep + TL v2)
-  #       rep: [0]
-  #       color: "cyan"
-  4-3-preliminary-experiments:
-    title: "Preliminary Experiments"
-    ylim: [0,100]
-    data:
-      exp-128-4-60-step1-notl:
-        label: "1, 11, 4"
-        color: "orange"
-        linestyle: "-"
-        rep: [0,1,2,3,4]
-  4-4-single-step-to-full-workflow:
-    title: "From Single Step to Full Workflow"
-    ylim: [30,70]
-    data:
-      exp-128-4-60-step2-notl:
-        label: "2, 16, 4"
-        color: "orange"
-        linestyle: "-"
-        rep: [0,1,2,3,4]
-      exp-128-4-60-step2-tl_from_step1:
-        label: "2, 16, 4, TL"
-        color: "cyan"
-        linestyle: "-"
-        rep: [0,1,2,3,4]
-  4-5-adding-new-parameters:
-    title: "Adding New Parameters"
-    ylim: [25,70]
-    data:
-      exp-128-4-60-step3-notl:
-        label: "2, 19, 4"
-        color: "orange"
-        linestyle: "-"
-        rep: [0,1,2,3,4]
-      exp-128-4-60-step3-tl_from_step2:
-        label: "2, 19, 4, TL"
-        color: "cyan"
-        linestyle: "-"
-        rep: [0,1,2,3,4]
-  4-6-scaling-up-workflow-8:
-    title: "Scaling Up Workflow Instances"
-    ylim: [25,200]
-    data:
-      exp-128-8-60-step3-notl:
-        label: "2, 19, 8"
-        color: "orange"
-        linestyle: "-"
-        rep: [0,1,2,3,4]
-      exp-128-8-60-step3-tl_from_step3:
-        label: "2, 19, 8, TL"
-        color: "cyan"
-        linestyle: "-"
-        rep: [0,1,2,3,4]
-  4-6-scaling-up-workflow-16:
-    title: "Scaling Up Workflow Instances"
-    ylim: [25,200]
-    data:
-      exp-128-16-60-step3-notl:
-        label: "2, 19, 16"
-        color: "orange"
-        linestyle: "-"
-        rep: [0,1,2,3,4]
-      exp-128-8-60-step3-tl_from_step3:
-        label: "2, 19, 16, TL"
-        color: "cyan"
-        linestyle: "-"
-        rep: [0,1,2,3,4]
-
+  #       linestyle: "-"
+  #       rep: [1,2,3,4,5]

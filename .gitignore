@@ -107,7 +107,6 @@ celerybeat.pid
 # Environments
 .env
 .venv
-env/
 venv/
 ENV/
 env.bak/
@@ -139,13 +138,15 @@ cython_debug/
 
 # new
 spack/
-spack.yaml
-sds-repo
 *.log
 *.cobaltlog
 *.error
 *.output
-*.json
-setting.sh
-exp*/
 figures*/
+exp/
+
+# macos file
+.DS_Store 
+
+# vscode file
+.vscode/
